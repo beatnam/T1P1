@@ -25,7 +25,7 @@
 	</div>
 
 
-	<form id="resumeForm" action="/submitResume" method="post">
+	<form id="resumeForm" action="#" method="post">
 
 
 		<div>

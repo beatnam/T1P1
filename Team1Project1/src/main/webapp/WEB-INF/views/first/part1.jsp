@@ -19,7 +19,7 @@ select, input {
 <body>
 	<h2>희망 조건을 선택하세요</h2>
 
-	<form action="#" method="post">
+	<form action="${pageContext.request.contextPath }/first/filteringPro" method="post">
 		<!-- 1. 직종 -->
 		<label for="jobCategory">직종:</label> <select id="jobCategory"
 			name="jobCategory" onchange="onCategoryChange()" required>
