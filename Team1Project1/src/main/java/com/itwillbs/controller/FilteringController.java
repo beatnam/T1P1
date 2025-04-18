@@ -11,7 +11,7 @@ public class FilteringController {
 
 	@GetMapping("/part1")
 	public String part1() {
-		
+
 		return "/first/part1";
 	}
 
@@ -20,10 +20,10 @@ public class FilteringController {
 
 		return "redirect:/first/coverletter";
 	}
-	
+
 	@GetMapping("/coverletter")
 	public String coverletter() {
 
-		return "redirect:/first/coverletter";
+		return "/first/coverletter";
 	}
 }
