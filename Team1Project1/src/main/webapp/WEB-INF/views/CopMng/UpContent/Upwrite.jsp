@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td>첨부파일<form action="upload.jsp" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" /> </form></td>
+        <input type="file" name="file" /></form></td>
 <!--         			업로드 파일 이름 나오게 -->
         			<div class=""><a href=""></a></div>
 				<td></td>

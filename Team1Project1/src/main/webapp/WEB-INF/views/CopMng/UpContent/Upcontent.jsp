@@ -31,5 +31,6 @@
 				<td colspan="2"><input type="button" value="수정하기"><input type="button" value="삭제하기"></td>
 			</tr>
 		</table>
+	</form>
 </body>
 </html>

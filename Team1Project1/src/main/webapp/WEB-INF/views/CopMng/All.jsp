@@ -24,9 +24,8 @@
 							<td>${공고이름}</td>
 						</tr>
 					</c:forEach>
+				</table>
 			</div>
-			</table>
-
 			<!-- 페이지 번호 -->
 			<c:if test="">
 				<a href="">[이 전]</a>
@@ -40,5 +39,6 @@
 				<a href="">[다 음]</a>
 			</c:if>
 		</div>
+	</header>
 </body>
 </html>

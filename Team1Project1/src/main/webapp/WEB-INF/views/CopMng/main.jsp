@@ -14,16 +14,17 @@
  <header>
  	<div class="">
  		<img alt="" src="">
+ 		<input type="button" id="" name="" value="파일 첨부">
  	</div>
  	<form action="">
  		<div class="">
  			<ul> 
- 				<li><a href="">기업이름</a><input id="" name="" value=""></li>
- 				<li><a href="">사업자번호</a><input id="" name="" value=""></li>
- 				<li><a href="">소재지</a><input id="" name="" value=""></li>
- 				<li><a href="">전화번호</a><input id="" name="" value=""></li>
- 				<li><a href="">홈페이지</a><input id="" name="" value=""></li>
- 				<li><a href="">회사소개</a><input id="" name="" value=""></li>
+ 				<li><a href="">기업이름</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">사업자번호</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">소재지</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">전화번호</a><input type="tel" id="" name="" value=""></li>
+ 				<li><a href="">홈페이지</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">회사소개</a><input type="text" id="" name="" value=""></li>
  			</ul>
  		</div>
  		

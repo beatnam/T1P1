@@ -45,6 +45,7 @@
 				<td>근무지역</td>
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
+			<tr>
 				<td colspan="2">
 					<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> 
 					<c:if test="">
@@ -55,6 +56,7 @@
 					</c:if>
 					<input type="button" value="공고 리스트" onclick="location.href=''">
 				</td>
+			</tr>
 		</table>
 	</form>
 </body>

@@ -25,8 +25,8 @@
 							<td>${공고이름}</td>
 						</tr>
 					</c:forEach>
+				</table>
 			</div>
-			</table>
 
 			<!-- 페이지 번호 -->
 			<c:if test="">
@@ -34,7 +34,7 @@
 			</c:if>
 
 			<c:forEach var="" begin="" end="" step="1">
-				<a href=""> $i}</a>
+				<a href="">1 | 2 | 3 | 4 | 5</a>
 			</c:forEach>
 			<!-- 페이지 번호 -->
 			<c:if test="">
@@ -46,5 +46,6 @@
 			<input type="button" value="합격처리">
 			<input type="button" value="불합격처리">
 		</div>
+	</header>
 </body>
 </html>
