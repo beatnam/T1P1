@@ -10,9 +10,11 @@
 	display: none;
 	margin-top: 10px;
 }
+
 select, input {
 	width: 200px;
 }
+
 button {
 	margin-top: 10px;
 }
@@ -21,73 +23,82 @@ button {
 <body>
 	<h2>희망 조건을 선택하세요</h2>
 
-	<form action="${pageContext.request.contextPath }/first/filteringPro" method="post">
+	<form action="${pageContext.request.contextPath }/first/filteringPro"
+		method="post">
 		<!-- 1. 직종 -->
 		<div id="jobCategoryDiv">
-			<label for="jobCategory">직종:</label>
-			<select id="jobCategory" name="jobCategory" onchange="onCategoryChange()" required>
+			<label for="jobCategory">직종:</label> <select id="jobCategory"
+				name="jobCategory" onchange="onCategoryChange()" required>
 				<option value="">-- 선택 --</option>
 				<option value="IT">IT</option>
 				<option value="디자인">디자인</option>
-			</select><br><br>
+			</select><br>
+			<br>
 		</div>
 
 		<!-- 2. 직무 -->
 		<div id="jobRoleDiv" class="hidden">
-			<label for="jobRole">직무:</label>
-			<select id="jobRole" name="jobRole" onchange="nextStep()" required>
+			<label for="jobRole">직무:</label> <select id="jobRole" name="jobRole"
+				onchange="nextStep()" required>
 				<option value="">-- 선택 --</option>
-			</select><br><br>
+			</select><br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 
 		<!-- 3. 학력 -->
 		<div id="educationDiv" class="hidden">
-			<label for="education">학력:</label>
-			<select name="education" id="education" onchange="nextStep()" required>
+			<label for="education">학력:</label> <select name="education"
+				id="education" onchange="nextStep()" required>
 				<option value="">-- 선택 --</option>
 				<option value="고졸">고졸</option>
 				<option value="학사">학사</option>
 				<option value="석사">석사</option>
-			</select><br><br>
+			</select><br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 
 		<!-- 4. 경력 -->
 		<div id="careerDiv" class="hidden">
-			<label for="career">경력:</label>
-			<select name="career" id="career" onchange="nextStep()" required>
+			<label for="career">경력:</label> <select name="career" id="career"
+				onchange="nextStep()" required>
 				<option value="">-- 선택 --</option>
 				<option value="신입">신입</option>
 				<option value="1-3년">1~3년</option>
 				<option value="4-6년">4~6년</option>
 				<option value="7년 이상">7년 이상</option>
-			</select><br><br>
+			</select><br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 
 		<!-- 5. 연봉 -->
 		<div id="salaryDiv" class="hidden">
-			<label for="salary">희망 연봉 (만원):</label>
-			<input type="number" name="salary" id="salary" min="0" onchange="nextStep()" required><br><br>
+			<label for="salary">희망 연봉 (만원):</label> <input type="number"
+				name="salary" id="salary" min="0" onchange="nextStep()" required><br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 
 		<!-- 6. 근무일수 -->
 		<div id="workingDaysDiv" class="hidden">
-			<label for="workingDays">희망 근무일수:</label>
-			<select name="workingDays" id="workingDays" onchange="nextStep()" required>
+			<label for="workingDays">희망 근무일수:</label> <select name="workingDays"
+				id="workingDays" onchange="nextStep()" required>
 				<option value="">-- 선택 --</option>
 				<option value="3">주 3일</option>
 				<option value="4">주 4일</option>
 				<option value="5">주 5일</option>
-			</select><br><br>
+			</select><br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 
 		<!-- 7. 제출 -->
 		<div id="submitDiv" class="hidden">
-			<button type="submit">조건에 맞는 회사 검색</button><br><br>
+			<button type="submit">조건에 맞는 회사 검색</button>
+			<br>
+			<br>
 			<button type="button" onclick="prevStep()">이전으로</button>
 		</div>
 	</form>
