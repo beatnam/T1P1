@@ -6,18 +6,18 @@
 <meta charset="UTF-8">
 <title>희망 조건 선택</title>
 <style>
-.hidden {
-	display: none;
-	margin-top: 10px;
-}
+/* .hidden { */
+/* 	display: none; */
+/* 	margin-top: 10px; */
+/* } */
 
-select, input {
-	width: 200px;
-}
+/* select, input { */
+/* 	width: 200px; */
+/* } */
 
-button {
-	margin-top: 10px;
-}
+/* button { */
+/* 	margin-top: 10px; */
+/* } */
 </style>
 </head>
 <body>
