@@ -32,7 +32,7 @@
 			</c:if>
 
 			<c:forEach var="" begin="" end="" step="1">
-				<a href=""> $i}</a>
+				<a href="">1 | 2 | 3 | 4 | 5</a>
 			</c:forEach>
 			<!-- 페이지 번호 -->
 			<c:if test="">
