@@ -9,7 +9,7 @@
 </head>
 <body>
 				<!-- 다른계획있을시 수정 -->
-<jsp:include page="../inc/CopTop.jsp"></jsp:include>
+<jsp:include page="../inc/coptop.jsp"></jsp:include>
 
  <header>
  	<div class="">

@@ -5,17 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Community/Boardcontent</title>
+<title>community/boardcontent</title>
 </head>
 <body>
+
+
 		<div class="">	
-		<form action=""  method="post" id="">		
+		<form action=""  method="get" id="">		
 			<ul class="">
-				<li class="">글제목 : <input type="text" name="subject"></li>
+				<li class="">글제목 : <input type="text" name="subject" value="" readonly></li>
 				<li class="">작성자 : <input type="text" name="name" value="" readonly></li>
 				<li class="">
 					<div class="">
-					    글내용 : <textarea name="" rows="30" cols="40"></textarea>
+					    글내용 : <textarea name="" rows="30" cols="40" readonly></textarea>
                     </div>
 				</li>
 			</ul>
@@ -25,5 +27,7 @@
 			</p>
 		</form>
 		</div>
+		
+
 </body>
 </html>

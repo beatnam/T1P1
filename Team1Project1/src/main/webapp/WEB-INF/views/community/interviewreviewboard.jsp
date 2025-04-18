@@ -26,16 +26,18 @@
 					<tr>
 						<th scope="s1">번호</th>
 						<th scope="s1">제목</th>
+						<th scope="s1">글쓴이</th>
+						<th scope="s1">작성시간</th>
 						<th scope="s1">조회수</th>
-						<th scope="s1">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="" items="">
 					<tr><td>번호</td>
 						<td class="tit_notice"><a href="">제목</a> </td>
-						<td>조회수</td>
-						<td>작성일</td></tr>
+						<td>글쓴이</td>
+						<td>작성시간</td>
+						<td>조회수</td></tr>
 					</c:forEach>
 				</tbody>
 			</table>
