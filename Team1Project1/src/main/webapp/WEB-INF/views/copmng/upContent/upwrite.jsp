@@ -30,7 +30,20 @@
 			</tr>
 			<tr>
 				<td>학력</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td>
+					<select name="board" id="board">
+				        <option value="0">학력무관</option>
+				        <option value="1">고등학교졸업</option>
+				        <option value="2">대학졸업(2,3년)</option>
+				        <option value="3">대학교졸업(4년)</option>
+				        <option value="4">석사졸업</option>
+				        <option value="5">박사졸업</option>
+				        <option value="6">고등학교졸업이상</option>
+				        <option value="7">대학졸업(2,3년)이상</option>
+				        <option value="8">대학교졸업(4년)이상</option>
+				        <option value="9">석사졸업이상</option>
+			    	</select>
+				</td>
 			</tr>
 			<tr>
 				<td>직종</td>
