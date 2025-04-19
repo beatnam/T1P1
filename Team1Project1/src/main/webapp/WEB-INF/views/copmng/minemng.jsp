@@ -43,8 +43,8 @@
 		</div>
 		<div class="">
 			<input type="button" value="메시지 보내기">
-			<input type="button" value="합격처리">
-			<input type="button" value="불합격처리">
+			<input type="button" value="합격 처리">
+			<input type="button" value="불합격 처리">
 		</div>
 	</header>
 </body>

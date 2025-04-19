@@ -13,7 +13,7 @@
 
 	<header>
 		<div class="">
-			<h3>업로드 했던 공고리스트</h3>
+			<h3>업로드 공고 리스트</h3>
 			<div class="">
 				<table border="1">
 					<c:forEach var="" items="">
