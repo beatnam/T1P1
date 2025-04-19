@@ -31,7 +31,7 @@
 			<tr>
 				<td>학력</td>
 				<td>
-					<select name="board" id="board">
+					<select name="Levels" id="Levels">
 				        <option value="0">학력무관</option>
 				        <option value="1">고등학교졸업</option>
 				        <option value="2">대학졸업(2,3년)</option>
