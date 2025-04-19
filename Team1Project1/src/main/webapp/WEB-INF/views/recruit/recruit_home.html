@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출근 | 취업 정보</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* 간격 조절 */
+    }
+
+    .box {
+        width: calc(50% - 20px);
+        /* 2열이므로 50%에서 간격을 제외 */
+        height: 200px;
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+
+    <h1>채용 정보</h1>
+
+    <div class="container">
+        <div class="box">
+            <a href="open.html">
+                <h3>공개 채용</h3>
+                <p>준비된 당신에게</p>
+                <p>#대기업, #중견기업, #스타트업</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="always.html">
+                <h3>상시 채용</h3>
+                <p>간편한 입사 지원</p>
+            </a>
+        </div>
+
+        <div class="box">
+            <a href="fair.html">
+                <h3>취업 박람회</h3>
+            </a>
+        </div>
+
+        <div class="box">
+            <a href="50.html">
+                <h3>50대 기업</h3>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
