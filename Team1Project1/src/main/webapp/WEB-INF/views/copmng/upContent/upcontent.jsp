@@ -15,17 +15,52 @@
 	<form action="" method="post">
 		<table border="1">
 			<tr>
-				<td>회사명</td>
-				<td><input type="text" name="name" value="" readonly></td>
+				<td>제목입력</td>
+				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
-				<td>공고제목</td>
-				<td><input type="text" name="subject" readonly></td>
+				<td>사진<img alt="" src=""></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>세부내용</td>
-				<td><img alt="" src=""></td>
-				<td><textarea name="content" rows="300" cols="500" readonly></textarea></td>
+				<td>경력</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>학력</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>직종</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>직무</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>연봉</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>근무지역</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>게시날짜</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>근무일수</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>상세내용</td>
+				<td><textarea rows="50" cols="50" readonly></textarea> </td>
+			</tr>
+			<tr>
+				<td>기업 홈페이지 주소</td>
+				<td><input type="text" id="" name="" value="" readonly> </td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="button" value="수정하기"><input type="button" value="삭제하기"></td>

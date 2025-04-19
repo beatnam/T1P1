@@ -19,12 +19,15 @@
  	<form action="">
  		<div class="">
  			<ul> 
+ 				<li><a href="">기업아이디</a><input type="text" id="" name="" value=""></li>
  				<li><a href="">기업이름</a><input type="text" id="" name="" value=""></li>
  				<li><a href="">사업자번호</a><input type="text" id="" name="" value=""></li>
  				<li><a href="">소재지</a><input type="text" id="" name="" value=""></li>
  				<li><a href="">전화번호</a><input type="tel" id="" name="" value=""></li>
- 				<li><a href="">홈페이지</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">홈페이지</a><input type="url" id="" name="" value=""></li>
+ 				<li><a href="">사업자등록증</a><input type="tel" id="" name="" value=""></li>
  				<li><a href="">회사소개</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">인사담당자</a><input type="text" id="" name="" value=""></li>
  			</ul>
  		</div>
  		

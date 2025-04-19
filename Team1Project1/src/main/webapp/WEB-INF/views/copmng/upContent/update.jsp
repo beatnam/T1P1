@@ -19,13 +19,13 @@
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
-				<td>첨부파일 <input type="file" name="file" /></td>
+				<td>사진 첨부파일<input type="file" name="file" /></td>
 <!--         			업로드 파일 이름 나오게 -->
         			<div class=""><a href=""></a></div>
 				<td></td>
 			</tr>
 			<tr>
-				<td>경력<input type=""></td>
+				<td>경력</td>
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
@@ -33,16 +33,36 @@
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
-				<td>근무형태</td>
+				<td>직종</td>
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
-				<td>급여</td>
+				<td>직무</td>
+				<td><input type="text" id="" name="" value=""></td>
+			</tr>
+			<tr>
+				<td>연봉</td>
 				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
 				<td>근무지역</td>
 				<td><input type="text" id="" name="" value=""></td>
+			</tr>
+			<tr>
+				<td>게시날짜</td>
+				<td><input type="text" id="" name="" value="" readonly></td>
+			</tr>
+			<tr>
+				<td>근무일수</td>
+				<td><input type="text" id="" name="" value=""></td>
+			</tr>
+			<tr>
+				<td>상세내용</td>
+				<td><textarea rows="50" cols="50"></textarea> </td>
+			</tr>
+			<tr>
+				<td>기업 홈페이지 주소</td>
+				<td><input type="text" id="" name="" value=""> </td>
 			</tr>
 			<tr>
 				<td colspan="2">
