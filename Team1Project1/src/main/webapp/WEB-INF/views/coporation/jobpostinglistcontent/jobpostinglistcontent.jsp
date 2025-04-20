@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>업로드 공고 리스트 | 공고 내용</title>
+<title>기업 관리 | 공고 작성</title>
 </head>
 <body>
 

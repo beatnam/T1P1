@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>커뮤니티 | 게시판글수정</title>
+<title>커뮤니티 | 게시판글 수정</title>
 </head>
 <body>
 

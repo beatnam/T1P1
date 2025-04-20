@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>기업 | 지원 이력서 모음</title>
+<title>기업 관리 | 지원 이력서 모음</title>
 </head>
 <body>
 			<!-- 다른계획있을시 수정 -->

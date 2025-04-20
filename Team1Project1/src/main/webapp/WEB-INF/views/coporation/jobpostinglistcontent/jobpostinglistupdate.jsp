@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>업로드 공고 리스트 | 공고 수정</title>
+<title>기업 관리 | 공고 수정</title>
 </head>
 <body>
 			<!-- 다른계획있을시 수정 -->
