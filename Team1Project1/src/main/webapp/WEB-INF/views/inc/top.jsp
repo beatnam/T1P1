@@ -1,131 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	pageEncoding="UTF-8"%>
+<header>
+	<div class="top-bar">
+		<div class="logo">
+			출발<span>.</span>
+		</div>
+		<div class="search-bar">
+			<input type="text" placeholder="검색어를 입력해주세요" />
+		</div>
+	</div>
 
-<style>
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  header {
-    border-bottom: 4px solid rgb(134, 222, 134);
-    background-color: white;
-  }
-
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-  }
-
-  .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: black;
-  }
-
-
-  .search-bar {
-    display: flex;
-    align-items: center;
-    border: 2px solid rgb(134, 222, 134);
-    border-radius: 50px;
-    padding: 8px 20px;
-    max-width: 600px;
-    width: 100%;
-    margin-left: 40px;
-    flex-grow: 1;
-  }
-
-  .search-bar input {
-    border: none;
-    outline: none;
-    font-size: 16px;
-    flex-grow: 1;
-  }
-
-  .search-bar svg {
-    margin-right: 10px;
-  }
-
-  .bottom-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px 20px;
-    font-size: 18px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-  }
-
-  .nav-links a,
-  .right-links a {
-    text-decoration: none;
-    color: black;
-  }
-
-  .right-links {
-    display: flex;
-    gap: 24px;
-    font-size: 16px;
-  }
-
-  @media (max-width: 768px) {
-    .top-bar,
-    .bottom-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .search-bar {
-      margin: 20px 0 0;
-      width: 100%;
-    }
-
-    .bottom-bar {
-      gap: 16px;
-    }
-
-    .nav-links,
-    .right-links {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-  }
-</style>    
-</head>
-<body>
-    <header>
-        <div class="top-bar">
-          <div class="logo">출발<span>.</span></div>
-          <div class="search-bar">
-            <input type="text" placeholder="검색어를 입력해주세요" />
-          </div>
-        </div>
-    
-        <div class="bottom-bar">
-          <div class="nav-links">
-            <a href="#">채용정보</a>
-            <a href="#">커뮤니티</a>
-            <a href="#">고객센터</a>
-            <a href="#">마이페이지</a>
-          </div>
-          <div class="right-links">
-            <a href="#">회원가입/로그인</a>
-            <a href="#">기업 서비스</a>
-          </div>
-        </div>
-      </header>
-</body>
-</html>
+	<div class="bottom-bar">
+		<div class="nav-links">
+			<a href="#">채용정보</a> <a href="#">커뮤니티</a> <a href="#">고객센터</a> <a
+				href="#">마이페이지</a>
+		</div>
+		<div class="right-links">
+			<a href="#">회원가입/로그인</a> <a href="#">기업 서비스</a>
+		</div>
+	</div>
+</header>

@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
 
     <title>관리자 | 취업박람회 수정</title>
+    <link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>

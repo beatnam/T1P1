@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 | 게시판 관리</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>

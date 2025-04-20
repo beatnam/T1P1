@@ -1,71 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
-<style>
-        /* Footer CSS */
-    .footer {
-    background-color: #f9f9f9;
-    padding: 40px 20px;
-    font-family: sans-serif;
-    font-size: 14px;
-    color: #333;
-    border-top: 1px solid #e0e0e0;
-    }
-
-    .footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    }
-
-    .footer-left {
-    flex: 1 1 60%;
-    min-width: 300px;
-    }
-
-    .footer-right {
-    flex: 1 1 30%;
-    min-width: 200px;
-    }
-
-    .footer-left p {
-    margin: 6px 0;
-    line-height: 1.5;
-    }
-
-    .footer-right ul {
-    list-style: none;
-    padding: 0;
-    }
-
-    .footer-right ul li {
-    margin: 8px 0;
-    }
-
-    .footer-right ul li a {
-    color: #333;
-    text-decoration: none;
-    }
-
-    .footer-right ul li a:hover {
-    text-decoration: underline;
-    }
-
-</style>
-</head>
-<body>
-    
-
-    <!-- Footer HTML -->
 <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
@@ -88,6 +23,3 @@
       </div>
     </div>
   </footer>
-  
-</body>
-</html>

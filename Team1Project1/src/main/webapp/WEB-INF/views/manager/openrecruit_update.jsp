@@ -9,7 +9,8 @@
 <meta charset="UTF-8">
 
 <title>관리자 페이지 | 공개 채용 수정</title>
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>

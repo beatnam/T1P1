@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 
 <title>관리자 | FAQ 등록</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>
