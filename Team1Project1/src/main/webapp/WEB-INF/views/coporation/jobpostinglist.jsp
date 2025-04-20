@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CopMng/up</title>
+<title>기업 | 업로드 공고 리스트</title>
 </head>
 <body>
 				<!-- 다른계획있을시 수정 -->

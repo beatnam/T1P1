@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>inc | 기업 소분류</title>
 </head>
 <body>
 				<!-- 다른계획있을시 수정 -->

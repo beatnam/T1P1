@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CopMng/Mine</title>
+<title>기업 | 지원 자소서 모음</title>
 </head>
 <body>
 

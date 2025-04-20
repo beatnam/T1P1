@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Upcontent/Upwrite</title>
+<title>업로드 공고 리스트 | 새공고 업로드</title>
 </head>
 <body>
 			<!-- 다른계획있을시 수정 -->

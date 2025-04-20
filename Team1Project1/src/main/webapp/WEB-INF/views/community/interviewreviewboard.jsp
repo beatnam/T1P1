@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Community/InterviewReviewBoard</title>
+<title>커뮤니티 | 면접 후기 게시판</title>
 </head>
 <body>
 

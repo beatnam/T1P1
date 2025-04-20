@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>community/boardcontent</title>
+<title>커뮤니티 | 게시판 내용</title>
 </head>
 <body>
 
