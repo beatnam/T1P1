@@ -1,35 +1,48 @@
-@charset "UTF-8";
+/* coptop.css */
 
-/* 인클루드 메뉴 스타일 */
+/* 좌측 메뉴바 컨테이너 */
 .include-menu {
-  position: absolute;
-  top: 50px; /* 상단에서 50px 내려오도록 설정 */
-  left: 0; /* 페이지 좌측에 고정 */
-  width: 200px; /* 메뉴의 폭 */
-  background-color: #f4f4f4; /* 배경색: 회색 */
-  padding: 10px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 좌측 그림자 */
+    width: 250px;
+    position: fixed;
+    top: 190px;
+    left: 0;
+    position: fixed;
+    background-color: #2c3e50; /* 메뉴바 배경색 */
+    color: #ffffff; /* 글자색 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    color: #ffffff; /* 글자색 */
+}
+/* 헤더 텍스트 스타일 */
+.include-menu h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-/* 메뉴 버튼 간격 */
+/* 메뉴 리스트 스타일 */
 .include-menu ul {
-  list-style-type: none; /* 불릿 제거 */
-  padding: 0;
-  margin: 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .include-menu ul li {
-  margin: 15px 0; /* 각 버튼 간 세로 간격 추가 */
+    margin: 15px 0;
 }
 
 .include-menu ul li a {
-  text-decoration: none; /* 밑줄 제거 */
-  color: #333; /* 버튼 글자색 */
-  display: block; /* 블록 요소로 변환 */
-  padding: 5px 0;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
 }
 
 .include-menu ul li a:hover {
-  color: #007bff; /* 호버 시 색 변경 */
-  text-decoration: underline; /* 밑줄 추가 */
+    background-color: #34495e; /* 호버 시 색상 */
+    border-radius: 5px; /* 약간의 둥근 모서리 */
 }

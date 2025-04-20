@@ -8,7 +8,7 @@
 <title>커뮤니티 | 면접 후기 게시판</title>
 </head>
 <body>
-
+<jsp:include page="../inc/top.jsp"></jsp:include>
 <h3>면접 후기 게시판</h3>
 <form action="#" class="">
 	<fieldset>
@@ -41,5 +41,6 @@
 					</c:forEach>
 				</tbody>
 			</table>
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

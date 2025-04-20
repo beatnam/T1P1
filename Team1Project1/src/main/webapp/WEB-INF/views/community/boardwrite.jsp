@@ -7,7 +7,7 @@
 <title>커뮤니티 | 글쓰기</title>
 </head>
 <body>
-
+<jsp:include page="../inc/top.jsp"></jsp:include>
 		<div class="">	
 		<form action=""  method="post" id="">
 			<label for="board">게시판 선택:</label>
@@ -31,6 +31,6 @@
 			</p>
 		</form>
 		</div>
-
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

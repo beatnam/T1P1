@@ -1,78 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        /* Footer CSS */
-        .footer {
-            background-color: #f9f9f9;
-            padding: 40px 20px;
-            font-family: sans-serif;
-            font-size: 14px;
-            color: #333;
-            border-top: 1px solid #e0e0e0;
-        }
-        .footer-container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .footer-left {
-            flex: 1 1 60%;
-            min-width: 300px;
-        }
-        .footer-right {
-            flex: 1 1 30%;
-            min-width: 200px;
-        }
-        .footer-left p {
-            margin: 6px 0;
-            line-height: 1.5;
-        }
-        .footer-right ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-right ul li {
-            margin: 8px 0;
-        }
-        .footer-right ul li a {
-            color: #333;
-            text-decoration: none;
-        }
-        .footer-right ul li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="EUC-KR">
+<title>Ãâ±Ù | »ó´Ü¹Ù</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
     <!-- Footer HTML -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h1>ì¶œê·¼</h1>
-                <!-- ë™ì ìœ¼ë¡œ ì‹œê°„ ë°ì´í„°ë¥¼ ì¶œë ¥ -->
-                <p>í˜„ì¬ ì‹œê°„: <%= new java.util.Date() %></p>
-                <p>ì¶œê·¼ ê³ ê°ì„¼í„° : 02-6226-5000 (í‰ì¼ 09:00 - 18:00, ì ì‹¬ì‹œê°„ 12:00 - 13:00, ì£¼ë§Â·ê³µíœ´ì¼ íœ´ë¬´)</p>
-                <p>ì´ë©”ì¼ : xxxxxxxxx@nave.com / Fax : xx-xxxx-xxxx</p>
-                <p>ì•„ì´í‹°ìœŒ, ìš° : 00000, XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, ëŒ€í‘œ : XXX</p>
-            </div>
-            <div class="footer-right">
-                <ul>
-                    <li><a href="#">ì„œë¹„ìŠ¤ ì†Œê°œ</a></li>
-                    <li><a href="#">ê¸°ì—… ì„œë¹„ìŠ¤</a></li>
-                    <li><a href="#">ì¶œê·¼Team</a></li>
-                    <li><a href="#">íšŒì›ì•½ê´€</a></li>
-                    <li><a href="#"><strong>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</strong></a></li>
-                    <li><a href="#">ìì£¼ë¬»ëŠ”ì§ˆë¬¸ FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h1>Ãâ±Ù</h1>
+        <p>Ãâ±Ù °í°´¼¾ÅÍ : 02-6226-5000 (ÆòÀÏ 09:00 - 18:00, Á¡½É½Ã°£ 12:00 - 13:00, ÁÖ¸»¡¤°øÈŞÀÏ ÈŞ¹«)</p>
+        <p>ÀÌ¸ŞÀÏ : xxxxxxxxx@nave.com / Fax : xx-xxxx-xxxx/<p>
+        <p>¾ÆÀÌÆ¼Àª, ¿ì : 00000, XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, ´ëÇ¥ : XXX</p>
+
+       
+      </div>
+      <div class="footer-right">
+        <ul>
+          <li><a href="#">¼­ºñ½º ¼Ò°³</a></li>
+          <li><a href="#">±â¾÷ ¼­ºñ½º</a></li>
+          <li><a href="#">Ãâ±ÙTeam</a></li>
+          <li><a href="#">È¸¿ø¾à°ü</a></li>
+          <li><a href="#"><strong>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</strong></a></li>
+          <li><a href="#">ÀÚÁÖ¹¯´ÂÁú¹® FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

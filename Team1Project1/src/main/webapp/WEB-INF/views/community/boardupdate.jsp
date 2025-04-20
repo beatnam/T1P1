@@ -7,7 +7,7 @@
 <title>커뮤니티 | 게시판글 수정</title>
 </head>
 <body>
-
+<jsp:include page="../inc/top.jsp"></jsp:include>
 	<div class="">	
 		<form action=""  method="post" id="">		
 			<ul class="">
@@ -25,6 +25,6 @@
 			</p>
 		</form>
 	</div>
-
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

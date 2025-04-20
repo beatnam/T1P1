@@ -1,19 +1,11 @@
-@charset "EUC-KR";
-/* ±âº» ½ºÅ¸ÀÏ */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff; /* ¹è°æ»ö: ÇÏ¾á»ö */
-  color: #000000; /* ±ÛÀÚ»ö: °ËÀº»ö */
-}
+@charset "UTF-8";
 
-/* Çì´õ ½ºÅ¸ÀÏ */
-header {
-  background-color: #e0e0e0; /* Å¾ÂÊ ¹è°æ»ö: È¸»ö */
-  color: #333333; /* Çì´õ ±ÛÀÚ»ö */
+/* í—¤ë” ìŠ¤íƒ€ì¼ */
+#base {
+  background-color: #e0e0e0; /* íƒ‘ìª½ ë°°ê²½ìƒ‰: íšŒìƒ‰ */
+  color: #333333; /* í—¤ë” ê¸€ììƒ‰ */
   padding: 20px;
-  text-align: center;
+  display: inline;
 }
 
 header h3 {
@@ -21,36 +13,25 @@ header h3 {
   font-size: 1.8em;
 }
 
-
-
-/* ÆäÀÌÁö ¹øÈ£ ½ºÅ¸ÀÏ */
-.page-numbers {
-  display: flex; /* °¡·Î Á¤·Ä */
-  justify-content: center; /* °¡¿îµ¥ Á¤·Ä */
-  flex-direction: row;
-  color: #333;
-  margin: 0 10px; /* ¸µÅ© °£ ÁÂ¿ì °£°İ Ãß°¡ */
+/* ë ˆì´ì•„ì›ƒ ìŠ¤íƒ€ì¼ */
+.parent-div {
+    display: flex; /* ê°€ë¡œ ì •ë ¬ì„ ìœ„í•œ í”Œë ‰ìŠ¤ ë°•ìŠ¤ */
+    align-items: flex-start; /* ìƒë‹¨ì— ë§ì¶° ì •ë ¬ */
+    gap: 20px; /* ìš”ì†Œ ê°„ê²© */
+    display: block;
 }
 
-.t2 {
-  display: flex; /* ÇÃ·º½º ¹Ú½º È°¼ºÈ­ */
-  flex-direction: column; /* ¼¼·Î Á¤·Ä */
-  align-items: center; /* °¡¿îµ¥ Á¤·Ä */
+.main-content {
+	flex: 1; /* ë‚¨ì€ ê³µê°„ì„ ì°¨ì§€ */
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* ë°•ìŠ¤ ê·¸ë¦¼ì */
+    border-radius: 5px; /* ë‘¥ê·¼ ëª¨ì„œë¦¬ */
+    box-sizing: border-box; /* íŒ¨ë”© í¬í•¨ */
+    background-color: #f8f9fa; /* ë³¸ë¬¸ ë°°ê²½ìƒ‰ */
+    border: 1px solid #ddd; /* ê²½ê³„ì„  */
 }
 
-/* ÀÎÅ¬·çµå ¿ä¼Ò ½ºÅ¸ÀÏ */
-div {
-  display: flex;
-  flex-direction: column; /* ¼¼·Î·Î ¹èÄ¡ */
-  width: 80%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff; /* ¹è°æ»ö: ÇÏ¾á»ö */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-/* Å×ÀÌºí ½ºÅ¸ÀÏ */
+/* í…Œì´ë¸” ìŠ¤íƒ€ì¼ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -76,20 +57,19 @@ table tr:hover {
   background-color: #f1f1f1;
 }
 
-/* ÆäÀÌÁö ¸µÅ© ½ºÅ¸ÀÏ */
-a {
+/* í˜ì´ì§€ ë§í¬ ìŠ¤íƒ€ì¼ */
+.page-numbers {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto; /* ìƒí•˜ ê°„ê²© ì¶”ê°€ */
+}
+
+.page-numbers a {
   text-decoration: none;
   color: #333;
   margin: 0 5px;
 }
 
-a:hover {
+.page-numbers a:hover {
   text-decoration: underline;
 }
-
-h3 {
-	text-align: left;
-}
-
-
-
