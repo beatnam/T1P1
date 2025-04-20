@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../../inc/coptop.jsp"></jsp:include>
 
 	<h1>공고 내용</h1>
 	<form action="" method="post">

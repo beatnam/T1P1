@@ -9,7 +9,7 @@
 </head>
 <body>
 			<!-- 다른계획있을시 수정 -->
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../../inc/coptop.jsp"></jsp:include>
 
 	<h1>공고 수정</h1>
 	<form action="update" method="post" enctype="multipart/form-data">
