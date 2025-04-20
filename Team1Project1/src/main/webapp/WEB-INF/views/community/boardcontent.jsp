@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>community/boardcontent</title>
+<title>커뮤니티 | 게시판 내용</title>
 </head>
 <body>
-
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 		<div class="">	
 		<form action=""  method="get" id="">		
@@ -28,6 +28,6 @@
 		</form>
 		</div>
 		
-
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

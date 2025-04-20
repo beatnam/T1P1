@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Upcontent/Upwrite</title>
+<title>기업 관리 | 새공고 업로드</title>
 </head>
 <body>
+<jsp:include page="../../inc/top.jsp"></jsp:include>
 			<!-- 다른계획있을시 수정 -->
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../../inc/coptop.jsp"></jsp:include>
 
 	<h1>새공고 업로드</h1>
 	<form action="write" method="post" enctype="multipart/form-data">
@@ -87,5 +88,6 @@
 				</td>
 		</table>
 	</form>
+	<jsp:include page="../../inc/footer.jsp"></jsp:include>
 </body>
 </html>

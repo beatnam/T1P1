@@ -5,9 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CopMng/main</title>
+<title>기업 관리 | 메인</title>
+<link rel="stylesheet" type="text/css" href="../css/selfintroductionletter.css">
 </head>
 <body>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 				<!-- 다른계획있을시 수정 -->
 <jsp:include page="../inc/coptop.jsp"></jsp:include>
 
@@ -36,5 +38,6 @@
  		</div>
  	</form>
  </header>
+ <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
