@@ -12,6 +12,7 @@
 
 <body>
  <jsp:include page="../inc/top.jsp"></jsp:include>
+ <div class="include_menu">
 	<ul>
 		<li><a href="member_mng.html">회원 관리</a></li>
 
@@ -30,7 +31,7 @@
 
 		<li><a href="fair_mng.html">취업 박람회 관리</a></li>
 	</ul>
-
+</div>
 	<h1>면접 후기 관리</h1>
 	<table border="1">
 		<input type="text" placeholder="검색어를 입력하세요.">

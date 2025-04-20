@@ -13,6 +13,7 @@
 
 <body>
  <jsp:include page="../inc/top.jsp"></jsp:include>
+ 	<div class="include_menu">
 	<ul>
 		<li><a href="member_mng.html">회원 관리</a></li>
 
@@ -31,7 +32,7 @@
 
 		<li><a href="fair_mng.html">취업 박람회 관리</a></li>
 	</ul>
-
+</div>
 
 	<h1>FAQ 등록</h1>
 

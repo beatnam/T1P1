@@ -1,0 +1,95 @@
+@charset "EUC-KR";
+/* 기본 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* 배경색: 하얀색 */
+  color: #000000; /* 글자색: 검은색 */
+}
+
+/* 헤더 스타일 */
+header {
+  background-color: #e0e0e0; /* 탑쪽 배경색: 회색 */
+  color: #333333; /* 헤더 글자색 */
+  padding: 20px;
+  text-align: center;
+}
+
+header h3 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+
+
+/* 페이지 번호 스타일 */
+.page-numbers {
+  display: flex; /* 가로 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  flex-direction: row;
+  color: #333;
+  margin: 0 10px; /* 링크 간 좌우 간격 추가 */
+}
+
+.t2 {
+  display: flex; /* 플렉스 박스 활성화 */
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+/* 인클루드 요소 스타일 */
+div {
+  display: flex;
+  flex-direction: column; /* 세로로 배치 */
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff; /* 배경색: 하얀색 */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* 페이지 링크 스타일 */
+a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+	text-align: left;
+}
+
+
+

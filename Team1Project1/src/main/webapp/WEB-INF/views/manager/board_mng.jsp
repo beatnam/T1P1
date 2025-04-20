@@ -7,37 +7,39 @@
 
 <head>
 <meta charset="UTF-8">
-<title>관리자 | 게시판 관리 관리</title>
+<title>관리자 | 게시판 관리</title>
 </head>
- 
+
 <body>
-<jsp:include page="../inc/top.jsp"></jsp:include>
-	<ul>
-		<li><a href="member_mng.html">회원 관리</a></li>
+	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="include_menu">
+		<ul>
+			<li><a href="member_mng.html">회원 관리</a></li>
 
-		<li><a href="openrecruit_mng.html">채용 공고 관리</a>
-			<ul>
-				<li><a href="openrecruit_mng.html">공개 채용 관리</a></li>
-				<li><a href="alwaysrecruit_mng.html">상시 채용 관리</a></li>
-			</ul></li>
+			<li><a href="openrecruit_mng.html">채용 공고 관리</a>
+				<ul>
+					<li><a href="openrecruit_mng.html">공개 채용 관리</a></li>
+					<li><a href="alwaysrecruit_mng.html">상시 채용 관리</a></li>
+				</ul></li>
 
-		<li><a href="board_mng.html">게시판 관리</a>
-			<ul>
-				<li><a href="review_employment_mng.html">취업 후기 게시판 관리</a></li>
-				<li><a href="review_interview_mng.html">면접 후기 게시판 관리</a></li>
-				<li><a href="FAQ_mng.html">FAQ 게시판 관리</a></li>
-			</ul></li>
+			<li><a href="board_mng.html">게시판 관리</a>
+				<ul>
+					<li><a href="review_employment_mng.html">취업 후기 게시판 관리</a></li>
+					<li><a href="review_interview_mng.html">면접 후기 게시판 관리</a></li>
+					<li><a href="FAQ_mng.html">FAQ 게시판 관리</a></li>
+				</ul></li>
 
-		<li><a href="fair_mng.html">취업 박람회 관리</a></li>
-	</ul>
-
+			<li><a href="fair_mng.html">취업 박람회 관리</a></li>
+		</ul>
+	</div>
 	<h1>게시판 관리</h1>
 	<ul>
 		<li><a href="review_employment_mng.html">취업 후기 게시판 관리</a></li>
 		<li><a href="review_interview_mng.html">면접 후기 게시판 관리</a></li>
 		<li><a href="FAQ_mng.html">FAQ 게시판 관리</a></li>
 	</ul>
- <jsp:include page="../inc/footer.jsp"></jsp:include>
+
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
 </html>

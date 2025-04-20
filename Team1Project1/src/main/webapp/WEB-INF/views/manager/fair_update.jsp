@@ -13,6 +13,7 @@
 
 <body>
  <jsp:include page="../inc/top.jsp"></jsp:include>
+ 	<div class="include_menu">
     <ul>
         <li><a href="member_mng.html">회원 관리</a></li>
     
@@ -35,9 +36,8 @@
     
         <li><a href="fair_mng.html">취업 박람회 관리</a></li>
     </ul>
-
-
-    <h1>취업 박람회 수정정</h1>
+</div>
+    <h1>취업 박람회 수정</h1>
 
     <form action="#" method="post">
         <label for="convention_name">박람회명:</label><br>
