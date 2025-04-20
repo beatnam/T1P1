@@ -8,17 +8,19 @@
 <head>
   <meta charset="UTF-8">
   <title>상시 채용 | 상세 내용</title>
+  <link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
   <h1>상시 채용</h1>
-  <div class="menu">
+  <div class="include_menu">
     <ul>
-      <li><a href="open.html">공개 채용</a></li>
-      <li><a href="always.html">상시 채용</a></li>
-      <li><a href="fair.html">취업 박람회</a></li>
-      <li><a href="50.html">50대 기업</a></li>
+      <li><a href="${pageContext.request.contextPath }/recruit/open">공개 채용</a></li>
+      <li><a href="${pageContext.request.contextPath }/recruit/always">상시 채용</a></li>
+      <li><a href="${pageContext.request.contextPath }/recruit/fair">취업 박람회</a></li>
+      <li><a href="${pageContext.request.contextPath }/recruit/50">50대 기업</a></li>
     </ul>
   </div>
   <!-- 해당 공고를 올린 기업 회원에게만 보이고-->
