@@ -8,7 +8,8 @@
 <title>CopMng/All</title>
 </head>
 <body>
-
+	
+	
 	<jsp:include page="../inc/coptop.jsp"></jsp:include>
 
 	<header>
@@ -40,5 +41,8 @@
 			</c:if>
 		</div>
 	</header>
+	
+	
+	
 </body>
 </html>
