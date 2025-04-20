@@ -10,9 +10,10 @@
 <body>
 
 	<jsp:include page="../../inc/coptop.jsp"></jsp:include>
-
+	<div class="">
 	<h1>공고 내용</h1>
 	<form action="" method="post">
+		<div class="t2">
 		<table border="1">
 			<tr>
 				<td>제목입력</td>
@@ -66,6 +67,8 @@
 				<td colspan="2"><input type="button" value="수정하기"><input type="button" value="삭제하기"></td>
 			</tr>
 		</table>
+		</div>
 	</form>
+	</div>
 </body>
 </html>

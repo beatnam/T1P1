@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 관리 | 이력서 열람실</title>
+<link rel="stylesheet" type="text/css" href="../css/selfintroductionletter.css">
 </head>
 <body>
 	
@@ -25,21 +26,57 @@
 							<td>${공고이름}</td>
 						</tr>
 					</c:forEach>
+						<tr>
+							<td>${번호}</td>
+							<td>${제목}</td>
+							<td>${공고이름}</td>
+						</tr>
+						<tr>
+							<td>${번호}</td>
+							<td>${제목}</td>
+							<td>${공고이름}</td>
+						</tr>
+						<tr>
+							<td>${번호}</td>
+							<td>${제목}</td>
+							<td>${공고이름}</td>
+						</tr>
+						<tr>
+							<td>${번호}</td>
+							<td>${제목}</td>
+							<td>${공고이름}</td>
+						</tr>
+						<tr>
+							<td>${번호}</td>
+							<td>${제목}</td>
+							<td>${공고이름}</td>
+						</tr>
 				</table>
-			</div>
+				</div>
+<!-- 			<div class=""> -->
 			<!-- 페이지 번호 -->
-			<c:if test="">
-				<a href="">[이 전]</a>
-			</c:if>
+<%-- 			<c:if test=""> --%>
+<!-- 				<a href="">[이 전]</a> -->
+<%-- 			</c:if> --%>
 
-			<c:forEach var="" begin="" end="" step="1">
-				<a href="">1 | 2 | 3 | 4 | 5</a>
-			</c:forEach>
+<%-- 			<c:forEach var="" begin="" end="" step="1"> --%>
+<!-- 				<a href="">1 | 2 | 3 | 4 | 5</a> -->
+				<div class="page-numbers">
+				  <a href="">[이 전]</a>
+				  <a href="">1</a>
+				  <a href="">2</a>
+				  <a href="">3</a>
+				  <a href="">4</a>
+				  <a href="">5</a>
+				  <a href="">[다 음]</a>
+				</div>
+<%-- 			</c:forEach> --%>
 			<!-- 페이지 번호 -->
-			<c:if test="">
-				<a href="">[다 음]</a>
-			</c:if>
-		</div>
+<%-- 			<c:if test=""> --%>
+<!-- 				<a href="">[다 음]</a> -->
+<%-- 			</c:if> --%>
+<!-- 			</div> -->
+	</div>
 	</header>
 	
 	

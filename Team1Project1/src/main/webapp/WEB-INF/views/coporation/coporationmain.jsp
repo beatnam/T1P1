@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 관리 | 메인</title>
+<link rel="stylesheet" type="text/css" href="../css/selfintroductionletter.css">
 </head>
 <body>
 				<!-- 다른계획있을시 수정 -->

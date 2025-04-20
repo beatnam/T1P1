@@ -13,6 +13,7 @@
 
 	<h1>공고 수정</h1>
 	<form action="update" method="post" enctype="multipart/form-data">
+		<div class="">
 		<table border="1">
 			<tr>
 				<td>제목입력</td>
@@ -88,6 +89,7 @@
 				</td>
 			</tr>
 		</table>
+		</div>
 	</form>
 </body>
 </html>
