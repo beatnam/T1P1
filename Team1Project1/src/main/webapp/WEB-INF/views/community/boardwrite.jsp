@@ -26,8 +26,8 @@
 				</li>
 			</ul>
 			<p class="">
-				<a href="" class="" id="">글쓰기</a>
-				<a href="" class="">글목록</a>
+				<a href="" class="" id="${pageContext.request.contextPath}/ivborad/writepro">글쓰기</a>
+				<a href="" class="${pageContext.request.contextPath}/ivborad/list">글목록</a>
 			</p>
 		</form>
 		</div>

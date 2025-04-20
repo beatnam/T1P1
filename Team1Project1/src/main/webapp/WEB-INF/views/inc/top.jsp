@@ -25,7 +25,7 @@
           </div>
           <div class="right-links">
             <a href="#">회원가입/로그인</a>
-            <a href="#">기업 서비스</a>
+            <a href="${pageContext.request.contextPath}/coporation/coporationmain">기업 서비스</a>
           </div>
         </div>
       </header>

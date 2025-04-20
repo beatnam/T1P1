@@ -21,49 +21,37 @@
 		<div class="main-content">
 			<h3>지원 자소서 모음</h3>
 			<table border="1">
+				<c:forEach var="" items="">
+					<tr>
+						<td>${번호}</td>
+						<td>${자소서이름}</td>
+						<td>${마감일자}</td>
+					</tr>
+				</c:forEach>
 				<tr>
-					<td>번호</td>
-					<td>제목</td>
-					<td>지원자</td>
-					<td>공고이름</td>
-				</tr>
-				<%-- 					<c:forEach var="" items=""> --%>
-				<tr>
-					<td>번호</td>
-					<td>제목</td>
-					<td>지원자</td>
-					<td>공고이름</td>
-				</tr>
-				<%-- 					</c:forEach> --%>
-				<tr>
-					<td>번호</td>
-					<td>공고이름</td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${번호}</td>
+					<td>${자소서이름}</td>
+					<td>${마감일자}</td>
 				</tr>
 				<tr>
-					<td>번호</td>
-					<td>공고이름</td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${번호}</td>
+					<td>${자소서이름}</td>
+					<td>${마감일자}</td>
 				</tr>
 				<tr>
-					<td>번호</td>
-					<td>공고이름</td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${번호}</td>
+					<td>${자소서이름}</td>
+					<td>${마감일자}</td>
 				</tr>
 				<tr>
-					<td>번호</td>
-					<td>공고이름</td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${번호}</td>
+					<td>${자소서이름}</td>
+					<td>${마감일자}</td>
 				</tr>
 				<tr>
-					<td>번호</td>
-					<td>공고이름</td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${번호}</td>
+					<td>${자소서이름}</td>
+					<td>${마감일자}</td>
 				</tr>
 			</table>
 			<!-- 			<div class=""> -->

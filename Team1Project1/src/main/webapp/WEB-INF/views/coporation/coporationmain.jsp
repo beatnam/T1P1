@@ -16,25 +16,25 @@
  <header>
  	<div class="">
  		<img alt="" src="">
- 		<input type="button" id="" name="" value="파일 첨부">
+ 		<input type="button" id="" name="" value="첨부 파일">
  	</div>
- 	<form action="">
+ 	<form action="" method="get">
  		<div class="">
  			<ul> 
- 				<li><a href="">기업 아이디</a><input type="text" id="" name="" value=""></li>
- 				<li><a href="">기업 이름</a><input type="text" id="" name="" value=""></li>
- 				<li><a href="">사업자 번호</a><input type="text" id="" name="" value=""></li>
- 				<li><a href="">소재지</a><input type="text" id="" name="" value=""></li>
- 				<li><a href="">전화번호</a><input type="tel" id="" name="" value=""></li>
- 				<li><a href="">홈페이지</a><input type="url" id="" name="" value=""></li>
- 				<li><a href="">사업자등록증</a><input type="tel" id="" name="" value=""></li>
- 				<li><a href="">회사소개</a><input type="text" id="" name="" value=""></li>
- 				<li><a href="">인사담당자</a><input type="text" id="" name="" value=""></li>
+ 				<li><a href="">기업 아이디</a><input type="text" id="" name="" value="" readonly></li>
+ 				<li><a href="">기업 이름</a><input type="text" id="" name="" value="" readonly></li>
+ 				<li><a href="">사업자 번호</a><input type="text" id="" name="" value="" readonly></li>
+ 				<li><a href="">소재지</a><input type="text" id="" name="" value="" readonly></li>
+ 				<li><a href="">전화번호</a><input type="tel" id="" name="" value="" readonly></li>
+ 				<li><a href="">홈페이지</a><input type="url" id="" name="" value="" readonly></li>
+ 				<li><a href="">사업자등록증</a><input type="tel" id="" name="" value="" readonly></li>
+ 				<li><a href="">회사소개</a><input type="text" id="" name="" value="" readonly></li>
+ 				<li><a href="">인사담당자</a><input type="text" id="" name="" value="" readonly></li>
  			</ul>
  		</div>
  		
  		<div class="">
- 			<input type="submit" value="내용 수정">
+ 			<input type="submit" value="내용 수정" onclick="location.href='${pageContext.request.contextPath}/copmain/update'">
  		</div>
  	</form>
  </header>

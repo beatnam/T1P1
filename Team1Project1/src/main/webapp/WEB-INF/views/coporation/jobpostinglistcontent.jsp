@@ -8,11 +8,11 @@
 <title>기업 관리 | 공고 작성</title>
 </head>
 <body>
-	<jsp:include page="../../inc/top.jsp"></jsp:include>
-	<jsp:include page="../../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/coptop.jsp"></jsp:include>
 	<div class="">
 		<h1>공고 내용</h1>
-		<form action="" method="post">
+		<form action="" method="get">
 			<div class="t2">
 				<div class="">
 					<table border="1">
@@ -66,14 +66,16 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="button" value="수정하기"><input
-								type="button" value="삭제하기"></td>
+							<td colspan="2">
+							<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/coplist/update'">
+							<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/coplist/deletepro'">
+							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 		</form>
 	</div>
-	<jsp:include page="../../inc/footer.jsp"></jsp:include>
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
