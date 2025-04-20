@@ -9,8 +9,9 @@
 <meta charset="UTF-8">
 <title>관리자 | 게시판 관리 관리</title>
 </head>
-
+ 
 <body>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 	<ul>
 		<li><a href="member_mng.html">회원 관리</a></li>
 
@@ -36,7 +37,7 @@
 		<li><a href="review_interview_mng.html">면접 후기 게시판 관리</a></li>
 		<li><a href="FAQ_mng.html">FAQ 게시판 관리</a></li>
 	</ul>
-
+ <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
 </html>

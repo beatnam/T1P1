@@ -13,6 +13,7 @@
 </head>
 
 <body>
+ <jsp:include page="../inc/top.jsp"></jsp:include>
 	<ul>
 		<li><a href="member_mng.html">회원 관리</a></li>
 
@@ -59,7 +60,7 @@
 				type="submit" value="수정"> <input type="reset" value="초기화"><br>
 		</form>
 	</div>
-
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
 </html>

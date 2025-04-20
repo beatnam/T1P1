@@ -12,6 +12,7 @@
 </head>
 
 <body>
+ <jsp:include page="../inc/top.jsp"></jsp:include>
 	<ul>
 		<li><a href="member_mng.html">회원 관리</a></li>
 
@@ -40,6 +41,7 @@
 		<br> <label for="faq_content">faq_content:</label><br> <input
 			type="text" id="faq_content" name="faq_content" required><br>
 		<br> <input type="submit" value="등록">
+		<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
 </html>

@@ -12,6 +12,7 @@
 </head>
 
 <body>
+ <jsp:include page="../inc/top.jsp"></jsp:include>
     <ul>
         <li><a href="member_mng.html">회원 관리</a></li>
     
@@ -57,7 +58,7 @@
         <input type="date" id="convention_enddate" name="convention_enddate" required><br><br>
 
         <input type="submit" value="수정">
-
+ <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
 </html>
