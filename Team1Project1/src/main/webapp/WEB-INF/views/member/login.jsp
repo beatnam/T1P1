@@ -36,13 +36,13 @@
 <!-- 	아이디/비밀번호 찾기 -->
     <form action="" method="">
         <label for="">아이디찾기</label>
-        <a href='${pageContext.request.contextPath}/login1-1.jsp'>아이디찾기</a>
+        <a href='${pageContext.request.contextPath}/member/login1-1'>아이디찾기</a>
         
     </form>
     
      <form action="" method="">
         <label for="">비밀번호찾기</label>
-        <a href='${pageContext.request.contextPath}/login1-2.jsp'>비밀번호찾기</a>
+        <a href='${pageContext.request.contextPath}/member/login1-2'>비밀번호찾기</a>
         
     </form>
 

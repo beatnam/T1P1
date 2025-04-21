@@ -5,10 +5,15 @@
 <html lang = "ko">
 <head>
 	<title>회원가입</title>
+	 <link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
+
 <body>
   <div class="">
       <!-- 회원가입 양식 -->
+  
+      
       <form action="" class="" method="post" id="">
          <fieldset>
            <legend>회원가입</legend>
