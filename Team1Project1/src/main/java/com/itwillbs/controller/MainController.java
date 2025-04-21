@@ -7,10 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/main/*")
 public class MainController {
+	
 	@GetMapping("/main")
 	public String part1() {
 
 		return "/main/main";
+	}
+	
+	@GetMapping("/recruit_info")
+	public String recruitInfo() {
+
+		return "/recruit_info/info_home";
 	}
 	
 	@GetMapping("/copmain")

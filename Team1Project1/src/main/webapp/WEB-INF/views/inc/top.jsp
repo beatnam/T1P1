@@ -12,7 +12,7 @@
 
 	<div class="bottom-bar">
 		<div class="nav-links">
-			<a href="${pageContext.request.contextPath }/recruit_info/info_home">채용정보</a> <a href="#">커뮤니티</a> <a href="#">고객센터</a> <a
+			<a href="${pageContext.request.contextPath }/main/recruit_info">채용정보</a> <a href="#">커뮤니티</a> <a href="#">고객센터</a> <a
 				href="#">마이페이지</a>
 		</div>
 		<div class="right-links">
