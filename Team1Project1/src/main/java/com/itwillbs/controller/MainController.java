@@ -18,4 +18,10 @@ public class MainController {
 
 		return "/coporation/coporation_main";
 	}
+	
+	@GetMapping("/ivboard")
+	public String interviewreviewboard() {
+
+		return "/community/interviewreview_board";
+	}
 }

@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 업로드 공고 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<!-- <link rel="stylesheet" type="text/css" -->
+<%-- 	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css"> --%>
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/coptop.css"> --%>
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
