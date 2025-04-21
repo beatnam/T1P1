@@ -12,28 +12,28 @@ public class InterviewBoradController {
 	public String list() {
 		System.out.println("InterviewBoradController list()");
 		
-		return "/community/interviewreviewboard";
+		return "/community/interviewreview_board";
 	}//list()
 	
 	@GetMapping("/update")
 	public String update() {
 		System.out.println("InterviewBoradController update()");
 		
-		return "/community/boardupdate";
+		return "/community/board_update";
 	}//update()
 	
 	@GetMapping("/write")
 	public String write() {
 		System.out.println("InterviewBoradController write()");
 		
-		return "/community/boardwrite";
+		return "/community/board_write";
 	}//write()
 	
 	@GetMapping("/content")
 	public String content() {
 		System.out.println("InterviewBoradController content()");
 		
-		return "/community/boardcontent";
+		return "/community/board_content";
 	}//content()
 	
 	

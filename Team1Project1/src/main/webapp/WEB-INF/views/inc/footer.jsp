@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>출근 | 상단바</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-</head>
-<body>
-    <!-- Footer HTML -->
+
 <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
@@ -31,5 +23,3 @@
       </div>
     </div>
   </footer>
-</body>
-</html>

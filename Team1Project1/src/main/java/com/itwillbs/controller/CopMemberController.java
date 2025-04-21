@@ -15,35 +15,35 @@ public class CopMemberController {
 	public String coporationmain() {
 		System.out.println("copmembercontroller copmain()");
 		
-		return "/coporation/coporationmain";
+		return "/coporation/coporation_main";
 	}//coporationmain()
 	
 	@GetMapping("/update")
 	public String update() {
 		System.out.println("copmembercontroller update()");
 		
-		return "/coporation/coporationmainupdate";
+		return "/coporation/coporationmain_update";
 	}//update()
 	
 	@GetMapping("/accessresume")
 	public String accessresume() {
 		System.out.println("copmembercontroller accessresume()");
 		
-		return "/coporation/accessresume";
+		return "/coporation/access_resume";
 	}//accessresume()
 	
 	@GetMapping("/selfintroductionletter")
 	public String selfintroductionletter() {
 		System.out.println("copmembercontroller selfintroductionletter()");
 		
-		return "/coporation/selfintroductionletter";
+		return "/coporation/selfintroduction_letter";
 	}//selfintroductionletter()
 	
 	@GetMapping("/appliedresume")
 	public String appliedresume() {
 		System.out.println("copmembercontroller appliedresume()");
 		
-		return "/coporation/appliedresume";
+		return "/coporation/applied_resume";
 	}//appliedresume()
 	
 	

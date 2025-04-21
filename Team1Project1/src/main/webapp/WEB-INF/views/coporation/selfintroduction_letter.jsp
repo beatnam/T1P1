@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 자소서 모음</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css"
 	href="../css/selfintroductionletter.css">
 </head>

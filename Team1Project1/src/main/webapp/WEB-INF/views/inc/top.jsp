@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>출근 | 상단바</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-</head>
-<body>
+
     <header>
         <div class="top-bar">
           <div class="logo">출발<span>.</span></div>
@@ -29,5 +22,3 @@
           </div>
         </div>
       </header>
-</body>
-</html>

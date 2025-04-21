@@ -12,28 +12,28 @@ public class JobPostingListBoardController {
 	public String list() {
 		System.out.println("copmembercontroller list()");
 		
-		return "/coporation/jobpostinglist";
+		return "/coporation/jobposting_list";
 	}//list()
 	
 	@GetMapping("/content")
 	public String content() {
 		System.out.println("copmembercontroller content()");
 		
-		return "/coporation/jobpostinglistcontent";
+		return "/coporation/jobpostinglist_content";
 	}//content()
 	
 	@GetMapping("/update")
 	public String update() {
 		System.out.println("copmembercontroller update()");
 		
-		return "/coporation/jobpostinglistupdate";
+		return "/coporation/jobpostinglist_update";
 	}//update()
 	
 	@GetMapping("/write")
 	public String write() {
 		System.out.println("copmembercontroller write()");
 		
-		return "/coporation/jobpostinglistwrite";
+		return "/coporation/jobpostinglist_write";
 	}//update()
 	
 }

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>커뮤니티 | 게시판 내용</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
