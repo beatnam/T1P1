@@ -3,7 +3,8 @@
 <header>
 	<div class="top-bar">
 		<div class="logo">
-			출발<span>.</span>
+		<a href="${pageContext.request.contextPath }/main/main">
+			출근<span>.</span></a> 
 		</div>
 		<div class="search-bar">
 			<input type="text" placeholder="검색어를 입력해주세요" />
@@ -18,12 +19,9 @@
 		
 		
 		<div class="right-links">
-<<<<<<< HEAD
-			<a href="${pageContext.request.contextPath }/member/join">회원가입</a> 
-			<a href="${pageContext.request.contextPath }/member/login">로그인</a> <a href="#">기업 서비스</a>
-=======
-			<a href="#">회원가입/로그인</a> <a href="${pageContext.request.contextPath }/main/copmain">기업 서비스</a>
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
+			<a href="${pageContext.request.contextPath }/main/join">회원가입</a> 
+			<a href="${pageContext.request.contextPath }/main/login">로그인</a> 
+			<a href="${pageContext.request.contextPath }/main/copmain">기업 서비스</a>
 		</div>
 		
 		

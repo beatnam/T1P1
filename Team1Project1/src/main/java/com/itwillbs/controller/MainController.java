@@ -26,6 +26,19 @@ public class MainController {
 		return "/coporation/coporation_main";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+
+		return "/member/login";
+	}
+	
+	@GetMapping("/join")
+	public String join() {
+
+		return "/member/join";
+	}
+	
+	
 	@GetMapping("/ivboard")
 	public String interviewreviewboard() {
 
