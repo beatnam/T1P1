@@ -12,7 +12,6 @@
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<header id="base">
 
 		<div class="parent-div">
@@ -28,37 +27,37 @@
 					<td>제목</td>
 					<td>직무</td>
 				</tr>
-				<c:forEach var="" items="">
+<%-- 				<c:forEach var="" items=""> --%>
 					<tr>
-						<td>${번호}</td>
-						<td>${제목}</td>
-						<td>${공고이름}</td>
+						<td>번호</td>
+						<td>제목</td>
+						<td>공고이름</td>
 					</tr>
-				</c:forEach>
+<%-- 				</c:forEach> --%>
 				<tr>
-					<td>${번호}</td>
-					<td>${제목}</td>
-					<td>${공고이름}</td>
+					<td>번호</td>
+					<td>제목</td>
+					<td>공고이름</td>
 				</tr>
 				<tr>
-					<td>${번호}</td>
-					<td>${제목}</td>
-					<td>${공고이름}</td>
+					<td>번호</td>
+					<td>제목</td>
+					<td>공고이름</td>
 				</tr>
 				<tr>
-					<td>${번호}</td>
-					<td>${제목}</td>
-					<td>${공고이름}</td>
+					<td>번호</td>
+					<td>제목</td>
+					<td>공고이름</td>
 				</tr>
 				<tr>
-					<td>${번호}</td>
-					<td>${제목}</td>
-					<td>${공고이름}</td>
+					<td>번호</td>
+					<td>제목</td>
+					<td>공고이름</td>
 				</tr>
 				<tr>
-					<td>${번호}</td>
-					<td>${제목}</td>
-					<td>${공고이름}</td>
+					<td>번호</td>
+					<td>제목</td>
+					<td>공고이름</td>
 				</tr>
 			</table>
 			<!-- 			<div class=""> -->
