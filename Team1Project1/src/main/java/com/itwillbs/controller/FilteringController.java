@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/first/*")
 public class FilteringController {
 
-	@GetMapping("/part1")
+	@GetMapping("/filtering")
 	public String part1() {
 
 		return "/first/part1";

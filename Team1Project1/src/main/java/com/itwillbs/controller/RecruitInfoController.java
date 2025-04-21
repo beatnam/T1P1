@@ -7,13 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/recruit_info/*")
 public class RecruitInfoController {
-	
-	@GetMapping("/info_home")
-	public String recruitHome() {
-		
-		return "recruit_info/info_home";
-	}
-	
+
 	
 	@GetMapping("/always")
 	public String always() {
