@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 이력서 모음</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="stylesheet" type="text/css"
-	href="../css/selfintroductionletter.css">
+	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>커뮤니티 | 게시판글 수정</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
