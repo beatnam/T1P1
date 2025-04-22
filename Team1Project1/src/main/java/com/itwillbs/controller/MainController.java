@@ -39,7 +39,7 @@ public class MainController {
 	}
 	
 	@GetMapping("/copmain")
-	public String copmain() {
+	public String copMain() {
 
 		return "/coporation/coporation_main";
 	}
@@ -51,9 +51,15 @@ public class MainController {
 	}
 	
 	
-	@GetMapping("/ivboard")
-	public String interviewreviewboard() {
+	@GetMapping("/riboard")
+	public String reviewinterviewBoard() {
 
-		return "/community/interviewreview_board";
+		return "/community/reviewinterview_board";
+	}
+	
+	@GetMapping("/ciboard")
+	public String commentinterviewBoard() {
+		
+		return "/community/reviewinterview_board";
 	}
 }

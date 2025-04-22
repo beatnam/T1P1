@@ -23,8 +23,8 @@
 				</li>
 			</ul>
 			<p class="">
-				<a href="${pageContext.request.contextPath}/ivborad/date" class="" id="">글수정</a>
-				<a href="${pageContext.request.contextPath}/ivborad/list" class="">글목록</a>
+				<a href="${pageContext.request.contextPath}/rvborad/rcupdate" class="" id="">글수정</a>
+				<a href="${pageContext.request.contextPath}/rvborad/rclist" class="">글목록</a>
 			</p>
 		</form>
 		</div>
