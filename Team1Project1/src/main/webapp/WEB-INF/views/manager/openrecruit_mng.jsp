@@ -74,7 +74,7 @@
 			<td>공개 채용 공고명</td>
 			<td>회사이름</td>
 			<td>날짜</td>
-			<td><a href="openrecruit_update.html">수정</a></td>
+			<td><a href="${pageContext.request.contextPath }/manager/openrecruit_update">수정</a></td>
 			<td><button>삭제</button></td>
 		</tr>
 
