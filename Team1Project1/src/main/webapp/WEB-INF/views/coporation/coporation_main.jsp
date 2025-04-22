@@ -35,7 +35,7 @@
  		</div>
  		
  		<div class="">
- 			<input type="submit" value="내용 수정" onclick="location.href='${pageContext.request.contextPath}/copmain/update'">
+ 			<a href="${pageContext.request.contextPath}/copmain/update">내용 수정</a>
  		</div>
  	</form>
  </header>

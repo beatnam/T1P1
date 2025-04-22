@@ -33,15 +33,53 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="" items="">
-					<tr><td>글번호</td>
+<%-- 					<c:forEach var="" items=""> --%>
+					<tr>
+						<td>글번호</td>
 						<td class="tit_notice"><a href="">글제목</a> </td>
 						<td>글쓴이</td>
 						<td>작성일시</td>
-						<td>조회수</td></tr>
-					</c:forEach>
+						<td>조회수</td>
+					</tr>
+<%-- 					</c:forEach> --%>
+					<tr>
+						<td>글번호</td>
+						<td class="tit_notice"><a href="">글제목</a> </td>
+						<td>글쓴이</td>
+						<td>작성일시</td>
+						<td>조회수</td>
+					</tr>
+					<tr>
+						<td>글번호</td>
+						<td class="tit_notice"><a href="">글제목</a> </td>
+						<td>글쓴이</td>
+						<td>작성일시</td>
+						<td>조회수</td>
+					</tr>
+					<tr>
+						<td>글번호</td>
+						<td class="tit_notice"><a href="">글제목</a> </td>
+						<td>글쓴이</td>
+						<td>작성일시</td>
+						<td>조회수</td>
+					</tr>
+					<tr>
+						<td>글번호</td>
+						<td class="tit_notice"><a href="">글제목</a> </td>
+						<td>글쓴이</td>
+						<td>작성일시</td>
+						<td>조회수</td>
+					</tr>
 				</tbody>
 			</table>
+			
+			<div class="page-numbers">
+				<a href="">[이 전]</a> <a href="">1</a> <a href="">2</a> <a href="">3</a>
+				<a href="">4</a> <a href="">5</a> <a href="">[다 음]</a>
+			</div>
+			<div class="">
+				<a href="${pageContext.request.contextPath}/rvborad/rcwrite" class="btn_srch">글쓰기</a>
+			</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -143,13 +143,3 @@ body {
 .footer-right ul li a:hover {
 	text-decoration: underline;
 }
-/* 인클루드 메뉴 스타일 */
-.include-menu {
-	position: absolute;
-	top: 50px; /* 상단에서 50px 내려오도록 설정 */
-	left: 0; /* 페이지 좌측에 고정 */
-	width: 200px; /* 메뉴의 폭 */
-	background-color: #f4f4f4; /* 배경색: 회색 */
-	padding: 10px;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 좌측 그림자 */
-}
