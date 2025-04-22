@@ -23,7 +23,6 @@
       <li><a href="${pageContext.request.contextPath }/recruit_info/50">50대 기업</a></li>
     </ul>
   </div>
-<button type="button">글쓰기</button> 
 <a href="../manager/openrecruit_mng.html">관리자 페이지</a><!-- 관리자 페이지로 이동-->
 
     <div class="recruit-list">

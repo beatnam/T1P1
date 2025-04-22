@@ -1,0 +1,119 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    font-family: '맑은 고딕', sans-serif;
+}
+
+.all {
+    display: flex;
+    min-height: 100vh;
+}
+
+.banner {
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #dcdcdc;
+}
+
+.banner h2 a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+}
+
+.banner ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.banner li {
+    margin-bottom: 18px;
+}
+
+.banner li a {
+    text-decoration: none;
+    color: #666;
+}
+
+.banner li.active a {
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 4px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.box {
+    flex: 1;
+    padding: 40px;
+}
+
+.box > div {
+    margin-bottom: 30px;
+}
+
+.box div div:first-child {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.inbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    background-color: #fefefe;
+    transition: box-shadow 0.2s ease;
+}
+
+.inbox:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.inbox button {
+    padding: 6px 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.inbox button:hover {
+    background-color: #218838;
+}
+
+.agree {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+.agree .new {
+    font-size: 16px;
+    color: #555;
+}
+
+.agree .new button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.agree .new button:hover {
+    background-color: #218838;
+}
+
+form {
+  margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */
+}

@@ -14,16 +14,10 @@ public class MainController {
 		return "/main/main";
 	}
 	
-	@GetMapping("/recruit_info")
-	public String recruitInfo() {
+	@GetMapping("/my-profile")
+	public String mypage() {
 
-		return "/recruit_info/info_home";
-	}
-	
-	@GetMapping("/copmain")
-	public String copMain() {
-
-		return "/coporation/coporation_main";
+		return "/mypage/my-profile";
 	}
 	
 	@GetMapping("/login")
@@ -38,6 +32,25 @@ public class MainController {
 		return "/member/join";
 	}
 	
+	@GetMapping("/recruit_info")
+	public String recruitInfo() {
+
+		return "/recruit_info/info_home";
+	}
+	
+	@GetMapping("/copmain")
+	public String copMain() {
+
+		return "/coporation/coporation_main";
+	}
+	
+	@GetMapping("/customerService")
+	public String customerService() {
+
+		return "/customerService/customerService";
+	}
+	
+	
 	@GetMapping("/riboard")
 	public String reviewinterviewBoard() {
 
@@ -49,5 +62,4 @@ public class MainController {
 		
 		return "/community/reviewinterview_board";
 	}
-	
 }

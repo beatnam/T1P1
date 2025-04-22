@@ -1,0 +1,100 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  font-family: '맑은 고딕', sans-serif;
+}
+ 
+.all {
+  display: flex;
+  min-height: 100vh;
+}
+  
+.banner {
+  width: 200px;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+  
+.banner h2 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+  
+.banner ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+  
+.banner li {
+  margin-bottom: 15px;
+}
+  
+.banner li a {
+  text-decoration: none;
+  color: #333;
+}
+  
+.banner li.active a {
+  border-bottom: 3px solid #28a745;
+  padding-bottom: 4px; 
+  color: #28a745; 
+  font-weight: bold;
+}
+
+.box {
+  flex: 1;
+  padding: 40px;
+}
+  
+.box > div {
+  margin-bottom: 25px;
+}
+  
+.box div div:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+  
+input[type="text"] {
+  width: 400px;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+}
+  
+.radio label {
+  margin-right: 20px;
+}
+  
+.inbox8 {
+  margin-top: 30px;
+}
+  
+button.edit-btn {
+  all: unset; /* ← 기본 스타일 초기화! */
+  background-color: #4CAF50 !important;
+  color: white !important;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+button.edit-btn:hover {
+  background-color: #45a049 !important;
+}
+
+
+    
+form {
+  margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */
+}
+

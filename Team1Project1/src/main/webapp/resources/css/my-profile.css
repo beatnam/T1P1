@@ -1,0 +1,117 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  font-family: '맑은 고딕', sans-serif;
+}
+ 
+.all {
+  display: flex;
+  min-height: 100vh;
+}
+  
+.banner {
+  width: 200px;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+  
+.banner h2 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+}
+  
+.banner ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+  
+.banner li {
+  margin-bottom: 15px;
+}
+  
+.banner li a {
+  text-decoration: none;
+  color: #333;
+}
+  
+.banner li.active a {
+  border-bottom: 3px solid #28a745;
+  padding-bottom: 4px; 
+  color: #28a745; 
+  font-weight: bold;
+}
+
+.box {
+  flex: 1;
+  padding: 40px;
+}
+  
+.box > div {
+  margin-bottom: 25px;
+}
+  
+.box div div:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+  
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  width: 400px;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  
+.radio label {
+  margin-right: 20px;
+}
+
+.withdraw-link {
+  color: #999;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.inbox8 a:not(.edit-btn) {
+  color: red;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.inbox8 a.edit-btn {
+  background-color: #4CAF50;
+  color: white !important;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.inbox8 a.edit-btn:hover {
+  background-color: #45a049;
+}
+
+  
+.inbox8 {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+
+form {
+  margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */
+}
+
