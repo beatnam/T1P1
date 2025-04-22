@@ -32,6 +32,12 @@ public class MainController {
 		return "/member/join";
 	}
 	
+	@GetMapping("/cop_join")
+	public String copJoin() {
+
+		return "/member/cop_join";
+	}
+	
 	@GetMapping("/recruit_info")
 	public String recruitInfo() {
 

@@ -16,7 +16,8 @@
 			<fieldset>
 				<legend>로그인</legend>
 				<p class="joinLogin">개인회원 | 기업회원</p>
-
+			<input type="radio" name="mt_id" value="200" /> 개인
+    <input type="radio" name="mt_id" value="300" /> 기업
 				<ul>
 					<li><input type="text" name="memberId" id="id_lbl"
 						placeholder="아이디" /></li>
