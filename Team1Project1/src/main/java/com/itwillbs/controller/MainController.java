@@ -14,6 +14,24 @@ public class MainController {
 		return "/main/main";
 	}
 	
+	@GetMapping("/mypage")
+	public String mypage() {
+
+		return "/mypage/my-profile";
+	}
+	
+	@GetMapping("/member")
+	public String login() {
+
+		return "/member/login";
+	}
+	
+	@GetMapping("/member")
+	public String insert() {
+
+		return "/member/join";
+	}
+	
 	@GetMapping("/recruit_info")
 	public String recruitInfo() {
 
