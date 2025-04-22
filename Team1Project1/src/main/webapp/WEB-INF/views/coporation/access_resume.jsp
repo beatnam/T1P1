@@ -12,7 +12,6 @@
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<header id="base">
 
 		<div class="parent-div">

@@ -9,7 +9,7 @@
 			<h2>기업 회원 페이지</h2>
 			<div class="#2">
 				<ul>
-					<li><a href="${pageContext.request.contextPath}/copmain/coporationmain">기업 페이지</a></li>
+					<li><a href="${pageContext.request.contextPath}/copmain/main">기업 페이지</a></li>
 					<li><a href="${pageContext.request.contextPath}/coplist/list">공고 업로드</a></li>
 					<li><a href="${pageContext.request.contextPath}/copmain/appliedresume">지원 이력서 모음</a></li>
 					<li><a href="${pageContext.request.contextPath}/copmain/selfintroductionletter">지원 자소서 모음</a></li>

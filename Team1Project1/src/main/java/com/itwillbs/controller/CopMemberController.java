@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/copmain/*")
 public class CopMemberController {
 	
-	@GetMapping("/coporationmain")
-	public String coporationmain() {
+	@GetMapping("/main")
+	public String main() {
 		System.out.println("copmembercontroller copmain()");
 		
 		return "/coporation/coporation_main";
