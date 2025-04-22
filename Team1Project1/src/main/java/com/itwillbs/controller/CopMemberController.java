@@ -45,8 +45,6 @@ public class CopMemberController {
 		
 		return "/coporation/applied_resume";
 	}//appliedresume()
-	
-	
-	
+
 	
 }
