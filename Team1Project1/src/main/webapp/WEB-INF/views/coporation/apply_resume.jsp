@@ -18,6 +18,9 @@
 			<!-- 좌측 메뉴 영역 -->
 			<jsp:include page="../inc/coptop.jsp"></jsp:include>
 		</div>
+		<div>
+			<button name="" id="" onclick="">화면갱신</button>
+		</div>
 		<!-- 본문 영역 -->
 		<div class="main-content">
 			<h3>지원 자소서 모음</h3>
@@ -87,5 +90,18 @@
 		</div>
 	</header>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+	
+<script type="text/javascript">
+	function updateData() {
+        fetch('/copmain/refresh', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // 응답 메시지 출력
+                location.reload(); // 자동 새로고침
+            })
+            .catch(error => console.error('Error updating data:', error));
+    }
+</script>
+	
 </body>
 </html>
