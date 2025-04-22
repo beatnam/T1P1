@@ -62,4 +62,11 @@ public class MainController {
 		
 		return "/community/reviewinterview_board";
 	}
+	
+	@GetMapping("/communitymain")
+	public String communityMain() {
+		
+		return "/community/community_info";
+	}
+	
 }
