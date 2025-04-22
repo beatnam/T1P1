@@ -17,7 +17,7 @@
 		<input type="text" class="s" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 			<a href="#" class="s">검색</a>
 			<c:if test="">
-					<a href="${pageContext.request.contextPath}/ivborad/write" class="">글쓰기</a>
+					<a href="${pageContext.request.contextPath}/rvborad/riwrite" class="">글쓰기</a>
 					</c:if>
 				</fieldset>
 			</form>
