@@ -2,6 +2,7 @@ package com.itwillbs.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -72,6 +73,12 @@ public class ManagerController {
 	public String openrecruitWrite() {
 		
 		return "/manager/openrecruit_write";
+	}
+	
+	@PostMapping("/openrecruit_writePro")
+	public String openrecruitWritePro() {
+		
+		return "redirect:/manager/openrecruit_mng";
 	}
 	
 	@GetMapping("/review_employment_mng")

@@ -39,9 +39,11 @@
     </ul>
     </div>
 	<h1>공개 채용 관리</h1>
+	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공고 작성</a>
 	<table border="1">
 		<input type="text" placeholder="검색어를 입력하세요.">
 		<button>검색</button>
+		
 		<tr>
 
 			<td>공고명</td>
