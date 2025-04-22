@@ -1,24 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<header>
+	<div class="top-bar">
+		<div class="logo">
+		<a href="${pageContext.request.contextPath }/main/main">
+			ì¶œê·¼<span>.</span></a> 
+		</div>
+		<div class="search-bar">
+			<input type="text" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”" />
+		</div>
+	</div>
 
-    <header>
-        <div class="top-bar">
-          <div class="logo">Ãâ¹ß<span>.</span></div>
-          <div class="search-bar">
-            <input type="text" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä" />
-          </div>
-        </div>
-    
-        <div class="bottom-bar">
-          <div class="nav-links">
-            <a href="#">Ã¤¿ëÁ¤º¸</a>
-            <a href="#">Ä¿¹Â´ÏÆ¼</a>
-            <a href="#">°í°´¼¾ÅÍ</a>
-            <a href="#">¸¶ÀÌÆäÀÌÁö</a>
-          </div>
-          <div class="right-links">
-            <a href="#">È¸¿ø°¡ÀÔ/·Î±×ÀÎ</a>
-            <a href="${pageContext.request.contextPath}/coporation/coporationmain">±â¾÷ ¼­ºñ½º</a>
-          </div>
-        </div>
-      </header>
+	<div class="bottom-bar">
+		<div class="nav-links">
+			<a href="${pageContext.request.contextPath }/main/recruit_info">ì±„ìš©ì •ë³´</a>
+			<a href="#">ì»¤ë®¤ë‹ˆí‹°</a>
+			<a href="#">ê³ ê°ì„¼í„°</a>
+			<a href="#">ë§ˆì´íŽ˜ì´ì§€</a>
+		</div>
+
+
+		<div class="right-links">
+
+			<a href="${pageContext.request.contextPath }/main/join">íšŒì›ê°€ìž…</a> 
+			<a href="${pageContext.request.contextPath }/main/login">ë¡œê·¸ì¸</a> 
+			<a href="${pageContext.request.contextPath }/main/copmain">ê¸°ì—… ì„œë¹„ìŠ¤</a>
+		</div>
+
+	</div>
+</header>

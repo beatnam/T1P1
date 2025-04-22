@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <footer class="footer">
     <div class="footer-container">
       <div class="footer-left">
-        <h1>Ãâ±Ù</h1>
-        <p>Ãâ±Ù °í°´¼¾ÅÍ : 02-6226-5000 (ÆòÀÏ 09:00 - 18:00, Á¡½É½Ã°£ 12:00 - 13:00, ÁÖ¸»¡¤°øÈÞÀÏ ÈÞ¹«)</p>
-        <p>ÀÌ¸ÞÀÏ : xxxxxxxxx@nave.com / Fax : xx-xxxx-xxxx/<p>
-        <p>¾ÆÀÌÆ¼Àª, ¿ì : 00000, XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, ´ëÇ¥ : XXX</p>
+        <h1>ì¶œê·¼</h1>
+        <p>ì¶œê·¼ ê³ ê°ì„¼í„° : 02-6226-5000 (í‰ì¼ 09:00 - 18:00, ì ì‹¬ì‹œê°„ 12:00 - 13:00, ì£¼ë§Â·ê³µíœ´ì¼ íœ´ë¬´)</p>
+        <p>ì´ë©”ì¼ : xxxxxxxxx@nave.com / Fax : xx-xxxx-xxxx/<p>
+        <p>ì•„ì´í‹°ìœŒ, ìš° : 00000, XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, ëŒ€í‘œ : XXX</p>
 
        
       </div>
       <div class="footer-right">
         <ul>
-          <li><a href="#">¼­ºñ½º ¼Ò°³</a></li>
-          <li><a href="#">±â¾÷ ¼­ºñ½º</a></li>
-          <li><a href="#">Ãâ±ÙTeam</a></li>
-          <li><a href="#">È¸¿ø¾à°ü</a></li>
-          <li><a href="#"><strong>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</strong></a></li>
-          <li><a href="#">ÀÚÁÖ¹¯´ÂÁú¹® FAQ</a></li>
+          <li><a href="#">ì„œë¹„ìŠ¤ ì†Œê°œ</a></li>
+          <li><a href="#">ê¸°ì—… ì„œë¹„ìŠ¤</a></li>
+          <li><a href="#">ì¶œê·¼Team</a></li>
+          <li><a href="#">íšŒì›ì•½ê´€</a></li>
+          <li><a href="#"><strong>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</strong></a></li>
+          <li><a href="#">ìžì£¼ë¬»ëŠ”ì§ˆë¬¸ FAQ</a></li>
         </ul>
       </div>
     </div>
