@@ -36,7 +36,7 @@
 <%-- 					<c:forEach var="" items=""> --%>
 					<tr>
 						<td>글번호</td>
-						<td class="tit_notice"><a href="">글제목</a> </td>
+						<td class="tit_notice"><a href="${pageContext.request.contextPath}/rvborad/ricontent">글제목</a> </td>
 						<td>글쓴이</td>
 						<td>작성일시</td>
 						<td>조회수</td>
