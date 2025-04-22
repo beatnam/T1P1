@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<jsp:include page="../inc/top.jsp"></jsp:include>
     <h1>공개 채용</h1>
      <div class="include_menu">
     <ul>
