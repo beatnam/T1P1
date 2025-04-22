@@ -14,20 +14,20 @@ public class MainController {
 		return "/main/main";
 	}
 	
-	@GetMapping("/mypage")
+	@GetMapping("/my-profile")
 	public String mypage() {
 
 		return "/mypage/my-profile";
 	}
 	
-	@GetMapping("/member")
+	@GetMapping("/login")
 	public String login() {
 
 		return "/member/login";
 	}
 	
-	@GetMapping("/member")
-	public String insert() {
+	@GetMapping("/join")
+	public String join() {
 
 		return "/member/join";
 	}
@@ -44,16 +44,10 @@ public class MainController {
 		return "/coporation/coporation_main";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
+	@GetMapping("/customerService")
+	public String customerService() {
 
-		return "/member/login";
-	}
-	
-	@GetMapping("/join")
-	public String join() {
-
-		return "/member/join";
+		return "/customerService/customerService";
 	}
 	
 	

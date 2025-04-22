@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 프로필</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-profile-edit.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 </head>
 <body>
 
