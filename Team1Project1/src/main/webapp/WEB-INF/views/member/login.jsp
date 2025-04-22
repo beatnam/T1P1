@@ -1,94 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/login.css">
+
 </head>
 <body>
 
+	<div class="container">
+		<form action="" method="">
+			<fieldset>
+				<legend>로그인</legend>
+				<p class="joinLogin">개인회원 | 기업회원</p>
 
+				<ul>
+					<li><input type="text" name="memberId" id="id_lbl"
+						placeholder="아이디" /></li>
+					<li><input type="password" name="memberPasswd" id="pwd_lbl"
+						placeholder="비밀번호" /></li>
+				</ul>
 
- <div class="">
-  
-	<form action="" id="" method="">
-		<fieldset>
-			<legend>로그인 입력 양식</legend>
-			<p class="">개인회원  |  기업회원</p>
-			<ul class="">
-					<li class="">
-						<label for="" class="">아이디</label>
-						<div class=""><input type="text" name="" class="" id="" placeholder=""/></div>
-					</li>
-					<li class="">
-						<label for="" class=" ">비밀번호</label>
-						<div class=""><input type="password" name="" class="" id="" placeholder=""/></div>
-					</li>
-						
-			</ul>
-<!-- 		로그인유지/아이디저장	 -->
-	<input type="checkbox">로그인유지</input>
-	<input type="checkbox">아이디저장</input>
-	
-	
-	<br>
-<!-- 	아이디/비밀번호 찾기 -->
-    <form action="" method="">
-        <label for="">아이디찾기</label>
-        <a href='${pageContext.request.contextPath}/login1-1.jsp'>아이디찾기</a>
-        
-    </form>
-    
-     <form action="" method="">
-        <label for="">비밀번호찾기</label>
-        <a href='${pageContext.request.contextPath}/login1-2.jsp'>비밀번호찾기</a>
-        
-    </form>
+				<div class="checkbox-group">
+					<label><input type="checkbox" name="keepLogin" /> 로그인 유지</label><br>
+					<label><input type="checkbox" name="saveId" /> 아이디 저장</label>
+				</div>
 
+				<div class="links">
+					<a href="${pageContext.request.contextPath}/member/login1-1">아이디찾기</a>
+					<a href="${pageContext.request.contextPath}/member/login1-2">비밀번호찾기</a>
+				</div>
 
-	
-    
-    
-    <br>
-<!--      소셜 계정으로 간편 로그인 -->
-    <form action="" method="">
-        <label for=>카카오로그인</label>
-        
-    </form>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <br>
-    <button>로그인</button>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+				<div class="social-login">
+					<label>카카오 로그인</label>
+					<!-- 실제 버튼이나 이미지로 구현 가능 -->
+				</div>
 
-	
-	
-	 </fieldset>
-	</form>
-</div>	
+				<button type="submit">로그인</button>
+			</fieldset>
+		</form>
+	</div>
 
 </body>
 </html>

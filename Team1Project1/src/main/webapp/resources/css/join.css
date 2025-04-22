@@ -1,0 +1,116 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+legend {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+ul.joinList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.joinList li {
+  margin-bottom: 20px;
+}
+
+.join_content input[type="text"],
+.join_content input[type="password"],
+.join_content input[type="tel"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+.join_content input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.email_area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.email_area input[type="text"],
+.email_area select {
+  flex: 1;
+  min-width: 100px;
+}
+
+.select_common select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* 인증번호 버튼 */
+.aceept_content {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.aceept_content:hover {
+  background-color: #357ac9;
+}
+
+/* 체크박스 및 안내 */
+.checkbox_area {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 회원가입 버튼 */
+.btn_line {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn_baseColor {
+  display: inline-block;
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn_baseColor:hover {
+  background-color: #357ac9;
+}
