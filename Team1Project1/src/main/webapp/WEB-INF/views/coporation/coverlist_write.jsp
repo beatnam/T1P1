@@ -85,6 +85,38 @@ table tr:nth-child(even) {
 .apply_btn input[type="button"]:hover {
     filter: brightness(0.9);
 }
+
+select {
+      width: 250px; /* 너비 설정 */
+      padding: 10px; /* 내부 여백 */
+      font-size: 16px; /* 글꼴 크기 */
+      color: #333; /* 글자 색상 */
+      background-color: #f9f9f9; /* 배경 색상 */
+      border: 2px solid #007BFF; /* 테두리 색상 */
+      border-radius: 8px; /* 둥근 모서리 */
+      appearance: none; /* 기본 화살표 제거 */
+      cursor: pointer; /* 마우스 포인터 변경 */
+      transition: border-color 0.3s ease, background-color 0.3s ease; /* 효과 추가 */
+    }
+
+    select:hover {
+      border-color: #0056b3; /* 호버 시 테두리 색상 */
+      background-color: #e6f2ff; /* 호버 시 배경 색상 */
+    }
+
+    select:focus {
+      border-color: #004085; /* 포커스 시 테두리 색상 */
+      background-color: #dce4f7; /* 포커스 시 배경 색상 */
+      outline: none; /* 포커스 시 외곽선 제거 */
+    }
+
+    label {
+      font-size: 14px; /* 라벨 글꼴 크기 */
+      color: #555; /* 라벨 색상 */
+      margin-bottom: 10px; /* 라벨 아래 여백 */
+      display: block; /* 블록 스타일 */
+    }
+
 </style>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
