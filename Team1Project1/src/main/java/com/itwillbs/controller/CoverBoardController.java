@@ -38,8 +38,14 @@ public class CoverBoardController {
 	}//content()
 	
 	@GetMapping("/update")
-	public String update() {
-		System.out.println("copmembercontroller update()");
+	public String update(Model model) {
+		System.out.println("copmembercontroller write()");
+		
+		List<OccupationDTO> occupations = jobService.getOccupations();
+        for(OccupationDTO occupationDTO : occupations) {
+        	System.out.println(occupationDTO);
+        }
+    	model.addAttribute("occupations", occupations);
 		
 		return "/coporation/coverlist_update";
 	}//update()

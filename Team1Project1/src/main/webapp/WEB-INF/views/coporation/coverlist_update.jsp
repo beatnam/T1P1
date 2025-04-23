@@ -132,8 +132,8 @@ select {
 					<td><input type="text" id="" name="" value=""></td>
 				</tr>
 				<tr>
-					<td>사진 첨부파일<input type="file" name="file" /></td>
-					<td></td>
+					<td>사진 첨부파일</td>
+					<td><input type="file" name="file"></td>
 				</tr>
 				<tr>
 					<td>경력</td>
@@ -158,7 +158,7 @@ select {
 					<td>직종</td>
 					<td>
 					<!-- 직종 리스트 -->
-				    <label for="occupation-select">직무:</label>
+				    <label for="occupation-select"></label>
 					<select id="occupation-select" name="occupation-select" onchange="loadJobs(this.value)">
 					    <option value="">직무를 선택하세요</option>
 					    <c:forEach var="occupation" items="${occupations}">
@@ -166,7 +166,7 @@ select {
 					    </c:forEach>
 					</select>
 					
-					<label for="job-select">직종:</label>
+					<label for="job-select"></label>
 					<select id="job-select" name="job-select">
 					    <option value="">먼저 직무를 선택하세요</option>
 					</select>
