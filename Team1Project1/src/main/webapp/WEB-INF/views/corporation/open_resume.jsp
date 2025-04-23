@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>기업 관리 | 업로드 공고 리스트</title>
+<title>기업 관리 | 이력서 열람실</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -16,6 +16,14 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+}
+
+/* Parent container styles */
+.parent_div {
+    margin: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Button styles */
@@ -84,86 +92,57 @@ table tr:nth-child(even) {
     background-color: #007BFF;
     color: white;
 }
-
-/* Apply buttons */
-.apply_btn {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.apply_btn a {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.apply_btn a#btn_srch {
-    background-color: #dc3545;
-}
-
-.apply_btn a:hover {
-    filter: brightness(0.9);
-}
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<header id="base">
+
+		<div class="parent_div">
+			<!-- 좌측 메뉴 영역 -->
+		</div>
 		<!-- 본문 영역 -->
 		<div class="main_content">
-			<h3>업로드 공고 리스트</h3>
+			<h3>지원 자소서 모음</h3>
 			<table border="1">
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content">이름</a></td>
-					<td>지원자</td>
-					<td>공고이름</td>
+					<td>제목</td>
+					<td>직무</td>
 				</tr>
-				<%-- 					<c:forEach var="" items=""> --%>
+<%-- 				<c:forEach var="" items=""> --%>
+					<tr>
+						<td>번호</td>
+						<td>제목</td>
+						<td>공고이름</td>
+					</tr>
+<%-- 				</c:forEach> --%>
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>지원자</td>
-					<td>공고이름</td>
-				</tr>
-				<%-- 					</c:forEach> --%>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
+					<td>제목</td>
 					<td>공고이름</td>
 				</tr>
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
+					<td>제목</td>
 					<td>공고이름</td>
 				</tr>
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
+					<td>제목</td>
 					<td>공고이름</td>
 				</tr>
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
+					<td>제목</td>
 					<td>공고이름</td>
 				</tr>
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/coplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
+					<td>제목</td>
 					<td>공고이름</td>
 				</tr>
 			</table>
-
 			<!-- 			<div class=""> -->
 			<!-- 페이지 번호 -->
 			<%-- 			<c:if test=""> --%>
@@ -182,12 +161,10 @@ table tr:nth-child(even) {
 			<!-- 				<a href="">[다 음]</a> -->
 			<%-- 			</c:if> --%>
 			<!-- 			</div> -->
-			<div class="apply_btn" id="apply_btn">
-				<a href="${pageContext.request.contextPath}/coplist/write" class="btn_srch">글쓰기</a>
-			</div>
 		</div>
-
 	</header>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+
+
 </body>
 </html>

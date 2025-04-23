@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 공고 작성</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -87,7 +87,7 @@ table tr:nth-child(even) {
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<div class="parent_div">
 		<h1>공고 내용</h1>
 		<form action="" method="get">
@@ -145,8 +145,8 @@ table tr:nth-child(even) {
 					<tr>
 						<td colspan="2">
 						<div class="apply_btn" id="apply_btn">
-						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/coplist/update'">
-						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/coplist/deletepro'">
+						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/update'">
+						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/deletepro'">
 						</div>
 						</td>
 					</tr>

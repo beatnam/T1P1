@@ -24,7 +24,7 @@
 
 			<a href="${pageContext.request.contextPath }/main/join">회원가입</a> 
 			<a href="${pageContext.request.contextPath }/main/login">로그인</a> 
-			<a href="${pageContext.request.contextPath }/main/copmain">기업 서비스</a>
+			<a href="${pageContext.request.contextPath }/main/corpmain">기업 서비스</a>
 		</div>
 
 	</div>

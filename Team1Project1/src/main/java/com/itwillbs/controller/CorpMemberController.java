@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/copmain/*")
-public class CopMemberController {
+@RequestMapping("/corpmain/*")
+public class CorpMemberController {
 	
 	@GetMapping("/main")
 	public String main() {
-		System.out.println("copmembercontroller copmain()");
+		System.out.println("corpmembercontroller corpmain()");
 		
-		return "/coporation/coporation_main";
-	}//coporationmain()
+		return "/corporation/corporation_main";
+	}//corporationMain()
 	
 	@GetMapping("/update")
 	public String update() {
-		System.out.println("copmembercontroller update()");
+		System.out.println("corpmembercontroller update()");
 		
-		return "/coporation/coporationmain_update";
+		return "/corporation/corporationmain_update";
 	}//update()
 	
 	@GetMapping("/openresume")
 	public String openResume() {
-		System.out.println("copmembercontroller openResume()");
+		System.out.println("corpmembercontroller openResume()");
 		
-		return "/coporation/open_resume";
+		return "/corporation/open_resume";
 	}//openResume()
 	
 	@GetMapping("/coverletter")
 	public String coverLetter() {
-		System.out.println("copmembercontroller coverLetter()");
+		System.out.println("corpmembercontroller coverLetter()");
 		
-		return "/coporation/cover_letter";
+		return "/corporation/cover_letter";
 	}//coverLetter()
 	
 	@GetMapping("/applyresume")
 	public String applyResume() {
-		System.out.println("copmembercontroller applyResume()");
+		System.out.println("corpmembercontroller applyResume()");
 		
-		return "/coporation/apply_resume";
+		return "/corporation/apply_resume";
 	}//applyResume()
 	
 	

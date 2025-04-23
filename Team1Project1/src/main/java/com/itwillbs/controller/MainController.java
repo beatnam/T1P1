@@ -38,10 +38,10 @@ public class MainController {
 		return "/recruit_info/info_home";
 	}
 	
-	@GetMapping("/copmain")
-	public String copMain() {
+	@GetMapping("/corpmain")
+	public String corpMain() {
 
-		return "/coporation/coporation_main";
+		return "/corporation/corporation_main";
 	}
 	
 	@GetMapping("/customerService")

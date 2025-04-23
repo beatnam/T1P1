@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 자소서 모음</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -95,7 +95,7 @@ table tr:nth-child(even) {
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<header id="base">
 
 		<div class="parent_div">

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 이력서 모음</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -121,7 +121,7 @@ table tr:nth-child(even) {
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<header id="base">
 
 		<div class="parent_div">
@@ -201,18 +201,6 @@ table tr:nth-child(even) {
 		</div>
 	</header>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
-	
-<script type="text/javascript">
-	function updateData() {
-        fetch('/copmain/refresh', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message); // 응답 메시지 출력
-                location.reload(); // 자동 새로고침
-            })
-            .catch(error => console.error('Error updating data:', error));
-    }
-</script>
 	
 </body>
 </html>

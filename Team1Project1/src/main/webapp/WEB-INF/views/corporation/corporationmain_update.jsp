@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -135,7 +135,7 @@ background-color: #004085; /* 클릭 시 배경색 */
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 				<!-- 다른계획있을시 수정 -->
-<jsp:include page="../inc/coptop.jsp"></jsp:include>
+<jsp:include page="../inc/corptop.jsp"></jsp:include>
  <header id="base">
  	<div class="parent_div">
  		<img alt="" src="">
@@ -157,7 +157,7 @@ background-color: #004085; /* 클릭 시 배경색 */
  		</div>
  		
  		<div class="apply_btn">
- 			<input type="submit" value="변경하기" onclick="location.href='${pageContext.request.contextPath}/copmain/updatepro'">
+ 			<input type="submit" value="변경하기" onclick="location.href='${pageContext.request.contextPath}/corpmain/updatepro'">
  		</div>
  	</form>
  </header>

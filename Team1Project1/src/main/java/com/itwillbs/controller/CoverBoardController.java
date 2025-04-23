@@ -16,7 +16,7 @@ import com.itwillbs.domain.OccupationDTO;
 import com.itwillbs.service.JobService;
 
 @Controller
-@RequestMapping("/coplist/*")
+@RequestMapping("/corplist/*")
 public class CoverBoardController {
 	
 	@Inject
@@ -25,21 +25,21 @@ public class CoverBoardController {
 	
 	@GetMapping("/list")
 	public String list() {
-		System.out.println("copmembercontroller list()");
+		System.out.println("CoverBoardController list()");
 		
-		return "/coporation/cover_list";
+		return "/corporation/cover_list";
 	}//list()
 	
 	@GetMapping("/content")
 	public String content() {
-		System.out.println("copmembercontroller content()");
+		System.out.println("CoverBoardController content()");
 		
-		return "/coporation/coverlist_content";
+		return "/corporation/coverlist_content";
 	}//content()
 	
 	@GetMapping("/update")
 	public String update(Model model) {
-		System.out.println("copmembercontroller write()");
+		System.out.println("CoverBoardController write()");
 		
 		List<OccupationDTO> occupations = jobService.getOccupations();
         for(OccupationDTO occupationDTO : occupations) {
@@ -47,12 +47,12 @@ public class CoverBoardController {
         }
     	model.addAttribute("occupations", occupations);
 		
-		return "/coporation/coverlist_update";
+		return "/corporation/coverlist_update";
 	}//update()
 	
 	@GetMapping("/write")
 	public String write(Model model) {
-		System.out.println("copmembercontroller write()");
+		System.out.println("CoverBoardController write()");
 		
 		List<OccupationDTO> occupations = jobService.getOccupations();
         for(OccupationDTO occupationDTO : occupations) {
@@ -60,7 +60,7 @@ public class CoverBoardController {
         }
     	model.addAttribute("occupations", occupations);
 		
-		return "/coporation/coverlist_write";
+		return "/corporation/coverlist_write";
 	}//update()
 	
 	@GetMapping("/job")

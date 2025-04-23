@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 공고 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <style>
@@ -121,7 +121,7 @@ select {
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<!-- 다른계획있을시 수정 -->
-	<jsp:include page="../inc/coptop.jsp"></jsp:include>
+	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<div class="parent_div">
 	<h1>공고 수정</h1>
 	<form action="update" method="post" enctype="multipart/form-data">
@@ -204,10 +204,8 @@ select {
 					<td colspan="2">
 						<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 -->
 					<div class="apply_btn" id="apply_btn">
-					<c:if test="">
-						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/coplist/updatepro'">
-					</c:if>
-						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/coplist/list'">
+						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/updatepro'">
+						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 					</div>
 					</td>
 				</tr>
@@ -223,7 +221,7 @@ select {
         if (occupationId) {
         	$.ajax({
     			type : "GET",
-    			url:'${pageContext.request.contextPath}/coplist/job',
+    			url:'${pageContext.request.contextPath}/corplist/job',
     			data: {'occupationId' : occupationId},
     			dataType:'json',
     			success:function(result){
