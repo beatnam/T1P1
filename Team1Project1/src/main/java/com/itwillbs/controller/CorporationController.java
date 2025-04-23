@@ -20,10 +20,10 @@ public class CorporationController {
 
 	@Inject
 	private CorporationService corporationService;
+
 	@Resource(name = "uploadPath")
 	private String uploadPath;
-	
-	
+
 	@GetMapping("/main")
 	public String main() {
 		System.out.println("CorporationController copmain()");
@@ -39,7 +39,7 @@ public class CorporationController {
 		System.out.println(corporationDTO);
 		corporationService.insertMember(corporationDTO);
 
-		return "redirect:/corporation/main";
+		return "redirect:/main/main";
 	}
 
 	@GetMapping("/update")
