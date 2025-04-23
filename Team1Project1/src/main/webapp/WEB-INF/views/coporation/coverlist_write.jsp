@@ -108,18 +108,15 @@ table tr:nth-child(even) {
 			<tr>
 				<td>학력</td>
 				<td>
-					<select name="Levels" id="Levels">
-				        <option value="0">학력무관</option>
-				        <option value="1">고등학교졸업</option>
-				        <option value="2">대학졸업(2,3년)</option>
-				        <option value="3">대학교졸업(4년)</option>
-				        <option value="4">석사졸업</option>
-				        <option value="5">박사졸업</option>
-				        <option value="6">고등학교졸업이상</option>
-				        <option value="7">대학졸업(2,3년)이상</option>
-				        <option value="8">대학교졸업(4년)이상</option>
-				        <option value="9">석사졸업이상</option>
-			    	</select>
+					<label for="job-category">직종:</label>
+			        <select id="job-category" name="job-category" onchange="loadPositions()">
+			            <option value="">직종을 선택하세요</option>
+			        </select>
+			
+			        <label for="job-position">직무:</label>
+			        <select id="job-position" name="job-position">
+			            <option value="">직종을 먼저 선택하세요</option>
+			        </select>
 				</td>
 			</tr>
 			<tr>
@@ -170,5 +167,44 @@ table tr:nth-child(even) {
 	</form>
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+ <script>
+        // 직종 데이터 로드
+        async function loadCategories() {
+            const response = await fetch('/jobs/categories');
+            const categories = await response.json();
+            const categorySelect = document.getElementById('job-category');
+
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+        }
+
+        // 직무 데이터 로드
+        async function loadPositions() {
+            const categoryId = document.getElementById('job-category').value;
+            const positionSelect = document.getElementById('job-position');
+
+            // 초기화
+            positionSelect.innerHTML = '<option value="">직무를 선택하세요</option>';
+
+            if (categoryId) {
+                const response = await fetch(`/jobs/positions?categoryId=${categoryId}`);
+                const positions = await response.json();
+
+                positions.forEach(position => {
+                    const option = document.createElement('option');
+                    option.value = position.id;
+                    option.textContent = position.name;
+                    positionSelect.appendChild(option);
+                });
+            }
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', loadCategories);
+    </script>
 </body>
 </html>
