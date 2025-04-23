@@ -60,6 +60,8 @@ public class CoverBoardController {
 	@GetMapping("/job")
     @ResponseBody
     public List<JobDTO> getJobsByOccupation(@RequestParam("occupationId") int occupationId) {
+		System.out.println(occupationId);
         return jobService.getJobsByOccupation(occupationId);
     }
+	
 }

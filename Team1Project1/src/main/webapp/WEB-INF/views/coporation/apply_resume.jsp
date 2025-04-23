@@ -129,7 +129,7 @@ table tr:nth-child(even) {
 			<jsp:include page="../inc/coptop.jsp"></jsp:include>
 		</div>
 		<div>
-			<button name="refresh" id="refresh" onclick="updateData">화면갱신</button>
+			<button name="refresh" id="refresh" onclick="location.reload()">화면갱신</button>
 		</div>
 		<!-- 본문 영역 -->
 		<div class="main_content">

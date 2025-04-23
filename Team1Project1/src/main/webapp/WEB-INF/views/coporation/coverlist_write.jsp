@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 새공고 업로드</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <style>
 /* General reset and styling */
@@ -107,7 +108,20 @@ table tr:nth-child(even) {
 			</tr>
 			<tr>
 				<td>학력</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td>
+				<select name="Levels" id="Levels">
+					<option value="0">학력무관</option>
+					<option value="1">고등학교졸업</option>
+					<option value="2">대학졸업(2,3년)</option>
+					<option value="3">대학교졸업(4년)</option>
+					<option value="4">석사졸업</option>
+					<option value="5">박사졸업</option>
+					<option value="6">고등학교졸업이상</option>
+					<option value="7">대학졸업(2,3년)이상</option>
+					<option value="8">대학교졸업(4년)이상</option>
+					<option value="9">석사졸업이상</option>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>직종</td>
@@ -160,9 +174,7 @@ table tr:nth-child(even) {
 				<td colspan="2">
 					<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> 
 					<div class="apply_btn" id="apply_btn">
-					<c:if test="">
 					<input type="button" value="공고 올리기" onclick="location.href='${pageContext.request.contextPath}/coplist/updatepro'">
-					</c:if>
 					<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/coplist/list'">
 					</div>
 				</td>
@@ -174,51 +186,22 @@ table tr:nth-child(even) {
 <script>
     function loadJobs(occupationId) {
         const jobSelect = document.getElementById('job-select');
-
-        // Clear existing options
         jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
-
         if (occupationId) {
-            fetch(`/job?occupationId=${occupationId}`)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(job => {
-                        const option = document.createElement('option');
-                        option.value = job.jobId;
-                        option.textContent = job.jobName;
-                        jobSelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error fetching jobs:', error));
+        	$.ajax({
+    			type : "GET",
+    			url:'${pageContext.request.contextPath}/coplist/job',
+    			data: {'occupationId' : occupationId},
+    			dataType:'json',
+    			success:function(result){
+    				$('#job-select').html('');
+    				$.each(result, function(index,item){
+    					$('#job-select').append('<option value="' + item.jobId + '">' + item.jobName + '</option>');
+    				});
+    			},
+    		});//ajax()
         }
     }
-    
-    $('#member_list').click(function(){
-//			alert("클릭");
-//			페이지변경없이(비동기방식) 회원목록을 json형태로 가져와서 화면출력
-		$.ajax({
-			type : "GET",
-			url:'${pageContext.request.contextPath}/member/member_list',
-			dataType:'json',
-			success:function(result){
-//	 				alert(result);
-				$('.notice_recent').html('');
-				$.each(result, function(index,item){
-//						alert(index);
-//						alert(item.id);
-//						<ul class="notice_recent">
-//						<li><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
-					
-					$('.notice_recent').append('<li><a href="javascript:;">' + item.id + ' : ' + item.name + '</a></li>');
-					
-					
-				})
-				
-			}
-		});//ajax()	
-			
-	});//click()
-    
 </script>
 </body>
 </html>

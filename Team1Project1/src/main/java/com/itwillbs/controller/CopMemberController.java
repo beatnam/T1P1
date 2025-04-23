@@ -51,16 +51,5 @@ public class CopMemberController {
 		return "/coporation/apply_resume";
 	}//applyResume()
 	
-	@PostMapping("/refresh")
-    public ResponseEntity<Map<String, String>> refresh() {
-        // 여기서 데이터 갱신 로직 수행 (예: DB 업데이트)
-        // 예제에서는 단순히 메시지를 반환
-        
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "데이터 갱신 완료");
-
-        return ResponseEntity.ok(response);
-    }
-	
 	
 }

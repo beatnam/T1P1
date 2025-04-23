@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 공고 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <style>
 /* General reset and styling */
@@ -122,7 +123,21 @@ table tr:nth-child(even) {
 				</tr>
 				<tr>
 					<td>직종</td>
-					<td><input type="text" id="" name="" value=""></td>
+					<td>
+					<!-- 직종 리스트 -->
+				    <label for="occupation-select">직무:</label>
+					<select id="occupation-select" name="occupation-select" onchange="loadJobs(this.value)">
+					    <option value="">직무를 선택하세요</option>
+					    <c:forEach var="occupation" items="${occupations}">
+					        <option value="${occupation.occupationId}">${occupation.occupationName}</option>
+					    </c:forEach>
+					</select>
+					
+					<label for="job-select">직종:</label>
+					<select id="job-select" name="job-select">
+					    <option value="">먼저 직무를 선택하세요</option>
+					</select>
+					</td>
 				</tr>
 				<tr>
 					<td>직무</td>
@@ -168,5 +183,25 @@ table tr:nth-child(even) {
 	</form>
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+<script>
+    function loadJobs(occupationId) {
+        const jobSelect = document.getElementById('job-select');
+        jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
+        if (occupationId) {
+        	$.ajax({
+    			type : "GET",
+    			url:'${pageContext.request.contextPath}/coplist/job',
+    			data: {'occupationId' : occupationId},
+    			dataType:'json',
+    			success:function(result){
+    				$('#job-select').html('');
+    				$.each(result, function(index,item){
+    					$('#job-select').append('<option value="' + item.jobId + '">' + item.jobName + '</option>');
+    				});
+    			},
+    		});//ajax()
+        }
+    }
+</script>
 </body>
 </html>
