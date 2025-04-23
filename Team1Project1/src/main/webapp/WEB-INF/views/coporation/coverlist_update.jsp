@@ -8,14 +8,90 @@
 <title>기업 관리 | 공고 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
+<style>
+/* General reset and styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Parent container styles */
+.parent_div {
+    margin: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+button#refresh {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#refresh:hover {
+    background-color: #0056b3;
+}
+
+/* Main content styles */
+.main_content {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.apply_btn input[type="button"] {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.apply_btn input[type="button"]:hover {
+    filter: brightness(0.9);
+}
+</style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<!-- 다른계획있을시 수정 -->
 	<jsp:include page="../inc/coptop.jsp"></jsp:include>
-
+	<div class="parent_div">
 	<h1>공고 수정</h1>
 	<form action="update" method="post" enctype="multipart/form-data">
-		<div class="">
+		<div class="main_content">
 			<table border="1">
 				<tr>
 					<td>제목입력</td>
@@ -78,14 +154,19 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> <c:if test="">
-							<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/coplist/updatepro'">
-						</c:if> <input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/coplist/list'">
+						<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 -->
+					<div class="apply_btn" id="apply_btn">
+					<c:if test="">
+						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/coplist/updatepro'">
+					</c:if>
+						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/coplist/list'">
+					</div>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</form>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
