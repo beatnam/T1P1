@@ -25,6 +25,7 @@
 			<a href="${pageContext.request.contextPath }/main/join">회원가입</a> 
 			<a href="${pageContext.request.contextPath }/main/cop_join">기업회원가입</a> 
 			<a href="${pageContext.request.contextPath }/main/login">로그인</a> 
+			<a href="${pageContext.request.contextPath }/main/cop_login">로그인</a> 
 			<a href="${pageContext.request.contextPath }/main/copmain">기업 서비스</a>
 		</div>
 

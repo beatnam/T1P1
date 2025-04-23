@@ -12,23 +12,23 @@
 <body>
 
 	<div class="container">
-		<form action="${pageContext.request.contextPath}/corporation/loginPro" method="post">
+		<form action="${pageContext.request.contextPath}/corporation/copLoginPro" method="post">
 			<fieldset>
 				<legend>로그인</legend>
 				<p class="joinLogin">개인회원 | 기업회원</p>
-<!-- 			<input type="radio" name="mt_id" value="200" /> 개인 -->
-<!--    			 <input type="radio" name="mt_id" value="300" /> 기업 -->
+<!-- 				<input type="radio" name="mt_id" value="200" /> 개인 -->
+<!--     <input type="radio" name="mt_id" value="300" /> 기업 -->
 				<ul>
-					<li><input type="text" name="corporationId" id="id_lbl"
+					<li><input type="text" name="corporationMemberId" id="id_lbl"
 						placeholder="아이디" /></li>
-					<li><input type="password" name="corporationPasswd" id="pwd_lbl"
+					<li><input type="password" name="corporationMemberPasswd" id="pwd_lbl"
 						placeholder="비밀번호" /></li>
 				</ul>
 
-				<div class="checkbox-group">
-					<label><input type="checkbox" name="keepLogin" /> 로그인 유지</label><br>
-					<label><input type="checkbox" name="saveId" /> 아이디 저장</label>
-				</div>
+<!-- 				<div class="checkbox-group"> -->
+<!-- 					<label><input type="checkbox" name="keepLogin" /> 로그인 유지</label><br> -->
+<!-- 					<label><input type="checkbox" name="saveId" /> 아이디 저장</label> -->
+<!-- 				</div> -->
 
 <!-- 				<div class="links"> -->
 <%-- 					<a href="${pageContext.request.contextPath}/member/login1-1">아이디찾기</a> --%>

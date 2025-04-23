@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <html lang="ko">
 <head>
-<title>회원가입</title>
+<title>기업 | 회원가입</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/join.css">
 <link rel="stylesheet" href="/css/join.css">
@@ -12,17 +12,15 @@
 </head>
 <body>
 	<div class="container">
-		<input type="radio" name="mtId" value="200" />
-		개인
-		<input type="radio" name="mtId" value="300" />
-		기업
+
+
 		<form
 			action="${pageContext.request.contextPath}/corporation/copJoinPro"
-			class="joinMember" method="post" id="copJoinForm" enctype="multipart/form-data">
+			class="joinMember" method="post" id="copJoinForm">
 			<!-- 			enctype="multipart/form-data" -->
 
 			<fieldset>
-				<legend>회원가입</legend>
+				<legend>기업 회원가입</legend>
 
 				<ul class="joinList">
 					<div class="container1">
@@ -33,11 +31,9 @@
 							</div>
 						</li>
 
-						<li class="start">
-							<label for="id_lbl" class="tit_lbl pilsoo_item"></label>
-							<div class="join_content" id="idCheck"></div>
-						</li>
-						<br>
+						<li class="start"><label for="id_lbl"
+							class="tit_lbl pilsoo_item"></label>
+							<div class="join_content" id="idCheck"></div></li> <br>
 
 						<li class="start">
 							<div class="join_content">
@@ -49,15 +45,13 @@
 							<div class="join_content">
 								<input type="password" name="corporationMemberPasswd"
 									class="w100p" id="pwd_lbl" placeholder="비밀번호" required />
-							</div>
-							<br>
+							</div> <br>
 
 							<div class="join_content">
 								<input type="password" class="w100p" id="pwd_lbl2"
 									placeholder="비밀번호 확인" required />
 							</div>
-						</li>
-						<br>
+						</li> <br>
 
 						<li class="start">
 							<div class="join_content email_area">
@@ -85,8 +79,7 @@
 								<input type="text" name="corporationName" class="w100p"
 									id="name_lbl" placeholder="회사 이름" required />
 							</div>
-						</li>
-						<br>
+						</li> <br>
 
 
 						</li>
@@ -94,8 +87,7 @@
 							<div class="join_content">
 								<input type="text" name="corporationPostcode" class="w100p"
 									id="address_lbl" placeholder="우편번호" required />
-							</div>
-							<br>
+							</div> <br>
 
 						</li>
 
@@ -103,8 +95,7 @@
 							<div class="join_content">
 								<input type="text" name="corporationAddress" class="w100p"
 									id="address_lbl" placeholder="기업 주소" required />
-							</div>
-							<br>
+							</div> <br>
 						<li class="start">
 							<div class="join_content">
 								<input type="tel" name="corporationMemberPhone" class="w100p"
@@ -120,13 +111,7 @@
 									id="phone_lbl" placeholder="회사 홈페이지" />
 							</div>
 						</li>
-						<li class="start">
-							<div class="join_content">
-								회사 대표 이미지
-								<input type="file" name="corporationPhoto" class="w100p"
-									id="phone_lbl" placeholder="회사 대표 이미지" />
-							</div>
-						</li>
+					
 						<li class="start">
 							<div class="join_content">
 								<input type="text" name="corporationRegistration" class="w100p"
@@ -134,13 +119,7 @@
 							</div>
 						</li>
 
-						<li class="start">
-							<div class="join_content">
-								사업자 등록증 사본
-								<input type="file" name="corporationRegistrationPdf"
-									class="w100p" id="phone_lbl" placeholder="사업자 등록증" />
-							</div>
-						</li>
+						
 
 						<li class="start">
 							<div class="join_content">
@@ -150,11 +129,9 @@
 						</li>
 					</div>
 
-					<li class="start">
-						<span class="join_content checkbox_area">필수동의 항목 및 개인정보 수집
-							및 이용 동의(선택), 광고성 정보 수신 <br> (선택)에 모두 동의합니다.
-						</span>
-					</li>
+					<li class="start"><span class="join_content checkbox_area">필수동의
+							항목 및 개인정보 수집 및 이용 동의(선택), 광고성 정보 수신 <br> (선택)에 모두 동의합니다.
+					</span></li>
 
 				</ul>
 				<p class="btn_line">

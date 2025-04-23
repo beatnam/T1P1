@@ -37,6 +37,12 @@ public class MainController {
 		System.out.println("MainController copJoin()");
 		return "/corporation/cop_join";
 	}
+	
+	@GetMapping("/cop_login")
+	public String copLogin() {
+		System.out.println("MainController coplogin()");
+		return "/corporation/cop_login";
+	}
 
 	@GetMapping("/recruit_info")
 	public String recruitInfo() {

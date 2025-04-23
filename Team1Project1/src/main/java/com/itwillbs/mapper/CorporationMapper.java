@@ -10,6 +10,8 @@ import com.itwillbs.domain.CorporationDTO;
 public interface CorporationMapper {
 	
 	public void insertMember(CorporationDTO corporationDTO);
+
+	public CorporationDTO loginMember(CorporationDTO corporationDTO);
 	
 	
 	

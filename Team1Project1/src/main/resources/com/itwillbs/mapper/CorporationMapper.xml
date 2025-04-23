@@ -19,6 +19,10 @@
 		#{corporationRegistration},	#{corporationRegistrationPdf}, #{corporationIntro}, #{corporationVerified} )
 	</insert>
 
-
+ <select id="loginMember" resultType="com.itwillbs.domain.CorporationDTO">
+  	select * from corporation
+  	where corporationmember_id = #{corporationMemberId} and corporationmember_passwd = #{corporationMemberPasswd}
+  </select>
+  
 
 </mapper>
