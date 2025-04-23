@@ -44,4 +44,10 @@ public class MainController {
 
 		return "/community/interviewreview_board";
 	}
+	
+	@GetMapping("/my-profile")
+	public String mypage() {
+
+		return "/mypage/my-profile";
+	}
 }
