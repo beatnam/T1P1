@@ -43,7 +43,7 @@
 	<div>
 
 		<h1>공개 채용 등록</h1>
-		<form action="#" method="post">
+		<form action="${pageContext.request.contextPath }/manager/openrecruit_writePro" method="post">
 			<label for="or_corporation_name">회사명:</label> <input type="text"
 				id="or_corporation_name" name="or_corporation_name"
 				placeholder="회사명" required><br> <label for="or_name">공고명:</label>

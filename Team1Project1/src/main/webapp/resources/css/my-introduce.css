@@ -84,6 +84,7 @@ body {
 }
 
 .actions {
+<<<<<<< HEAD
   display: flex;
   gap: 10px;
   margin-top: 20px;
@@ -111,6 +112,26 @@ body {
 }
 
 
+=======
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-top: 20px;
+}
+
+.actions button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #28a745;
+}
+>>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
     
 form {
   margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */

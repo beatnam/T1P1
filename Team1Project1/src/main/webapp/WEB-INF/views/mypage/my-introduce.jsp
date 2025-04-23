@@ -11,7 +11,6 @@
 
 </head>
 <body>
-
 <%@ include file="../inc/top.jsp" %>
 
 <div class="all">
@@ -37,9 +36,8 @@
 		</c:forEach>
 
         <div class="actions">
-            <label for="resumeFile" class="file-btn">파일로 등록</label>
-    		<input type="file" id="resumeFile" name="resumeFile" style="display: none;">
-            <a href="#" class="new-btn">새 자소서 (첨삭)</a>	
+            <button>파일로 등록</button>
+            <button>새 자소서 (첨삭)</button>	
         </div>
 
     </div>

@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 지원현황</title>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-ing.css">
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+
  
 </head>
 <body>

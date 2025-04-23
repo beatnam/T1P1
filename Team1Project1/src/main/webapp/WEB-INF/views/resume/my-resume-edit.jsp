@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>이력서 작성</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-resume-edit.css">
+
 </head>
 <body>
 
@@ -277,6 +278,11 @@
 	});
 	</script>
     
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+
+
+
 
 <%@ include file="../inc/footer.jsp" %>
 

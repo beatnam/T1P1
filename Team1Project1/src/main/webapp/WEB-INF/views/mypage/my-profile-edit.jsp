@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 프로필</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-profile-edit.css">
+
 </head>
 <body>
 
@@ -79,12 +80,15 @@
         <div class="inbox8">
   			<button type="button" class="edit-btn" 
   			onclick="alert('저장이 완료되었습니다.'); location.href='${pageContext.request.contextPath}/mypage/my-profile'">저장</button>
-		</div>
+  		</div>
+  		
+  	</div>		
+  	
+</div>  	
+
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 
 
-    </div>
-
-</div>
 
 <%@ include file="../inc/footer.jsp" %>
 

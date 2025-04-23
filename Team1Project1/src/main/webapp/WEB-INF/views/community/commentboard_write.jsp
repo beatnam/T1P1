@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>커뮤니티 | 게시판글 수정</title>
+<title>취업후기 게시판 | 글쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-	<div class="">	
-		<form action=""  method="post" id="">		
+		<div class="">	
+		<form action=""  method="post" id="">
 			<ul class="">
 				<li class="">글제목 : <input type="text" name="subject"></li>
-				<li class="">작성자 : <input type="text" name="name" readonly></li>
+				<li class="">글쓴이 : <input type="text" name="name"></li>
 				<li class="">
 					<div class="">
 					    글내용 : <textarea name="" rows="30" cols="40"></textarea>
@@ -21,11 +21,11 @@
 				</li>
 			</ul>
 			<p class="">
-				<a href="${pageContext.request.contextPath}/ivborad/updatepro" class="" id="">글수정</a>
-				<a href="${pageContext.request.contextPath}/ivborad/list" class="">글목록</a>
+				<a href="" class="" id="${pageContext.request.contextPath}/rvborad/rcwritepro">글쓰기</a>
+				<a href="" class="${pageContext.request.contextPath}/rvborad/rclist">글목록</a>
 			</p>
 		</form>
-	</div>
+		</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

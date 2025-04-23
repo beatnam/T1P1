@@ -96,6 +96,9 @@ function handleDelete() {
     return false; 
 }
 </script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+
+
 
 <%@ include file="../inc/footer.jsp" %>
 

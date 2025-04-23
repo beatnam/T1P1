@@ -14,17 +14,6 @@ public class MainController {
 		return "/main/main";
 	}
 	
-	@GetMapping("/recruit_info")
-	public String recruitInfo() {
-
-		return "/recruit_info/info_home";
-	}
-	
-	@GetMapping("/copmain")
-	public String copmain() {
-
-		return "/coporation/coporation_main";
-	}
 	
 	@GetMapping("/login")
 	public String login() {
@@ -38,16 +27,50 @@ public class MainController {
 		return "/member/join";
 	}
 	
-	
-	@GetMapping("/ivboard")
-	public String interviewreviewboard() {
+	@GetMapping("/recruit_info")
+	public String recruitInfo() {
 
-		return "/community/interviewreview_board";
+		return "/recruit_info/info_home";
 	}
 	
+
 	@GetMapping("/my-profile")
 	public String mypage() {
 
 		return "/mypage/my-profile";
 	}
+
+
+	@GetMapping("/copmain")
+	public String copMain() {
+
+		return "/coporation/coporation_main";
+	}
+	
+	@GetMapping("/customerService")
+	public String customerService() {
+
+		return "/customerService/customerService";
+	}
+	
+	
+	@GetMapping("/riboard")
+	public String reviewinterviewBoard() {
+
+		return "/community/reviewinterview_board";
+	}
+	
+	@GetMapping("/ciboard")
+	public String commentinterviewBoard() {
+		
+		return "/community/reviewinterview_board";
+	}
+	
+	@GetMapping("/communitymain")
+	public String communityMain() {
+		
+		return "/community/community_info";
+	}
+	
 }
+

@@ -14,8 +14,13 @@
 	<div class="bottom-bar">
 		<div class="nav-links">
 			<a href="${pageContext.request.contextPath }/main/recruit_info">채용정보</a>
+<<<<<<< HEAD
 			<a href="#">커뮤니티</a>
 			<a href="#">고객센터</a>
+=======
+			<a href="${pageContext.request.contextPath }/main/communitymain">커뮤니티</a>
+			<a href="${pageContext.request.contextPath }/main/customerService">고객센터</a>
+>>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
 			<a href="${pageContext.request.contextPath }/main/my-profile">마이페이지</a>
 		</div>
 
