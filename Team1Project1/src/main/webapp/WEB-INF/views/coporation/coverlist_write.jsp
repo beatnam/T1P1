@@ -192,6 +192,33 @@ table tr:nth-child(even) {
                 .catch(error => console.error('Error fetching jobs:', error));
         }
     }
+    
+    $('#member_list').click(function(){
+//			alert("클릭");
+//			페이지변경없이(비동기방식) 회원목록을 json형태로 가져와서 화면출력
+		$.ajax({
+			type : "GET",
+			url:'${pageContext.request.contextPath}/member/member_list',
+			dataType:'json',
+			success:function(result){
+//	 				alert(result);
+				$('.notice_recent').html('');
+				$.each(result, function(index,item){
+//						alert(index);
+//						alert(item.id);
+//						<ul class="notice_recent">
+//						<li><a href="javascript:;">이번 여름 휴가 제주 갈까? 미션 투어 (여행경비 50만원 지원)</a></li>
+					
+					$('.notice_recent').append('<li><a href="javascript:;">' + item.id + ' : ' + item.name + '</a></li>');
+					
+					
+				})
+				
+			}
+		});//ajax()	
+			
+	});//click()
+    
 </script>
 </body>
 </html>

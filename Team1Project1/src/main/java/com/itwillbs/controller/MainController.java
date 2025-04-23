@@ -60,7 +60,7 @@ public class MainController {
 	@GetMapping("/ciboard")
 	public String commentinterviewBoard() {
 		
-		return "/community/reviewinterview_board";
+		return "/community/reviwcomment_board";
 	}
 	
 	@GetMapping("/communitymain")

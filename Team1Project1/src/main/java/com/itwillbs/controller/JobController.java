@@ -3,6 +3,8 @@ package com.itwillbs.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +17,19 @@ import com.itwillbs.service.JobService;
 
 @Controller
 public class JobController {
-    private final JobService jobService;
-
-    public JobController(JobService jobService) {
-        this.jobService = jobService;
-    }
+    
+	@Inject
+	private JobService jobService;
 
     @GetMapping("/occupation")
     public String getOccupations(Model model) {
-        List<OccupationDTO> occupations = jobService.getOccupations();
-        model.addAttribute("occupations", occupations);
-        return "occupation"; // occupation.html로 이동
+        System.out.println("JobController getOccupations()");
+    	List<OccupationDTO> occupations = jobService.getOccupations();
+        for(OccupationDTO occupationDTO : occupations) {
+        	System.out.println(occupationDTO);
+        }
+    	model.addAttribute("occupations", occupations);
+        return "coverlist_write"; // occupation.html로 이동
     }
 
     @GetMapping("/job")
