@@ -86,33 +86,53 @@ body {
 .main_content ul input[type="text"],
 .main_content ul input[type="tel"],
 .main_content ul input[type="url"] {
-    width: 70%;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #333;
+width: 70%;
+padding: 5px 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+background-color: #f9f9f9;
+color: #333;
 }
 
 /* Apply button styling */
 .apply_btn {
-    text-align: right;
-    margin: 10px 20px;
+text-align: right;
+margin: 10px 20px;
 }
 
 .apply_btn a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+display: inline-block;
+padding: 10px 20px;
+background-color: #28a745;
+color: #ffffff;
+text-decoration: none;
+border-radius: 5px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .apply_btn a:hover {
-    background-color: #218838;
+background-color: #218838;
 }
+
+#cop_file {
+background-color: #007BFF; /* 버튼 배경색 */
+color: white; /* 텍스트 색상 */
+border: none; /* 테두리 제거 */
+border-radius: 8px; /* 둥근 모서리 */
+padding: 10px 20px; /* 버튼 크기 조정 */
+font-size: 16px; /* 글꼴 크기 */
+cursor: pointer; /* 마우스 포인터 변경 */
+transition: background-color 0.3s ease; /* 호버 효과 */
+}
+
+#cop_file:hover {
+background-color: #0056b3; /* 호버 시 배경색 */
+}
+
+#cop_file:active {
+background-color: #004085; /* 클릭 시 배경색 */
+}
+
 </style>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>

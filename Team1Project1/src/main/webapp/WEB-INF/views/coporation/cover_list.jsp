@@ -187,7 +187,6 @@ table tr:nth-child(even) {
 			<!-- 			</div> -->
 			<div class="apply_btn" id="apply_btn">
 				<a href="${pageContext.request.contextPath}/coplist/write" class="btn_srch">글쓰기</a>
-				<a href="${pageContext.request.contextPath}/coplist/update" class="btn_srch">글수정</a>
 			</div>
 		</div>
 

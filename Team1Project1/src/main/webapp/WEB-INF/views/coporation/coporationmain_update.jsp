@@ -113,6 +113,25 @@ body {
 .apply_btn input[tpye="submit"]:hover {
     background-color: #218838;
 }
+
+#cop_file {
+background-color: #007BFF; /* 버튼 배경색 */
+color: white; /* 텍스트 색상 */
+border: none; /* 테두리 제거 */
+border-radius: 8px; /* 둥근 모서리 */
+padding: 10px 20px; /* 버튼 크기 조정 */
+font-size: 16px; /* 글꼴 크기 */
+cursor: pointer; /* 마우스 포인터 변경 */
+transition: background-color 0.3s ease; /* 호버 효과 */
+}
+
+#cop_file:hover {
+background-color: #0056b3; /* 호버 시 배경색 */
+}
+
+#cop_file:active {
+background-color: #004085; /* 클릭 시 배경색 */
+}
 </style>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
@@ -120,12 +139,11 @@ body {
 <jsp:include page="../inc/coptop.jsp"></jsp:include>
  <header id="base">
  	<div class="parent_div">
- 	
  		<img alt="" src="">
- 		<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
  	</div>
  	<form action="" method="post" enctype="multipart/form-data">
  		<div class="main_content">
+ 		<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
  			<ul> 
  				<li><a href="">기업 아이디</a><input type="text" id="" name="" value="" ></li>
  				<li><a href="">기업 이름</a><input type="text" id="" name="" value="" ></li>
