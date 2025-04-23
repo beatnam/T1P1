@@ -107,21 +107,25 @@ table tr:nth-child(even) {
 			</tr>
 			<tr>
 				<td>학력</td>
-				<td>
-					<label for="job-category">직종:</label>
-			        <select id="job-category" name="job-category" onchange="loadPositions()">
-			            <option value="">직종을 선택하세요</option>
-			        </select>
-			
-			        <label for="job-position">직무:</label>
-			        <select id="job-position" name="job-position">
-			            <option value="">직종을 먼저 선택하세요</option>
-			        </select>
-				</td>
+				<td><input type="text" id="" name="" value=""></td>
 			</tr>
 			<tr>
 				<td>직종</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td>
+				<!-- 직종 리스트 -->
+				    <label for="occupation-select">직무:</label>
+					<select id="occupation-select" name="occupation-select" onchange="loadJobs(this.value)">
+					    <option value="">직무를 선택하세요</option>
+					    <c:forEach var="occupation" items="${occupations}">
+					        <option value="${occupation.occupationId}">${occupation.occupationName}</option>
+					    </c:forEach>
+					</select>
+					
+					<label for="job-select">직종:</label>
+					<select id="job-select" name="job-select">
+					    <option value="">먼저 직무를 선택하세요</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>직무</td>
@@ -167,44 +171,27 @@ table tr:nth-child(even) {
 	</form>
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
- <script>
-        // 직종 데이터 로드
-        async function loadCategories() {
-            const response = await fetch('/jobs/categories');
-            const categories = await response.json();
-            const categorySelect = document.getElementById('job-category');
+<script>
+    function loadJobs(occupationId) {
+        const jobSelect = document.getElementById('job-select');
 
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.id;
-                option.textContent = category.name;
-                categorySelect.appendChild(option);
-            });
+        // Clear existing options
+        jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
+
+        if (occupationId) {
+            fetch(`/job?occupationId=${occupationId}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(job => {
+                        const option = document.createElement('option');
+                        option.value = job.jobId;
+                        option.textContent = job.jobName;
+                        jobSelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching jobs:', error));
         }
-
-        // 직무 데이터 로드
-        async function loadPositions() {
-            const categoryId = document.getElementById('job-category').value;
-            const positionSelect = document.getElementById('job-position');
-
-            // 초기화
-            positionSelect.innerHTML = '<option value="">직무를 선택하세요</option>';
-
-            if (categoryId) {
-                const response = await fetch(`/jobs/positions?categoryId=${categoryId}`);
-                const positions = await response.json();
-
-                positions.forEach(position => {
-                    const option = document.createElement('option');
-                    option.value = position.id;
-                    option.textContent = position.name;
-                    positionSelect.appendChild(option);
-                });
-            }
-        }
-
-        // 초기화
-        document.addEventListener('DOMContentLoaded', loadCategories);
-    </script>
+    }
+</script>
 </body>
 </html>
