@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 공고 작성</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
 </head>
 <style>
 /* General reset and styling */

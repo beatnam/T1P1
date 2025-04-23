@@ -8,8 +8,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 이력서 모음</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<!-- <link rel="stylesheet" type="text/css" -->
-<%-- 	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css"> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
 </head>
 <style>
 /* General reset and styling */
@@ -122,11 +121,12 @@ table tr:nth-child(even) {
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/coptop.jsp"></jsp:include>
 	<header id="base">
 
 		<div class="parent_div">
 			<!-- 좌측 메뉴 영역 -->
-			<jsp:include page="../inc/coptop.jsp"></jsp:include>
+			
 		</div>
 		<div>
 			<button name="refresh" id="refresh" onclick="location.reload()">화면갱신</button>

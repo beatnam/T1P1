@@ -7,7 +7,7 @@
 	<header id="header">
 		<div class="include-menu">
 			<h2>기업 회원 페이지</h2>
-			<div class="#2">
+			<div class="cop-menu-list">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/copmain/main">기업 페이지</a></li>
 					<li><a href="${pageContext.request.contextPath}/coplist/list">공고 업로드</a></li>

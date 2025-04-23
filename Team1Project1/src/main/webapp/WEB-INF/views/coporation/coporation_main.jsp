@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
 <%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css"> --%>
 </head>
 <style>
@@ -117,14 +118,14 @@ body {
 <jsp:include page="../inc/top.jsp"></jsp:include>
 				<!-- 다른계획있을시 수정 -->
 <jsp:include page="../inc/coptop.jsp"></jsp:include>
-
  <header id="base">
  	<div class="parent_div">
- 		<img alt="" src="">
- 		<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
+ 	
  	</div>
  	<form action="" method="get">
  		<div class="main_content">
+ 			<img alt="" src="">
+ 			<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
  			<ul> 
  				<li><a href="">기업 아이디</a><input type="text" id="" name="" value="" readonly></li>
  				<li><a href="">기업 이름</a><input type="text" id="" name="" value="" readonly></li>

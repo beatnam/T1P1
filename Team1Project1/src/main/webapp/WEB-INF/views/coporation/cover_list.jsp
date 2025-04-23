@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 업로드 공고 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
 <!-- <link rel="stylesheet" type="text/css" -->
 <%-- 	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css"> --%>
 <%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/coptop.css"> --%>
@@ -18,14 +19,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-}
-
-/* Parent container styles */
-.parent_div {
-    margin: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Button styles */
@@ -122,12 +115,8 @@ table tr:nth-child(even) {
 </style>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/coptop.jsp"></jsp:include>
 	<header id="base">
-
-		<div class="parent_div">
-			<!-- 좌측 메뉴 영역 -->
-			<jsp:include page="../inc/coptop.jsp"></jsp:include>
-		</div>
 		<!-- 본문 영역 -->
 		<div class="main_content">
 			<h3>업로드 공고 리스트</h3>

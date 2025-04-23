@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 새공고 업로드</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <style>
