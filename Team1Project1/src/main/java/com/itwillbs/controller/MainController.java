@@ -35,7 +35,7 @@ public class MainController {
 	@GetMapping("/cop_join")
 	public String copJoin() {
 
-		return "/member/cop_join";
+		return "/corporation/cop_join";
 	}
 	
 	@GetMapping("/recruit_info")
@@ -47,7 +47,7 @@ public class MainController {
 	@GetMapping("/copmain")
 	public String copMain() {
 
-		return "/coporation/coporation_main";
+		return "/corporation/corporation_main";
 	}
 	
 	@GetMapping("/customerService")
