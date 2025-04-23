@@ -8,8 +8,6 @@
 <title>기업 관리 | 이력서 열람실</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/coptop.css">
-<!-- <link rel="stylesheet" type="text/css" -->
-<%-- 	href="${pageContext.request.contextPath }/resources/css/selfintroductionletter.css"> --%>
 </head>
 <style>
 /* General reset and styling */
