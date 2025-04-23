@@ -93,13 +93,20 @@ public class CorporationController {
 		return "/corporation/update_regist";
 	}// updateRegist()
 	
+	@PostMapping("/updateRegistPro")
+	public String updateRegistPro() {
+		System.out.println("CorporationController updateRegistPro()");
+
+		return "redirect:/corporation/logout";
+	}// updateRegist()
 	
 	
-	@GetMapping("/update")
-	public String update() {
-		System.out.println("CorporationController update()");
-
-		return "redirect:/corporation/corporationmain_update";
-	}// update()
-
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // 세션 제거
+	    return "redirect:/main/main"; // 로그인 페이지로 이동
+	}
+	
+	
+	
 }
