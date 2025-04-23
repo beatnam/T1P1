@@ -25,4 +25,11 @@ public class CorporationService {
 		return corporationMapper.loginMember(corporationDTO);
 	}
 
+	public void updateRegist(CorporationDTO corporationDTO) {
+		System.out.println("CorporationService updateRegist()");
+
+		
+		corporationMapper.updateRegist(corporationDTO);
+	}
+
 }

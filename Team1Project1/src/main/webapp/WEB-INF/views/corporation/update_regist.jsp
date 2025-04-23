@@ -12,16 +12,17 @@
 <div class="container">
 	<form
 		action="${pageContext.request.contextPath}/corporation/updateRegistPro"
-		method="post" id="uploadRegist" class="joinMember">
-		<!-- 	enctype="multipart/form-data" -->
+		enctype="multipart/form-data" method="post" id="uploadRegist"
+		class="joinMember">
+
 		<fieldset>
 			<legend>대표 이미지 | 사업자 등록증 업로드</legend>
 			<ul class="joinList">
 				<li class="start">
 					<div class="join_content">
 						<label for="corporationPhoto">회사 대표 이미지</label><br>
-						<input type="text" name="corporationPhoto" class="w100p"
-							id="corporationPhoto" />
+						<input type="file" name="corporationPhoto" class="w100p"
+							id="corporationPhoto" required />
 					</div>
 				</li>
 				<br>
@@ -29,8 +30,8 @@
 				<li class="start">
 					<div class="join_content">
 						<label for="corporationRegistrationPdf">사업자 등록증 사본</label><br>
-						<input type="text" name="corporationRegistrationPdf" class="w100p"
-							id="corporationRegistrationPdf" />
+						<input type="file" name="corporationRegistrationPdf" class="w100p"
+							id="corporationRegistrationPdf" required/>
 					</div>
 				</li>
 				<br>

@@ -12,10 +12,7 @@ public interface CorporationMapper {
 	public void insertMember(CorporationDTO corporationDTO);
 
 	public CorporationDTO loginMember(CorporationDTO corporationDTO);
-	
-	
-	
-	
-	
+
+	public void updateRegist(CorporationDTO corporationDTO);
 	
 }
