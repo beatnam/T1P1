@@ -20,6 +20,9 @@ public class CorporationController {
 
 	@Inject
 	private CorporationService corporationService;
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
 	
 	@GetMapping("/main")
 	public String main() {
@@ -32,9 +35,9 @@ public class CorporationController {
 	public String copJoinPro(CorporationDTO corporationDTO) {
 
 		corporationDTO.setMtId(300);
-		//corporationDTO.setCorporationVerified(false);
+		corporationDTO.setCorporationVerified(false);
 		System.out.println(corporationDTO);
-		//corporationService.insertMember(corporationDTO);
+		corporationService.insertMember(corporationDTO);
 
 		return "redirect:/corporation/main";
 	}

@@ -8,17 +8,15 @@
 <mapper namespace="com.itwillbs.mapper.CorporationMapper">
 
 	<insert id="insertMember">
-		insert into corporation(corporationmember_id, corporationmember_name,
+		insert into corporation(corporationmember_id,mt_id, corporationmember_name,
 		corporationmember_passwd,corporationmember_email,
-		corporation_name, corporation_location,
-		corporationmember_phone,corporation_url,corporation_photo,corporation_registration,
-		corporation_registrationpdf,corporation_intro, corporation_verified)
+		corporation_name, corporation_postcode,corporation_address,
+		corporationmember_phone, corporation_url, corporation_photo, corporation_registration,
+		corporation_registrationpdf, corporation_intro, corporation_verified)
 		values
-		(#{corporationMemberId},#{corporationMemberName},#{corporationMemberPasswd},#{corporationMemberEmail},
-		#{corporationName},#{corporationLocation},#{corporationMemberPhone},#{corporationUrl},#{corporationPhoto},
-		#{corporationRegistration},
-		#{corporationRegistrationPdf},#{corporationIntro},
-		#{corporationVerified} )
+		(#{corporationMemberId}, #{mtId}, #{corporationMemberName}, #{corporationMemberPasswd}, #{corporationMemberEmail},
+		#{corporationName}, #{corporationPostcode}, #{corporationAddress}, #{corporationMemberPhone}, #{corporationUrl}, #{corporationPhoto},
+		#{corporationRegistration},	#{corporationRegistrationPdf}, #{corporationIntro}, #{corporationVerified} )
 	</insert>
 
 
