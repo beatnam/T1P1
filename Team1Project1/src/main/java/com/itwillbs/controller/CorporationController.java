@@ -37,9 +37,12 @@ public class CorporationController {
 	}// corporationmain()
 
 	@PostMapping("/copJoinPro")
-	public String copJoinPro(CorporationDTO corporationDTO) {
+	public String copJoinPro(CorporationDTO corporationDTO, HttpServletRequest request) {
 		System.out.println("CorporationController copJoinPro()");
 
+		String corporationMemberEmail = request.getParameter("email1") + "@" + request.getParameter("email2");
+
+		corporationDTO.setCorporationMemberEmail(corporationMemberEmail);
 		corporationDTO.setMtId(300);
 		System.out.println(corporationDTO);
 		corporationService.insertMember(corporationDTO);
@@ -98,21 +101,23 @@ public class CorporationController {
 
 	@PostMapping("/updateRegistPro")
 	public String updateRegistPro(HttpSession session, HttpServletRequest request,
-			MultipartFile corporationRegistraionPdf, MultipartFile corporationPhoto) throws IOException {
+			MultipartFile corporationRegistrationPdf, MultipartFile corporationPhoto) throws IOException {
 		System.out.println("CorporationController updateRegistPro()");
-		
-		
+
 		String corporationMemberId = (String) session.getAttribute("corporationMemberId");
 
-		// 파일 저장 처리
+		System.out.println(corporationMemberId);
+
 		UUID uuid = UUID.randomUUID();
+		
+		String filename = uuid.toString() + "_" + corporationRegistrationPdf.getOriginalFilename();
+		FileCopyUtils.copy(corporationRegistrationPdf.getBytes(), new File(uploadPath, filename));
 
-		String filename = uuid + "_" + corporationRegistraionPdf.getOriginalFilename();
-		FileCopyUtils.copy(corporationRegistraionPdf.getBytes(), new File(uploadPath, filename));
-
-		String filename1 = uuid + "_" + corporationPhoto.getOriginalFilename();
+		String filename1 = uuid.toString() + "_" + corporationPhoto.getOriginalFilename();
 		FileCopyUtils.copy(corporationPhoto.getBytes(), new File(uploadPath, filename1));
 
+		
+		
 		CorporationDTO corporationDTO = new CorporationDTO();
 
 		corporationDTO.setCorporationMemberId(corporationMemberId);

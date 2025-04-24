@@ -55,7 +55,7 @@
 
 						<li class="start">
 							<div class="join_content email_area">
-								<input type="text" name="corporationMemberEmail" class="w100p"
+								<input type="text" name="email1" class="w100p"
 									id="email_lbl" title="이메일 주소" placeholder="이메일 주소 입력" required />
 								<span class="ico_space">@</span>
 								<input type="text" name="email2" class="w160"
