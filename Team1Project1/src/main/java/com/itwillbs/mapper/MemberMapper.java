@@ -12,6 +12,8 @@ public interface MemberMapper {
 	// 추상메서드
 	public void joinMember(MemberDTO memberDTO);
 
+	public MemberDTO loginMember(MemberDTO memberDTO);
+
 	
 	
 }//인터페이스

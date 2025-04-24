@@ -25,6 +25,11 @@ public class MemberService {
 			
 	}//insertMember()
 
+	public MemberDTO loginMember(MemberDTO memberDTO) {
+		
+		return memberMapper.loginMember(memberDTO);
+	}
+
 	
 
 }//클래스

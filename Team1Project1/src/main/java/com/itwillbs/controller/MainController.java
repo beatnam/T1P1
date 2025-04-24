@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main/*")
 public class MainController {
 
-	@GetMapping("/main")
-	public String part1() {
-		System.out.println("MainController part1()");
-		return "/main/main";
-	}
-
+   @GetMapping("/main")
+   public String part1() {
+      System.out.println("MainController part1()");
+      return "/main/main";
+   }
+   
+   @GetMapping("/msg")
+   public String msg() {
+      System.out.println("MainController msg()");
+      return "/main/msg";
+   }
 
 	@GetMapping("/my-profile")
 	public String mypage() {
@@ -21,77 +26,66 @@ public class MainController {
 		return "/mypage/my-profile";
 	}
 
-
 	@GetMapping("/login")
 	public String login() {
 		System.out.println("MainController login()");
 		return "/member/login";
 	}
 
-	@GetMapping("/join")
-	public String join() {
+   @GetMapping("/join")
+   public String join() {
 
-		return "/member/join";
-	}
+      return "/member/join";
+   }
 
-	@GetMapping("/cop_join")
-	public String copJoin() {
-		System.out.println("MainController copJoin()");
-		return "/corporation/cop_join";
-	}
-	
-	@GetMapping("/cop_login")
-	public String copLogin() {
-		System.out.println("MainController coplogin()");
-		return "/corporation/cop_login";
-	}
+   @GetMapping("/cop_join")
+   public String copJoin() {
+      System.out.println("MainController copJoin()");
+      return "/corporation/cop_join";
+   }
 
-	@GetMapping("/recruit_info")
-	public String recruitInfo() {
-		System.out.println("MainController recruitInfo()");
-		return "/recruit_info/info_home";
-	}
-
-
-
-
+   @GetMapping("/recruit_info")
+   public String recruitInfo() {
+      System.out.println("MainController recruitInfo()");
+      return "/recruit_info/info_home";
+   }
 	
 	@GetMapping("/corpmain")
 	public String corpMain() {
 
+      return "/corporation/corporation_main";
+   }
 
-		return "/corporation/corporation_main";
-	}
 
-	@GetMapping("/customerService")
-	public String customerService() {
-		System.out.println("MainController customerService()");
-		return "/customerService/customerService";
-	}
+   @GetMapping("/customerService")
+   public String customerService() {
+      System.out.println("MainController customerService()");
+      return "/customerService/customerService";
+   }
 
-	@GetMapping("/riboard")
-	public String reviewinterviewBoard() {
-		System.out.println("MainController reviewinterviewBoard()");
+   @GetMapping("/riboard")
+   public String reviewinterviewBoard() {
+      System.out.println("MainController reviewinterviewBoard()");
 
-		return "/community/reviewinterview_board";
-	}
+      return "/community/reviewinterview_board";
+   }
 
-	
+   
 
-	@GetMapping("/ciboard")
-	public String commentinterviewBoard() {
+   @GetMapping("/ciboard")
+   public String commentinterviewBoard() {
 
-		System.out.println("MainController commentinterviewBoard()");
-		return "/community/reviewinterview_board";
+      System.out.println("MainController commentinterviewBoard()");
+      return "/community/reviewinterview_board";
 
-	}
+   }
 
-	@GetMapping("/communitymain")
-	public String communityMain() {
-		
-		return "/community/community_info";
-	}
-	
+   @GetMapping("/communitymain")
+   public String communityMain() {
+      
+      return "/community/community_info";
+   }
+   
 }
 
 

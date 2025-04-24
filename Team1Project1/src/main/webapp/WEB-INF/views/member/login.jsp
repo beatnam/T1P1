@@ -12,10 +12,10 @@
 <body>
 
 	<div class="container">
-		<form action="loginPro" method="post">
+		<form action="${pageContext.request.contextPath}/member/loginPro" method="post" class="appForm" id="appForm">
 			<fieldset>
 				<legend>로그인</legend>
-				<p class="joinLogin">개인회원 | 기업회원</p>
+				<p class="joinLogin">개인회원</p>
 
 				<ul>
 					<li>
@@ -42,10 +42,26 @@
 					<!-- 실제 버튼이나 이미지로 구현 가능 -->
 				</div>
 
-				<button type="submit">로그인</button>
+				<button type="submit" id = "submitBtn">로그인</button>
 			</fieldset>
 		</form>
 	</div>
 
 </body>
+<script type="text/javascript">
+
+let submitBtn = document.querySelector("#submitBtn");
+let appForm =  document.querySelector("#appForm");
+let id_lbl = document.querySelector("#id_lbl");
+
+submitBtn.onclick = function () {
+	if(id_lbl.value ==""){
+		alert("아이디를 입력하시오");
+		 id_lbl.focus();
+		 return;
+	}
+	appForm.submit();
+};
+
+</script>
 </html>

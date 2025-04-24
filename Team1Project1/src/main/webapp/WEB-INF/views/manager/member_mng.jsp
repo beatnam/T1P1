@@ -46,7 +46,9 @@
 			<td><select>
 					<option value="all">전체</option>
 					<option value="200">회원</option>
-					<option value="300">기업회원</option>
+					<option value="300">사업자 등록증 제출 전</option>
+					<option value="400">승인 대기</option>
+					<option value="500">기업 회원</option>	
 					<option value="100">관리자</option>
 			</select></td>
 			<!-- -->
