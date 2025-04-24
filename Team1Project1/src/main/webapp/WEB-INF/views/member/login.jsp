@@ -12,16 +12,19 @@
 <body>
 
 	<div class="container">
-		<form action="" method="">
+		<form action="loginPro" method="post">
 			<fieldset>
 				<legend>로그인</legend>
 				<p class="joinLogin">개인회원 | 기업회원</p>
 
 				<ul>
-					<li><input type="text" name="memberId" id="id_lbl"
-						placeholder="아이디" /></li>
+					<li>
+					 <input type="text" name="memberId" id="id_lbl" placeholder="아이디" />
+					</li>
+					
 					<li><input type="password" name="memberPasswd" id="pwd_lbl"
-						placeholder="비밀번호" /></li>
+						placeholder="비밀번호" />
+					</li>
 				</ul>
 
 				<div class="checkbox-group">
