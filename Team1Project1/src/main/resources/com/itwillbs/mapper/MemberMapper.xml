@@ -11,34 +11,11 @@
   
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
-  <insert id="insertMember">
-    insert into members(id,passwd,name,phone,email,gender,agree,content,rdate) 
-    values (#{id},#{passwd},#{name},#{phone},#{email},#{gender},#{agree},#{content},#{rdate})
-  </insert>
-  
-  <select id="loginMember" resultType="com.itwillbs.domain.MemberDTO">
-  	select * from members
-  	where id = #{id} and passwd = #{passwd}
-  </select>
-  
-  <select id="infoMember" resultType="com.itwillbs.domain.MemberDTO">
-  	select * from members
-  	where id = #{id}
-  </select>
-  
-  <update id="updateMember">
-  	update members
-  	set name = #{name}, phone = #{phone}, email = #{email}, gender = #{gender}, agree = #{agree}
-  	where id = #{id} 
-  </update>
-  
-  <delete id="deleteMember">
-  	delete from members
-  	where id = #{id} and passwd = #{passwd}
-  </delete>
-  
-  <select id="listMember" resultType="com.itwillbs.domain.MemberDTO">
-  	select * from members
-  </select>
+  <insert id="joinMember">
+    insert into member(member_id, member_passwd,member_jumin, member_name,member_phone,member_postcode,member_address, member_email, member_info, member_infoC) 
+    values (#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
+    #{memberPhone},#{memberPostcode},#{memberAddress},
+    #{memberEmail},#{memberInfo},#{memberInfoC})
+ </insert>
   
 </mapper>
