@@ -26,7 +26,6 @@ public class CorporationDTO {
     private String corporationPhoto;
     private String corporationRegistrationPdf;
     private String corporationIntro;
-    private boolean corporationVerified;
 
     
 }

@@ -2,14 +2,13 @@ package com.itwillbs.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.domain.CorporationDTO;
+
 @Mapper
-public class CorpMemberMapper {
+public interface CorpMemberMapper {
+
+	public CorporationDTO corpInfo(String corporationMemberId);
 	
-	
-	
-	
-	
-	
-	
+
 	
 }

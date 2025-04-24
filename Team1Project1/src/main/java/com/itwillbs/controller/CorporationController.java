@@ -41,7 +41,6 @@ public class CorporationController {
 		System.out.println("CorporationController copJoinPro()");
 
 		corporationDTO.setMtId(300);
-		corporationDTO.setCorporationVerified(false);
 		System.out.println(corporationDTO);
 		corporationService.insertMember(corporationDTO);
 
@@ -56,7 +55,7 @@ public class CorporationController {
 
 		if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 300) {
 			// 사업자 등록증 제출 전이라 제출 페이지로 이동
-			session.setAttribute("corporationId", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("corporationMemberId", corporationDTO2.getCorporationMemberId());
 			return "redirect:/corporation/update_regist";
 
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 400) {
@@ -65,7 +64,7 @@ public class CorporationController {
 
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 500) {
 			// 모든 승인을 받고 활동 가능한 상태
-			session.setAttribute("corporationId", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("corporationMemberId", corporationDTO2.getCorporationMemberId());
 			return "redirect:/main/main";
 
 		} else {
