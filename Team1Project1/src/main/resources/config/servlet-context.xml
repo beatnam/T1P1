@@ -42,10 +42,14 @@
 	</beans:bean>
 
 <!-- 	서버에 업로드 할 경로 -->
+<!-- 	<beans:bean id="uploadPath" class="java.lang.String"> -->
+<!-- 		<beans:constructor-arg -->
+<!-- 			value="D:\\TourWeb\\TourWeb\\TourWeb\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg> -->
+<!-- 	</beans:bean> -->
+	<!-- 	서버에 업로드 할 경로 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="D:\\TourWeb\\TourWeb\\TourWeb\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+			value="C:\\Users\\dygks\\git\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
 	</beans:bean>
-	
 
 </beans:beans>

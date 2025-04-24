@@ -122,7 +122,7 @@ public class CoverBoardController {
 	    recruitDTO.setRecruitContent(request.getParameter("recruitContent"));
 	    recruitDTO.setCorporationMemberNum(corpNum);
 	    // DB에는 파일 이름이나 전체 경로 등 필요한 정보만 저장
-//	    recruitDTO.setRecruitPhoto(filename); // DB에 String으로 저장되는 부분
+	    recruitDTO.setRecruitPhoto(filename); // DB에 String으로 저장되는 부분
 	    System.out.println("recruitDTO3" + recruitDTO);
 	    jobService.insertRecruit(recruitDTO);
 		
