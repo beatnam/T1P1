@@ -101,16 +101,11 @@ public class CorporationController {
 	public String updateRegistPro(HttpSession session, HttpServletRequest request,
 			MultipartFile coporationRegistraionPdf, MultipartFile coporationPhoto) throws IOException {
 		System.out.println("CorporationController updateRegistPro()");
-		CorporationDTO loginUser = (CorporationDTO) session.getAttribute("corporationMemberId");
+		String corporationMemberId = (String) session.getAttribute("corporationId");
 
-		if (loginUser == null) {
-			return "redirect:/login"; // 로그인 정보 없으면 로그인 페이지로 이동
-		}
-
-		// 로그인된 사용자 ID 추출
-		String corporationMemberId = loginUser.getCorporationMemberId();
-		System.out.println("로그인한 사용자 ID: " + corporationMemberId);
-
+		
+	
+		
 		// 파일 저장 처리
 		UUID uuid = UUID.randomUUID();
 
@@ -121,11 +116,12 @@ public class CorporationController {
 		FileCopyUtils.copy(coporationPhoto.getBytes(), new File(uploadPath, filename1));
 
 		CorporationDTO corporationDTO = new CorporationDTO();
-		
+
 		corporationDTO.setCorporationMemberId(corporationMemberId);
+		System.out.println(corporationDTO.getCorporationMemberId());
 		corporationDTO.setCorporationRegistrationPdf(filename);
 		corporationDTO.setCorporationPhoto(filename1);
-		
+
 		corporationService.updateRegist(corporationDTO);
 
 		return "redirect:/corporation/logout";
