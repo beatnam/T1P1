@@ -1,19 +1,42 @@
 package com.itwillbs.controller;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.service.MemberService;
 
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
 	
+	@Inject
+	private MemberService memberService;
+
 	@GetMapping("/join")
 	public String join() {
-		System.out.println("MemberController join");
-		
+
+		System.out.println("memberController join");
+
 		return "member/join";
 	}
+	
+	
+	
+	@PostMapping("/joinPro")
+	public String joinPro(MemberDTO memberDTO) {
+		System.out.println("memberController joinPro");
+		
+		
+		memberService.joinMember(memberDTO);
+		return "redirect:/main/main";
+	}
+	
 	@GetMapping("/login")
 	public String loginHome() {
 		

@@ -14,6 +14,8 @@
 	<!-- <property name="username" value="root"></property> -->
 	<!-- <property name="password" value="1234"></property> -->
 	<!-- </bean> -->
+	
+	
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
@@ -32,11 +34,15 @@
 
 	<!-- p89 MyBatis 설정 https://mybatis.org/mybatis-3/ -->
 	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		  <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
-		<!-- <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property> -->
-	</bean>
+
+      class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+      <!-- <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property> -->
+   </bean>
+	
+	
+
 
 
 

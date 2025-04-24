@@ -28,7 +28,7 @@ public class MainController {
 
 	@GetMapping("/join")
 	public String join() {
-		System.out.println("MainController join()");
+
 		return "/member/join";
 	}
 
@@ -50,6 +50,7 @@ public class MainController {
 		return "/recruit_info/info_home";
 	}
 
+
 	
 	@GetMapping("/corpmain")
 	public String corpMain() {
@@ -67,8 +68,11 @@ public class MainController {
 	@GetMapping("/riboard")
 	public String reviewinterviewBoard() {
 		System.out.println("MainController reviewinterviewBoard()");
+
 		return "/community/reviewinterview_board";
 	}
+
+	
 
 	@GetMapping("/ciboard")
 	public String commentinterviewBoard() {
@@ -85,4 +89,5 @@ public class MainController {
 	}
 	
 }
+
 
