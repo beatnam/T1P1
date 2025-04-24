@@ -11,5 +11,20 @@
 		select * from corporation
 		where corporationMember_id = #{corporationMemberId}
 	</select>
+	
+	<update id="updateMember">
+		update corporation
+		set 
+		corporationMember_passwd = #{corporationMemberPasswd},
+		corporationMember_email = #{corporationMemberEmail},
+		corporationMember_phone = #{corporationMemberPhone},
+		corporation_name = #{corporationName},
+		corporation_phone = #{corporationPhone},
+		corporation_url = #{corporationUrl},
+		corporation_intro = #{corporationIntro},
+		corporationmember_name = #{corporationMemberName},
+		corporation_address = #{corporationAddress}
+		where corporationMember_id = #{corporationMemberId}
+	</update>
 
 </mapper>

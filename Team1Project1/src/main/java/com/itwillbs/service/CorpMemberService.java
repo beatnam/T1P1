@@ -18,5 +18,11 @@ public class CorpMemberService {
 		
 		return corpMemberMapper.corpInfo(corporationMemberId);
 	}
+
+	public void updateMember(CorporationDTO corporationDTO) {
+		System.out.println("CorpMemberService updateMember()");
+		
+		corpMemberMapper.updateMember(corporationDTO);
+	}
 	
 }

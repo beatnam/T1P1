@@ -8,6 +8,8 @@ import com.itwillbs.domain.CorporationDTO;
 public interface CorpMemberMapper {
 
 	public CorporationDTO corpInfo(String corporationMemberId);
+
+	public void updateMember(CorporationDTO corporationDTO);
 	
 
 	

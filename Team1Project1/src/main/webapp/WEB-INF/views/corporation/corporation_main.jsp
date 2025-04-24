@@ -84,7 +84,8 @@ body {
 
 .main_content ul input[type="text"],
 .main_content ul input[type="tel"],
-.main_content ul input[type="url"] {
+.main_content ul input[type="url"],
+.main_content ul input[type="email"] {
 width: 70%;
 padding: 5px 10px;
 border: 1px solid #ddd;
