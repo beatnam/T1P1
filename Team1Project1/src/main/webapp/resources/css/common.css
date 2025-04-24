@@ -143,36 +143,3 @@ body {
 .footer-right ul li a:hover {
 	text-decoration: underline;
 }
-/* 인클루드 메뉴 스타일 */
-.include-menu {
-	position: absolute;
-	top: 50px; /* 상단에서 50px 내려오도록 설정 */
-	left: 0; /* 페이지 좌측에 고정 */
-	width: 200px; /* 메뉴의 폭 */
-	background-color: #f4f4f4; /* 배경색: 회색 */
-	padding: 10px;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 좌측 그림자 */
-}
-
-/* 메뉴 버튼 간격 */
-.include-menu ul {
-	list-style-type: none; /* 불릿 제거 */
-	padding: 0;
-	margin: 0;
-}
-
-.include-menu ul li {
-	margin: 15px 0; /* 각 버튼 간 세로 간격 추가 */
-}
-
-.include-menu ul li a {
-	text-decoration: none; /* 밑줄 제거 */
-	color: #333; /* 버튼 글자색 */
-	display: block; /* 블록 요소로 변환 */
-	padding: 5px 0;
-}
-
-.include-menu ul li a:hover {
-	color: #007bff; /* 호버 시 색 변경 */
-	text-decoration: underline; /* 밑줄 추가 */
-}

@@ -54,7 +54,7 @@
 			<td>박람회 이름</td>
 			<td>URL</td>
 			<td>날짜</td>
-			<td><a href="fair_update.html">수정</a></td>
+			<td><a href="${pageContext.request.contextPath }/manager/fair_update">수정</a></td>
 			<td><button>삭제</button></td>
 		</tr>
 

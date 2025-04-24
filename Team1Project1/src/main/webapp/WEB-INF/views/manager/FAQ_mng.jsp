@@ -52,7 +52,7 @@
         <tr>
             <td>내용</td>
             <td>답변</td>
-            <td><a href="FAQ_mng.html">수정</a></td>
+            <td><a href="${pageContext.request.contextPath }/manager/FAQ_mng">수정</a></td>
             <td><button>삭제</button></td>
         </tr>
 

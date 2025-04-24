@@ -1,17 +1,17 @@
-@charset "EUC-KR";
-/* ±âº» ½ºÅ¸ÀÏ */
+@charset "UTF-8";
+/* ï¿½âº» ï¿½ï¿½Å¸ï¿½ï¿½ */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #ffffff; /* ¹è°æ»ö: ÇÏ¾á»ö */
-  color: #000000; /* ±ÛÀÚ»ö: °ËÀº»ö */
+  background-color: #ffffff; /* ï¿½ï¿½ï¿½ï¿½: ï¿½Ï¾ï¿½ï¿½ */
+  color: #000000; /* ï¿½ï¿½ï¿½Ú»ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 }
 
-/* Çì´õ ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 header {
-  background-color: #e0e0e0; /* Å¾ÂÊ ¹è°æ»ö: È¸»ö */
-  color: #333333; /* Çì´õ ±ÛÀÚ»ö */
+  background-color: #e0e0e0; /* Å¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: È¸ï¿½ï¿½ */
+  color: #333333; /* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú»ï¿½ */
   padding: 20px;
   text-align: center;
 }
@@ -23,34 +23,34 @@ header h3 {
 
 
 
-/* ÆäÀÌÁö ¹øÈ£ ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½Å¸ï¿½ï¿½ */
 .page-numbers {
-  display: flex; /* °¡·Î Á¤·Ä */
-  justify-content: center; /* °¡¿îµ¥ Á¤·Ä */
+  display: flex; /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+  justify-content: center; /* ï¿½ï¿½ï¿½îµ¥ ï¿½ï¿½ï¿½ï¿½ */
   flex-direction: row;
   color: #333;
-  margin: 0 10px; /* ¸µÅ© °£ ÁÂ¿ì °£°Ý Ãß°¡ */
+  margin: 0 10px; /* ï¿½ï¿½Å© ï¿½ï¿½ ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ */
 }
 
 .t2 {
-  display: flex; /* ÇÃ·º½º ¹Ú½º È°¼ºÈ­ */
-  flex-direction: column; /* ¼¼·Î Á¤·Ä */
-  align-items: center; /* °¡¿îµ¥ Á¤·Ä */
+  display: flex; /* ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ È°ï¿½ï¿½È­ */
+  flex-direction: column; /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+  align-items: center; /* ï¿½ï¿½ï¿½îµ¥ ï¿½ï¿½ï¿½ï¿½ */
 }
 
-/* ÀÎÅ¬·çµå ¿ä¼Ò ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 div {
   display: flex;
-  flex-direction: column; /* ¼¼·Î·Î ¹èÄ¡ */
+  flex-direction: column; /* ï¿½ï¿½ï¿½Î·ï¿½ ï¿½ï¿½Ä¡ */
   width: 80%;
   margin: 20px auto;
   padding: 20px;
-  background-color: #ffffff; /* ¹è°æ»ö: ÇÏ¾á»ö */
+  background-color: #ffffff; /* ï¿½ï¿½ï¿½ï¿½: ï¿½Ï¾ï¿½ï¿½ */
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
-/* Å×ÀÌºí ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -76,7 +76,7 @@ table tr:hover {
   background-color: #f1f1f1;
 }
 
-/* ÆäÀÌÁö ¸µÅ© ½ºÅ¸ÀÏ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ï¿½Å¸ï¿½ï¿½ */
 a {
   text-decoration: none;
   color: #333;
@@ -90,6 +90,3 @@ a:hover {
 h3 {
 	text-align: left;
 }
-
-
-

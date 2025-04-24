@@ -45,9 +45,9 @@
 		<tr>
 			<td><select>
 					<option value="all">전체</option>
-					<option value="member">회원</option>
-					<option value="company">기업회원</option>
-					<option value="admin">관리자</option>
+					<option value="200">회원</option>
+					<option value="300">기업회원</option>
+					<option value="100">관리자</option>
 			</select></td>
 			<!-- -->
 			<td>회원 아이디</td>
@@ -69,6 +69,7 @@
 		</tr>
 
 	</table>
+	
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 
