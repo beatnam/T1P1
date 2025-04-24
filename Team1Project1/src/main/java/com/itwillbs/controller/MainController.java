@@ -50,9 +50,11 @@ public class MainController {
 		return "/recruit_info/info_home";
 	}
 
-	@GetMapping("/copmain")
-	public String copMain() {
-		System.out.println("MainController copMain()");
+	
+	@GetMapping("/corpmain")
+	public String corpMain() {
+
+
 		return "/corporation/corporation_main";
 	}
 
@@ -70,7 +72,17 @@ public class MainController {
 
 	@GetMapping("/ciboard")
 	public String commentinterviewBoard() {
+
 		System.out.println("MainController commentinterviewBoard()");
 		return "/community/reviewinterview_board";
+
 	}
+
+	@GetMapping("/communitymain")
+	public String communityMain() {
+		
+		return "/community/community_info";
+	}
+	
 }
+

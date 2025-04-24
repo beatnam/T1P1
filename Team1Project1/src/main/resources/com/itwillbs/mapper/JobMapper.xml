@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	https://mybatis.org/mybatis-3/getting-started.html 
+	src/main/resources/mapper폴더/MemberMapper.xml파일 
+	
+-->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mapper.JobMapper">
+
+  <!-- 직무 목록 가져오기 -->
+    <select id="getOccupations" resultType="com.itwillbs.domain.OccupationDTO">
+        SELECT occupation_id AS occupationId,
+               occupation_name AS occupationName
+        FROM occupation
+    </select>
+
+    <!-- 특정 직무 ID에 따른 직종 목록 가져오기 -->
+    <select id="getJobsByOccupation" parameterType="int" resultType="com.itwillbs.domain.JobDTO">
+        SELECT job_id AS jobId,
+               occupation_id AS occupationId,
+               job_name AS jobName
+        FROM job
+        WHERE occupation_id = #{occupationId}
+    </select>
+
+  
+</mapper>

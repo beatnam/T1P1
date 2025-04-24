@@ -15,14 +15,14 @@
 		corporation_postcode,corporation_address,
 		corporationmember_phone,
 		corporation_url, corporation_photo, corporation_registration,
-		corporation_registrationpdf, corporation_intro, corporation_verified)
+		corporation_registrationpdf, corporation_intro)
 		values
 		(#{corporationMemberId}, #{mtId}, #{corporationMemberName},
 		#{corporationMemberPasswd}, #{corporationMemberEmail},
 		#{corporationName}, #{corporationPostcode}, #{corporationAddress},
 		#{corporationMemberPhone}, #{corporationUrl}, #{corporationPhoto},
 		#{corporationRegistration}, #{corporationRegistrationPdf},
-		#{corporationIntro}, #{corporationVerified} )
+		#{corporationIntro})
 	</insert>
 
 	<select id="loginMember"
