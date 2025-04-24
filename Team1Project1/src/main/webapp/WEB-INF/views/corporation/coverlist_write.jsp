@@ -124,44 +124,40 @@ select {
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 <div class="parent_div">
 	<h1>새공고 업로드</h1>
-	<form action="write" method="post" enctype="multipart/form-data">
+	<form action="write" method="post">
 		<div class="main_content">
 		<table border="1">
 			<tr>
 				<td>제목입력</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td><input type="text" id="" name="recruitName" value=""></td>
 			</tr>
 			<tr>
 				<td>사진 첨부파일</td>
-				<td><input type="file" name="file"></td>
-			</tr>
-			<tr>
-				<td>경력</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td><img alt="" src="">미구현</td>
 			</tr>
 			<tr>
 				<td>학력</td>
 				<td>
-				<select name="Levels" id="Levels">
-					<option value="0">학력무관</option>
-					<option value="1">고등학교졸업</option>
-					<option value="2">대학졸업(2,3년)</option>
-					<option value="3">대학교졸업(4년)</option>
-					<option value="4">석사졸업</option>
-					<option value="5">박사졸업</option>
-					<option value="6">고등학교졸업이상</option>
-					<option value="7">대학졸업(2,3년)이상</option>
-					<option value="8">대학교졸업(4년)이상</option>
-					<option value="9">석사졸업이상</option>
+				<select name="recruitEduhigh" id="Levels">
+					<option value="1">학력무관</option>
+					<option value="2">고등학교졸업</option>
+					<option value="3">대학졸업(2,3년)</option>
+					<option value="4">대학교졸업(4년)</option>
+					<option value="5">석사졸업</option>
+					<option value="6">박사졸업</option>
+					<option value="7">고등학교졸업이상</option>
+					<option value="8">대학졸업(2,3년)이상</option>
+					<option value="9">대학교졸업(4년)이상</option>
+					<option value="10">석사졸업이상</option>
 				</select>
 				</td>
 			</tr>
 			<tr>
-				<td>직종</td>
+				<td>직종 직무</td>
 				<td>
 				<!-- 직종 리스트 -->
 				    <label for="occupation-select"></label>
-					<select id="occupation-select" name="occupation-select" onchange="loadJobs(this.value)">
+					<select id="occupation-select" name="recruitOccupation" onchange="loadJobs(this.value)">
 					    <option value="">직무를 선택하세요</option>
 					    <c:forEach var="occupation" items="${occupations}">
 					        <option value="${occupation.occupationId}">${occupation.occupationName}</option>
@@ -169,41 +165,32 @@ select {
 					</select>
 					
 					<label for="job-select"></label>
-					<select id="job-select" name="job-select">
+					<select id="job-select" name="recruitJob">
 					    <option value="">먼저 직무를 선택하세요</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>직무</td>
-				<td><input type="text" id="" name="" value=""></td>
-			</tr>
-			<tr>
 				<td>연봉</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td><input type="text" id="" name="recruitSalary" value=""></td>
 			</tr>
 			<tr>
 				<td>근무지역</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td><input type="text" id="" name="recruitLocation" value=""></td>
 			</tr>
 			<tr>
 				<td>게시날짜</td>
-				<td><input type="text" id="" name="" value="" readonly></td>
+				<td><input type="text" id="" name="recruitDate" value="" readonly></td>
 			</tr>
 			<tr>
 				<td>근무일수</td>
-				<td><input type="text" id="" name="" value=""></td>
+				<td><input type="text" id="" name="recruitWorkday" value=""></td>
 			</tr>
 			<tr>
 				<td>상세내용</td>
-				<td><textarea rows="50" cols="50"></textarea> </td>
-			</tr>
-			<tr>
-				<td>기업 홈페이지 주소</td>
-				<td><input type="text" id="" name="" value=""> </td>
+				<td><textarea rows="50" cols="50" name="recruitContent"></textarea> </td>
 			</tr>
 				<tr>
-				
 				<td colspan="2">
 					<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> 
 					<div class="apply_btn" id="apply_btn">

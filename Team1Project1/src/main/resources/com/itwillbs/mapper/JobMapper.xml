@@ -26,6 +26,18 @@
         FROM job
         WHERE occupation_id = #{occupationId}
     </select>
+    
+    <insert id="insertRecruit">
+    	insert into recruit
+    	(
+    	
+    	)
+    	value 
+    	(
+    	
+    	)
+    	
+    </insert>
 
   
 </mapper>

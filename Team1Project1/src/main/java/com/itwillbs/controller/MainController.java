@@ -1,8 +1,15 @@
 package com.itwillbs.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itwillbs.domain.CorporationDTO;
+import com.itwillbs.service.CorpMemberService;
+import com.itwillbs.service.CorporationService;
 
 @Controller
 @RequestMapping("/main/*")
@@ -53,8 +60,9 @@ public class MainController {
 	
 	@GetMapping("/corpmain")
 	public String corpMain() {
-
-
+		System.out.println("MainController corpMain()");
+		
+		
 		return "/corporation/corporation_main";
 	}
 
