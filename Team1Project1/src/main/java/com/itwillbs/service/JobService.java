@@ -1,5 +1,6 @@
 package com.itwillbs.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,11 @@ public class JobService {
 
 	public void insertRecruit(RecruitDTO recruitDTO) {
 		System.out.println("JobService insertRecruit()");
+		
+		recruitDTO.setRecruitDate(LocalDateTime.now());
+		System.out.println("recruitDTO : " + recruitDTO);
 		jobMapper.insertRecruit(recruitDTO);
 	}
+	
+	
 }

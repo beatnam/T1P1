@@ -12,8 +12,7 @@ import lombok.ToString;
 @ToString
 public class RecruitDTO {
 	
-	private int recruitId;
-	private int recruitName;
+	private String recruitName;
 	private int corporationMemberNum;
 	private int recruitOccupation;
 	private int recruitJob;
@@ -25,6 +24,7 @@ public class RecruitDTO {
 	private int recruitWorkday;
 	private String recruitPhoto;
 	private Date recruitDeatline;
+	
 	
 	
 	

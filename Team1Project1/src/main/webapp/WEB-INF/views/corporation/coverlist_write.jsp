@@ -73,7 +73,8 @@ table th {
 table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-.apply_btn input[type="button"] {
+.apply_btn input[type="button"],
+.apply_btn input[type="submit"] {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -82,7 +83,8 @@ table tr:nth-child(even) {
     cursor: pointer;
 }
 
-.apply_btn input[type="button"]:hover {
+.apply_btn input[type="button"]:hover,
+.apply_btn input[type="submit"]:hover {
     filter: brightness(0.9);
 }
 
@@ -124,7 +126,7 @@ select {
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 <div class="parent_div">
 	<h1>새공고 업로드</h1>
-	<form action="write" method="post">
+	<form action="${pageContext.request.contextPath}/corplist/writepro" method="post" id="appForm" enctype="multipart/form-data">
 		<div class="main_content">
 		<table border="1">
 			<tr>
@@ -133,7 +135,7 @@ select {
 			</tr>
 			<tr>
 				<td>사진 첨부파일</td>
-				<td><img alt="" src="">미구현</td>
+				<td><input type="file" name="recruitPhoto"></td>
 			</tr>
 			<tr>
 				<td>학력</td>
@@ -179,8 +181,8 @@ select {
 				<td><input type="text" id="" name="recruitLocation" value=""></td>
 			</tr>
 			<tr>
-				<td>게시날짜</td>
-				<td><input type="text" id="" name="recruitDate" value="" readonly></td>
+				<td>마감일자</td>
+				<td><input type="date" id="recruitDeatline" name="recruitDeatline" value=""></td>
 			</tr>
 			<tr>
 				<td>근무일수</td>
@@ -194,7 +196,7 @@ select {
 				<td colspan="2">
 					<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> 
 					<div class="apply_btn" id="apply_btn">
-					<input type="button" value="공고 올리기" onclick="location.href='${pageContext.request.contextPath}/corplist/updatepro'">
+					<input type="submit" value="공고 올리기">
 					<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 					</div>
 				</td>
@@ -203,6 +205,11 @@ select {
 	</form>
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+<!-- 	마감일자란에 기본 날자(현재날짜)입력 -->
+<script>
+    document.getElementById("recruitDeatline").valueAsDate = new Date();
+</script>
+	
 <script>
     function loadJobs(occupationId) {
         const jobSelect = document.getElementById('job-select');
