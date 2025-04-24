@@ -72,17 +72,11 @@ public class CorporationController {
 
 		} else {
 
-			return "redirect:/corporation/msg";
+			return "redirect:/main/msg";
 		}
 
 	}
 
-	@GetMapping("/msg")
-	public String copErr() {
-		System.out.println("CorporationController copErr()");
-
-		return "/corporation/msg";
-	}// copAlert()
 
 	// 사업자 등록증 제출하고 승인을 기다리는 상태
 	@GetMapping("/cop_alert")
@@ -109,15 +103,13 @@ public class CorporationController {
 		System.out.println(corporationMemberId);
 
 		UUID uuid = UUID.randomUUID();
-		
+
 		String filename = uuid.toString() + "_" + corporationRegistrationPdf.getOriginalFilename();
 		FileCopyUtils.copy(corporationRegistrationPdf.getBytes(), new File(uploadPath, filename));
 
 		String filename1 = uuid.toString() + "_" + corporationPhoto.getOriginalFilename();
 		FileCopyUtils.copy(corporationPhoto.getBytes(), new File(uploadPath, filename1));
 
-		
-		
 		CorporationDTO corporationDTO = new CorporationDTO();
 
 		corporationDTO.setCorporationMemberId(corporationMemberId);

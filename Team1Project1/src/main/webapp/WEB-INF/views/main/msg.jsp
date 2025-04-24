@@ -9,6 +9,7 @@
 <body>
 	<script type="text/javascript">
 		alert('틀린 입력입니다.');
+		history.back();
 	</script>
 </body>
 </html>

@@ -13,6 +13,12 @@ public class MainController {
 		System.out.println("MainController part1()");
 		return "/main/main";
 	}
+	
+	@GetMapping("/msg")
+	public String msg() {
+		System.out.println("MainController msg()");
+		return "/main/msg";
+	}
 
 	@GetMapping("/my-profile")
 	public String mypage() {
@@ -50,14 +56,13 @@ public class MainController {
 		return "/recruit_info/info_home";
 	}
 
-
-	
 	@GetMapping("/corpmain")
 	public String corpMain() {
 
 
 		return "/corporation/corporation_main";
 	}
+	
 
 	@GetMapping("/customerService")
 	public String customerService() {
