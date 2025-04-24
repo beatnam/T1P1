@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 	
 	@GetMapping("/join")
-	public String joinHome() {
+	public String join() {
+		System.out.println("MemberController join");
 		
 		return "member/join";
 	}
