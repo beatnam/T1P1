@@ -59,11 +59,11 @@
 	<form action="#" method="post">
 		<label for="faq_subject">faq_subject:</label>
 		<br>
-		<input type="text" id="faq_subject" name="faq_subject" required>
+		<input type="text" id="faq_subject" name="faqSubject" required>
 		<br> <br>
 		<label for="faq_content">faq_content:</label>
 		<br>
-		<input type="text" id="faq_content" name="faq_content" required>
+		<input type="text" id="faq_content" name="faqContent" required>
 		<br> <br>
 		<input type="submit" value="등록">
 		<jsp:include page="../inc/footer.jsp"></jsp:include>

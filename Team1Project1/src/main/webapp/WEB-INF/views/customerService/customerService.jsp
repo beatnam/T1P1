@@ -17,7 +17,7 @@
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 
 
-	<h1> 고개센터 </h1>
+	<h1> 고객센터 </h1>
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 

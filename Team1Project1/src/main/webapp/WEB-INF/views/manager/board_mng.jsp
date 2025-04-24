@@ -40,9 +40,9 @@
     </div>
 	<h1>게시판 관리</h1>
 	<ul>
-		<li><a href="review_employment_mng.html">취업 후기 게시판 관리</a></li>
-		<li><a href="review_interview_mng.html">면접 후기 게시판 관리</a></li>
-		<li><a href="FAQ_mng.html">FAQ 게시판 관리</a></li>
+		<li><a href="${pageContext.request.contextPath }/manager/review_employment_mng">취업 후기 게시판 관리</a></li>
+		<li><a href="${pageContext.request.contextPath }/manager/review_interview_mng">면접 후기 게시판 관리</a></li>
+		<li><a href="${pageContext.request.contextPath }/manager/FAQ_mng">FAQ 게시판 관리</a></li>
 	</ul>
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>

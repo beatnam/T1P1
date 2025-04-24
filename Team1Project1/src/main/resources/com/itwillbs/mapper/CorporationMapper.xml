@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://mybatis.org/mybatis-3/getting-started.html src/main/resources/mapper폴더/MemberMapper.xml파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.CorporationMapper">
+
+	<insert id="insertMember">
+		insert into corporation(corporationmember_id,mt_id,
+		corporationmember_name,
+		corporationmember_passwd,corporationmember_email,
+		corporation_name,
+		corporation_postcode,corporation_address,
+		corporationmember_phone,
+		corporation_url, corporation_photo, corporation_registration,
+		corporation_registrationpdf, corporation_intro)
+		values
+		(#{corporationMemberId}, #{mtId}, #{corporationMemberName},
+		#{corporationMemberPasswd}, #{corporationMemberEmail},
+		#{corporationName}, #{corporationPostcode}, #{corporationAddress},
+		#{corporationMemberPhone}, #{corporationUrl}, #{corporationPhoto},
+		#{corporationRegistration}, #{corporationRegistrationPdf},
+		#{corporationIntro})
+	</insert>
+
+	<select id="loginMember"
+		resultType="com.itwillbs.domain.CorporationDTO">
+		select * from corporation
+		where corporationmember_id = #{corporationMemberId} and
+		corporationmember_passwd = #{corporationMemberPasswd}
+	</select>
+
+	<update id="updateRegist">
+		UPDATE corporation
+		SET
+		corporation_registrationPdf = #{corporationRegistrationPdf},
+		corporation_photo = #{corporationPhoto}
+		WHERE
+		corporationmember_Id = #{corporationMemberId}
+	</update>
+
+</mapper>

@@ -43,21 +43,21 @@
 
     <form action="#" method="post">
         <label for="convention_name">박람회명:</label><br>
-        <input type="text" id="convention_name" name="convention_name" required><br><br>
+        <input type="text" id="convention_name" name="conventionName" required><br><br>
 
-        <input type="file" id="convention_photo" name="convention_photo" accept="image/*"><br><br>
+        <input type="file" id="convention_photo" name="conventionPhoto" accept="image/*"><br><br>
 
         <label for="convention_location">박람회 장소:</label><br>
-        <input type="text" id="convention_location" name="convention_location" required><br><br>
+        <input type="text" id="convention_location" name="conventionLocation" required><br><br>
 
         <label for="convention_url">박람회 홈페이지:</label><br>
-        <input type="url" id="convention_url" name="convention_url" required><br><br>
+        <input type="url" id="convention_url" name="conventionUrl" required><br><br>
 
         <label for="convention_startdate">박람회 시작 날짜:</label><br>
-        <input type="date" id="convention_startdate" name="convention_startdate" required><br><br>
+        <input type="date" id="convention_startdate" name="conventionStartdate" required><br><br>
 
         <label for="convention_enddate">박람회 종료 날짜:</label><br>
-        <input type="date" id="convention_enddate" name="convention_enddate" required><br><br>
+        <input type="date" id="convention_enddate" name="conventionEnddate" required><br><br>
 
         <input type="submit" value="등록">
 <jsp:include page="../inc/footer.jsp"></jsp:include>

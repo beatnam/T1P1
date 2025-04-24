@@ -7,65 +7,85 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/main/*")
 public class MainController {
-	
+
 	@GetMapping("/main")
 	public String part1() {
-
+		System.out.println("MainController part1()");
 		return "/main/main";
 	}
-	
-	
+
+
+	@GetMapping("/my-profile")
+	public String mypage() {
+		System.out.println("MainController mypage()");
+		return "/mypage/my-profile";
+	}
+
+
 	@GetMapping("/login")
 	public String login() {
-
+		System.out.println("MainController login()");
 		return "/member/login";
 	}
-	
+
 	@GetMapping("/join")
 	public String join() {
 
 		return "/member/join";
 	}
+
+	@GetMapping("/cop_join")
+	public String copJoin() {
+		System.out.println("MainController copJoin()");
+		return "/corporation/cop_join";
+	}
 	
+	@GetMapping("/cop_login")
+	public String copLogin() {
+		System.out.println("MainController coplogin()");
+		return "/corporation/cop_login";
+	}
+
 	@GetMapping("/recruit_info")
 	public String recruitInfo() {
-
+		System.out.println("MainController recruitInfo()");
 		return "/recruit_info/info_home";
 	}
+
+
+
+
 	
+	@GetMapping("/corpmain")
+	public String corpMain() {
 
-	@GetMapping("/my-profile")
-	public String mypage() {
 
-		return "/mypage/my-profile";
+		return "/corporation/corporation_main";
 	}
 
-
-	@GetMapping("/copmain")
-	public String copMain() {
-
-		return "/coporation/coporation_main";
-	}
-	
 	@GetMapping("/customerService")
 	public String customerService() {
-
+		System.out.println("MainController customerService()");
 		return "/customerService/customerService";
 	}
-	
-	
+
 	@GetMapping("/riboard")
 	public String reviewinterviewBoard() {
+		System.out.println("MainController reviewinterviewBoard()");
 
 		return "/community/reviewinterview_board";
 	}
+
 	
+
 	@GetMapping("/ciboard")
 	public String commentinterviewBoard() {
-		
+
+		System.out.println("MainController commentinterviewBoard()");
 		return "/community/reviewinterview_board";
+
 	}
-	
+
 	@GetMapping("/communitymain")
 	public String communityMain() {
 		
@@ -73,4 +93,5 @@ public class MainController {
 	}
 	
 }
+
 
