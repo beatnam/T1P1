@@ -1,10 +1,13 @@
 package com.itwillbs.controller;
 
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+@RequestMapping("/mypage/*")
 @Controller
 public class MyPageController {
 
@@ -12,6 +15,10 @@ public class MyPageController {
 	public String main() {
 		return "";
 	}
+		
+	@PostMapping
+	
+	
 	
     @RequestMapping("/mypage/my-resume")
     public String myResumePage() {

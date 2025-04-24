@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 프로필</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-profile-edit.css">
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
 <div class="all">
 
     <div class="banner">
-        <h2><a href="#">마이페이지</a></h2>
+        <h2><a href="${pageContext.request.contextPath}/mypage/my-profile">마이페이지</a></h2>
         <div class="banner1">
             <ul class="banner-list">
                 <li class="banner-profile active"><a href="${pageContext.request.contextPath}/mypage/my-profile">프로필</a></li>
@@ -33,31 +32,31 @@
         <div class="inbox1">
             <div class="so">한 줄 소개</div>
             <div>
-                <input type="text" name="member_introduce" value="허거덩">
+                <input type="text" name="member_introduce" value="허거덩" required>
             </div>
         </div>
 
         <div class="inbox2">
             <div class="che">최종 학력</div>
-            <div><input type="text" name="eduhigh_id" value="허거덩"></div>
+            <div><input type="text" name="eduhigh_id" value="허거덩" required></div>
             <div><input type="text" name="eduhigh_id" value="허거덩"></div>
         </div>
 
         <div class="inbox3">
             <div class="gyeong">경력 사항</div>
-            <div><input type="text" value="허거덩"></div>
+            <div><input type="text" value="허거덩" required></div>
             <div><input type="text" value="허거덩"></div>
             <div><input type="text" value="허거덩"></div>
         </div>
 
         <div class="inbox4">
             <div class="ii">이름</div>
-            <div><input type="text" name="member_name" value="허거덩"></div>
+            <div><input type="text" name="member_name" value="허거덩" required></div>
         </div>
 
         <div class="inbox5">
             <div class="hyu">휴대전화</div>
-            <div><input type="text" name="member_phone" value="허거덩"></div>
+            <div><input type="text" name="member_phone" value="허거덩" required></div>
         </div>
 
         <div class="inbox6">
@@ -69,7 +68,7 @@
             <div class="email">이메일 인증 강화</div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="member_infoC" value="agree">동의
+                    <input type="radio" name="member_infoC" value="agree" required>동의
                 </label>
                 <label>
                     <input type="radio" name="member_infoC" value="disagree">비동의
@@ -80,15 +79,12 @@
         <div class="inbox8">
   			<button type="button" class="edit-btn" 
   			onclick="alert('저장이 완료되었습니다.'); location.href='${pageContext.request.contextPath}/mypage/my-profile'">저장</button>
-  		</div>
-  		
-  	</div>		
-  	
-</div>  	
-
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+		</div>
 
 
+    </div>
+
+</div>
 
 <%@ include file="../inc/footer.jsp" %>
 
