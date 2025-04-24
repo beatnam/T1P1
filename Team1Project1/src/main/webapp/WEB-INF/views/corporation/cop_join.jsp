@@ -32,7 +32,7 @@
 						</li>
 
 						<li class="start"><label for="id_lbl"
-							class="tit_lbl pilsoo_item"></label>
+								class="tit_lbl pilsoo_item"></label>
 							<div class="join_content" id="idCheck"></div></li> <br>
 
 						<li class="start">
@@ -55,8 +55,8 @@
 
 						<li class="start">
 							<div class="join_content email_area">
-								<input type="text" name="corporationMemberEmail" class="w100p"
-									id="email_lbl" title="이메일 주소" placeholder="이메일 주소 입력" required />
+								<input type="text" name="email1" class="w100p" id="email_lbl"
+									title="이메일 주소" placeholder="이메일 주소 입력" required />
 								<span class="ico_space">@</span>
 								<input type="text" name="email2" class="w160"
 									title="이메일 제공업체 입력" required />
@@ -82,20 +82,18 @@
 						</li> <br>
 
 
-						</li>
-						<li class="start">
-							<div class="join_content">
-								<input type="text" name="corporationPostcode" class="w100p"
-									id="address_lbl" placeholder="우편번호" required />
-							</div> <br>
-
-						</li>
 
 						<li class="start">
 							<div class="join_content">
-								<input type="text" name="corporationAddress" class="w100p"
-									id="address_lbl" placeholder="기업 주소" required />
-							</div> <br>
+								<input type="text" name="corporationPostcode" id="postcode_lbl"
+									placeholder="우편번호" readonly required />
+								<input type="text" name="corporationAddress" id="address_lbl"
+									placeholder="주소" readonly required />
+								<button type="button" class="aceept_content"
+									onclick="execDaumPostcode()">주소검색</button>
+							</div>
+						</li>
+
 						<li class="start">
 							<div class="join_content">
 								<input type="tel" name="corporationMemberPhone" class="w100p"
@@ -105,13 +103,14 @@
 								<span>인증번호 전송</span>
 							</button>
 						</li>
+
 						<li class="start">
 							<div class="join_content">
 								<input type="text" name="corporationUrl" class="w100p"
 									id="phone_lbl" placeholder="회사 홈페이지" />
 							</div>
 						</li>
-					
+
 						<li class="start">
 							<div class="join_content">
 								<input type="text" name="corporationRegistration" class="w100p"
@@ -119,7 +118,7 @@
 							</div>
 						</li>
 
-						
+
 
 						<li class="start">
 							<div class="join_content">
@@ -142,6 +141,20 @@
 
 
 	</div>
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		function execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							document.getElementById("postcode_lbl").value = data.zonecode;
+							document.getElementById("address_lbl").value = data.address;
+						}
+					}).open();
+		}
+	</script>
+
 
 	<script type="text/javascript">
 		let submitBtn = document.querySelector("#submitBtn");
@@ -154,6 +167,7 @@
 			copJoinForm.submit();
 		}
 	</script>
+
 
 </body>
 </html>
