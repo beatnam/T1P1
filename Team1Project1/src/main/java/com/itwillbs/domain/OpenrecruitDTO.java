@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class OpenecruitDTO {
+public class OpenrecruitDTO {
 
 	private int orId ;
 	private int memberNum;
