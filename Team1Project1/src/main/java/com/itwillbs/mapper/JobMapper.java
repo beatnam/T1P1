@@ -15,5 +15,9 @@ public interface JobMapper {
 	public List<JobDTO> getJobsByOccupation(int occupationId); // 특정 직무에 대한 직종 리스트
 	public void insertRecruit(RecruitDTO recruitDTO);
 	public Integer getMaxNum();
+	public List<RecruitDTO> coverList();
+	public RecruitDTO contentBoard(int recruitId);
+	public OccupationDTO occupationNum(OccupationDTO occupationDTO);
+	public JobDTO jobNum(JobDTO jobDTO);
 	
 }

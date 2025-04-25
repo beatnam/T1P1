@@ -37,6 +37,30 @@ public class JobService {
 		System.out.println("recruitDTO : " + recruitDTO);
 		jobMapper.insertRecruit(recruitDTO);
 	}
+
+	public List<RecruitDTO> coverList() {
+		System.out.println("JobService coverList()");
+		
+		return jobMapper.coverList();
+	}
+
+	public RecruitDTO contentBoard(int recruitId) {
+		System.out.println("JobService contentBoard()");
+		
+		return jobMapper.contentBoard(recruitId);
+	}
+
+	public OccupationDTO occupationNum(OccupationDTO OccupationDTO) {
+		System.out.println("JobService occupationNum()");
+		
+		return jobMapper.occupationNum(OccupationDTO);
+	}
+
+	public JobDTO jobNum(JobDTO jobDTO) {
+		System.out.println("JobService jobNum()");
+		
+		return jobMapper.jobNum(jobDTO);
+	}
 	
 	
 }

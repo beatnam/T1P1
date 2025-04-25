@@ -120,49 +120,17 @@ table tr:nth-child(even) {
 			<table border="1">
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?corporationMemberNum=3">이름</a></td>
-<%-- 					${pageContext.request.contextPath}/corplist/content?corporationMemberNum=${RecruitDTO.corporationMemberNum} --%>
-					<td>지원자</td>
 					<td>공고이름</td>
-				</tr>
-				<%-- 					<c:forEach var="" items=""> --%>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>지원자</td>
-					<td>공고이름</td>
-				</tr>
-				<%-- 					</c:forEach> --%>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
 					<td>마감일자</td>
-					<td>공고이름</td>
 				</tr>
+				
+				<c:forEach var="recruitDTO" items="${listCover}">
 				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
-					<td>공고이름</td>
+					<td>${recruitDTO.recruitId}</td>
+					<td><a href="${pageContext.request.contextPath}/corplist/content?recruitId=${recruitDTO.recruitId}">${recruitDTO.recruitName}</a></td>
+					<td>${recruitDTO.recruitDeatline}</td>
 				</tr>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
-					<td>공고이름</td>
-				</tr>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
-					<td>공고이름</td>
-				</tr>
-				<tr>
-					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content?num=${boardDTO.num}">이름</a></td>
-					<td>마감일자</td>
-					<td>공고이름</td>
-				</tr>
+				</c:forEach>
 			</table>
 
 			<!-- 			<div class=""> -->

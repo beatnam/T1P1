@@ -129,10 +129,10 @@ select {
 		<table border="1">
 			<tr>
 				<td>제목입력</td>
-				<td><input type="text" id="" name="recruitName" value="${RecruitDTO.recruitName}"></td>
+				<td><input type="text" id="" name="recruitName" value="${recruitDTO.recruitName}"></td>
 			</tr>
 			<tr>
-				<td>사진 첨부파일 <img src="${pageContext.request.contextPath}/resources/upload/${RecruitDTO.recruitPhoto }" width="200" height="200"></td>
+				<td>사진 첨부파일 <img src="${pageContext.request.contextPath}/resources/upload/${recruitDTO.recruitPhoto }" width="200" height="200"></td>
 				<td><input type="file" name="recruitPhoto"></td>
 			</tr>
 			<tr>
@@ -172,23 +172,23 @@ select {
 			</tr>
 			<tr>
 				<td>연봉</td>
-				<td><input type="text" id="" name="recruitSalary" value="${RecruitDTO.recruitSalary}"></td>
+				<td><input type="text" id="" name="recruitSalary" value="${recruitDTO.recruitSalary}"></td>
 			</tr>
 			<tr>
 				<td>근무지역</td>
-				<td><input type="text" id="" name="recruitLocation" value="${RecruitDTO.recruitLocation}"></td>
+				<td><input type="text" id="" name="recruitLocation" value="${recruitDTO.recruitLocation}"></td>
 			</tr>
 			<tr>
 				<td>마감일자</td>
-				<td><input type="date" id="recruitDeatline" name="recruitDeatline" value="${RecruitDTO.recruitDeatline}"></td>
+				<td><input type="date" id="recruitDeatline" name="recruitDeatline" value="${recruitDTO.recruitDeatline}"></td>
 			</tr>
 			<tr>
 				<td>근무일수</td>
-				<td><input type="text" id="" name="recruitWorkday" value="${RecruitDTO.recruitWorkday}"></td>
+				<td><input type="text" id="" name="recruitWorkday" value="${recruitDTO.recruitWorkday}"></td>
 			</tr>
 			<tr>
 				<td>상세내용</td>
-				<td><textarea rows="50" cols="50" name="recruitContent">${RecruitDTO.recruitContent}</textarea> </td>
+				<td><textarea rows="50" cols="50" name="recruitContent">${recruitDTO.recruitContent}</textarea> </td>
 			</tr>
 				<tr>
 				<td colspan="2">

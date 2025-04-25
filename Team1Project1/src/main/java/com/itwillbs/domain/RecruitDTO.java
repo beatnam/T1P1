@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString
 public class RecruitDTO {
 	
+	private int recruitId;
 	private String recruitName;
 	private int corporationMemberNum;
 	private int recruitOccupation;

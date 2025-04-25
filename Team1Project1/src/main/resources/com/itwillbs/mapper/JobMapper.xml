@@ -38,8 +38,26 @@
     	( #{corporationMemberNum}, #{recruitOccupation}, #{recruitJob},
     	#{recruitLocation}, #{recruitEduhigh}, #{recruitSalary}, #{recruitContent},
     	#{recruitDate}, #{recruitWorkday}, #{recruitPhoto}, #{recruitDeatline}, #{recruitName} )
-    	
     </insert>
-
+	<select id="coverList" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT recruit_id, recruit_name, recruit_deatline
+		FROM recruit
+    </select>
+    <select id="contentBoard" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT *
+		FROM recruit
+		where recruit_id = #{recruitId}
+    </select>
+    <select id="occupationNum" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT occupation_name
+		FROM occupation
+		where occupation_id = #{occupationId}
+    </select>
+    <select id="jobNum" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT job_name
+		FROM job
+		where job_id = #{jobId}
+    </select>
+    
   
 </mapper>

@@ -40,15 +40,46 @@ public class CoverBoardController {
 	private String uploadPath;
 	
 	@GetMapping("/list")
-	public String list() {
+	public String list(Model model) {
 		System.out.println("CoverBoardController list()");
+		
+		List<RecruitDTO> listCover = jobService.coverList();
+		System.out.println("RecruitDTO: " + listCover);
+		model.addAttribute("listCover", listCover);
 		
 		return "/corporation/cover_list";
 	}//list()
 	
 	@GetMapping("/content")
-	public String content() {
+	public String content(Model model, HttpServletRequest request) {
 		System.out.println("CoverBoardController content()");
+		int recruitId = Integer.parseInt(request.getParameter("recruitId"));
+		
+		RecruitDTO recruitDTO = jobService.contentBoard(recruitId);
+		int recruitOccupation = recruitDTO.getRecruitOccupation();
+		int recruitJob = recruitDTO.getRecruitJob();
+		
+		model.addAttribute("recruitDTO", recruitDTO);
+		System.out.println("recruitOccupation" + recruitOccupation);
+		System.out.println("recruitJob" + recruitJob);
+		
+		OccupationDTO occupationDTO = new OccupationDTO(); 
+		JobDTO jobDTO = new JobDTO();
+		
+		occupationDTO.setOccupationId(recruitOccupation);
+		jobDTO.setJobId(recruitJob);
+		
+		System.out.println("occupationDTO" + occupationDTO);
+		System.out.println("jobDTO" + jobDTO);
+		
+		occupationDTO = jobService.occupationNum(occupationDTO);
+		jobDTO = jobService.jobNum(jobDTO);
+		
+		System.out.println("occupationDTO" + occupationDTO);
+		System.out.println("jobDTO" + jobDTO);
+		
+		model.addAttribute("occupationDTO", occupationDTO);
+		model.addAttribute("JobDTO", jobDTO);
 		
 		return "/corporation/coverlist_content";
 	}//content()
