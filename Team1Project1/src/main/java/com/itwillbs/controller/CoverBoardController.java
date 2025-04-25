@@ -56,8 +56,10 @@ public class CoverBoardController {
 		int recruitId = Integer.parseInt(request.getParameter("recruitId"));
 		
 		RecruitDTO recruitDTO = jobService.contentBoard(recruitId);
+		
 		int recruitOccupation = recruitDTO.getRecruitOccupation();
 		int recruitJob = recruitDTO.getRecruitJob();
+		
 		
 		model.addAttribute("recruitDTO", recruitDTO);
 		System.out.println("recruitOccupation" + recruitOccupation);
@@ -68,18 +70,19 @@ public class CoverBoardController {
 		
 		occupationDTO.setOccupationId(recruitOccupation);
 		jobDTO.setJobId(recruitJob);
-		
+		jobDTO.setOccupationId(recruitOccupation);
 		System.out.println("occupationDTO" + occupationDTO);
 		System.out.println("jobDTO" + jobDTO);
+		
 		
 		occupationDTO = jobService.occupationNum(occupationDTO);
 		jobDTO = jobService.jobNum(jobDTO);
 		
-		System.out.println("occupationDTO" + occupationDTO);
-		System.out.println("jobDTO" + jobDTO);
+		System.out.println("occupationDTO===" + occupationDTO);
+		System.out.println("jobDTO===" + jobDTO);
 		
 		model.addAttribute("occupationDTO", occupationDTO);
-		model.addAttribute("JobDTO", jobDTO);
+		model.addAttribute("jobDTO", jobDTO);
 		
 		return "/corporation/coverlist_content";
 	}//content()

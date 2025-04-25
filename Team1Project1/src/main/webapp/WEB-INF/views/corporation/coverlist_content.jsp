@@ -111,8 +111,8 @@ table tr:nth-child(even) {
 				<td>직종 직무</td>
 				<td>
 				<!-- 직종 리스트 -->
-				<input type="text" id="" name="recruitSalary" value="${occupationDTO.occupationName}" readonly>
-				<input type="text" id="" name="recruitSalary" value="${jobDTO.jobName}" readonly>
+				<input type="text" id="" name="occupationName" value="${occupationDTO.occupationName}" readonly>
+				<input type="text" id="" name="jobName" value="${jobDTO.jobName}" readonly>
 				</td>
 			</tr>
 			<tr>

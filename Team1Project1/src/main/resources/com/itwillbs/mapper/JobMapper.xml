@@ -48,15 +48,15 @@
 		FROM recruit
 		where recruit_id = #{recruitId}
     </select>
-    <select id="occupationNum" resultType="com.itwillbs.domain.RecruitDTO">
-    	SELECT occupation_name
+    <select id="occupationNum" resultType="com.itwillbs.domain.OccupationDTO">
+    	SELECT *
 		FROM occupation
 		where occupation_id = #{occupationId}
     </select>
-    <select id="jobNum" resultType="com.itwillbs.domain.RecruitDTO">
-    	SELECT job_name
+    <select id="jobNum" resultType="com.itwillbs.domain.JobDTO">
+    	SELECT *
 		FROM job
-		where job_id = #{jobId}
+		where job_id = #{jobId} and occupation_id = #{occupationId}
     </select>
     
   
