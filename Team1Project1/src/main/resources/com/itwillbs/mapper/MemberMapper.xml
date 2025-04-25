@@ -12,8 +12,8 @@
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
   <insert id="joinMember">
-    insert into member(member_id, member_passwd,member_jumin, member_name,member_phone,member_postcode,member_address, member_email, member_info, member_infoC) 
-    values (#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
+    insert into member(mt_id,member_id, member_passwd,member_jumin, member_name,member_phone,member_postcode,member_address, member_email, member_info, member_infoC) 
+    values (#{mtId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
     #{memberPhone},#{memberPostcode},#{memberAddress},
     #{memberEmail},#{memberInfo},#{memberInfoC})
  </insert>

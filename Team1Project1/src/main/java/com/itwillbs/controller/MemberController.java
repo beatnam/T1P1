@@ -31,7 +31,7 @@ public class MemberController {
 	@PostMapping("/joinPro")
 	public String joinPro(MemberDTO memberDTO) {
 		System.out.println("memberController joinPro");
-
+		memberDTO.setMtId(200);
 		memberService.joinMember(memberDTO);
 		return "redirect:/main/main";
 	}
