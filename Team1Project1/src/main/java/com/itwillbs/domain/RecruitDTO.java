@@ -1,6 +1,6 @@
 package com.itwillbs.domain;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDateTime;
 
 import lombok.Getter;
@@ -25,9 +25,5 @@ public class RecruitDTO {
 	private int recruitWorkday;
 	private String recruitPhoto;
 	private Date recruitDeatline;
-	
-	
-	
-	
 	
 }

@@ -52,14 +52,20 @@ public class JobService {
 
 	public OccupationDTO occupationNum(OccupationDTO OccupationDTO) {
 		System.out.println("JobService occupationNum()");
-		
+		System.out.println("OccupationDTO" + OccupationDTO);
 		return jobMapper.occupationNum(OccupationDTO);
 	}
 
 	public JobDTO jobNum(JobDTO jobDTO) {
 		System.out.println("JobService jobNum()");
-		
+		System.out.println("jobDTO" + jobDTO);
 		return jobMapper.jobNum(jobDTO);
+	}
+
+	public void updateRecruit(RecruitDTO recruitDTO) {
+		System.out.println("JobService updateRecruit()");
+		System.out.println("recruitDTO : " + recruitDTO);
+		jobMapper.updateRecruit(recruitDTO);
 	}
 	
 	
