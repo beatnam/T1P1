@@ -125,6 +125,7 @@ select {
 	<div class="parent_div">
 	<h1>공고 수정</h1>
 	<form action="${pageContext.request.contextPath}/corplist/updatepro" method="post" id="appForm" enctype="multipart/form-data">
+	<input type="hidden" name="recruitId" value="${recruitDTO.recruitId}">
 		<div class="main_content">
 		<table border="1">
 			<tr>
@@ -133,7 +134,9 @@ select {
 			</tr>
 			<tr>
 				<td>사진 첨부파일 수정 <img src="${pageContext.request.contextPath}/resources/upload/${recruitDTO.recruitPhoto }" width="200" height="200"></td>
-				<td><input type="file" name="recruitPhoto"></td>
+				<td><input type="file" name="recruitPhoto">
+				<input type="hidden" name="oldRecruitPhoto" value="${recruitDTO.recruitPhoto }">
+				</td>
 			</tr>
 			<tr>
 				<td>학력</td>

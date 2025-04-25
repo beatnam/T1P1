@@ -61,6 +61,12 @@ public class JobService {
 		System.out.println("jobDTO" + jobDTO);
 		return jobMapper.jobNum(jobDTO);
 	}
+
+	public void updateRecruit(RecruitDTO recruitDTO) {
+		System.out.println("JobService updateRecruit()");
+		System.out.println("recruitDTO : " + recruitDTO);
+		jobMapper.updateRecruit(recruitDTO);
+	}
 	
 	
 }

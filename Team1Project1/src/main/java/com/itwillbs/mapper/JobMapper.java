@@ -19,5 +19,6 @@ public interface JobMapper {
 	public RecruitDTO contentBoard(int recruitId);
 	public OccupationDTO occupationNum(OccupationDTO occupationDTO);
 	public JobDTO jobNum(JobDTO jobDTO);
+	public void updateRecruit(RecruitDTO recruitDTO);
 	
 }

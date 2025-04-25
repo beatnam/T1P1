@@ -58,6 +58,12 @@
 		FROM job
 		where job_id = #{jobId} and occupation_id = #{occupationId}
     </select>
-    
+    <update id="updateRecruit">
+    	update recruit
+    	set corporationMember_num = #{corporationMemberNum}, recruit_occupation = #{recruitOccupation}, recruit_job = #{recruitJob},
+    	recruit_location = #{recruitLocation},recruit_eduhigh = #{recruitEduhigh}, recruit_salary = #{recruitSalary}, recruit_content = #{recruitContent},
+    	recruit_workday = #{recruitWorkday}, recruit_photo = #{recruitPhoto}, recruit_deatline = #{recruitDeatline}, recruit_name = #{recruitName}
+    	where recruit_id = #{recruitId}
+    </update>
   
 </mapper>
