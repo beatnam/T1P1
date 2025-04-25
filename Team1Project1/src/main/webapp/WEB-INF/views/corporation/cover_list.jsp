@@ -120,7 +120,8 @@ table tr:nth-child(even) {
 			<table border="1">
 				<tr>
 					<td>번호</td>
-					<td><a href="${pageContext.request.contextPath}/corplist/content">이름</a></td>
+					<td><a href="${pageContext.request.contextPath}/corplist/content?corporationMemberNum=3">이름</a></td>
+<%-- 					${pageContext.request.contextPath}/corplist/content?corporationMemberNum=${RecruitDTO.corporationMemberNum} --%>
 					<td>지원자</td>
 					<td>공고이름</td>
 				</tr>

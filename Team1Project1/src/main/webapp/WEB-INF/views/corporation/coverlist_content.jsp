@@ -90,63 +90,57 @@ table tr:nth-child(even) {
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
 	<div class="parent_div">
 		<h1>공고 내용</h1>
-		<form action="" method="get">
-			<div class="main_content">
-				<table border="1">
-					<tr>
-						<td>제목입력</td>
-						<td><input type="text" id="" name="" value=""></td>
-					</tr>
-					<tr>
-						<td>사진<img alt="" src=""></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>경력</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>학력</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>직종</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>직무</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>연봉</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>근무지역</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>게시날짜</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>근무일수</td>
-						<td><input type="text" id="" name="" value="" readonly></td>
-					</tr>
-					<tr>
-						<td>상세내용</td>
-						<td><textarea rows="50" cols="50" readonly></textarea></td>
-					</tr>
-					<tr>
-						<td>기업 홈페이지 주소</td>
-						<td><input type="text" id="" name="" value="" readonly>
-						</td>
-					</tr>
-					<tr>
+		<form action="#" method="get" id="appForm">
+		<div class="main_content">
+		<table border="1">
+			<tr>
+				<td>제목입력</td>
+				<td><input type="text" id="" name="recruitName" value="${RecruitDTO.recruitName}" readonly></td>
+			</tr>
+			<tr>
+				<td>사진 첨부파일 <img src="${pageContext.request.contextPath}/resources/upload/${RecruitDTO.recruitPhoto }" width="200" height="200"></td>
+				<td><input type="file" name="recruitPhoto"> </td>
+			</tr>
+			<tr>
+				<td>학력</td>
+				<td>
+				<input type="text" id="" name="recruitSalary" value="${RecruitDTO.recruitEduhigh}" readonly>
+				</td>
+			</tr>
+			<tr>
+				<td>직종 직무</td>
+				<td>
+				<!-- 직종 리스트 -->
+				<input type="text" id="" name="recruitSalary" value="${RecruitDTO.recruitOccupation}" readonly>
+				<input type="text" id="" name="recruitSalary" value="${RecruitDTO.recruitJob}" readonly>
+				</td>
+			</tr>
+			<tr>
+				<td>연봉</td>
+				<td><input type="text" id="" name="recruitSalary" value="${RecruitDTO.recruitSalary}" readonly></td>
+			</tr>
+			<tr>
+				<td>근무지역</td>
+				<td><input type="text" id="" name="recruitLocation" value="${RecruitDTO.recruitLocation}" readonly></td>
+			</tr>
+			<tr>
+				<td>마감일자</td>
+				<td><input type="date" id="recruitDeatline" name="recruitDeatline" value="${RecruitDTO.recruitDeatline}" readonly></td>
+			</tr>
+			<tr>
+				<td>근무일수</td>
+				<td><input type="text" id="" name="recruitWorkday" value="${RecruitDTO.recruitWorkday}" readonly></td>
+			</tr>
+			<tr>
+				<td>상세내용</td>
+				<td><textarea rows="50" cols="50" name="recruitContent" readonly>${RecruitDTO.recruitContent}</textarea> </td>
+			</tr>
+				<tr>
 						<td colspan="2">
 						<div class="apply_btn" id="apply_btn">
 						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/update'">
 						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/deletepro'">
+						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 						</div>
 						</td>
 					</tr>
