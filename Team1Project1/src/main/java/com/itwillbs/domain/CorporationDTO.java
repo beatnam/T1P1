@@ -27,5 +27,4 @@ public class CorporationDTO {
     private String corporationRegistrationPdf;
     private String corporationIntro;
 
-    
 }

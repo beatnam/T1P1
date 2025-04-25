@@ -37,9 +37,12 @@ public class CorporationController {
 	}// corporationmain()
 
 	@PostMapping("/copJoinPro")
-	public String copJoinPro(CorporationDTO corporationDTO) {
+	public String copJoinPro(CorporationDTO corporationDTO, HttpServletRequest request) {
 		System.out.println("CorporationController copJoinPro()");
 
+		String corporationMemberEmail = request.getParameter("email1") + "@" + request.getParameter("email2");
+
+		corporationDTO.setCorporationMemberEmail(corporationMemberEmail);
 		corporationDTO.setMtId(300);
 		System.out.println(corporationDTO);
 		corporationService.insertMember(corporationDTO);
@@ -65,22 +68,18 @@ public class CorporationController {
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 500) {
 			// 모든 승인을 받고 활동 가능한 상태
 			session.setAttribute("corporationMemberId", corporationDTO2.getCorporationMemberId());
+			
 			session.setAttribute("corporationMemberNum", corporationDTO2.getCorporationMemberNum());
+			
 			return "redirect:/main/main";
 
 		} else {
 
-			return "redirect:/corporation/msg";
+			return "redirect:/main/msg";
 		}
 
 	}
 
-	@GetMapping("/msg")
-	public String copErr() {
-		System.out.println("CorporationController copErr()");
-
-		return "/corporation/msg";
-	}// copAlert()
 
 	// 사업자 등록증 제출하고 승인을 기다리는 상태
 	@GetMapping("/cop_alert")
@@ -99,21 +98,20 @@ public class CorporationController {
 
 	@PostMapping("/updateRegistPro")
 	public String updateRegistPro(HttpSession session, HttpServletRequest request,
-			MultipartFile coporationRegistraionPdf, MultipartFile coporationPhoto) throws IOException {
+			MultipartFile corporationRegistrationPdf, MultipartFile corporationPhoto) throws IOException {
 		System.out.println("CorporationController updateRegistPro()");
-		String corporationMemberId = (String) session.getAttribute("corporationId");
 
-		
-	
-		
-		// 파일 저장 처리
+		String corporationMemberId = (String) session.getAttribute("corporationMemberId");
+
+		System.out.println(corporationMemberId);
+
 		UUID uuid = UUID.randomUUID();
 
-		String filename = uuid + "_" + coporationRegistraionPdf.getOriginalFilename();
-		FileCopyUtils.copy(coporationRegistraionPdf.getBytes(), new File(uploadPath, filename));
+		String filename = uuid.toString() + "_" + corporationRegistrationPdf.getOriginalFilename();
+		FileCopyUtils.copy(corporationRegistrationPdf.getBytes(), new File(uploadPath, filename));
 
-		String filename1 = uuid + "_" + coporationPhoto.getOriginalFilename();
-		FileCopyUtils.copy(coporationPhoto.getBytes(), new File(uploadPath, filename1));
+		String filename1 = uuid.toString() + "_" + corporationPhoto.getOriginalFilename();
+		FileCopyUtils.copy(corporationPhoto.getBytes(), new File(uploadPath, filename1));
 
 		CorporationDTO corporationDTO = new CorporationDTO();
 
