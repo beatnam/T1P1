@@ -58,7 +58,8 @@ public class CorporationController {
 
 		if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 300) {
 			// 사업자 등록증 제출 전이라 제출 페이지로 이동
-			session.setAttribute("corporationMemberId", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("id", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("type",corporationDTO2.getMtId());
 			return "redirect:/corporation/update_regist";
 
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 400) {
@@ -67,10 +68,8 @@ public class CorporationController {
 
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 500) {
 			// 모든 승인을 받고 활동 가능한 상태
-			session.setAttribute("corporationMemberId", corporationDTO2.getCorporationMemberId());
-			
-			session.setAttribute("corporationMemberNum", corporationDTO2.getCorporationMemberNum());
-			
+			session.setAttribute("id", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("type",corporationDTO2.getMtId());			
 			return "redirect:/main/main";
 
 		} else {
@@ -101,7 +100,7 @@ public class CorporationController {
 			MultipartFile corporationRegistrationPdf, MultipartFile corporationPhoto) throws IOException {
 		System.out.println("CorporationController updateRegistPro()");
 
-		String corporationMemberId = (String) session.getAttribute("corporationMemberId");
+		String corporationMemberId = (String) session.getAttribute("id");
 
 		System.out.println(corporationMemberId);
 
