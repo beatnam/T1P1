@@ -26,6 +26,38 @@
         FROM job
         WHERE occupation_id = #{occupationId}
     </select>
-
+    <select id="getMaxNum" resultType="com.itwillbs.domain.RecruitDTO">
+    	select max(recruit_id) from recruit
+    </select>
+    <insert id="insertRecruit">
+    	insert into recruit
+    	( corporationMember_num, recruit_occupation, recruit_job, recruit_location,
+    	recruit_eduhigh, recruit_salary, recruit_content, recruit_date, recruit_workday,
+    	recruit_photo, recruit_deatline ,recruit_name )
+    	value 
+    	( #{corporationMemberNum}, #{recruitOccupation}, #{recruitJob},
+    	#{recruitLocation}, #{recruitEduhigh}, #{recruitSalary}, #{recruitContent},
+    	#{recruitDate}, #{recruitWorkday}, #{recruitPhoto}, #{recruitDeatline}, #{recruitName} )
+    </insert>
+	<select id="coverList" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT recruit_id, recruit_name, recruit_deatline
+		FROM recruit
+    </select>
+    <select id="contentBoard" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT *
+		FROM recruit
+		where recruit_id = #{recruitId}
+    </select>
+    <select id="occupationNum" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT occupation_name
+		FROM occupation
+		where occupation_id = #{occupationId}
+    </select>
+    <select id="jobNum" resultType="com.itwillbs.domain.RecruitDTO">
+    	SELECT job_name
+		FROM job
+		where job_id = #{jobId}
+    </select>
+    
   
 </mapper>

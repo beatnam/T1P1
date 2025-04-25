@@ -1,8 +1,15 @@
 package com.itwillbs.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itwillbs.domain.CorporationDTO;
+import com.itwillbs.service.CorpMemberService;
+import com.itwillbs.service.CorporationService;
 
 @Controller
 @RequestMapping("/main/*")
@@ -49,7 +56,7 @@ public class MainController {
       System.out.println("MainController coplogin()");
       return "/corporation/cop_login";
    }
-
+   
    @GetMapping("/recruit_info")
    public String recruitInfo() {
       System.out.println("MainController recruitInfo()");
@@ -62,7 +69,6 @@ public class MainController {
 
       return "/corporation/corporation_main";
    }
-   
 
    @GetMapping("/customerService")
    public String customerService() {

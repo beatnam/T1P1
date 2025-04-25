@@ -14,5 +14,6 @@ public interface CorporationMapper {
 	public CorporationDTO loginMember(CorporationDTO corporationDTO);
 
 	public void updateRegist(CorporationDTO corporationDTO);
+
 	
 }

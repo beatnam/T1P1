@@ -84,7 +84,8 @@ body {
 
 .main_content ul input[type="text"],
 .main_content ul input[type="tel"],
-.main_content ul input[type="url"] {
+.main_content ul input[type="url"],
+.main_content ul input[type="email"] {
 width: 70%;
 padding: 5px 10px;
 border: 1px solid #ddd;
@@ -141,21 +142,21 @@ background-color: #004085; /* 클릭 시 배경색 */
  	<div class="parent_div">
  	
  	</div>
- 	<form action="" method="get">
+ 	<form action="${pageContext.request.contextPath}/corpmain/main" method="get">
  		<div class="main_content">
  			<img alt="" src="">
  			<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
  			<ul> 
- 				<li><a href="">기업 아이디</a><input type="text" id="corpId" name="corpId" value="${CorporationDTO.corporationMemberId}" readonly></li>
- 				<li><a href="">기업 이름</a><input type="text" id="corpName" name="corpName" value="${CorporationDTO.corporationName}" readonly></li>
- 				<li><a href="">사업자 번호</a><input type="text" id="registration" name="registration" value="${CorporationDTO.corporationRegistration}" readonly></li>
- 				<li><a href="">소재지</a><input type="text" id="corpAddress" name="corpAddress" value="${CorporationDTO.corporationAddress}" readonly></li>
- 				<li><a href="">전화번호</a><input type="tel" id="corpPhone" name="corpPhone" value="${CorporationDTO.corporationPhone}" readonly></li>
- 				<li><a href="">홈페이지</a><input type="url" id="corpUrl" name="corpUrl" value="${CorporationDTO.corporationUrl}" readonly></li>
- 				<li><a href="">회사소개</a><input type="text" id="corpIntro" name="corpIntro" value="${CorporationDTO.corporationIntro}" readonly></li>
- 				<li><a href="">인사담당자</a><input type="text" id="corpMemName" name="corpMemName" value="${CorporationDTO.corporationMemberName}" readonly></li>
- 				<li><a href="">인사담당자 전화번호</a><input type="tel" id="corpMemPhone" name="corpMemPhone" value="${CorporationDTO.corporationMemberPhone}" readonly></li>
- 				<li><a href="">인사담당자 이메일</a><input type="email" id="corpMemEmail" name="corpMemEmail" value="${CorporationDTO.corporationMemberEmail}" readonly></li>
+ 				<li><a href="">기업 아이디</a><input type="text" id="corpId" name="corpId" value="${corporationDTO.corporationMemberId}" readonly></li>
+ 				<li><a href="">기업 이름</a><input type="text" id="corpName" name="corpName" value="${corporationDTO.corporationName}" readonly></li>
+ 				<li><a href="">사업자 번호</a><input type="text" id="registration" name="registration" value="${corporationDTO.corporationRegistration}" readonly></li>
+ 				<li><a href="">소재지</a><input type="text" id="corpAddress" name="corpAddress" value="${corporationDTO.corporationAddress}" readonly></li>
+ 				<li><a href="">전화번호</a><input type="tel" id="corpPhone" name="corpPhone" value="${corporationDTO.corporationPhone}" readonly></li>
+ 				<li><a href="">홈페이지</a><input type="url" id="corpUrl" name="corpUrl" value="${corporationDTO.corporationUrl}" readonly></li>
+ 				<li><a href="">회사소개</a><input type="text" id="corpIntro" name="corpIntro" value="${corporationDTO.corporationIntro}" readonly></li>
+ 				<li><a href="">인사담당자</a><input type="text" id="corpMemName" name="corpMemName" value="${corporationDTO.corporationMemberName}" readonly></li>
+ 				<li><a href="">인사담당자 전화번호</a><input type="tel" id="corpMemPhone" name="corpMemPhone" value="${corporationDTO.corporationMemberPhone}" readonly></li>
+ 				<li><a href="">인사담당자 이메일</a><input type="email" id="corpMemEmail" name="corpMemEmail" value="${corporationDTO.corporationMemberEmail}" readonly></li>
  			</ul>
  		</div>
  		

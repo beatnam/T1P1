@@ -23,14 +23,13 @@
 
 
 		<div class="right-links">
-
 				<c:if test="${empty  sessionScope.id}">
 					<!-- 로그인 하지 않았을때, 세션값이 없을때 (로그인, 회원가입) -->
 					<a href="${pageContext.request.contextPath }/main/login">로그인</a> 
 					<a href="${pageContext.request.contextPath }/main/join">회원가입</a> 
 					<a href="${pageContext.request.contextPath }/main/cop_join">기업회원가입</a> 
 					<a href="${pageContext.request.contextPath }/main/cop_login">기업 로그인</a> 
-					<a href="${pageContext.request.contextPath }/main/corpmain">기업 서비스</a>
+					<a href="${pageContext.request.contextPath }/corpmain/main">기업 서비스</a>
 				</c:if>
 			
 			<c:if test="${! empty sessionScope.id}">
