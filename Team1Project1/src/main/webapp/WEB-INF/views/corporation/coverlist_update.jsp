@@ -132,7 +132,7 @@ select {
 				<td><input type="text" id="" name="recruitName" value="${recruitDTO.recruitName}"></td>
 			</tr>
 			<tr>
-				<td>사진 첨부파일 <img src="${pageContext.request.contextPath}/resources/upload/${recruitDTO.recruitPhoto }" width="200" height="200"></td>
+				<td>사진 첨부파일 수정 <img src="${pageContext.request.contextPath}/resources/upload/${recruitDTO.recruitPhoto }" width="200" height="200"></td>
 				<td><input type="file" name="recruitPhoto"></td>
 			</tr>
 			<tr>
@@ -155,6 +155,8 @@ select {
 			<tr>
 				<td>직종 직무</td>
 				<td>
+					<input type="text" id="" name="occupationName" value="${occupationDTO.occupationName}" readonly>
+					<input type="text" id="" name="jobName" value="${jobDTO.jobName}" readonly>
 				<!-- 직종 리스트 -->
 				    <label for="occupation-select"></label>
 					<select id="occupation-select" name="recruitOccupation" onchange="loadJobs(this.value)">

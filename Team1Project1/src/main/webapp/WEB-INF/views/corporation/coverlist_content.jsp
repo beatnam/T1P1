@@ -138,8 +138,8 @@ table tr:nth-child(even) {
 				<tr>
 						<td colspan="2">
 						<div class="apply_btn" id="apply_btn">
-						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/update'">
-						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/deletepro'">
+						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/update?recruitId=${recruitDTO.recruitId}'">
+						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/deletepro?recruitId=${recruitDTO.recruitId}'">
 						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 						</div>
 						</td>

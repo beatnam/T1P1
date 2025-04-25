@@ -88,7 +88,7 @@ public class CoverBoardController {
 	}//content()
 	
 	@GetMapping("/update")
-	public String update(Model model) {
+	public String update(Model model, HttpServletRequest request) {
 		System.out.println("CoverBoardController write()");
 		
 		List<OccupationDTO> occupations = jobService.getOccupations();
@@ -97,6 +97,38 @@ public class CoverBoardController {
         }
     	model.addAttribute("occupations", occupations);
 		
+    	int recruitId = Integer.parseInt(request.getParameter("recruitId"));
+		
+		RecruitDTO recruitDTO = jobService.contentBoard(recruitId);
+		
+		int recruitOccupation = recruitDTO.getRecruitOccupation();
+		int recruitJob = recruitDTO.getRecruitJob();
+		
+		model.addAttribute("recruitDTO", recruitDTO);
+		System.out.println("recruitOccupation" + recruitOccupation);
+		System.out.println("recruitJob" + recruitJob);
+		
+		OccupationDTO occupationDTO = new OccupationDTO(); 
+		JobDTO jobDTO = new JobDTO();
+		
+		occupationDTO.setOccupationId(recruitOccupation);
+		jobDTO.setJobId(recruitJob);
+		jobDTO.setOccupationId(recruitOccupation);
+		System.out.println("occupationDTO" + occupationDTO);
+		System.out.println("jobDTO" + jobDTO);
+		
+		
+		occupationDTO = jobService.occupationNum(occupationDTO);
+		jobDTO = jobService.jobNum(jobDTO);
+		
+		System.out.println("occupationDTO===" + occupationDTO);
+		System.out.println("jobDTO===" + jobDTO);
+		
+		model.addAttribute("occupationDTO", occupationDTO);
+		model.addAttribute("jobDTO", jobDTO);
+    	
+    	
+    	
 		return "/corporation/coverlist_update";
 	}//update()
 	
