@@ -59,7 +59,7 @@ public class CorporationController {
 		if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 300) {
 			// 사업자 등록증 제출 전이라 제출 페이지로 이동
 			session.setAttribute("id", corporationDTO2.getCorporationMemberId());
-			session.setAttribute("type",corporationDTO2.getMtId());
+			session.setAttribute("type", corporationDTO2.getMtId());
 			return "redirect:/corporation/update_regist";
 
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 400) {
@@ -69,7 +69,7 @@ public class CorporationController {
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 500) {
 			// 모든 승인을 받고 활동 가능한 상태
 			session.setAttribute("id", corporationDTO2.getCorporationMemberId());
-			session.setAttribute("type",corporationDTO2.getMtId());			
+			session.setAttribute("type", corporationDTO2.getMtId());
 			return "redirect:/main/main";
 
 		} else {
@@ -78,7 +78,6 @@ public class CorporationController {
 		}
 
 	}
-
 
 	// 사업자 등록증 제출하고 승인을 기다리는 상태
 	@GetMapping("/cop_alert")
