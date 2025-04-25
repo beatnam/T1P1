@@ -23,7 +23,7 @@ public class MainController {
 	@GetMapping("/my-profile")
 	public String mypage() {
 		System.out.println("MainController mypage()");
-		return "/mypage/my-profile";
+		return "redirect:/mypage/my-profile";
 	}
 
 	@GetMapping("/login")

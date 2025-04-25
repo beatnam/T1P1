@@ -32,7 +32,7 @@
         <div class="inbox1">
             <div class="so">한 줄 소개</div>
             <div>
-                <input type="text" name="memberIntroduce" value="허거덩" readonly>
+                <input type="text" name="memberIntroduce" value="${MyPageDTO.memberIntroduce}" readonly>
             </div>
         </div>
 
@@ -51,12 +51,12 @@
 
         <div class="inbox4">
             <div class="ii">이름</div>
-            <div><input type="text" name="memberName" value="허거덩" readonly></div>
+            <div><input type="text" name="memberName" value="${MyPageDTO.memberName}" readonly></div>
         </div>
 
         <div class="inbox5">
             <div class="hyu">휴대전화</div>
-            <div><input type="text" name="memberPhone" value="허거덩" readonly></div>
+            <div><input type="text" name="memberPhone" value="${MyPageDTO.memberPhone}" readonly></div>
         </div>
 
         <div class="inbox6">
@@ -69,11 +69,11 @@
             <div class="checkbox">
                 <label>
                     <input type="radio" name="memberInfoC" value="agree" 
-                    <c:if test="${dto.memberInfoC == 'agree'}">checked</c:if> disabled />동의
+                    <c:if test="${MyPageDTO.memberInfoC == 'agree'}">checked</c:if> disabled />동의
                 </label>
                 <label>
                     <input type="radio" name="memberInfoC" value="disagree" 
-                    <c:if test="${dto.memberInfoC == 'disagree'}">checked</c:if> disabled /> 비동의
+                    <c:if test="${MyPageDTO.memberInfoC == 'disagree'}">checked</c:if> disabled /> 비동의
                 </label>	
             </div>
         </div>

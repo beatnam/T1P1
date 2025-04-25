@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.MyPageMapper">
+
+  <insert id="insertMyPage" parameterType="com.itwillbs.domain.MyPageDTO">
+<!--     INSERT INTO mypage ( -->
+<!--      	 member_introduce, -->
+<!--          eduhigh_id, -->
+<!--          member_name, -->
+<!--          member_phone, -->
+<!--          member_info_c -->
+<!--     ) -->
+    
+<!--     VALUES ( -->
+<!--        #{memberIntroduce}, -->
+<!--        #{eduhighId}, -->
+<!--        #{memberName}, -->
+<!--        #{memberPhone}, -->
+<!--        #{memberInfoC} -->
+<!--     ) -->
+  </insert>
+  
+  <select id="getMyProfile" parameterType="String" resultType="com.itwillbs.domain.MyPageDTO">
+        SELECT
+        m.member_introduce AS memberIntroduce,
+        m.member_name AS memberName,
+        m.member_phone AS memberPhone,
+        m.member_infoC AS memberInfoC,
+        e.eduhigh_id AS eduhighId
+    	FROM member m
+    	LEFT JOIN education e ON m.member_num = e.member_num
+        WHERE member_Id = #{id}
+   </select>
+  
+  
+
+</mapper>
