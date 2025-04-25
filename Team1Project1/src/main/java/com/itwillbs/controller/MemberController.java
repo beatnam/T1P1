@@ -48,12 +48,14 @@ public class MemberController {
 		System.out.println("memberController loginPro");
 
 		MemberDTO memberDTO2 = memberService.loginMember(memberDTO);
+		System.out.println(memberDTO2.getMtId());
+		
 		if (memberDTO2 != null) {
 			// 아이디 비밀번호 일치
 			// 로그인 성공 => 로그인 표시값을 세션에 저장
-			session.setAttribute("id", memberDTO.getMemberId());
+			session.setAttribute("id", memberDTO2.getMemberId());
 			// 세션값에 멤버타입도 같이 넘겨줌 
-			session.setAttribute("type", memberDTO.getMtId());
+			session.setAttribute("type", memberDTO2.getMtId());
 			// /board/main 주소변경하면서 이동
 			return "redirect:/main/main";
 		} else {

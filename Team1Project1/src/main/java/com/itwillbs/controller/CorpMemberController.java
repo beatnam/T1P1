@@ -32,7 +32,7 @@ public class CorpMemberController {
 	public String main(HttpSession session, Model model) {
 		System.out.println("corpmembercontroller main()");
 		
-		String corporationMemberId = (String)session.getAttribute("corporationMemberId");
+		String corporationMemberId = (String)session.getAttribute("id");
 		
 		CorporationDTO corporationDTO = corpMemberService.corpInfo(corporationMemberId);
 		System.out.println(corporationDTO);
@@ -45,7 +45,7 @@ public class CorpMemberController {
 	public String update(HttpSession session, Model model) {
 		System.out.println("corpmembercontroller update()");
 		
-		String corporationMemberId = (String)session.getAttribute("corporationMemberId");
+		String corporationMemberId = (String)session.getAttribute("id");
 		
 		CorporationDTO corporationDTO = corpMemberService.corpInfo(corporationMemberId);
 		System.out.println(corporationDTO);
