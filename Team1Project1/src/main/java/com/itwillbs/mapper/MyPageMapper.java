@@ -1,6 +1,8 @@
 package com.itwillbs.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.MyPageDTO;
 
 
@@ -19,7 +21,7 @@ public interface MyPageMapper {
 
 	public MyPageDTO getMyProfile(String id);
 
-	
+	void insertCareer(CareerDTO careerDTO);
 }
 
 

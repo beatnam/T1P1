@@ -41,12 +41,19 @@
             <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
             <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
         </div>
-
+		
         <div class="inbox3">
             <div class="gyeong">경력 사항</div>
-            <div><input type="text" value="허거덩" readonly></div>
-            <div><input type="text" value="허거덩" readonly></div>
-            <div><input type="text" value="허거덩" readonly></div>
+            
+            <c:forEach var="career" items="${careerList}">
+            	<div class="career-view">
+            		<input type="text" value="${career.JH_Corporation}" readonly>
+        			<input type="text" value="${career.JH_department}" readonly>
+        			<input type="text" value="${career.work_content}" readonly>
+        			<input type="text" value="${career.start_date}" readonly>
+        			<input type="text" value="${career.end_date}" readonly>
+        		</div>
+        	</c:forEach>
         </div>
 
         <div class="inbox4">

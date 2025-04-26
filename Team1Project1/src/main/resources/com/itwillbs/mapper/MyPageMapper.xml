@@ -34,6 +34,12 @@
         WHERE member_Id = #{id}
    </select>
   
+  <insert id="insertCareer" parameterType="com.itwillbs.domain.CareerDTO">
+		insert into job_history
+		(JH_Corporation, JH_department, work_content, start_date, end_date, member_num)
+		values
+		(#{JH_Corporation}, #{JH_department}, #{work_content}, #{start_date}, #{end_date}, #{member_num})
+  </insert>
   
 
 </mapper>
