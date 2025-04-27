@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
 import com.itwillbs.domain.RecruitDTO;
@@ -66,6 +67,17 @@ public class JobService {
 		System.out.println("JobService updateRecruit()");
 		System.out.println("recruitDTO : " + recruitDTO);
 		jobMapper.updateRecruit(recruitDTO);
+	}
+
+	public EduHighDTO eduHighName(EduHighDTO eduHighDTO) {
+		System.out.println("JobService eduHighName()");
+		System.out.println("eduHighDTO : " + eduHighDTO);
+		return jobMapper.eduHighName(eduHighDTO);
+	}
+
+	public void deleteBoard(int recruitId) {
+		System.out.println("JobService eduHighName()");
+		jobMapper.deleteBoard(recruitId);
 	}
 	
 	

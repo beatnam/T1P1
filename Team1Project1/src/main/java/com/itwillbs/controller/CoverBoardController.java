@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
 import com.itwillbs.domain.RecruitDTO;
@@ -59,7 +60,7 @@ public class CoverBoardController {
 		
 		int recruitOccupation = recruitDTO.getRecruitOccupation();
 		int recruitJob = recruitDTO.getRecruitJob();
-		
+		int recruitEduhigh = recruitDTO.getRecruitEduhigh();
 		
 		model.addAttribute("recruitDTO", recruitDTO);
 		System.out.println("recruitOccupation" + recruitOccupation);
@@ -67,20 +68,23 @@ public class CoverBoardController {
 		
 		OccupationDTO occupationDTO = new OccupationDTO(); 
 		JobDTO jobDTO = new JobDTO();
+		EduHighDTO eduHighDTO = new EduHighDTO();
 		
 		occupationDTO.setOccupationId(recruitOccupation);
 		jobDTO.setJobId(recruitJob);
 		jobDTO.setOccupationId(recruitOccupation);
+		eduHighDTO.setEduhighId(recruitEduhigh);
 		System.out.println("occupationDTO" + occupationDTO);
 		System.out.println("jobDTO" + jobDTO);
 		
-		
 		occupationDTO = jobService.occupationNum(occupationDTO);
 		jobDTO = jobService.jobNum(jobDTO);
+		eduHighDTO = jobService.eduHighName(eduHighDTO);
 		
 		System.out.println("occupationDTO===" + occupationDTO);
 		System.out.println("jobDTO===" + jobDTO);
 		
+		model.addAttribute("eduHighDTO", eduHighDTO);
 		model.addAttribute("occupationDTO", occupationDTO);
 		model.addAttribute("jobDTO", jobDTO);
 		
@@ -101,34 +105,9 @@ public class CoverBoardController {
 		
 		RecruitDTO recruitDTO = jobService.contentBoard(recruitId);
 		
-		int recruitOccupation = recruitDTO.getRecruitOccupation();
-		int recruitJob = recruitDTO.getRecruitJob();
 		
 		model.addAttribute("recruitDTO", recruitDTO);
-		System.out.println("recruitOccupation" + recruitOccupation);
-		System.out.println("recruitJob" + recruitJob);
 		
-		OccupationDTO occupationDTO = new OccupationDTO(); 
-		JobDTO jobDTO = new JobDTO();
-		
-		occupationDTO.setOccupationId(recruitOccupation);
-		jobDTO.setJobId(recruitJob);
-		jobDTO.setOccupationId(recruitOccupation);
-		System.out.println("occupationDTO" + occupationDTO);
-		System.out.println("jobDTO" + jobDTO);
-		
-		
-		occupationDTO = jobService.occupationNum(occupationDTO);
-		jobDTO = jobService.jobNum(jobDTO);
-		
-		System.out.println("occupationDTO===" + occupationDTO);
-		System.out.println("jobDTO===" + jobDTO);
-		
-		model.addAttribute("occupationDTO", occupationDTO);
-		model.addAttribute("jobDTO", jobDTO);
-    	
-    	
-    	
 		return "/corporation/coverlist_update";
 	}//update()
 	
@@ -255,5 +234,15 @@ public class CoverBoardController {
 		System.out.println(occupationId);
         return jobService.getJobsByOccupation(occupationId);
     }
+	
+	@GetMapping("/delete")
+	public String delete(HttpServletRequest request) {
+		System.out.println("BoardController delete()");
+		int recruitId = Integer.parseInt(request.getParameter("recruitId"));
+		
+		jobService.deleteBoard(recruitId);
+		
+		return "redirect:/corplist/list";
+	}//delete()
 	
 }

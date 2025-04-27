@@ -104,7 +104,7 @@ table tr:nth-child(even) {
 			<tr>
 				<td>학력</td>
 				<td>
-				<input type="text" id="" name="recruitSalary" value="${recruitDTO.recruitEduhigh}" readonly>
+				<input type="text" id="" name="recruitSalary" value="${eduHighDTO.eduhighName}" readonly>
 				</td>
 			</tr>
 			<tr>
@@ -139,7 +139,7 @@ table tr:nth-child(even) {
 						<td colspan="2">
 						<div class="apply_btn" id="apply_btn">
 						<input type="button" value="공고 수정" onclick="location.href='${pageContext.request.contextPath}/corplist/update?recruitId=${recruitDTO.recruitId}'">
-						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/deletepro?recruitId=${recruitDTO.recruitId}'">
+						<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/delete?recruitId=${recruitDTO.recruitId}'">
 						<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 						</div>
 						</td>

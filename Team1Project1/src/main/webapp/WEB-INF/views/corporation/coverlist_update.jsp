@@ -73,7 +73,8 @@ table th {
 table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-.apply_btn input[type="button"] {
+.apply_btn input[type="button"],
+.apply_btn input[type="submit"] {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -82,7 +83,8 @@ table tr:nth-child(even) {
     cursor: pointer;
 }
 
-.apply_btn input[type="button"]:hover {
+.apply_btn input[type="button"]:hover,
+.apply_btn input[type="submit"]:hover {
     filter: brightness(0.9);
 }
 
@@ -158,8 +160,6 @@ select {
 			<tr>
 				<td>직종 직무</td>
 				<td>
-					<input type="text" id="" name="occupationName" value="${occupationDTO.occupationName}" readonly>
-					<input type="text" id="" name="jobName" value="${jobDTO.jobName}" readonly>
 				<!-- 직종 리스트 -->
 				    <label for="occupation-select"></label>
 					<select id="occupation-select" name="recruitOccupation" onchange="loadJobs(this.value)">
@@ -200,6 +200,7 @@ select {
 					<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> 
 					<div class="apply_btn" id="apply_btn">
 					<input type="submit" value="공고 올리기">
+					<input type="button" value="공고 삭제" onclick="location.href='${pageContext.request.contextPath}/corplist/delete?recruitId=${recruitDTO.recruitId}'">
 					<input type="button" value="공고 리스트" onclick="location.href='${pageContext.request.contextPath}/corplist/list'">
 					</div>
 				</td>
@@ -209,24 +210,57 @@ select {
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 <script>
-    function loadJobs(occupationId) {
-        const jobSelect = document.getElementById('job-select');
-        jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
-        if (occupationId) {
-        	$.ajax({
-    			type : "GET",
-    			url:'${pageContext.request.contextPath}/corplist/job',
-    			data: {'occupationId' : occupationId},
-    			dataType:'json',
-    			success:function(result){
-    				$('#job-select').html('');
-    				$.each(result, function(index,item){
-    					$('#job-select').append('<option value="' + item.jobId + '">' + item.jobName + '</option>');
-    				});
-    			},
-    		});//ajax()
-        }
+	window.onload = function() {
+	    var selectedValue = `${recruitDTO.recruitEduhigh}`;
+	    var selectElement = document.getElementById("Levels");
+	
+	    if (selectElement && selectedValue) {
+	        selectElement.value = selectedValue;
+	        console.log("선택된 값 설정 완료:", selectedValue);
+	    } else {
+	        console.error("선택 요소를 찾을 수 없거나 값이 없습니다!");
+	    }
+	};
+
+function loadJobs(occupationId, selectedJob) {
+    const jobSelect = document.getElementById('job-select');
+    jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
+
+    if (occupationId) {
+        $.ajax({
+            type: "GET",
+            url: '${pageContext.request.contextPath}/corplist/job',
+            data: { 'occupationId': occupationId },
+            dataType: 'json',
+            success: function(result) {
+                $('#job-select').html('');
+                $.each(result, function(index, item) {
+                    $('#job-select').append('<option value="' + item.jobId + '">' + item.jobName + '</option>');
+                });
+
+                // AJAX 요청 완료 후 recruitDTO.recruitJob 값으로 자동 선택
+                if (selectedJob) {
+                    jobSelect.value = selectedJob;
+                }
+            }
+        });
     }
+}	
+window.onload = function() {
+    var selectedOccupation = `${recruitDTO.recruitOccupation}`;
+    var selectedJob = `${recruitDTO.recruitJob}`;
+    var occupationSelect = document.getElementById("occupation-select");
+
+    if (occupationSelect && selectedOccupation) {
+        occupationSelect.value = selectedOccupation;
+
+        // `loadJobs` 함수에 selectedJob을 추가하여 AJAX 요청 후 자동 선택되도록 설정
+        loadJobs(selectedOccupation, selectedJob);
+    }
+};
+
+
+
 </script>
 </body>
 </html>

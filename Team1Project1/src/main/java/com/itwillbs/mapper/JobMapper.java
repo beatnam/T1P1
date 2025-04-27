@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
 import com.itwillbs.domain.RecruitDTO;
@@ -20,5 +21,7 @@ public interface JobMapper {
 	public OccupationDTO occupationNum(OccupationDTO occupationDTO);
 	public JobDTO jobNum(JobDTO jobDTO);
 	public void updateRecruit(RecruitDTO recruitDTO);
+	public EduHighDTO eduHighName(EduHighDTO eduHighDTO);
+	public void deleteBoard(int recruitId);
 	
 }
