@@ -34,7 +34,7 @@ public class JobService {
 
 	public void insertRecruit(RecruitDTO recruitDTO) {
 		System.out.println("JobService insertRecruit()");
-		
+		System.out.println("📌 recruitDeatline 값: " + recruitDTO.getRecruitDeatline());
 		recruitDTO.setRecruitDate(LocalDateTime.now());
 		System.out.println("recruitDTO : " + recruitDTO);
 		jobMapper.insertRecruit(recruitDTO);

@@ -69,6 +69,7 @@ public class CorporationController {
 		} else if ((corporationDTO2 != null) && (corporationDTO2.getMtId()) == 500) {
 			// 모든 승인을 받고 활동 가능한 상태
 			session.setAttribute("id", corporationDTO2.getCorporationMemberId());
+			session.setAttribute("corpNum", corporationDTO2.getCorporationMemberNum());
 			session.setAttribute("type",corporationDTO2.getMtId());			
 			return "redirect:/main/main";
 
