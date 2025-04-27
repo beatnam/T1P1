@@ -40,10 +40,12 @@
     	#{recruitDate}, #{recruitWorkday}, #{recruitPhoto}, #{recruitDeatline}, #{recruitName} )
     </insert>
 	<select id="coverList" resultType="com.itwillbs.domain.RecruitDTO">
-    	SELECT recruit_id, recruit_name, recruit_deatline
+    	SELECT *
 		FROM recruit
+		order by recruit_id desc
+  		limit #{startRow}, #{pageSize}
     </select>
-    <select id="contentBoard" resultType="com.itwillbs.domain.RecruitDTO">
+    <select id="contentBoard" resultType="java.lang.Integer">
     	SELECT *
 		FROM recruit
 		where recruit_id = #{recruitId}
@@ -75,7 +77,7 @@
   		where recruit_id = #{recruitId}
     </delete>
 	<select id="countBoard" resultType="java.lang.Integer">
-  		select count(recruit_id) from recruit
+  		select count(*) from recruit
   	</select>
   
 </mapper>

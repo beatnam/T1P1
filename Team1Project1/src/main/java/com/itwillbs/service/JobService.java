@@ -89,7 +89,6 @@ public class JobService {
 
 	public Integer countBoard(PageDTO pageDTO) {
 		System.out.println("JobService countBoard()");
-		
 		return jobMapper.countBoard(pageDTO);
 	}
 	
