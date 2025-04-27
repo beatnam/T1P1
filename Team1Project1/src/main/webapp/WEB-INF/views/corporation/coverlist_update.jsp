@@ -210,17 +210,28 @@ select {
 </div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 <script>
-	window.onload = function() {
-	    var selectedValue = `${recruitDTO.recruitEduhigh}`;
-	    var selectElement = document.getElementById("Levels");
+document.addEventListener("DOMContentLoaded", function() {
+    var selectedValue = `${recruitDTO.recruitEduhigh}`;
+    var selectElement = document.getElementById("Levels");
+
+    if (selectElement && selectedValue) {
+        selectElement.value = selectedValue;
+        console.log("선택된 값 설정 완료:", selectedValue);
+    } else {
+        console.error("선택 요소를 찾을 수 없거나 값이 없습니다!");
+    }
+});
+// 	window.onload = function() {
+// 	    var selectedValue = `${recruitDTO.recruitEduhigh}`;
+// 	    var selectElement = document.getElementById("Levels");
 	
-	    if (selectElement && selectedValue) {
-	        selectElement.value = selectedValue;
-	        console.log("선택된 값 설정 완료:", selectedValue);
-	    } else {
-	        console.error("선택 요소를 찾을 수 없거나 값이 없습니다!");
-	    }
-	};
+// 	    if (selectElement && selectedValue) {
+// 	        selectElement.value = selectedValue;
+// 	        console.log("선택된 값 설정 완료:", selectedValue);
+// 	    } else {
+// 	        console.error("선택 요소를 찾을 수 없거나 값이 없습니다!");
+// 	    }
+// 	};
 
 function loadJobs(occupationId, selectedJob) {
     const jobSelect = document.getElementById('job-select');
