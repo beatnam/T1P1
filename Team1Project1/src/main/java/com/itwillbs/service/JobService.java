@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecruitDTO;
 import com.itwillbs.mapper.JobMapper;
 
@@ -39,10 +40,16 @@ public class JobService {
 		jobMapper.insertRecruit(recruitDTO);
 	}
 
-	public List<RecruitDTO> coverList() {
+	public List<RecruitDTO> coverList(PageDTO pageDTO) {
 		System.out.println("JobService coverList()");
 		
-		return jobMapper.coverList();
+		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
+		int endRow = startRow + pageDTO.getPageSize() - 1;
+		
+		pageDTO.setStartRow(startRow - 1);
+		pageDTO.setEndRow(endRow);
+		
+		return jobMapper.coverList(pageDTO);
 	}
 
 	public RecruitDTO contentBoard(int recruitId) {
@@ -78,6 +85,12 @@ public class JobService {
 	public void deleteBoard(int recruitId) {
 		System.out.println("JobService eduHighName()");
 		jobMapper.deleteBoard(recruitId);
+	}
+
+	public Integer countBoard(PageDTO pageDTO) {
+		System.out.println("JobService countBoard()");
+		
+		return jobMapper.countBoard(pageDTO);
 	}
 	
 	

@@ -74,5 +74,8 @@
     	delete from recruit
   		where recruit_id = #{recruitId}
     </delete>
+	<select id="countBoard" resultType="java.lang.Integer">
+  		select count(recruit_id) from recruit
+  	</select>
   
 </mapper>

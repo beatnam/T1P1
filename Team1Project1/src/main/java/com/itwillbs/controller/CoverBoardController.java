@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecruitDTO;
 import com.itwillbs.service.JobService;
 
@@ -41,12 +42,41 @@ public class CoverBoardController {
 	private String uploadPath;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(HttpServletRequest request, Model model) {
 		System.out.println("CoverBoardController list()");
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
 		
-		List<RecruitDTO> listCover = jobService.coverList();
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
+		
+		List<RecruitDTO> listCover = jobService.coverList(pageDTO);
+		
+		int count = jobService.countBoard(pageDTO);
+		int pageBlock = 10;
+		int startPage = (currentPage -1)/pageBlock * pageBlock + 1; 
+		int endPage = startPage + pageBlock - 1;
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		
+		if(endPage > pageCount) {
+			endPage = pageCount;
+		}
+				
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
 		System.out.println("RecruitDTO: " + listCover);
 		model.addAttribute("listCover", listCover);
+		model.addAttribute("pageDTO", pageDTO);
 		
 		return "/corporation/cover_list";
 	}//list()
