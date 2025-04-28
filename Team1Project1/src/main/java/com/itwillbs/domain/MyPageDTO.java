@@ -11,10 +11,6 @@ public class MyPageDTO {
 
 	private Integer memberNum;
 	private String memberIntroduce;
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
 	private String memberName;
 	private String memberPhone;
 	private String memberInfoC;
