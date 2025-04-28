@@ -20,7 +20,6 @@ public class MemberService {
 	public void joinMember(MemberDTO memberDTO) {
 		System.out.println("MemberService joinMember()");
 		
-		
 		memberMapper.joinMember(memberDTO);
 			
 	}//insertMember()

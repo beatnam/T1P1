@@ -26,18 +26,20 @@ import lombok.ToString;
 public class MemberDTO {
 	
 	private int memberNum;
-	private int mtId;
+	private int MTId;
+	private int	addressId;
+
 	private String memberId;
 	private String memberPasswd;
 	private String memberJumin;
 	private String memberName;
 	private String memberPhone;
-	private int	addressId;
 	private String memberEmail;
 	private String memberIntroduce;
 	private Boolean memberInfo;
 	private Boolean memberInfoC;
 	private String memberPostcode;
 	private String memberAddress;
+	private int eduhighId;
 	
 }

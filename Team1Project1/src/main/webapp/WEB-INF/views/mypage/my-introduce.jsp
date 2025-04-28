@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 | 자기소개서</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-introduce.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/my-introduce.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 
 </head>
 <body>

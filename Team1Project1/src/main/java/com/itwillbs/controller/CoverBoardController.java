@@ -24,8 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
+import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecruitDTO;
 import com.itwillbs.service.JobService;
 
@@ -40,12 +42,42 @@ public class CoverBoardController {
 	private String uploadPath;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(HttpServletRequest request, Model model) {
 		System.out.println("CoverBoardController list()");
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
 		
-		List<RecruitDTO> listCover = jobService.coverList();
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
+		
+		List<RecruitDTO> listCover = jobService.coverList(pageDTO);
+		
+		int count = jobService.countBoard(pageDTO);
+		int pageBlock = 10;
+		int startPage = (currentPage -1)/pageBlock * pageBlock + 1; 
+		int endPage = startPage + pageBlock - 1;
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		
+		if(endPage > pageCount) {
+			endPage = pageCount;
+		}
+				
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		System.out.println("pageDTO : " + pageDTO);
 		System.out.println("RecruitDTO: " + listCover);
+		
 		model.addAttribute("listCover", listCover);
+		model.addAttribute("pageDTO", pageDTO);
 		
 		return "/corporation/cover_list";
 	}//list()
@@ -59,7 +91,7 @@ public class CoverBoardController {
 		
 		int recruitOccupation = recruitDTO.getRecruitOccupation();
 		int recruitJob = recruitDTO.getRecruitJob();
-		
+		int recruitEduhigh = recruitDTO.getRecruitEduhigh();
 		
 		model.addAttribute("recruitDTO", recruitDTO);
 		System.out.println("recruitOccupation" + recruitOccupation);
@@ -67,20 +99,23 @@ public class CoverBoardController {
 		
 		OccupationDTO occupationDTO = new OccupationDTO(); 
 		JobDTO jobDTO = new JobDTO();
+		EduHighDTO eduHighDTO = new EduHighDTO();
 		
 		occupationDTO.setOccupationId(recruitOccupation);
 		jobDTO.setJobId(recruitJob);
 		jobDTO.setOccupationId(recruitOccupation);
+		eduHighDTO.setEduhighId(recruitEduhigh);
 		System.out.println("occupationDTO" + occupationDTO);
 		System.out.println("jobDTO" + jobDTO);
 		
-		
 		occupationDTO = jobService.occupationNum(occupationDTO);
 		jobDTO = jobService.jobNum(jobDTO);
+		eduHighDTO = jobService.eduHighName(eduHighDTO);
 		
 		System.out.println("occupationDTO===" + occupationDTO);
 		System.out.println("jobDTO===" + jobDTO);
 		
+		model.addAttribute("eduHighDTO", eduHighDTO);
 		model.addAttribute("occupationDTO", occupationDTO);
 		model.addAttribute("jobDTO", jobDTO);
 		
@@ -101,34 +136,9 @@ public class CoverBoardController {
 		
 		RecruitDTO recruitDTO = jobService.contentBoard(recruitId);
 		
-		int recruitOccupation = recruitDTO.getRecruitOccupation();
-		int recruitJob = recruitDTO.getRecruitJob();
 		
 		model.addAttribute("recruitDTO", recruitDTO);
-		System.out.println("recruitOccupation" + recruitOccupation);
-		System.out.println("recruitJob" + recruitJob);
 		
-		OccupationDTO occupationDTO = new OccupationDTO(); 
-		JobDTO jobDTO = new JobDTO();
-		
-		occupationDTO.setOccupationId(recruitOccupation);
-		jobDTO.setJobId(recruitJob);
-		jobDTO.setOccupationId(recruitOccupation);
-		System.out.println("occupationDTO" + occupationDTO);
-		System.out.println("jobDTO" + jobDTO);
-		
-		
-		occupationDTO = jobService.occupationNum(occupationDTO);
-		jobDTO = jobService.jobNum(jobDTO);
-		
-		System.out.println("occupationDTO===" + occupationDTO);
-		System.out.println("jobDTO===" + jobDTO);
-		
-		model.addAttribute("occupationDTO", occupationDTO);
-		model.addAttribute("jobDTO", jobDTO);
-    	
-    	
-    	
 		return "/corporation/coverlist_update";
 	}//update()
 	
@@ -137,7 +147,7 @@ public class CoverBoardController {
 		System.out.println("CoverBoardController writePro()");
 		
 		HttpSession session = request.getSession(); //세션값 가져오기
-		Integer corpNum = (Integer) session.getAttribute("corporationMemberNum"); //현재 세션에서 아이디 num 값 가져옴
+		Integer corpNum = (Integer) session.getAttribute("corpNum"); //현재 세션에서 아이디 num 값 가져옴
 	    if (corpNum == null) {
 	        System.out.println("⚠ corporationMemberNum이 세션에 없습니다!");
 	    } else {
@@ -163,8 +173,6 @@ public class CoverBoardController {
 	    recruitDTO.setRecruitSalary(Integer.parseInt(request.getParameter("recruitSalary")));
 	    recruitDTO.setRecruitLocation(request.getParameter("recruitLocation"));
 	    System.out.println("recruitDTO2" + recruitDTO);
-	    //String dateStr = request.getParameter("recruitDeadline");
-	    //recruitDTO.setRecruitDeatline(Date.valueOf(dateStr));
 	    
 	    String dateStr = request.getParameter("recruitDeatline");
 
@@ -173,8 +181,6 @@ public class CoverBoardController {
 	    } else {
 	        recruitDTO.setRecruitDeatline(Date.valueOf("2025-01-01")); // 기본값 처리 (DB에서 `NULL` 허용해야 함)
 	    }
-	    
-	    
 	    recruitDTO.setRecruitWorkday(Integer.parseInt(request.getParameter("recruitWorkday")));
 	    recruitDTO.setRecruitContent(request.getParameter("recruitContent"));
 	    recruitDTO.setCorporationMemberNum(corpNum);
@@ -204,7 +210,7 @@ public class CoverBoardController {
 		System.out.println("CoverBoardController writePro()");
 		
 		HttpSession session = request.getSession(); //세션값 가져오기
-		Integer corpNum = (Integer) session.getAttribute("corporationMemberNum"); //현재 세션에서 아이디 num 값 가져옴
+		Integer corpNum = (Integer) session.getAttribute("corpNum"); //현재 세션에서 아이디 num 값 가져옴
 	    if (corpNum == null) {
 	        System.out.println("⚠ corporationMemberNum이 세션에 없습니다!");
 	    } else {
@@ -226,25 +232,26 @@ public class CoverBoardController {
 	    recruitDTO.setRecruitSalary(Integer.parseInt(request.getParameter("recruitSalary")));
 	    recruitDTO.setRecruitLocation(request.getParameter("recruitLocation"));
 	    System.out.println("recruitDTO2" + recruitDTO);
-	    //String dateStr = request.getParameter("recruitDeadline");
-	    //recruitDTO.setRecruitDeatline(Date.valueOf(dateStr));
-	    
-	    String dateStr = request.getParameter("recruitDeatline");
-
-	    if (dateStr != null && !dateStr.isEmpty()) {
-	        recruitDTO.setRecruitDeatline(Date.valueOf(dateStr)); // 변환 성공
-	    } else {
-	        recruitDTO.setRecruitDeatline(Date.valueOf("2025-01-01")); // 기본값 처리 (DB에서 `NULL` 허용해야 함)
-	    }
-	    
 	    
 	    recruitDTO.setRecruitWorkday(Integer.parseInt(request.getParameter("recruitWorkday")));
 	    recruitDTO.setRecruitContent(request.getParameter("recruitContent"));
 	    recruitDTO.setCorporationMemberNum(corpNum);
 	    // DB에는 파일 이름이나 전체 경로 등 필요한 정보만 저장
 	    recruitDTO.setRecruitPhoto(filename); // DB에 String으로 저장되는 부분
+	    String dateStr = request.getParameter("recruitDeatline");
+
+	    if (dateStr != null && !dateStr.isEmpty()) {
+	        try {
+	            recruitDTO.setRecruitDeatline(Date.valueOf(dateStr));
+	        } catch (IllegalArgumentException e) {
+	            System.out.println("⚠ 올바르지 않은 날짜 형식: " + dateStr);
+	            recruitDTO.setRecruitDeatline(Date.valueOf("2025-01-01")); // 기본값 처리
+	        }
+	    } else {
+	        recruitDTO.setRecruitDeatline(Date.valueOf("2025-01-01")); // 기본값 처리
+	    }
 	    System.out.println("recruitDTO3" + recruitDTO);
-	    jobService.updateRecruit(recruitDTO);
+	    jobService.insertRecruit(recruitDTO);
 		
 		return "redirect:/corplist/list";
 	}
@@ -255,5 +262,15 @@ public class CoverBoardController {
 		System.out.println(occupationId);
         return jobService.getJobsByOccupation(occupationId);
     }
+	
+	@GetMapping("/delete")
+	public String delete(HttpServletRequest request) {
+		System.out.println("BoardController delete()");
+		int recruitId = Integer.parseInt(request.getParameter("recruitId"));
+		
+		jobService.deleteBoard(recruitId);
+		
+		return "redirect:/corplist/list";
+	}//delete()
 	
 }

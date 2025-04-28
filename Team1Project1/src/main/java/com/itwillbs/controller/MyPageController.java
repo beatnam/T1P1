@@ -43,10 +43,10 @@ public class MyPageController {
     
     @GetMapping("/mypage/my-profile")
     public String myProfilePage(HttpSession session, Model model) {
-        String id = (String)session.getAttribute("id");
+        
         Integer member_num = (Integer) session.getAttribute("member_num");
         
-        System.out.println("세션 ID : " + id);
+        
         System.out.println("세션 member_num : " + member_num);
         
         MyPageDTO myPageDTO = myPageService.getMyProfile(member_num);
@@ -65,11 +65,11 @@ public class MyPageController {
     
     @RequestMapping("mypage/my-profile-edit")
     public String myProfileEdit(HttpSession session, Model model) {
-    	String id = (String)session.getAttribute("id");
+    	
     	Integer member_num = (Integer) session.getAttribute("member_num");
     	
-    	if(id != null) {
-    		MyPageDTO myPageDTO = myPageService.getMyProfile(id);
+    	if(member_num != null) {
+    		MyPageDTO myPageDTO = myPageService.getMyProfile(member_num);
     		model.addAttribute("MyPageDTO", myPageDTO);
     	}else {
     		System.out.println("로그인이 필요합니다.");

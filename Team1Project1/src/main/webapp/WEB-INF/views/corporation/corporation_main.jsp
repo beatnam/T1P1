@@ -96,8 +96,10 @@ color: #333;
 
 /* Apply button styling */
 .apply_btn {
-text-align: right;
-margin: 10px 20px;
+	text-align: right; /* 버튼을 가운데 정렬 */
+    margin-top: 20px; /* 위쪽 여백 추가 */
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .apply_btn a {
