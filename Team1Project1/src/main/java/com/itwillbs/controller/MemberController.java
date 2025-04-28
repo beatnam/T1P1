@@ -29,9 +29,18 @@ public class MemberController {
 	}
 
 	@PostMapping("/joinPro")
-	public String joinPro(MemberDTO memberDTO) {
+	public String joinPro(MemberDTO memberDTO, HttpServletRequest request) {
 		System.out.println("memberController joinPro");
+		
+		String memberJumin = request.getParameter("memberJumin1") + request.getParameter("memberJumin2"); 
+		String memberEmail = request.getParameter("memberEmail1") + "@" + request.getParameter("memberEmail2"); 
 
+		memberDTO.setMTId(200);		
+		memberDTO.setMemberEmail(memberEmail);
+		memberDTO.setMemberJumin(memberJumin);
+		
+	
+		System.out.println(memberDTO);	
 		memberService.joinMember(memberDTO);
 		return "redirect:/main/main";
 	}
@@ -48,19 +57,18 @@ public class MemberController {
 		System.out.println("memberController loginPro");
 
 		MemberDTO memberDTO2 = memberService.loginMember(memberDTO);
-		System.out.println(memberDTO2.getMtId());
+		System.out.println(memberDTO2.getMTId());
 		
 		if (memberDTO2 != null) {
 			// 아이디 비밀번호 일치
 			// 로그인 성공 => 로그인 표시값을 세션에 저장
 			session.setAttribute("id", memberDTO2.getMemberId());
 			// 세션값에 멤버타입도 같이 넘겨줌 
-			session.setAttribute("type", memberDTO2.getMtId());
-			// /board/main 주소변경하면서 이동
+			session.setAttribute("type", memberDTO2.getMTId());
+
+			session.setAttribute("num", memberDTO2.getMemberNum());
 			return "redirect:/main/main";
-		} else {
-			// 아이디 비밀번호 틀림
-			// member/msg.jsp 주소변경없이 이동
+		} else{
 			return "/main/msg";
 		}
 

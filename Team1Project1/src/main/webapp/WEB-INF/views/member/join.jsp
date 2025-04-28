@@ -34,28 +34,28 @@
         </li>
 
         <li class="start">
-          <div class="join_content">
-            <input type="text" name="memberJumin" id="jumin_lbl" placeholder="주민등록번호" required />
-          </div>
-        </li>
+		  <div class="join_content"> 
+		    <div class="jumin_area">
+		      <input type="text" name="memberJumin1" id="jumin_lbl1" placeholder="주민등록번호 앞자리" required />
+		      <input type="password" name="memberJumin2" id="jumin_lbl2" placeholder="주민등록번호 뒷자리" required />
+		    </div>
+		  </div> 
+		</li>
 
         <!-- 이메일 -->
         <li class="start">
           <div class="join_content email_area">
-          
-          <input type="text" name="memberEmail" id="email_lbl" placeholder="이메일 주소 (예: test@naver.com)" required />
-          
-           <!--  <input type="text" name="memberEmail" id="email_lbl" placeholder="이메일 아이디" required /> -->
-          <!--   <span>@</span>
-            <input type="text" name="email2" class="w160" placeholder="도메인" required /> -->
-            <!-- <div class="select_common">
-              <select onchange="document.getElementsByName('email2')[0].value=this.value">
+            <input type="text" name="memberEmail1" id="email_lbl" placeholder="이메일 주소" required />
+          	<span>@</span>
+            <input type="text" name="memberEmail2" class="w160" placeholder="이메일주소" required /> 
+             <div class="select_common">
+              <select onchange="document.getElementsByName('memberEmail2')[0].value=this.value">
                 <option value="">직접입력</option>
                 <option value="naver.com">naver.com</option>
                 <option value="gmail.com">gmail.com</option>
                 <option value="hanmail.net">hanmail.net</option>
               </select>
-            </div> -->
+            </div> 
           </div>
         </li>
 
@@ -78,7 +78,7 @@
         <!-- 전화번호 -->
         <li class="start">
           <div class="join_content">
-            <input type="text" name="memberPhone" id="phone_lbl" placeholder="휴대전화" required />
+            <input type="tel" name="memberPhone" id="phone_lbl" placeholder="휴대전화" required />
             <button type="button" class="aceept_content" id="phone_lbl1">인증번호 전송</button>
           </div>
         </li>
