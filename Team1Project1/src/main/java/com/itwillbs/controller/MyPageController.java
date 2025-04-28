@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +41,7 @@ public class MyPageController {
         return "mypage/my-resume"; 
     }
     
-    @RequestMapping("/mypage/my-profile")
+    @GetMapping("/mypage/my-profile")
     public String myProfilePage(HttpSession session, Model model) {
         String id = (String)session.getAttribute("id");
         Integer member_num = (Integer) session.getAttribute("member_num");
@@ -48,7 +49,8 @@ public class MyPageController {
         System.out.println("세션 ID : " + id);
         System.out.println("세션 member_num : " + member_num);
         
-        MyPageDTO myPageDTO = myPageService.getMyProfile(id);
+        MyPageDTO myPageDTO = myPageService.getMyProfile(member_num);
+        System.out.println("조회된 MyPageDTO : " + myPageDTO);
         model.addAttribute("MyPageDTO", myPageDTO);
     	
         if (member_num != null) {
@@ -64,6 +66,7 @@ public class MyPageController {
     @RequestMapping("mypage/my-profile-edit")
     public String myProfileEdit(HttpSession session, Model model) {
     	String id = (String)session.getAttribute("id");
+    	Integer member_num = (Integer) session.getAttribute("member_num");
     	
     	if(id != null) {
     		MyPageDTO myPageDTO = myPageService.getMyProfile(id);

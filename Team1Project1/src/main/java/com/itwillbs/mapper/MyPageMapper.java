@@ -19,9 +19,11 @@ public interface MyPageMapper {
 	
 	public void memberInfoC(MyPageDTO myPageDTO);
 
-	public MyPageDTO getMyProfile(String id);
+	public MyPageDTO getMyProfile(Integer member_num);
 
 	void insertCareer(CareerDTO careerDTO);
+
+	
 }
 
 

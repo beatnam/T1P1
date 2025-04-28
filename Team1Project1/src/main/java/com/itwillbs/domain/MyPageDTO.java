@@ -9,12 +9,12 @@ import lombok.ToString;
 @ToString
 public class MyPageDTO {
 
+	private Integer memberNum;
 	private String memberIntroduce;
-	private String eduhighId;
 	private String memberName;
 	private String memberPhone;
 	private String memberInfoC;
-	
+	private String eduhighId;
 	
 	
 	

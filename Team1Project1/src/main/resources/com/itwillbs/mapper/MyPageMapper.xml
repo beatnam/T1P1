@@ -23,15 +23,16 @@
   </insert>
   
   <select id="getMyProfile" parameterType="String" resultType="com.itwillbs.domain.MyPageDTO">
-        SELECT
-        m.member_introduce AS memberIntroduce,
-        m.member_name AS memberName,
-        m.member_phone AS memberPhone,
-        m.member_infoC AS memberInfoC,
-        e.eduhigh_id AS eduhighId
-    	FROM member m
-    	LEFT JOIN education e ON m.member_num = e.member_num
-        WHERE member_Id = #{id}
+        select 
+        m.member_num,
+        m.member_name,
+        m.member_phone,
+        m.member_introduce,
+        e.eduhigh_id
+        from member m
+        join education e on m.member_num = e.member_num
+        where m.member_num = #{member_num}
+		
    </select>
   
   <insert id="insertCareer" parameterType="com.itwillbs.domain.CareerDTO">

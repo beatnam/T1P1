@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">
 
@@ -153,7 +153,7 @@ window.addEventListener("message", function(event) {
 });
 </script>
 
-<%@ include file="../inc/footer.jsp" %>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>
