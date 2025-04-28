@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -45,6 +46,16 @@ public class ManagerService {
 		pageDTO.setEndRow(endRow);
 
 		return managerMapper.listMember(pageDTO);
+	}
+
+	public int countRecruit() {
+		// TODO Auto-generated method stub
+		return managerMapper.countRecruit();
+	}
+
+	public List<Map<String, Object>> listRecruit() {
+		// TODO Auto-generated method stub
+		return managerMapper.listRecruit();
 	}
 
 }

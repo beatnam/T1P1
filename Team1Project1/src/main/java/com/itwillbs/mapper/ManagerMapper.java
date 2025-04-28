@@ -1,6 +1,7 @@
 package com.itwillbs.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,5 +14,9 @@ public interface ManagerMapper {
 	public List<MemberDTO> listMember(PageDTO pageDTO);
 
 	public int countMember();
+
+	public int countRecruit();
+
+	public List<Map<String, Object>> listRecruit();
 
 }
