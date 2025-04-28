@@ -23,8 +23,8 @@ public class ManagerController {
 	@Inject
 	private ManagerService managerService;
 
-	@GetMapping("/alwaysrecruit_mng")
-	public String alwaysRecruitMng(HttpServletRequest request, Model model) {
+	@GetMapping("/recruit_mng")
+	public String recruitMng(HttpServletRequest request, Model model) {
 		System.out.println("ProgramController program()");
 		int pageSize = 12;
 		String pageNum = request.getParameter("pageNum");
@@ -40,7 +40,7 @@ public class ManagerController {
 		pageDTO.setCurrentPage(currentPage);
 		// pageDTO.setSearch(search);
 
-		List<Map<String, Object>> aRecruitList = managerService.listRecruit();
+		List<Map<String, Object>> recruitList = managerService.listRecruit();
 
 		// 게시판 전체 글개수
 		int count = managerService.countRecruit();
@@ -65,9 +65,9 @@ public class ManagerController {
 		
 		
 		model.addAttribute("pageDTO", pageDTO);
-		model.addAttribute("aRecruitList", aRecruitList);
+		model.addAttribute("recruitList", recruitList);
 
-		return "/manager/alwaysrecruit_mng";
+		return "/manager/ecruit_mng";
 
 	}
 

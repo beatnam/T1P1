@@ -33,15 +33,15 @@
 			<td>삭제</td>
 		</tr>
 
-		<c:forEach var="aRecruitMap" items="${aRecruitList }">
+		<c:forEach var="recruitMap" items="${recruitList }">
 			<tr>
-				<td>${aRecruitMap.recruit_name}</td>
-				<td>${aRecruitMap.corporation_name}</td>
-				<td>${aRecruitMap.occupation_name}</td>
-				<td>${aRecruitMap.job_name}</td>
-				<td>${aRecruitMap.recruit_location}</td>
-				<td>${aRecruitMap.eduhigh_name}</td>
-				<td>${aRecruitMap.recruit_salary}</td>
+				<td>${recruitMap.recruit_name}</td>
+				<td>${recruitMap.corporation_name}</td>
+				<td>${recruitMap.occupation_name}</td>
+				<td>${recruitMap.job_name}</td>
+				<td>${recruitMap.recruit_location}</td>
+				<td>${recruitMap.eduhigh_name}</td>
+				<td>${recruitMap.recruit_salary}</td>
 
 				<td><button>삭제</button></td>
 			</tr>
