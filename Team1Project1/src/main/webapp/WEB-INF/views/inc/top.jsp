@@ -17,12 +17,19 @@
 	<div class="bottom-bar">
 		<div class="nav-links">
 			<a href="${pageContext.request.contextPath }/main/recruit_info">채용정보</a>
+
 			<a href="${pageContext.request.contextPath }/main/communitymain">커뮤니티</a>
 			<a href="${pageContext.request.contextPath }/main/customerService">고객센터</a>
+
+			<a href="${pageContext.request.contextPath }/main/my-profile">마이페이지</a>
 
 			<c:if test="${!empty sessionScope.id}">
 				<c:choose>
 					<c:when test="${sessionScope.type eq 100}">
+						<a href="${pageContext.request.contextPath}/manager/member_mng">관리자
+							페이지</a>
+					</c:when>
+					<c:when test="${sessionScope.type eq 200}">
 						<a href="${pageContext.request.contextPath}/main/my-profile">마이페이지</a>
 					</c:when>
 					<c:when test="${sessionScope.type eq 500}">
@@ -31,6 +38,7 @@
 					</c:when>
 				</c:choose>
 			</c:if>
+
 		</div>
 
 

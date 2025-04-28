@@ -31,16 +31,18 @@ public class MemberController {
 	@PostMapping("/joinPro")
 	public String joinPro(MemberDTO memberDTO, HttpServletRequest request) {
 		System.out.println("memberController joinPro");
-		
+
+		int memberNum =  Integer.parseInt(request.getParameter("memberNum"));
 		String memberJumin = request.getParameter("memberJumin1") + request.getParameter("memberJumin2"); 
 		String memberEmail = request.getParameter("memberEmail1") + "@" + request.getParameter("memberEmail2"); 
 
 		memberDTO.setMTId(200);		
 		memberDTO.setMemberEmail(memberEmail);
 		memberDTO.setMemberJumin(memberJumin);
+		memberDTO.setMemberNum(memberNum);
 		
 	
-		System.out.println(memberDTO);	
+
 		memberService.joinMember(memberDTO);
 		return "redirect:/main/main";
 	}
@@ -57,7 +59,6 @@ public class MemberController {
 		System.out.println("memberController loginPro");
 
 		MemberDTO memberDTO2 = memberService.loginMember(memberDTO);
-		System.out.println(memberDTO2.getMTId());
 		
 		if (memberDTO2 != null) {
 			// 아이디 비밀번호 일치

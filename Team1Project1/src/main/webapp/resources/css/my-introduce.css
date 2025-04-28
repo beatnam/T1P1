@@ -84,6 +84,35 @@ body {
 }
 
 .actions {
+<<<<<<< HEAD
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.file-btn,
+.new-btn {
+   background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-btn:hover,
+.new-btn:hover {
+   background-color: #45a049;
+}
+
+
+=======
     display: flex;
     gap: 10px;
     justify-content: flex-end; /* 오른쪽 정렬 */
@@ -102,6 +131,7 @@ body {
 .actions button:hover {
     background-color: #28a745;
 }
+>>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
     
 form {
   margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */

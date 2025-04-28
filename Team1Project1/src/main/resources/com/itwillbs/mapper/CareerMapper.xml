@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.CareerMapper">
+
+<insert id="insertCareer" parameterType="com.itwillbs.domain.CareerDTO">
+INSERT INTO job_history (
+   member_num,
+   JH_Corporation,
+   JH_department,
+   work_content,
+   start_date,
+   end_date
+ ) VALUES (
+   #{member_num},
+   #{JH_Corporation},
+   #{JH_department},
+   #{work_content},
+   #{start_date},
+   #{end_date}
+ )
+</insert>
+  
+<select id="getCareerList" parameterType="int" resultType="com.itwillbs.domain.CareerDTO">
+  SELECT * FROM job_history
+  WHERE member_num = #{member_num}
+</select>
+
+
+</mapper>

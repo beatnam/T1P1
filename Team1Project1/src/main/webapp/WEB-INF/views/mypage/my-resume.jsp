@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 이력서</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-resume.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 
 
 </head>
@@ -18,7 +17,7 @@
 
 <div class="all">
     <div class="banner">
-        <h2><a href="#">마이페이지</a></h2>
+        <h2><a href="${pageContext.request.contextPath}/mypage/my-profile">마이페이지</a></h2>
         <div class="banner1">
             <ul class="banner-list">
                 <li class="banner-profile"><a href="${pageContext.request.contextPath}/mypage/my-profile">프로필</a></li>
