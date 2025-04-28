@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 프로필</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-profile.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 </head>
 <body>
 
@@ -17,7 +16,7 @@
 <div class="all">
 
     <div class="banner">
-        <h2><a href="#">마이페이지</a></h2>
+        <h2><a href="${pageContext.request.contextPath}/mypage/my-profile">마이페이지</a></h2>
         <div class="banner1">
             <ul class="banner-list">
                 <li class="banner-profile active"><a href="${pageContext.request.contextPath}/mypage/my-profile">프로필</a></li>
@@ -33,31 +32,38 @@
         <div class="inbox1">
             <div class="so">한 줄 소개</div>
             <div>
-                <input type="text" name="member_introduce" value="허거덩" readonly>
+                <input type="text" name="memberIntroduce" value="${MyPageDTO.memberIntroduce}" readonly>
             </div>
         </div>
 
         <div class="inbox2">
             <div class="che">최종 학력</div>
-            <div><input type="text" name="eduhigh_id" value="허거덩" readonly></div>
-            <div><input type="text" name="eduhigh_id" value="허거덩" readonly></div>
+            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
+            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
         </div>
-
+		
         <div class="inbox3">
             <div class="gyeong">경력 사항</div>
-            <div><input type="text" value="허거덩" readonly></div>
-            <div><input type="text" value="허거덩" readonly></div>
-            <div><input type="text" value="허거덩" readonly></div>
+            
+            <c:forEach var="career" items="${careerList}">
+            	<div class="career-view">
+            		<input type="text" value="${career.JH_Corporation}" readonly>
+        			<input type="text" value="${career.JH_department}" readonly>
+        			<input type="text" value="${career.work_content}" readonly>
+        			<input type="text" value="${career.start_date}" readonly>
+        			<input type="text" value="${career.end_date}" readonly>
+        		</div>
+        	</c:forEach>
         </div>
 
         <div class="inbox4">
             <div class="ii">이름</div>
-            <div><input type="text" name="member_name" value="허거덩" readonly></div>
+            <div><input type="text" name="memberName" value="${MyPageDTO.memberName}" readonly></div>
         </div>
 
         <div class="inbox5">
             <div class="hyu">휴대전화</div>
-            <div><input type="text" name="member_phone" value="허거덩" readonly></div>
+            <div><input type="text" name="memberPhone" value="${MyPageDTO.memberPhone}" readonly></div>
         </div>
 
         <div class="inbox6">
@@ -69,22 +75,36 @@
             <div class="email">이메일 인증 강화</div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="member_infoC" value="agree">동의
+                    <input type="radio" name="memberInfoC" value="agree" 
+                    <c:if test="${MyPageDTO.memberInfoC == 'agree'}">checked</c:if> disabled />동의
                 </label>
                 <label>
-                    <input type="radio" name="member_infoC" value="disagree">비동의
+                    <input type="radio" name="memberInfoC" value="disagree" 
+                    <c:if test="${MyPageDTO.memberInfoC == 'disagree'}">checked</c:if> disabled /> 비동의
                 </label>	
             </div>
         </div>
 
         <div class="inbox8">
-            <a href="#">회원 탈퇴</a>
+            <a href="#" onclick="return handleDelete()">회원 탈퇴</a>
             <a href="${pageContext.request.contextPath}/mypage/my-profile-edit" class="edit-btn">수정</a>
         </div>
 
     </div>
 
 </div>
+
+<script>
+function handleDelete() {
+    if (confirm("정말 탈퇴하시겠습니까?")) {
+        alert("탈퇴 되었습니다.");
+        location.href = "#";
+
+        return false; 
+    }
+    return false; 
+}
+</script>
 
 <%@ include file="../inc/footer.jsp" %>
 

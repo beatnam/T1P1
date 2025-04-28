@@ -16,17 +16,18 @@ public class MainController {
 		return "/main/main";
 	}
 
+	@GetMapping("/my-profile")
+	public String mypage() {
+		System.out.println("MainController mypage()");
+		return "redirect:/mypage/my-profile";
+	}
+
 	@GetMapping("/msg")
 	public String msg() {
 		System.out.println("MainController msg()");
 		return "/main/msg";
 	}
-
-	@GetMapping("/my-profile")
-	public String mypage() {
-		System.out.println("MainController mypage()");
-		return "/mypage/my-profile";
-	}
+	
 
 	@GetMapping("/login")
 	public String login() {
@@ -36,9 +37,10 @@ public class MainController {
 
 	@GetMapping("/join")
 	public String join() {
-
+		System.out.println("MainController join()");
 		return "/member/join";
 	}
+
 
 	@GetMapping("/cop_join")
 	public String copJoin() {
@@ -58,6 +60,7 @@ public class MainController {
 		return "/recruit_info/info_home";
 	}
 
+   
 	@GetMapping("/corpmain")
 	public String corpMain() {
 

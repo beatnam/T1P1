@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>이력서 작성</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-resume-edit.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
-
 </head>
 <body>
 
@@ -18,7 +16,7 @@
 
 <div class="all">
  <div class="banner">
-    <h2><a href="#">마이페이지</a></h2>
+    <h2><a href="${pageContext.request.contextPath}/mypage/my-profile">마이페이지</a></h2>
         <div class="banner1">
         <ul class="banner-list">
         <li class="banner-profile"><a href="${pageContext.request.contextPath}/mypage/my-profile">프로필</a></li>
@@ -27,16 +25,18 @@
         <li class="banner-ing"><a href="${pageContext.request.contextPath}/mypage/my-ing">지원현황</a></li>
         </ul>
         </div>
-    </div>
+ </div>
 
 	<div class="box">
     <h2>이력서 작성</h2>
-    <form action="/resume/submit" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/resume/submit" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
 
         <!-- 사진 -->
         <div class="section">
             <h2>사진</h2>
-            <input type="file" name="resume_photo" accept="image/*">
+            <input type="file" name="resumePhoto" id="resumePhotoInput" accept="image/*">
+            <br>
+    		<img id="photoPreview" src="#" alt="사진 미리보기" style="display:none; max-width: 200px; margin-top: 10px;">
         </div>
 
         <!-- 기본 정보 -->
@@ -45,15 +45,15 @@
             <div class="row">
                 <div>
                     <label for="name">성명</label>
-                    <input type="text" name="member_name" id="name">
+                    <input type="text" name="memberName" id="name" required>
                 </div>
                 <div>
                     <label for="age">나이</label>
-                    <input type="number" name="member_age" id="age">
+                    <input type="number" name="memberAge" id="age" required>
                 </div>
                 <div>
                     <label for="gender">성별</label>
-                    <select name="member_gender" id="gender">
+                    <select name="memberGender" id="gender" required>
                         <option value="">선택</option>
                         <option value="남">남</option>
                         <option value="여">여</option>
@@ -65,19 +65,19 @@
                 <div>
                     <label>주민등록번호</label>
                     <div class="inline-inputs">
-                    	<input type="text" name="member_jumin1" maxlength="6" placeholder="앞 6자리">
+                    	<input type="text" name="memberJumin1" maxlength="6" placeholder="앞 6자리" required>
                     	-
-                    	<input type="password" name="member_jumin2" maxlength="1" placeholder="뒤 1자리">
+                    	<input type="password" name="memberJumin2" maxlength="1" placeholder="뒤 1자리" required>
                 	</div>
                 </div>
 
                 <div class="form-inline-group">
                     <label for="email">이메일</label>
                     <div class="inline-inputs">
-                        <input type="text" id="emailId" name="member_email" placeholder="아이디 입력">
+                        <input type="text" id="emailId" name="memberEmail" placeholder="이메일 입력" required>
                         <span>@</span>
-                        <input type="text" id="customDomain" name="member_emailDomain" placeholder="직접입력 또는 선택" disabled>
-                        <select id="domainSelect">
+                        <input type="text" id="customDomain" name="memberEmailDomain" placeholder="직접입력 또는 선택" disabled>
+                        <select id="domainSelect" required>
                             <option value="">-- 도메인 선택 --</option>
                             <option value="naver.com">naver.com</option>
                             <option value="gmail.com">gmail.com</option>
@@ -89,7 +89,7 @@
 
                 <div>
                     <label for="phone">휴대폰번호</label>
-                    <input type="text" name="member_phone" id="phone">
+                    <input type="text" name="memberPhone" id="phone" required>
                 </div>
             </div>
         </div>
@@ -98,30 +98,30 @@
         <div class="section">
             <h2>주소</h2>
             <label for="zipcode">우편번호</label>
-            <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly>
+            <input type="text" name="memberPostcode" id="postcode" placeholder="우편번호" readonly required>
             <button type="button" onclick="execDaumPostcode()">우편번호 검색</button><br>
 
             <label for="address">기본주소</label>
-            <input type="text" name="address" id="address" readonly><br>
+            <input type="text" name="memberAddress" id="address" readonly required><br>
 
-            <label for="detailAddress">상세주소</label>
-            <input type="text" name="detail" id="detailAddress">
+<!--             <label for="detailAddress">상세주소</label> -->
+<!--             <input type="text" name="detail" id="detailAddress"> -->
         </div>
 
         <!-- 학력 -->
         <div class="section">
-            <h2>학력</h2>
+            <h2>최종 학력</h2>
             <label>학력구분</label>
-            <select name="eduType">
+            <select name="eduType" required>
                 <option value="">선택</option>
                 <option value="고등학교">고등학교</option>
                 <option value="대학교">대학교</option>
                 <option value="대학원">대학원</option>
             </select><br>
             <label>학교명</label>
-            <input type="text" name="schoolName"><br>
+            <input type="text" name="educationSchool" required><br>
             <label>전공명</label>
-            <input type="text" name="major"><br>
+            <input type="text" name="educationMajor" required><br>
         </div>
 
         <!-- 경력 -->
@@ -129,48 +129,87 @@
             <h2>경력</h2>
             <label>총 경력</label>
             <div class="career-row">
-            <input type="number" name="careerYear" placeholder="년"> 년
-            <input type="number" name="careerMonth" placeholder="개월"> 개월
+            <input type="text" name="JHId" placeholder="회사명" style="flex: 1 !important; min-width: 250px !important;"> 
+            <input type="text" name="JHDepartment" placeholder="부서명">
+            <input type="text" name="workContent" placeholder="담당업무">
+            <input type="date" name="startDate" placeholder="시작일"> 
+            <span>~</span>
+            <input type="date" name="endDate" placeholder="종료일"> 
+            </div>
+            <br>
+            <div class="career-row">
+            <input type="text" name="JHId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;">
+            <input type="text" name="JHDepartment" placeholder="부서명"> 
+            <input type="text" name="workContent" placeholder="담당업무">
+            <input type="date" name="startDate" placeholder="시작일"> 
+            <span>~</span>
+            <input type="date" name="endDate" placeholder="종료일"> 
+            </div>
+            <br>
+			<div class="career-row">
+            <input type="text" name="JHId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;"> 
+            <input type="text" name="JHDepartment" placeholder="부서명">
+            <input type="text" name="workContent" placeholder="담당업무">
+            <input type="date" name="startDate" placeholder="시작일"> 
+            <span>~</span>
+            <input type="date" name="endDate" placeholder="종료일"> 
             </div>
         </div>
 
         <!-- 자격증 -->
-        <div class="section">
+        <div class="section">        	
             <h2>자격증</h2>
             <label>자격명</label>
-            <input type="text" name="certification_name">    
+            <input type="text" name="certificationName">    
             <label>발급기관</label>
-            <input type="text" name="certification_issuer">
+            <input type="text" name="certificationIssuer">
             <label>취득일</label>
-            <input type="date" name="cermap_aquired_date">
+            <input type="date" name="cermapAquiredDate">
         </div>
 
         <!-- 외국어 -->
         <div class="section">
             <h2>외국어</h2>
             <label>언어</label>
-            <select name="language">
+            <select name="languageName" id="languageSelect">
                 <option value="">선택</option>
-                <option>영어</option>
-                <option>일본어</option>
-                <option>중국어</option>
+                <option>TOEIC(토익)</option>
+                <option>OPIc(오픽)</option>
+                <option>TOEIC Speaking(토익스피킹)</option>
+                <option>TOEFL(토플)</option>
+                <option>IELTS(아이엘츠)</option>
+                <option>JLPT(일본어능력시험)</option>
+                <option>JPT(일본어능력평가시험)</option>
+                <option>HSK(중국어능력시험)</option>
+                <option>텝스(TEPS)</option>
+                <option value="custom">직접 입력</option>
             </select>
-            <label>능력</label>
-            <select name="languageLevel">
-                <option value="상">상</option>
-                <option value="중">중</option>
-                <option value="하">하</option>
-            </select>
+            <input type="text" name="languageNameCustom" id="languageCustomInput" 
+            placeholder="외국어를 직접 입력하세요" style="display:none;">
+            <label>발급 기관</label>
+            	<input type="text" name="languageIssuer">
+            <label>성적</label>
+            	<input type="text" name="langmapGrade">	
         </div>
 
         <!-- 제출 -->
         <div class="section submit-section">
-            <button type="submit">이력서 제출</button>
+        	
+            	<button type="submit" class="edit-btn">이력서 제출</button>
+        	
+        
         </div>
-    </form>
+    	</form>
     </div>
 </div>
 
+	<script>
+        function handleSubmit(){
+        	alert("제출이 완료되었습니다.");
+            return true;
+        }
+    </script>
+        
     <!-- 주소 검색 API -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -202,6 +241,50 @@
             }
         });
     </script>
+    
+    <script>
+		document.addEventListener("DOMContentLoaded", function () {
+    	const select = document.getElementById("languageSelect");
+    	const customInput = document.getElementById("languageCustomInput");
+
+    	select.addEventListener("change", function () {
+        	if (this.value === "custom") {
+            	customInput.style.display = "inline-block";
+            	customInput.name = "languageName"; 
+            	select.name = ""; 
+        	} else {
+            	customInput.style.display = "none";
+            	customInput.value = "";
+            	customInput.name = "languageNameCustom"; 
+            	select.name = "languageName"; 
+        	}
+    	});
+	});
+	</script>
+   
+   <script>
+	document.addEventListener("DOMContentLoaded", function () {
+    	const fileInput = document.getElementById("resumePhotoInput");
+    	const previewImg = document.getElementById("photoPreview");
+
+    	fileInput.addEventListener("change", function () {
+        	const file = this.files[0];
+
+        	if (file) {
+            	const reader = new FileReader();
+            	reader.onload = function (e) {
+                	previewImg.src = e.target.result;
+                	previewImg.style.display = "block";
+            	};
+            	reader.readAsDataURL(file);
+        	} else {
+            	previewImg.src = "#";
+            	previewImg.style.display = "none";
+        	}
+    	});
+	});
+	</script>
+    
 
 <%@ include file="../inc/footer.jsp" %>
 
