@@ -42,8 +42,10 @@ public class CoverBoardController {
 	private String uploadPath;
 	
 	@GetMapping("/list")
-	public String list(HttpServletRequest request, Model model) {
+	public String list(HttpServletRequest request, Model model, HttpSession session ) {
 		System.out.println("CoverBoardController list()");
+		Integer corpNum = (Integer) session.getAttribute("corpNum");
+		System.out.println("corpNum : " + corpNum);
 		int pageSize = 10;
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
@@ -55,6 +57,7 @@ public class CoverBoardController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setCorporationMemberNum(corpNum);
 		
 		List<RecruitDTO> listCover = jobService.coverList(pageDTO);
 		

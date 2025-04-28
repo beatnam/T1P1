@@ -21,6 +21,6 @@ public class PageDTO {
 	private int startPage;
 	private int endPage;
 	private int pageCount;
-	
+	private int corporationMemberNum;
 	
 }

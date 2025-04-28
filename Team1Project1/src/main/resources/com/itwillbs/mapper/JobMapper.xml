@@ -42,10 +42,11 @@
 	<select id="coverList" resultType="com.itwillbs.domain.RecruitDTO">
     	SELECT *
 		FROM recruit
+		where corporationMember_num = #{corporationMemberNum}
 		order by recruit_id desc
   		limit #{startRow}, #{pageSize}
     </select>
-    <select id="contentBoard" resultType="java.lang.Integer">
+    <select id="contentBoard" resultType="com.itwillbs.domain.RecruitDTO">
     	SELECT *
 		FROM recruit
 		where recruit_id = #{recruitId}
@@ -70,7 +71,7 @@
     	set corporationMember_num = #{corporationMemberNum}, recruit_occupation = #{recruitOccupation}, recruit_job = #{recruitJob},
     	recruit_location = #{recruitLocation},recruit_eduhigh = #{recruitEduhigh}, recruit_salary = #{recruitSalary}, recruit_content = #{recruitContent},
     	recruit_workday = #{recruitWorkday}, recruit_photo = #{recruitPhoto}, recruit_deatline = #{recruitDeatline}, recruit_name = #{recruitName}
-    	where recruit_id = #{recruitId}
+    	where recruit_id = #{recruitId} and corporationMember_num = #{corporationMemberNum}
     </update>
     <delete id="deleteBoard">
     	delete from recruit
@@ -78,6 +79,7 @@
     </delete>
 	<select id="countBoard" resultType="java.lang.Integer">
   		select count(*) from recruit
+  		where corporationMember_num = #{corporationMemberNum}
   	</select>
   
 </mapper>
