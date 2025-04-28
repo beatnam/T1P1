@@ -40,10 +40,12 @@
     	#{recruitDate}, #{recruitWorkday}, #{recruitPhoto}, #{recruitDeatline}, #{recruitName} )
     </insert>
 	<select id="coverList" resultType="com.itwillbs.domain.RecruitDTO">
-    	SELECT recruit_id, recruit_name, recruit_deatline
+    	SELECT *
 		FROM recruit
+		order by recruit_id desc
+  		limit #{startRow}, #{pageSize}
     </select>
-    <select id="contentBoard" resultType="com.itwillbs.domain.RecruitDTO">
+    <select id="contentBoard" resultType="java.lang.Integer">
     	SELECT *
 		FROM recruit
 		where recruit_id = #{recruitId}
@@ -58,6 +60,11 @@
 		FROM job
 		where job_id = #{jobId} and occupation_id = #{occupationId}
     </select>
+    <select id="eduHighName" resultType="com.itwillbs.domain.EduHighDTO">
+    	SELECT *
+		FROM edu_high
+		where eduhigh_id = #{eduhighId}
+    </select>
     <update id="updateRecruit">
     	update recruit
     	set corporationMember_num = #{corporationMemberNum}, recruit_occupation = #{recruitOccupation}, recruit_job = #{recruitJob},
@@ -65,5 +72,12 @@
     	recruit_workday = #{recruitWorkday}, recruit_photo = #{recruitPhoto}, recruit_deatline = #{recruitDeatline}, recruit_name = #{recruitName}
     	where recruit_id = #{recruitId}
     </update>
+    <delete id="deleteBoard">
+    	delete from recruit
+  		where recruit_id = #{recruitId}
+    </delete>
+	<select id="countBoard" resultType="java.lang.Integer">
+  		select count(*) from recruit
+  	</select>
   
 </mapper>

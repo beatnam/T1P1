@@ -97,22 +97,22 @@ body {
 
 /* Apply button styling */
 .apply_btn {
-    text-align: right;
-    margin: 10px 20px;
+    text-align: right; /* 버튼을 가운데 정렬 */
+    margin-top: 20px; /* 위쪽 여백 추가 */
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
-.apply_btn input[tpye="submit"] {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.apply_btn input[tpye="submit"]:hover {
-    background-color: #218838;
+.apply_btn input[type="submit"] {
+    background-color: #007BFF; /* 버튼 배경색 (파란색) */
+    color: #fff; /* 글자 색 (흰색) */
+    font-size: 16px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵게 */
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 */
+    cursor: pointer; /* 마우스를 올리면 클릭 가능하도록 변경 */
+    transition: background-color 0.3s ease-in-out;
 }
 
 #cop_file {

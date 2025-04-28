@@ -182,7 +182,7 @@ select {
 			</tr>
 			<tr>
 				<td>마감일자</td>
-				<td><input type="date" id="recruitDeatline" name="recruitDeatline" value=""></td>
+				<td><input type="date" id="recruitDeatline" name="recruitDeatline"></td>
 			</tr>
 			<tr>
 				<td>근무일수</td>

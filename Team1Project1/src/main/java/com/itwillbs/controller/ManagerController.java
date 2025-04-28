@@ -82,7 +82,7 @@ public class ManagerController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		pageDTO.setSearch(search);
+		//pageDTO.setSearch(search);
 
 		List<MemberDTO> memberList = managerService.listMember(pageDTO);
 

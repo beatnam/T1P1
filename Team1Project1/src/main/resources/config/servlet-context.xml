@@ -49,7 +49,7 @@
 	<!-- 	서버에 업로드 할 경로 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="C:\\Users\\ITWILL\\git\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+			value="H:\\workspace_git\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
 	</beans:bean>
 
 </beans:beans>
