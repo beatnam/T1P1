@@ -5,21 +5,27 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.OccupationDTO;
+import com.itwillbs.domain.OpenrecruitDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.JobService;
 import com.itwillbs.service.ManagerService;
 
 @Controller
 @RequestMapping("/manager/*")
 public class ManagerController {
-
+	@Inject
+	private JobService jobService;
 	@Inject
 	private ManagerService managerService;
 
@@ -164,13 +170,18 @@ public class ManagerController {
 //		List<Map<String, Object>> copmemList = managerService.listCopMember();
 //		
 //		model.addAttribute("copmemList",copmemList);
-	
+
 		return "/manager/copmember_mng";
 	}
 
 	@GetMapping("/openrecruit_mng")
-	public String openrecruitMng() {
-
+	public String openrecruitMng(Model model) {
+  
+		List<Map<Object,Object>> ORlist = managerService.listOR();
+		
+		model.addAttribute("ORlist",ORlist);
+		
+		
 		return "/manager/openrecruit_mng";
 	}
 
@@ -181,13 +192,20 @@ public class ManagerController {
 	}
 
 	@GetMapping("/openrecruit_write")
-	public String openrecruitWrite() {
+	public String openrecruitWrite(Model model, HttpSession session) {
+		List<OccupationDTO> occupations = jobService.getOccupations();
 
+		model.addAttribute("occupations", occupations);
 		return "/manager/openrecruit_write";
 	}
 
 	@PostMapping("/openrecruit_writePro")
-	public String openrecruitWritePro() {
+	public String openrecruitWritePro(HttpServletRequest request, OpenrecruitDTO openrecruitDTO) {
+		System.out.println("ManagerController openrecruitWritePro()");
+		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
+		openrecruitDTO.setMemberNum(memberNum);
+		System.out.println(openrecruitDTO);
+		managerService.insertOR(openrecruitDTO);
 
 		return "redirect:/manager/openrecruit_mng";
 	}

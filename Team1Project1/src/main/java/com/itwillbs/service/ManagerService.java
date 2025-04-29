@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.OpenrecruitDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.mapper.ManagerMapper;
 
@@ -83,10 +84,20 @@ public class ManagerService {
 	public List<Map<String, Object>> listCopMember1(Integer mtId) {
 		System.out.println("ManagerService listCopMember1()");
 		System.out.println(mtId);
-		if (mtId == null) {
+		if (mtId == 0) {
 			return managerMapper.listCopMember();
 		} else {
 			return managerMapper.listCopMember1(mtId);
 		}
+	}
+
+	public void insertOR(OpenrecruitDTO openrecruitDTO) {
+		// TODO Auto-generated method stub
+		managerMapper.insertOR(openrecruitDTO);
+	}
+
+	public List<Map<Object, Object>> listOR() {
+		// TODO Auto-generated method stub
+		return managerMapper.listOR();
 	}
 }

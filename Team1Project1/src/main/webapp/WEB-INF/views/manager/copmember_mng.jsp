@@ -23,14 +23,13 @@
 		<thead>
 			<tr>
 				<td><select id="memberTypeFilter">
-						<option value="">전체</option>
+						<option value="0">전체</option>
 						<option value="300">사업자 등록증 제출 전</option>
 						<option value="400">승인 대기</option>
 						<option value="500">기업 회원</option>
 				</select></td>
 				<td>회원 아이디</td>
 				<td>기업 이름</td>
-				<td>등업</td>
 				<td>삭제</td>
 			</tr>
 		</thead>
@@ -41,31 +40,26 @@
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 	<script>
-  $(document).ready(function() {
-    $('#memberTypeFilter').change(function() {
+	$(function() {
+
+		$('#memberTypeFilter').change(function() {
       const mtId = $(this).val();
 
       $.ajax({
         url: '${pageContext.request.contextPath }/manager/filter',
         method: 'GET',
         data: { mtId: mtId },
+        dataType: 'json',
         success: function(result) {
         	const tbody = $('#memberTableBody');
           	tbody.empty();
-
+	console.log(result);
           result.forEach(item => {
             const row = `
               <tr>
-                <td>${item.mt_name}</td>
-                <td>${item.corporationmember_id}</td>
+            	<td>${item.mt_name}</td>
+                <td>${item.orporationmember_id}</td>
                 <td>${item.corporation_name}</td>
-                <td>
-                  <select id="memberTypeChange" data-id="">
-                    <option value="300" ${item.mt_id == 300 ? 'selected' : ''}>사업자 등록증 제출 전</option>
-                    <option value="400" ${item.mt_id == 400 ? 'selected' : ''}>승인 대기</option>
-                    <option value="500" ${item.mt_id == 500 ? 'selected' : ''}>기업 회원</option>
-                  </select>
-                </td>
                 <td>
                   <button id="deleteBtn" data-id="">삭제</button>
                 </td>

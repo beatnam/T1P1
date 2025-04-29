@@ -28,17 +28,24 @@
 			<td>공고명</td>
 			<!-- -->
 			<td>회사명</td>
+			<td>직종</td>
+			<td>직무</td>
 			<td>마감일</td>
-			<td>수정</td>
-			<td>삭제</td>
+
+			<!-- 			<td>수정</td> -->
+			<!-- 			<td>삭제</td> -->
 		</tr>
 		<tr>
+			<c:forEach var="orMap" items="${ORlist }">
+				<td>${orMap.or_name }</td>
+				<td>${orMap.or_corporation_name }</td>
+				<td>${orMap.occupation_name}</td>
+				<td>${orMap.job_name }</td>
+				<td>${orMap.or_deadline }</td>
 
-			<td>공개 채용 공고명</td>
-			<td>회사이름</td>
-			<td>날짜</td>
-			<td><a href="${pageContext.request.contextPath }/manager/openrecruit_update">수정</a></td>
-			<td><button>삭제</button></td>
+				<%-- 			<td><a href="${pageContext.request.contextPath }/manager/openrecruit_update">수정</a></td> --%>
+				<!-- 			<td><button>삭제</button></td> -->
+			</c:forEach>
 		</tr>
 
 	</table>

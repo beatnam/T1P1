@@ -16,20 +16,24 @@ public class AjaxController {
 
 	@Inject
 	private ManagerService managerService;
-	
-	
+
 	@GetMapping("/manager/filter")
 	public List<Map<String, Object>> memberTypeFilter(HttpServletRequest request) {
 		System.out.println("AjaxController memberTypeFilter()");
-		
-		Integer mtId= Integer.parseInt(request.getParameter("mtId"));
-		
+
+		Integer mtId = Integer.parseInt(request.getParameter("mtId"));
+
 		System.out.println(mtId);
-		
-		List<Map<String,Object>> result= managerService.listCopMember1(mtId);
-		// 값 잘들고옴ㅎㅎ
-		System.out.println(result);
-		
-		return result;
+		if (mtId == 0) {
+			List<Map<String, Object>> result = managerService.listCopMember();
+			System.out.println(result);
+			return result;
+		} else {
+			List<Map<String, Object>> result = managerService.listCopMember1(mtId);
+			System.out.println(result);
+			return result;
+		}
+	
+
 	}
 }
