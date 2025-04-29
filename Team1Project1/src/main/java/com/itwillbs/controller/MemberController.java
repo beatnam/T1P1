@@ -67,7 +67,7 @@ public class MemberController {
 			// 세션값에 멤버타입도 같이 넘겨줌 
 			session.setAttribute("type", memberDTO2.getMTId());
 
-			session.setAttribute("num", memberDTO2.getMemberNum());
+			session.setAttribute("member_num", memberDTO2.getMemberNum());
 			return "redirect:/main/main";
 		} else{
 			return "/main/msg";

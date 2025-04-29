@@ -5,23 +5,35 @@
 <mapper namespace="com.itwillbs.mapper.MyResumeMapper">
 
   <insert id="insertResume" parameterType="com.itwillbs.domain.MyResumeDTO">
-    INSERT INTO resume (
-      member_name, member_age, member_gender, member_jumin1, member_jumin2,
-      member_email, member_email_domain, member_phone, member_postcode, member_address,
-      edu_type, education_school, education_major,
-      jh_id, jh_department, work_content, start_date, end_date,
-      certification_name, certification_issuer, cermap_aquired_date,
-      language_name, language_name_custom, language_issuer, langmap_grade
-    )
+<!--     INSERT INTO resume ( -->
+<!--       member_name, member_age, member_gender, member_jumin1, member_jumin2, -->
+<!--       member_email, member_email_domain, member_phone, member_postcode, member_address, -->
+<!--       edu_type, education_school, education_major, -->
+<!--       jh_id, jh_department, work_content, start_date, end_date, -->
+<!--       certification_name, certification_issuer, cermap_aquired_date, -->
+<!--       language_name, language_name_custom, language_issuer, langmap_grade -->
+<!--     ) -->
     
-    VALUES (
-      #{memberName}, #{memberAge}, #{memberGender}, #{memberJumin1}, #{memberJumin2},
-      #{memberEmail}, #{memberEmailDomain}, #{memberPhone}, #{memberPostcode}, #{memberAddress},
-      #{eduType}, #{educationSchool}, #{educationMajor},
-      #{JHId}, #{JHDepartment}, #{workContent}, #{startDate}, #{endDate},
-      #{certificationName}, #{certificationIssuer}, #{cermapAquiredDate},
-      #{languageName}, #{languageNameCustom}, #{languageIssuer}, #{langmapGrade}
+<!--     VALUES ( -->
+<!--       #{memberName}, #{memberAge}, #{memberGender}, #{memberJumin1}, #{memberJumin2}, -->
+<!--       #{memberEmail}, #{memberEmailDomain}, #{memberPhone}, #{memberPostcode}, #{memberAddress}, -->
+<!--       #{eduType}, #{educationSchool}, #{educationMajor}, -->
+<!--       #{JHId}, #{JHDepartment}, #{workContent}, #{startDate}, #{endDate}, -->
+<!--       #{certificationName}, #{certificationIssuer}, #{cermapAquiredDate}, -->
+<!--       #{languageName}, #{languageNameCustom}, #{languageIssuer}, #{langmapGrade} -->
     )
   </insert>
+  
+  <select id="getResumeList" parameterType="int" resultType="com.itwillbs.domain.MyResumeDTO">
+  	select
+  	resume_id, title, member_name, member_age, member_gender, member_jumin,
+  	member_email, member_email_domain, member_phone, member_address, 
+  	edu_type, educarion_school, education_major, jh_id, jh_department,
+  	wort_content, start_date, end_date, certification_name, certification_issuer,
+  	cermap_aquired_date, language_name, language_name_custom, language_issuer, 
+  	langmap_grade
+  	from resume
+  	where member_num = #{memberNum}
+  </select>
 
 </mapper>

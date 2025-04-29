@@ -16,13 +16,19 @@ public class MyPageService {
 	@Inject
 	private MyPageMapper myPageMapper;
 	
-	public MyPageDTO getMyProfile(Integer member_num) {
-		return myPageMapper.getMyProfile(member_num);
-	}
+//	public MyPageDTO getMyProfile(Integer member_num) {
+//		return myPageMapper.getMyProfile(member_num);
+//	}
 
 	public void insertCareer(CareerDTO careerDTO) {
 		
 		
+	}
+
+	public MyPageDTO getMyProfileByMemberNum(MyPageDTO myPageDTO) {
+		
+		
+		return myPageMapper.getMyProfileByMemberNum(myPageDTO);
 	}
 		
 	
