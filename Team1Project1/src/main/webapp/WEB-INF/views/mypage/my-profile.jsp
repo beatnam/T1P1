@@ -39,8 +39,13 @@
 
         <div class="inbox2">
             <div class="che">최종 학력</div>
-            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
-            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
+            	<c:forEach var="edu" items="${educationList }">
+            		<div>
+            			<p>학교 이름 : ${edu.educationSchool }</p>
+            			<p>전공 : ${edu.educationMajor }</p>
+            			<p>세부 전공 : ${edu.majorDetail }</p>
+            		</div>
+            	</c:forEach>
         </div>
 		
         <div class="inbox3">
@@ -48,11 +53,11 @@
             
             <c:forEach var="career" items="${careerList}">
             	<div class="career-view">
-            		<input type="text" value="${career.JH_Corporation}" readonly>
-        			<input type="text" value="${career.JH_department}" readonly>
-        			<input type="text" value="${career.work_content}" readonly>
-        			<input type="text" value="${career.start_date}" readonly>
-        			<input type="text" value="${career.end_date}" readonly>
+            		<p><strong>회사명:</strong> ${career.JH_Corporation}</p>
+      				<p><strong>부서:</strong> ${career.JH_department}</p>
+      				<p><strong>업무 내용:</strong> ${career.work_content}</p>
+      				<p><strong>시작일:</strong> ${career.start_date}</p>
+      				<p><strong>종료일:</strong> ${career.end_date}</p>
         		</div>
         	</c:forEach>
         </div>

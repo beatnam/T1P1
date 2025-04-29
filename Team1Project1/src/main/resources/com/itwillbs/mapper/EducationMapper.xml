@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.EducationMapper">
+
+  <select id="getEducationList" parameterType="int" resultType="com.itwillbs.domain.EducationDTO">
+  	select 
+	e.member_num, e.education_school, e.eduhigh_id, h.eduhigh_name,
+	e.education_major, e.major_detail, e.education_verification
+	from education e
+	left join edu_high h 
+	on e.eduhigh_id = h.eduhigh_id
+	where e.member_num = #{memberNum}
+  </select>
+
+</mapper>

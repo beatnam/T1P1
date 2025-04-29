@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,52 @@ public class ManagerController {
 	@Inject
 	private ManagerService managerService;
 
-	@GetMapping("/alwaysrecruit_mng")
-	public String alwaysRecruitMng() {
+	@GetMapping("/recruit_mng")
+	public String recruitMng(HttpServletRequest request, Model model) {
+		// 상시채용 공고
+		System.out.println("ProgramController program()");
+		int pageSize = 12;
+		String pageNum = request.getParameter("pageNum");
 
-		return "/manager/alwaysrecruit_mng";
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		PageDTO pageDTO = new PageDTO();
+
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
+		// pageDTO.setSearch(search);
+
+		List<Map<String, Object>> recruitList = managerService.listRecruit(pageDTO);
+
+		// 게시판 전체 글개수
+		int count = managerService.countRecruit();
+		// 검색어 포함한 글 개수
+//		int count = boardService.countBoard(pageDTO);
+
+		// 한 화면에 보여줄 페이지 개수
+		int pageBlock = 5;
+
+		// 한 화면에 보여줄 시작페이지 번호
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+
+		// 한 화면에 보여줄 끝페이지 번호
+		int endPage = startPage + pageBlock - 1;
+
+		// 전체 페이지 개수 구하기
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		model.addAttribute("pageDTO", pageDTO);
+		model.addAttribute("recruitList", recruitList);
+
+		return "/manager/recruit_mng";
+
 	}
 
 	@GetMapping("/board_mng")
@@ -82,7 +125,8 @@ public class ManagerController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
-		//pageDTO.setSearch(search);
+
+		// pageDTO.setSearch(search);
 
 		List<MemberDTO> memberList = managerService.listMember(pageDTO);
 

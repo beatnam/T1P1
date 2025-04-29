@@ -12,6 +12,35 @@
 		from member
 	</select>
 
+	<select id="countRecruit" resultType="java.lang.Integer">
+		select count(*)
+		from recruit
+		
+	</select>
+
+	<select id="listRecruit" resultType="map">
+		select r.recruit_id, r.recruit_name,
+		c.corporation_name,
+		o.occupation_name, j.job_name, r.recruit_location,
+		e.eduhigh_name,
+		r.recruit_salary
+		from recruit r join corporation c
+		on
+		r.corporationMember_num = c.corporationMember_num
+		join occupation o
+		on
+		r.recruit_occupation = o.occupation_id
+		join job j
+		on r.recruit_job =
+		j.job_id
+		join edu_high e
+		on r.recruit_eduhigh = e.eduhigh_id
+		
+		order by 1 desc
+		limit #{startRow}, #{pageSize}
+	</select>
+
+
 	<select id="listMember"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select * from member

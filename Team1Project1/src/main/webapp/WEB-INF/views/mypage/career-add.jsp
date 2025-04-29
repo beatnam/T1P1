@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>경력 추가</title>
+
     <style>
+    
         body {
             font-family: '맑은 고딕', sans-serif;
             padding: 20px;

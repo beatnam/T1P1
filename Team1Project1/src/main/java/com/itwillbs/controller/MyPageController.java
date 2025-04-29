@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CareerListDTO;
+import com.itwillbs.domain.EducationDTO;
 import com.itwillbs.domain.MyPageDTO;
 import com.itwillbs.service.CareerService;
+import com.itwillbs.service.EducationService;
 import com.itwillbs.service.MyPageService;
 
 @RequestMapping("/mypage/*")
@@ -29,6 +31,9 @@ public class MyPageController {
 	
 	@Inject
 	private CareerService careerService;
+	
+	@Inject
+	private EducationService educationService;
 
 	@RequestMapping("/")
 	public String main() {
@@ -47,6 +52,10 @@ public class MyPageController {
         Integer member_num = (Integer) session.getAttribute("member_num");
         System.out.println("세션 member_num : " + member_num);
         
+        if(member_num == null) {
+        	System.out.println("세션에 member_num이 없습니다");
+        	return "redirect:/member/login";
+        }
         MyPageDTO myPageDTO = new MyPageDTO();
         myPageDTO.setMemberNum(member_num);
         
@@ -54,12 +63,13 @@ public class MyPageController {
         
         model.addAttribute("MyPageDTO", myPageDTO2);
     	
-        if (member_num != null) {
-            List<CareerDTO> careerList = careerService.getCareerList(member_num);
-            model.addAttribute("careerList", careerList);
-        } else {
-            System.out.println("세션에 member_num이 없습니다!");
-        }
+        
+        List<EducationDTO> educationList = educationService.getEducationList(member_num);
+        model.addAttribute("educationList", educationList);
+            
+        List<CareerDTO> careerList = careerService.getCareerList(member_num);
+        model.addAttribute("careerList", careerList);
+        
         
     	return "mypage/my-profile";
     }//myProfilePage
