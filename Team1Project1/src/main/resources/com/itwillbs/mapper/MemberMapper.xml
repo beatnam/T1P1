@@ -18,6 +18,19 @@
     #{memberPhone},#{memberPostcode},#{memberAddress},#{memberEmail},
     #{memberInfo},#{memberInfoC})
  </insert>
+
+
+<select id="memberNum" resultType="java.lang.Integer">
+    select member_num from member 
+    where  member_id = #{memberId}
+
+</select>
+
+<insert id="joineducationId" >
+     insert into education(member_num)
+     values ( #{memberNum})
+ </insert>
+
   
   
   <select id="loginMember" resultType="com.itwillbs.domain.MemberDTO">

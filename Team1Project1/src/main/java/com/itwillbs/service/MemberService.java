@@ -21,13 +21,26 @@ public class MemberService {
 		System.out.println("MemberService joinMember()");
 		
 		memberMapper.joinMember(memberDTO);
+	//회원가입 정보 넣기
+		
 			
-	}//insertMember()
+	}
 
+	
+	public void joineducationId(String memberId) {
+		// TODO Auto-generated method stub
+		Integer num = memberMapper.memberNum(memberId);	
+		
+		memberMapper.joineducationId(num);	// 학력 테이블 memeberNum넣기 
+	}
+	
+	
+	
 	public MemberDTO loginMember(MemberDTO memberDTO) {
 		
-		return memberMapper.loginMember(memberDTO);
+		return memberMapper.loginMember(memberDTO);	//로그인
 	}
+
 
 	
 

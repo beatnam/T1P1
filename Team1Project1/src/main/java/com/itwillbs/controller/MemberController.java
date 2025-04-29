@@ -36,14 +36,17 @@ public class MemberController {
 		
 		String memberJumin = request.getParameter("memberJumin1") + request.getParameter("memberJumin2"); 
 		String memberEmail = request.getParameter("memberEmail1") + "@" + request.getParameter("memberEmail2"); 
-
+		String memberId = request.getParameter("memberId"); 
+		
 		memberDTO.setMTId(200);		
+		memberDTO.setMemberId(memberId);		
 		memberDTO.setMemberEmail(memberEmail);
 		memberDTO.setMemberJumin(memberJumin);
 		
 		
 		memberService.joinMember(memberDTO);
-	
+		memberService.joineducationId(memberId);
+		
 		return "redirect:/main/main";
 	}
 
@@ -71,6 +74,7 @@ public class MemberController {
 			
 	        System.out.println("세션 ID : " + memberDTO2.getMTId());
 	        System.out.println("세션 member_num : " + memberDTO2.getMemberNum());
+
 			return "redirect:/main/main";
 		} else{
 			return "/main/msg";

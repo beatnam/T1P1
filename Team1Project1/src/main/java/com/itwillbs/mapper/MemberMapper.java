@@ -15,5 +15,10 @@ public interface MemberMapper {
 	public MemberDTO loginMember(MemberDTO memberDTO);
 
 	
+	public Integer memberNum(String memberId);
+	public void joineducationId(int num);
+
+
+	
 	
 }//인터페이스
