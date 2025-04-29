@@ -17,9 +17,61 @@
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 
 	<h1>상시 채용 관리</h1>
+
 	<table border="1">
 		<input type="text" placeholder="검색어를 입력하세요.">
 		<button>검색</button>
+
+		<!-- 	pagination -->
+		<div class="pagination">
+			<a
+				href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=1&search=${pageDTO.search}"
+				class="firstpage  pbtn">
+				<strong> 맨 앞으로 </strong>
+			</a>
+
+			<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
+				<a
+					href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.currentPage -1 }&search=${pageDTO.search}"
+					class="prevpage  pbtn">
+					<strong> 하나 뒤로 </strong>
+				</a>
+			</c:if>
+
+			<c:forEach var="i" begin="${pageDTO.startPage }"
+				end="${pageDTO.endPage }" step="1">
+				<c:if test="${i eq pageDTO.currentPage }">
+					<a
+						href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${i}&search=${pageDTO.search}">
+						<span class="pagenum currentpage">${i }</span>
+					</a>
+
+				</c:if>
+				<c:if test="${i ne pageDTO.currentPage }">
+
+					<a
+						href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${i}&search=${pageDTO.search}">
+						<span class="pagenum">${i }</span>
+					</a>
+				</c:if>
+			</c:forEach>
+
+
+			<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+				<a
+					href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.currentPage +1}&search=${pageDTO}"
+					class="nextpage  pbtn">
+					<strong> 하나 다음 </strong>
+				</a>
+			</c:if>
+
+			<a
+				href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.pageCount}&search=${pageDTO}"
+				class="lastpage  pbtn">
+				<strong>제일 뒤로</strong>
+			</a>
+		</div>
+		<!-- 				pagination -->
 		<tr>
 			<td>공고번호</td>
 			<td>공고명</td>
