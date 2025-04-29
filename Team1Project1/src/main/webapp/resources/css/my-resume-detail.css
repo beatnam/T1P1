@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    font-family: '맑은 고딕', sans-serif;
+    background-color: #fdfdfd;
+}
+
+.all {
+    display: flex;
+    min-height: 100vh;
+}
+
+h2 {
+    margin: 30px 0 10px;
+    color: #333;
+}
+
+.banner {
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #dcdcdc;
+}
+
+.banner h2 a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+}
+
+.banner ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.banner li {
+    margin-bottom: 18px;
+}
+
+.banner li a {
+    text-decoration: none;
+    color: #666;
+}
+
+.banner li.active a {
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 4px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.box {
+    flex: 1;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+/* section 기본 스타일 */
+.section {
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.section h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+/* 출력용 텍스트 */
+.section p {
+    font-size: 15px;
+    color: #444;
+    margin: 8px 0;
+}
+
+/* 주민등록번호 등 민감 정보에 별도 처리 */
+.section p.masked {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* 경력 블록 스타일 */
+.career-row {
+    background-color: #f8f8f8;
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.career-row p {
+    margin: 6px 0;
+}
+
+/* 사진 */
+.section img {
+    max-width: 200px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/* 버튼 영역 */
+.submit-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.submit-section .edit-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submit-section .edit-btn:nth-child(1) {
+    background-color: #007bff; /* 수정 */
+}
+
+.submit-section .edit-btn:nth-child(2) {
+    background-color: #dc3545; /* 삭제 */
+}
+
+.submit-section .edit-btn:nth-child(3) {
+    background-color: #6c757d; /* 목록 */
+}
+
+.submit-section .edit-btn:hover {
+    opacity: 0.85;
+}

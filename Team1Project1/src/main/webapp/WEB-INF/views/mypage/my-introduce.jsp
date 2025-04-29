@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>마이페이지 | 자기소개서</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-introduce.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 
 </head>
 <body>
@@ -17,7 +16,7 @@
 
 <div class="all">
     <div class="banner">
-        <h2><a href="#">마이페이지</a></h2>
+        <h2><a href="${pageContext.request.contextPath}/mypage/my-profile">마이페이지</a></h2>
         <div class="banner1">
             <ul class="banner-list">
                 <li class="banner-profile"><a href="${pageContext.request.contextPath}/mypage/my-profile">프로필</a></li>
@@ -38,8 +37,9 @@
 		</c:forEach>
 
         <div class="actions">
-            <button>파일로 등록</button>
-            <button>새 자소서 (첨삭)</button>	
+            <label for="resumeFile" class="file-btn">파일로 등록</label>
+    		<input type="file" id="resumeFile" name="resumeFile" style="display: none;">
+            <a href="#" class="new-btn">새 자소서 (첨삭)</a>	
         </div>
 
     </div>

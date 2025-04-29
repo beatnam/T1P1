@@ -111,6 +111,9 @@ ul.joinList {
   transition: background-color 0.3s ease;
 }
 
+
+
+
 .btn_baseColor:hover {
   background-color: #357ac9;
 }

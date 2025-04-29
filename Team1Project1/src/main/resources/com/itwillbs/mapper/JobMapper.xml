@@ -26,9 +26,11 @@
         FROM job
         WHERE occupation_id = #{occupationId}
     </select>
+    
     <select id="getMaxNum" resultType="com.itwillbs.domain.RecruitDTO">
     	select max(recruit_id) from recruit
     </select>
+    
     <insert id="insertRecruit">
     	insert into recruit
     	( corporationMember_num, recruit_occupation, recruit_job, recruit_location,

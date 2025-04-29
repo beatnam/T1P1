@@ -78,6 +78,7 @@ public class CoverBoardController {
 		pageDTO.setPageCount(pageCount);
 		System.out.println("pageDTO : " + pageDTO);
 		System.out.println("RecruitDTO: " + listCover);
+		
 		model.addAttribute("listCover", listCover);
 		model.addAttribute("pageDTO", pageDTO);
 		
