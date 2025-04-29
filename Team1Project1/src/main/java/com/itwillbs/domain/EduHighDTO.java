@@ -8,8 +8,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class EduHighDTO {
-	
+
 	private int eduhighId;
 	private String eduhighName;
-	
+
 }

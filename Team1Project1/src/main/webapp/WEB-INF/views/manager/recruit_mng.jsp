@@ -15,7 +15,7 @@
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
-	
+
 	<h1>상시 채용 관리</h1>
 	<table border="1">
 		<input type="text" placeholder="검색어를 입력하세요.">
@@ -25,18 +25,27 @@
 			<td>공고명</td>
 			<!-- -->
 			<td>회사명</td>
-			<td>마감일</td>
+			<td>직종</td>
+			<td>직무</td>
+			<td>지역</td>
+			<td>학력</td>
+			<td>제시 급여</td>
 			<td>삭제</td>
 		</tr>
-		<tr>
 
-			<td>상시 채용 공고명</td>
-			<td>회사이름</td>
-			<td>날짜</td>
+		<c:forEach var="recruitMap" items="${recruitList }">
+			<tr>
+				<td>${recruitMap.recruit_name}</td>
+				<td>${recruitMap.corporation_name}</td>
+				<td>${recruitMap.occupation_name}</td>
+				<td>${recruitMap.job_name}</td>
+				<td>${recruitMap.recruit_location}</td>
+				<td>${recruitMap.eduhigh_name}</td>
+				<td>${recruitMap.recruit_salary}</td>
 
-			<td><button>삭제</button></td>
-		</tr>
-
+				<td><button>삭제</button></td>
+			</tr>
+		</c:forEach>
 	</table>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
