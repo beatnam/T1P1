@@ -17,5 +17,7 @@ public class EducationDTO {
 	private String educationMajor;
 	private String majorDetail;
 	private String educationVenification;
+	
+	private String schoolName;
 
 }

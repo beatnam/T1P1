@@ -6,11 +6,19 @@
 
   <select id="getEducationList" parameterType="int" resultType="com.itwillbs.domain.EducationDTO">
   	select 
-	e.member_num, e.education_school, e.eduhigh_id, h.eduhigh_name,
-	e.education_major, e.major_detail, e.education_verification
+	e.member_num, 
+	e.education_school,
+	s.school_name as schoolName, 
+	e.eduhigh_id,
+	h.eduhigh_name, 
+	e.education_major, 
+	e.major_detail,
+	e.education_verification
 	from education e
 	left join edu_high h 
 	on e.eduhigh_id = h.eduhigh_id
+	left join school s 
+	on e.education_school = s.school_id
 	where e.member_num = #{memberNum}
   </select>
 

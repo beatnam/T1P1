@@ -41,7 +41,7 @@
             <div class="che">최종 학력</div>
             	<c:forEach var="edu" items="${educationList }">
             		<div>
-            			<p>학교 이름 : ${edu.educationSchool }</p>
+            			<p>학교 이름 : ${edu.schoolName }</p>
             			<p>전공 : ${edu.educationMajor }</p>
             			<p>세부 전공 : ${edu.majorDetail }</p>
             		</div>

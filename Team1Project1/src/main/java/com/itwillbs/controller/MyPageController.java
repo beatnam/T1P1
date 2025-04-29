@@ -63,11 +63,11 @@ public class MyPageController {
         
         model.addAttribute("MyPageDTO", myPageDTO2);
     	
-        
         List<EducationDTO> educationList = educationService.getEducationList(member_num);
         model.addAttribute("educationList", educationList);
             
         List<CareerDTO> careerList = careerService.getCareerList(member_num);
+        System.out.println("careerList 사이즈 : " + careerList.size());
         model.addAttribute("careerList", careerList);
         
         
