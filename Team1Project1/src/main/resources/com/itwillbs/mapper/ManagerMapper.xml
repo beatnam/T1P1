@@ -40,7 +40,20 @@
 		limit #{startRow}, #{pageSize}
 	</select>
 
-
+	<select id="listCopMember" resultType="map">
+		select m.mt_name, c.corporationmember_id, c.corporation_name
+		from member_type m join corporation c
+		on m.mt_id = c.mt_id
+	</select>
+	
+	<select id="listCopMember1" resultType="map">
+		select m.mt_id, m.mt_name, c.corporationmember_id, c.corporation_name
+		from member_type m join corporation c
+		on m.mt_id = c.mt_id
+		where m.mt_id = #{mtId}
+	</select>
+	
+	
 	<select id="listMember"
 		resultType="com.itwillbs.domain.MemberDTO">
 		select * from member

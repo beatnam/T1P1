@@ -75,4 +75,18 @@ public class ManagerService {
 		return managerMapper.listRecruit(pageDTO);
 	}
 
+	public List<Map<String, Object>> listCopMember() {
+		System.out.println("ManagerService listCopMember()");
+		return managerMapper.listCopMember();
+	}
+
+	public List<Map<String, Object>> listCopMember1(Integer mtId) {
+		System.out.println("ManagerService listCopMember1()");
+		System.out.println(mtId);
+		if (mtId == null) {
+			return managerMapper.listCopMember();
+		} else {
+			return managerMapper.listCopMember1(mtId);
+		}
+	}
 }

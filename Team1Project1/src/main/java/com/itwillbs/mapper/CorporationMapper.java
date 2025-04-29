@@ -1,5 +1,8 @@
 package com.itwillbs.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.domain.CorporationDTO;
@@ -14,6 +17,5 @@ public interface CorporationMapper {
 	public CorporationDTO loginMember(CorporationDTO corporationDTO);
 
 	public void updateRegist(CorporationDTO corporationDTO);
-
 	
 }

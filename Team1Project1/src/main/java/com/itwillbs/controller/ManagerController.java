@@ -160,8 +160,11 @@ public class ManagerController {
 	}
 
 	@GetMapping("/copmember_mng")
-	public String copMemberMng() {
-
+	public String copMemberMng(HttpServletRequest request, Model model) {
+//		List<Map<String, Object>> copmemList = managerService.listCopMember();
+//		
+//		model.addAttribute("copmemList",copmemList);
+	
 		return "/manager/copmember_mng";
 	}
 

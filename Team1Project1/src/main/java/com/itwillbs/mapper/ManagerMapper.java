@@ -19,4 +19,8 @@ public interface ManagerMapper {
 
 	public List<Map<String, Object>> listRecruit(PageDTO pageDTO);
 
+	public List<Map<String, Object>> listCopMember();
+
+	public List<Map<String, Object>> listCopMember1(int mtId);
+
 }

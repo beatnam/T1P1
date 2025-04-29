@@ -8,7 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 | 회원 관리</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -17,61 +20,64 @@
 
 	<h1>회원 관리</h1>
 	<table border="1">
-		<input type="text" placeholder="검색어를 입력하세요.">
-		<button>검색</button>
-		<tr>
-			<td><select id="memberTypeFilter">
-					<option value="">전체</option>
-					<option value="등록전">사업자 등록증 제출 전</option>
-					<option value="대기">승인 대기</option>
-					<option value="완료">기업 회원</option>
-			</select></td>
-			<!-- -->
-			<td>회원 아이디</td>
-			<td>회원 이름</td>
-			<!--기업 회원의 경우 기업 이름-->
-			<td>게시글 수</td>
-			<td>댓글 수</td>
-			<td>회원 유형 변경</td>
-			<td>삭제</td>
-		</tr>
-		<tr>
-			<td>회원 유형</td>
-			<td>ID</td>
-			<td>이름</td>
-			<td>숫자</td>
-			<td>숫자</td>
-			<td><select>
-					<option value="300">사업자 등록증 제출 전</option>
-					<option value="400">승인 대기</option>
-					<option value="500">기업 회원</option>
-			</select></td>
-			<td><button>삭제</button></td>
-		</tr>
-
+		<thead>
+			<tr>
+				<td><select id="memberTypeFilter">
+						<option value="">전체</option>
+						<option value="300">사업자 등록증 제출 전</option>
+						<option value="400">승인 대기</option>
+						<option value="500">기업 회원</option>
+				</select></td>
+				<td>회원 아이디</td>
+				<td>기업 이름</td>
+				<td>등업</td>
+				<td>삭제</td>
+			</tr>
+		</thead>
+		<tbody id="memberTableBody">
+		</tbody>
 	</table>
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
-	<script type="text/javascript">
-		$('#memberTypeFilter').on('change', function() {
-			var selectedType = $(this).val(); // 선택된 필터 값
+	<script>
+  $(document).ready(function() {
+    $('#memberTypeFilter').change(function() {
+      const mtId = $(this).val();
 
-			$.ajax({
-				url : '/manager/filter', // 백엔드에서 처리할 API 경로
-				method : 'GET',
-				data : {
-					mtId : selectedType
-				}, // 요청 파라미터
-				success : function(data) {
-					updateMemberTable(data); // 필터링된 데이터로 테이블 갱신
-				},
-				error : function(xhr, status, error) {
-					console.error('회원 필터링 실패:', error);
-				}
-			});
-		});
-	</script>
+      $.ajax({
+        url: '${pageContext.request.contextPath }/manager/filter',
+        method: 'GET',
+        data: { mtId: mtId },
+        success: function(result) {
+        	const tbody = $('#memberTableBody');
+          	tbody.empty();
+
+          result.forEach(item => {
+            const row = `
+              <tr>
+                <td>${item.mt_name}</td>
+                <td>${item.corporationmember_id}</td>
+                <td>${item.corporation_name}</td>
+                <td>
+                  <select id="memberTypeChange" data-id="">
+                    <option value="300" ${item.mt_id == 300 ? 'selected' : ''}>사업자 등록증 제출 전</option>
+                    <option value="400" ${item.mt_id == 400 ? 'selected' : ''}>승인 대기</option>
+                    <option value="500" ${item.mt_id == 500 ? 'selected' : ''}>기업 회원</option>
+                  </select>
+                </td>
+                <td>
+                  <button id="deleteBtn" data-id="">삭제</button>
+                </td>
+              </tr>
+            `;
+            tbody.append(row);
+          });
+        }//success
+      });
+    });
+  });
+</script>
 </body>
 
 </html>
