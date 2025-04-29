@@ -21,9 +21,8 @@
 		<input type="text" placeholder="검색어를 입력하세요.">
 		<button>검색</button>
 		<tr>
-
+			<td>공고번호</td>
 			<td>공고명</td>
-			<!-- -->
 			<td>회사명</td>
 			<td>직종</td>
 			<td>직무</td>
@@ -35,6 +34,7 @@
 
 		<c:forEach var="recruitMap" items="${recruitList }">
 			<tr>
+				<td>${recruitMap.recruit_id }</td>
 				<td>${recruitMap.recruit_name}</td>
 				<td>${recruitMap.corporation_name}</td>
 				<td>${recruitMap.occupation_name}</td>

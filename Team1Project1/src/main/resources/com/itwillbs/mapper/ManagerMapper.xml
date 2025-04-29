@@ -18,7 +18,7 @@
 	</select>
 
 	<select id="listRecruit" resultType="map">
-		select r.recruit_name,
+		select r.recruit_id, r.recruit_name,
 		c.corporation_name,
 		o.occupation_name, j.job_name, r.recruit_location,
 		e.eduhigh_name,

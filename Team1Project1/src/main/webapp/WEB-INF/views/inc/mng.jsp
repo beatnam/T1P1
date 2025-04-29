@@ -23,7 +23,7 @@
 						href="${pageContext.request.contextPath }/manager/openrecruit_mng">공개
 						채용 관리</a></li>
 				<li><a
-						href="${pageContext.request.contextPath }/manager/alwaysrecruit_mng">상시
+						href="${pageContext.request.contextPath }/manager/recruit_mng">상시
 						채용 관리</a></li>
 			</ul></li>
 

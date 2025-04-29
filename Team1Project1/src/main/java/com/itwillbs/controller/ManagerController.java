@@ -25,6 +25,7 @@ public class ManagerController {
 
 	@GetMapping("/recruit_mng")
 	public String recruitMng(HttpServletRequest request, Model model) {
+		// 상시채용 공고
 		System.out.println("ProgramController program()");
 		int pageSize = 12;
 		String pageNum = request.getParameter("pageNum");
@@ -67,8 +68,7 @@ public class ManagerController {
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("recruitList", recruitList);
 
-		return "/manager/ecruit_mng";
-
+		return "/manager/recruit_mng";
 	}
 
 	@GetMapping("/board_mng")
