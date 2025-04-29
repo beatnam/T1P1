@@ -11,10 +11,12 @@
   
 
 <insert id="joinMember">
-    insert into member(mt_id,member_id, member_passwd,member_jumin, member_name,member_phone,member_postcode,member_address, member_email, member_info, member_infoC, eduhigh_Id) 
-    values (#{mtId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName} 
-    #{memberPhone},#{memberPostcode},#{memberAddress},
-    #{memberEmail},#{memberInfo},#{memberInfoC},)
+    insert into member(MT_id,  member_id, member_passwd, member_jumin, member_name, 
+   							 member_phone, member_postcode, member_address, member_email, 
+    						member_info, member_infoC) 
+    values (#{MTId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
+    #{memberPhone},#{memberPostcode},#{memberAddress},#{memberEmail},
+    #{memberInfo},#{memberInfoC})
  </insert>
   
   
