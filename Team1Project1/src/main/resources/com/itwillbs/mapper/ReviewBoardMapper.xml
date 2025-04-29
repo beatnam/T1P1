@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	https://mybatis.org/mybatis-3/getting-started.html 
+	src/main/resources/mapper폴더/MemberMapper.xml파일 
+	
+-->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mapper.ReviewBoardMapper">
+
+  
+    <insert id="riInsertBoard">
+    	insert into review_interview
+    	( member_num, ri_subject, ri_content, ri_date)
+    	value 
+    	( #{memberNum}, #{riSubject}, #{riContent}, #{riDate})
+    </insert>
+	<select id="infoName" resultType="com.itwillbs.domain.MemberDTO">
+		select member_id
+		from member
+		where member_num = #{memberNum}
+	</select>
+	<select id="riboList" resultType="com.itwillbs.domain.RiBoardDTO">
+    	SELECT *
+		FROM review_interview
+		order by ri_num desc
+  		limit #{startRow}, #{pageSize}
+    </select>
+    <select id="ricountBoard" resultType="java.lang.Integer">
+  		select count(*)
+  		from review_interview
+  	</select>
+  	<select id="rcboList" resultType="com.itwillbs.domain.RcBoardDTO">
+    	SELECT *
+		FROM review_employment
+		order by re_num desc
+  		limit #{startRow}, #{pageSize}
+    </select>
+    <select id="rccountBoard" resultType="java.lang.Integer">
+  		select count(*)
+  		from review_employment
+  	</select>
+  	<insert id="rcInsertBoard">
+    	insert into review_employment
+    	( member_num, re_subject, re_content, re_date )
+    	value 
+    	( #{memberNum}, #{reSubject}, #{reContent}, #{reDate} )
+    </insert>
+</mapper>

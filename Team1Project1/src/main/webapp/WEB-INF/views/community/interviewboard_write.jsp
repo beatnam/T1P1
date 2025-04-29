@@ -50,39 +50,43 @@
 
 /* 버튼 섹션 스타일 */
 .bo_btn {
-    text-align: right; /* 버튼 우측 정렬 */
+    text-align: left; /* 버튼 좌측 정렬 */
+    margin: 0; /* 여백 초기화 */
 }
 
-.bo_btn a {
+.bo_btn .btn-left {
     display: inline-block;
+    margin-right: 10px; /* 버튼 사이 간격 */
     padding: 10px 20px;
-    margin-left: 10px;
     text-decoration: none;
     background-color: #007acc;
     color: #fff;
     border-radius: 5px;
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer;
 }
 
-.bo_btn a:hover {
-    background-color: #005a99;
+.bo_btn .btn-left:hover {
+    background-color: #005a99; /* 호버 상태 색 변경 */
 }
+
 </style>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 		<div class="main_content">	
-		<form action=""  method="post" id="">
+		<form action="${pageContext.request.contextPath}/rvborad/riwritepro"  method="post" id="">
 			<ul class="bo_info">
-				<li class="">글제목 : <input type="text" name="subject"></li>
-				<li class="">글쓴이 : <input type="text" name="name"></li>
+				<li class="">글제목 : <input type="text" name="riSubject"></li>
+				<li class="">글쓴이 : <input type="text" name="" value="${memberDTO.memberId}" readonly></li>
 				<li class="">
 					<div class="content_text">
-					    글내용 : <textarea name="" rows="30" cols="40"></textarea>
+					    글내용 : <textarea name="riContent" rows="30" cols="40"></textarea>
                     </div>
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<a href="" class="" id="${pageContext.request.contextPath}/rvborad/riwritepro">글쓰기</a>
-				<a href="" class="${pageContext.request.contextPath}/rvborad/rilist">글목록</a>
+				<button type="submit" class="">글쓰기</button>
+				<a href="${pageContext.request.contextPath}/rvborad/rilist" class="" id="">글목록</a>
 			</p>
 		</form>
 		</div>
