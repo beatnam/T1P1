@@ -2,6 +2,7 @@ package com.itwillbs.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -33,7 +34,7 @@ public class ReviewBoardService {
 		return reviewBoardMapper.infoName(memberDTO);
 	}
 
-	public List<RiBoardDTO> riboList(PageDTO pageDTO) {
+	public List<Map<String, Object>> riboList(PageDTO pageDTO){
 		System.out.println("ReviewBoardService riboList()");
 		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
 		int endRow = startRow + pageDTO.getPageSize() - 1;
@@ -49,7 +50,7 @@ public class ReviewBoardService {
 		return reviewBoardMapper.ricountBoard(pageDTO);
 	}
 
-	public List<RcBoardDTO> rcboList(PageDTO pageDTO) {
+	public List<Map<String, Object>> rcboList(PageDTO pageDTO){
 		System.out.println("ReviewBoardService rcboList()");
 		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
 		int endRow = startRow + pageDTO.getPageSize() - 1;
@@ -73,6 +74,45 @@ public class ReviewBoardService {
 		System.out.println("rcBoardDTO = " + rcBoardDTO);
 		reviewBoardMapper.rcInsertBoard(rcBoardDTO);
 		
+	}
+
+	public void updateRiReadcount(int riNum) {
+		System.out.println("ReviewBoardService updateRiReadcount()");
+		reviewBoardMapper.updateRiReadcount(riNum);
+	}
+	public void updateRcReadcount(int reNum) {
+		System.out.println("ReviewBoardService updateRcReadcount()");
+		reviewBoardMapper.updateRcReadcount(reNum);
+	}
+
+	public RiBoardDTO contentRi(int riNum) {
+		System.out.println("ReviewBoardService contentRi()");
+		return reviewBoardMapper.contentRi(riNum);
+	}
+
+	public RcBoardDTO contentRc(int reNum) {
+		System.out.println("ReviewBoardService contentRc()");
+		return reviewBoardMapper.contentRc(reNum);
+	}
+
+	public void riupdatePro(RiBoardDTO riBoardDTO) {
+		System.out.println("ReviewBoardService riupdatePro()");
+		reviewBoardMapper.riupdatePro(riBoardDTO);
+	}
+
+	public void rcupdatePro(RcBoardDTO rcBoardDTO) {
+		System.out.println("ReviewBoardService rcupdatePro()");
+		reviewBoardMapper.rcupdatePro(rcBoardDTO);
+	}
+
+	public void rideleteBo(int riNum) {
+		System.out.println("ReviewBoardService rideleteBo()");
+		reviewBoardMapper.rideleteBo(riNum);
+	}
+
+	public void rcdeleteBo(int reNum) {
+		System.out.println("ReviewBoardService rcdeleteBo()");
+		reviewBoardMapper.rcdeleteBo(reNum);
 	}
 	
 	

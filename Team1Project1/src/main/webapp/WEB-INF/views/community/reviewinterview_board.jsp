@@ -114,14 +114,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="riboardDTO" items="${listRibo}">
-					<tr>
-						<td>${riboardDTO.riNum}</td>
-						<td><a href="${pageContext.request.contextPath}/rvborad/ricontent?riNum=${riboardDTO.riNum}">${riboardDTO.riSubject}</a></td>
-						<td>${riboardDTO.memberNum}</td>
-						<td>${riboardDTO.riDate}</td>
-						<td>${riboardDTO.riReadcount}</td>
-					</tr>
+					<c:forEach var="item" items="${listRibo}">
+					    <tr>
+					        <td>${item.ri_num}</td>
+					        <td>
+					            <a href="${pageContext.request.contextPath}/rvborad/ricontent?riNum=${item.ri_num}">
+					                ${item.ri_subject}
+					            </a>
+					        </td>
+					        <td>${item.member_id}</td>
+					        <td>${item.ri_date}</td>
+					        <td>${item.ri_readcount}</td>
+					    </tr>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -151,7 +155,11 @@
 				<a href="${pageContext.request.contextPath}/rvborad/rilist?pageNum=${pageDTO.pageCount}" class="lastpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
 			</div>
 			<div class="btn_a">
-				<a href="${pageContext.request.contextPath}/rvborad/riwrite" class="btn_srch">글쓰기</a>
+			<c:if test="${! empty sessionScope.id }">
+				<c:if test="${sessionScope.type eq 200}">
+			    <a href="${pageContext.request.contextPath}/rvborad/riwrite" class="btn_srch">글쓰기</a>
+				</c:if>
+			</c:if>	
 			</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>

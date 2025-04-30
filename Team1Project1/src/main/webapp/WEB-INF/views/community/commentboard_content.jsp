@@ -74,16 +74,23 @@
 		<div class="main_content">	
 		<form action=""  method="get" id="">		
 			<ul class="bo_info">
-				<li class="">글제목 : <input type="text" name="subject" value="" readonly></li>
-				<li class="">작성자 : <input type="text" name="name" value="" readonly></li>
+				<li class="">글제목 : <input type="text" name="subject" value="${rcBoardDTO.reSubject}" readonly></li>
+				<li class="">작성자 : <input type="text" name="name" value="${memberDTO.memberId}" readonly>
+				<input type="hidden" name="memberNum" value="${rcBoardDTO.memberNum}">
+				<input type="hidden" name="reNum" value="${rcBoardDTO.reNum}">
 				<li class="">
 					<div class="content_text">
-					    글내용 : <textarea name="" rows="30" cols="40" readonly></textarea>
+					    글내용 : <textarea name="" rows="30" cols="40" readonly>${rcBoardDTO.reContent}</textarea>
                     </div>
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<a href="${pageContext.request.contextPath}/rvborad/rcupdate" class="" id="">글수정</a>
+			<c:if test="${! empty sessionScope.id }">
+				<c:if test="${sessionScope.num eq rcBoardDTO.memberNum}">
+				<a href="${pageContext.request.contextPath}/rvborad/rcupdate?reNum=${rcBoardDTO.reNum}" class="" id="">글수정</a>
+				<a href="${pageContext.request.contextPath}/rvborad/rcdelete?reNum=${rcBoardDTO.reNum}" class="" id="">글삭제</a>
+				</c:if>
+			</c:if>
 				<a href="${pageContext.request.contextPath}/rvborad/rclist" class="">글목록</a>
 			</p>
 		</form>

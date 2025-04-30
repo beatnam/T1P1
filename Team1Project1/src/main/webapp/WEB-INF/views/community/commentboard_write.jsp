@@ -50,24 +50,21 @@
 
 /* 버튼 섹션 스타일 */
 .bo_btn {
-    text-align: left; /* 버튼 좌측 정렬 */
-    margin: 0; /* 여백 초기화 */
+    text-align: right; /* 버튼 우측 정렬 */
 }
 
-.bo_btn .btn-left {
+.bo_btn a {
     display: inline-block;
-    margin-right: 10px; /* 버튼 사이 간격 */
     padding: 10px 20px;
+    margin-left: 10px;
     text-decoration: none;
     background-color: #007acc;
     color: #fff;
     border-radius: 5px;
-    border: none; /* 버튼 테두리 제거 */
-    cursor: pointer;
 }
 
-.bo_btn .btn-left:hover {
-    background-color: #005a99; /* 호버 상태 색 변경 */
+.bo_btn a:hover {
+    background-color: #005a99;
 }
 
 </style>

@@ -114,13 +114,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="rcboardDTO" items="${listRcbo}">
+					<c:forEach var="item" items="${listRcbo}">
 					<tr>
-						<td>${rcboardDTO.reNum}</td>
-						<td><a href="${pageContext.request.contextPath}/rvborad/rccontent?reNum=${rcboardDTO.reNum}">${rcboardDTO.reSubject}</a></td>
-						<td>${rcboardDTO.memberNum}</td>
-						<td>${rcboardDTO.reDate}</td>
-						<td>${rcboardDTO.reReadcount}</td>
+						<td>${item.re_num}</td>
+						<td><a href="${pageContext.request.contextPath}/rvborad/rccontent?reNum=${item.re_num}">${item.re_subject}</a></td>
+						<td>${item.member_id}</td>
+						<td>${item.re_date}</td>
+						<td>${item.re_readcount}</td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -151,7 +151,11 @@
 				<a href="${pageContext.request.contextPath}/rvborad/rclist?pageNum=${pageDTO.pageCount}" class="lastpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
 			</div>
 			<div class="btn_a">
-				<a href="${pageContext.request.contextPath}/rvborad/rcwrite" class="btn_srch">글쓰기</a>
+			<c:if test="${! empty sessionScope.id }">
+				<c:if test="${sessionScope.type eq 200}">
+			    <a href="${pageContext.request.contextPath}/rvborad/rcwrite" class="btn_srch">글쓰기</a>
+				</c:if>
+			</c:if>
 			</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>

@@ -74,21 +74,30 @@
 		<div class="main_content">	
 		<form action=""  method="get" id="">		
 			<ul class="bo_info">
-				<li class="">글제목 : <input type="text" name="subject" value="" readonly></li>
-				<li class="">작성자 : <input type="text" name="name" value="" readonly></li>
+				<li class="">글제목 : <input type="text" name="subject" value="${riBoardDTO.riSubject }" readonly></li>
+				<li class="">작성자 : <input type="text" name="name" value="${memberDTO.memberId}" readonly>
+				<input type="hidden" name="riNum" value="${riBoardDTO.riNum}">
+				<input type="hidden" name="memberNum" value="${riBoardDTO.memberNum}">
+				</li>
 				<li class="">
 					<div class="content_text">
-					    글내용 : <textarea name="" rows="30" cols="40" readonly></textarea>
+					    글내용 : <textarea name="" rows="30" cols="40" readonly>${riBoardDTO.riContent }</textarea>
                     </div>
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<a href="${pageContext.request.contextPath}/rvborad/riupdate" class="btn_up" id="">글수정</a>
+			<c:if test="${! empty sessionScope.id }">
+				<c:if test="${sessionScope.num eq riBoardDTO.memberNum}">
+				<a href="${pageContext.request.contextPath}/rvborad/riupdate?riNum=${riBoardDTO.riNum}" class="btn_up" id="">글수정</a>
+				<a href="${pageContext.request.contextPath}/rvborad/ridelete?riNum=${riBoardDTO.riNum}" class="btn_up" id="">글삭제</a>
+				</c:if>
+			</c:if>
 				<a href="${pageContext.request.contextPath}/rvborad/rilist" class="btn_list">글목록</a>
 			</p>
 		</form>
 		</div>
 		
 <jsp:include page="../inc/footer.jsp"></jsp:include>
+
 </body>
 </html>

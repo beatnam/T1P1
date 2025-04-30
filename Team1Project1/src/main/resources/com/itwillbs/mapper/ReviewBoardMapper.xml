@@ -14,18 +14,20 @@
   
     <insert id="riInsertBoard">
     	insert into review_interview
-    	( member_num, ri_subject, ri_content, ri_date)
+    	( member_num, ri_subject, ri_content, ri_date, ri_readcount)
     	value 
-    	( #{memberNum}, #{riSubject}, #{riContent}, #{riDate})
+    	( #{memberNum}, #{riSubject}, #{riContent}, #{riDate}, #{riReadcount})
     </insert>
 	<select id="infoName" resultType="com.itwillbs.domain.MemberDTO">
-		select member_id
+		select *
 		from member
 		where member_num = #{memberNum}
 	</select>
-	<select id="riboList" resultType="com.itwillbs.domain.RiBoardDTO">
-    	SELECT *
-		FROM review_interview
+	<select id="riboList" resultType="map">
+    	SELECT r.ri_num, r.ri_subject, r.ri_date, r.ri_readcount, 
+      	r.member_num, m.member_id
+		FROM review_interview r
+		JOIN member m ON r.member_num = m.member_num
 		order by ri_num desc
   		limit #{startRow}, #{pageSize}
     </select>
@@ -33,9 +35,10 @@
   		select count(*)
   		from review_interview
   	</select>
-  	<select id="rcboList" resultType="com.itwillbs.domain.RcBoardDTO">
-    	SELECT *
-		FROM review_employment
+  	<select id="rcboList" resultType="map">
+    	select i.re_num, m.member_id ,i.re_subject, i.re_content, i.re_date, i.re_readcount
+		from review_employment i join member m
+		where i.member_num = m.member_num
 		order by re_num desc
   		limit #{startRow}, #{pageSize}
     </select>
@@ -45,8 +48,46 @@
   	</select>
   	<insert id="rcInsertBoard">
     	insert into review_employment
-    	( member_num, re_subject, re_content, re_date )
+    	( member_num, re_subject, re_content, re_date, re_readcount )
     	value 
-    	( #{memberNum}, #{reSubject}, #{reContent}, #{reDate} )
+    	( #{memberNum}, #{reSubject}, #{reContent}, #{reDate} ,#{reReadcount})
     </insert>
+    <update id="updateRiReadcount">
+  		update review_interview 
+  		set ri_readcount = ri_readcount + 1 
+  		where ri_num = #{riNum}
+  	</update>
+  	<update id="updateRcReadcount">
+  		update review_employment 
+  		set re_readcount = re_readcount + 1 
+  		where re_num = #{reNum}
+  	</update>
+  	<select id="contentRi" resultType="com.itwillbs.domain.RiBoardDTO">
+  		select *
+  		from review_interview
+  		where ri_num = #{riNum}
+  	</select>
+  	<select id="contentRc" resultType="com.itwillbs.domain.RcBoardDTO">
+  		select *
+  		from review_employment
+  		where re_num = #{reNum}
+  	</select>
+  	<update id="riupdatePro">
+  		update review_interview
+  		set ri_subject = #{riSubject}, ri_content = #{riContent}
+  		where member_num = #{memberNum} and ri_num = #{riNum}
+  	</update>
+  	<update id="rcupdatePro">
+  		update review_employment
+  		set re_subject = #{reSubject}, re_content = #{reContent}
+  		where member_num = #{memberNum} and re_num = #{reNum}
+  	</update>
+  	<delete id="rideleteBo">
+  		delete from review_interview
+  		where ri_num = #{riNum}
+  	</delete>
+  	<delete id="rcdeleteBo">
+  		delete from review_employment
+  		where re_num = #{reNum}
+  	</delete>
 </mapper>
