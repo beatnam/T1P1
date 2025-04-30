@@ -38,5 +38,8 @@ public interface ManagerMapper {
 
 	public void updateOR(Map<Object, Object> updateOR);
 
+	public void upgradeCorp(String corpId);
+
+	public Map<Object, Object> contentCorp(String corpId);
 
 }

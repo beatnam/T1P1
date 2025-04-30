@@ -212,8 +212,6 @@ public class ManagerController {
 		model.addAttribute("occupations", occupations);
 		return "/manager/openrecruit_write";
 	}
-	
-	
 
 	@PostMapping("/openrecruit_writePro")
 	public String openrecruitWritePro(HttpServletRequest request, OpenrecruitDTO openrecruitDTO) {
@@ -226,28 +224,43 @@ public class ManagerController {
 
 		return "redirect:/manager/openrecruit_mng";
 	}
-	
+
 	@GetMapping("/openrecruit_update")
 	public String openrecruitUpdate(@RequestParam int orId, Model model) {
 		List<OccupationDTO> occupations = jobService.getOccupations();
 
 		model.addAttribute("occupations", occupations);
 		Map<Object, Object> contentOR = managerService.contentOR(orId);
-		
-		model.addAttribute("contentOR",contentOR);
+
+		model.addAttribute("contentOR", contentOR);
 		return "/manager/openrecruit_update";
 	}
-	
+
 	@PostMapping("/openrecruit_updatePro")
 	public String openrecruitUpdatePro(@RequestParam Map<Object, Object> updateOR) {
 		System.out.println(updateOR);
-		
-		
+
 		managerService.updateOR(updateOR);
 		return "redirect:/manager/openrecruit_mng";
 	}
-	
 
+	@GetMapping("/upgradeCorp")
+	public String upgradeCorp(@RequestParam String corpId) {
+		System.out.println("AjaxController updateCorp()");
+		managerService.upgradeCorp(corpId);
+
+		return "redirect:/manager/copmember_mng";
+	}
+
+	@GetMapping("/content_corp")
+	public String contentCorp(@RequestParam String corpId, Model model) {
+
+		Map<Object,Object> corporation = managerService.contentCorp(corpId);
+		
+		model.addAttribute("corporation" ,corporation);
+		return "/manager/content_copmember";
+	}
+	
 	@GetMapping("/review_employment_mng")
 	public String reviewEmploymentMng() {
 

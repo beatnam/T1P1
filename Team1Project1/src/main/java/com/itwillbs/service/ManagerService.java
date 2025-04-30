@@ -92,38 +92,50 @@ public class ManagerService {
 	}
 
 	public void insertOR(OpenrecruitDTO openrecruitDTO) {
-		// TODO Auto-generated method stub
+		System.out.println("ManagerService insertOR()");
 		managerMapper.insertOR(openrecruitDTO);
 	}
 
 	public List<Map<Object, Object>> listOR() {
-		// TODO Auto-generated method stub
+		System.out.println("ManagerService listOR()");
 		return managerMapper.listOR();
 	}
 
 	public Map<Object, Object> contentRecruit(int recruitId) {
-		// TODO Auto-generated method stub
+		System.out.println("ManagerService contentRecruit()");
 		return managerMapper.contentRecruit(recruitId);
 	}
 
 	public void deleteRecruit(int recruitId) {
-	managerMapper.deleteRecruit(recruitId);
+		System.out.println("ManagerService deleteRecruit()");
+		managerMapper.deleteRecruit(recruitId);
 		
 	}
 
 	public void deleteOpenRecruit(int orId) {
-		// TODO Auto-generated method stub
+		System.out.println("ManagerService deleteOpenRecruit()");
 		managerMapper.deleteOpenRecruit(orId);
 	}
 
 	public Map<Object, Object> contentOR(int orId) {
-		
+		System.out.println("ManagerService contentOR()");
 		return managerMapper.contentOR(orId);
 	}
 
 	public void updateOR(Map<Object, Object> updateOR) {
-		// TODO Auto-generated method stub
+		System.out.println("ManagerService updateOR()");
 		managerMapper.updateOR(updateOR);
+	}
+
+	public void upgradeCorp(String corpId) {
+		System.out.println("ManagerService updateCorp()");
+		managerMapper.upgradeCorp(corpId);
+	}
+
+	public Map<Object, Object> contentCorp(String corpId) {
+		
+		
+		return managerMapper.contentCorp(corpId);
 	}
 
 }

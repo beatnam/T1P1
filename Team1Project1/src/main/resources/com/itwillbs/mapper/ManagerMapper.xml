@@ -24,9 +24,11 @@
 	<update id="updateOR">
 		update open_recruit
 		set
-		or_corporation_name = #{orCorporationName},
+		or_corporation_name =
+		#{orCorporationName},
 		or_name = #{orName},
-		or_occupation = #{orOccupation},
+		or_occupation =
+		#{orOccupation},
 		or_job = #{orJob},
 		or_location = #{orLocation},
 		or_salary = #{orSalary},
@@ -37,7 +39,23 @@
 
 	</update>
 
-
+	<update id="upgradeCorp">
+		update corporation
+		set mt_id = 500
+		where
+		corporationmember_id = #{corpId}
+	</update>
+	<select id="contentCorp" resultType="map">
+		SELECT
+		mt_name, corporationmember_id,
+		corporationmember_email, corporationmember_phone, recruit_id, corporation_name,
+		corporation_registration, corporation_phone,
+		corporation_registrationPdf, corporation_intro, corporationmember_name,
+		corporation_address
+		FROM corporation c join member_type m
+		on c.mt_id = m.mt_id
+		where corporationmember_id = #{corpId};
+	</select>
 
 	<select id="countMember" resultType="java.lang.Integer">
 		select count(*)
@@ -165,7 +183,8 @@
 	<select id="listCopMember1" resultType="map">
 		select m.mt_id,
 		m.mt_name, c.corporationmember_id, c.corporation_name
-		from member_type m join 
+		from member_type
+		m join
 		corporation c
 		on m.mt_id = c.mt_id
 		where m.mt_id = #{mtId}
