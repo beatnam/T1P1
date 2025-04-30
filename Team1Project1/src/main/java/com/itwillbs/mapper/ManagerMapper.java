@@ -28,4 +28,7 @@ public interface ManagerMapper {
 
 	public List<Map<Object, Object>> listOR();
 
+	public Map<Object, Object> contentRecruit(int recruitId);
+
+
 }

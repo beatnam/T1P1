@@ -13,8 +13,8 @@
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 	<h1>취업 박람회</h1>
+	
 	<a href="../manager/fair_mng.html">박람회 관리</a>
-	<!-- 관리자 페이지로 이동-->
 
 	<input type="text" placeholder="검색어를 입력하세요.">
 	<button type="button">검색</button>
@@ -22,7 +22,7 @@
   <div class="include_menu">
     <ul>
       <li><a href="${pageContext.request.contextPath }/recruit_info/open">공개 채용</a></li>
-      <li><a href="${pageContext.request.contextPath }/recruit_info/always">상시 채용</a></li>
+      <li><a href="${pageContext.request.contextPath }/recruit_info/always_list">상시 채용</a></li>
       <li><a href="${pageContext.request.contextPath }/recruit_info/fair">취업 박람회</a></li>
       <li><a href="${pageContext.request.contextPath }/recruit_info/50">50대 기업</a></li>
     </ul>

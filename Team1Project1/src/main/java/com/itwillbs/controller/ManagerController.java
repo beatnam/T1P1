@@ -69,7 +69,13 @@ public class ManagerController {
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
 
+		
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("recruitList", recruitList);
 
@@ -201,6 +207,7 @@ public class ManagerController {
 
 	@PostMapping("/openrecruit_writePro")
 	public String openrecruitWritePro(HttpServletRequest request, OpenrecruitDTO openrecruitDTO) {
+		
 		System.out.println("ManagerController openrecruitWritePro()");
 		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 		openrecruitDTO.setMemberNum(memberNum);

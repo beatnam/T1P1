@@ -100,4 +100,10 @@ public class ManagerService {
 		// TODO Auto-generated method stub
 		return managerMapper.listOR();
 	}
+
+	public Map<Object, Object> contentRecruit(int recruitId) {
+		// TODO Auto-generated method stub
+		return managerMapper.contentRecruit(recruitId);
+	}
+
 }

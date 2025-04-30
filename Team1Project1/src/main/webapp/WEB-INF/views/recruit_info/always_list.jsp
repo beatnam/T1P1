@@ -7,32 +7,52 @@
 
 <head>
 <meta charset="UTF-8">
-<title>관리자 | 상시 채용 관리</title>
+
+<title>취업정보 | 상시채용</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/mng.jsp"></jsp:include>
+	<h1>상시 채용</h1>
 
-	<h1>상시 채용 관리</h1>
+	<div class="include_menu">
+		<ul>
+			<li><a
+					href="${pageContext.request.contextPath }/recruit_info/open">공개
+					채용</a></li>
+			<li><a
+					href="${pageContext.request.contextPath }/recruit_info/always_list">상시
+					채용</a></li>
+			<li><a
+					href="${pageContext.request.contextPath }/recruit_info/fair">취업
+					박람회</a></li>
+			<li><a
+					href="${pageContext.request.contextPath }/recruit_info/50">50대
+					기업</a></li>
+		</ul>
+	</div>
 
+	<input type="text" placeholder="검색어를 입력하세요.">
+	<button>검색</button>
+	<c:if test="${sessionScope.type eq 100 }">
+		<a href="${pageContext.request.contextPath }/manager/recruit_mng">관리자
+			페이지</a>
+	</c:if>
 	<table border="1">
-		<input type="text" placeholder="검색어를 입력하세요.">
-		<button>검색</button>
 
 		<!-- 	pagination -->
 		<div class="pagination">
 			<a
-				href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=1"
+				href="${pageContext.request.contextPath}${pageContext.request.contextPath }/recruit_info/always?pageNum=1"
 				class="firstpage  pbtn">
 				<strong> 맨 앞으로 </strong>
 			</a>
 
 			<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
 				<a
-					href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.currentPage -1 }"
+					href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.currentPage -1 }"
 					class="prevpage  pbtn">
 					<strong> 하나 뒤로 </strong>
 				</a>
@@ -42,7 +62,7 @@
 				end="${pageDTO.endPage }" step="1">
 				<c:if test="${i eq pageDTO.currentPage }">
 					<a
-						href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${i}">
+						href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${i}">
 						<span class="pagenum currentpage">${i }</span>
 					</a>
 
@@ -50,7 +70,7 @@
 				<c:if test="${i ne pageDTO.currentPage }">
 
 					<a
-						href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${i}">
+						href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${i}">
 						<span class="pagenum">${i }</span>
 					</a>
 				</c:if>
@@ -59,14 +79,14 @@
 
 			<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
 				<a
-					href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.currentPage +1}"
+					href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.currentPage +1}"
 					class="nextpage  pbtn">
 					<strong> 하나 다음 </strong>
 				</a>
 			</c:if>
 
 			<a
-				href="${pageContext.request.contextPath}/manager/recruit_mng?pageNum=${pageDTO.pageCount}"
+				href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.pageCount}"
 				class="lastpage  pbtn">
 				<strong>제일 뒤로</strong>
 			</a>
@@ -81,25 +101,22 @@
 			<td>지역</td>
 			<td>학력</td>
 			<td>제시 급여</td>
-			<td>삭제</td>
 		</tr>
 
 		<c:forEach var="recruitMap" items="${recruitList }">
 			<tr>
 				<td>${recruitMap.recruit_id }</td>
-				<td>${recruitMap.recruit_name}</td>
+				<td><a
+						href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruitMap.recruit_id}">${recruitMap.recruit_name}</a></td>
 				<td>${recruitMap.corporation_name}</td>
 				<td>${recruitMap.occupation_name}</td>
 				<td>${recruitMap.job_name}</td>
 				<td>${recruitMap.recruit_location}</td>
 				<td>${recruitMap.eduhigh_name}</td>
 				<td>${recruitMap.recruit_salary}</td>
-
-				<td><button>삭제</button></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
-</body>
 
-</html>
+</body>

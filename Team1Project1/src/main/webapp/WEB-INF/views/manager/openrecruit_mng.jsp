@@ -16,25 +16,20 @@
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<h1>공개 채용 관리</h1>
+
+	<h5>회사명을 클릭하면 해당 인사페이지로 이동합니다</h5>
 	<input type="text" placeholder="검색어를 입력하세요.">
 	<button>검색</button>
-	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공고
-		작성</a>
-
 	<table border="1">
 
 		<tr>
-
 			<td>공고명</td>
-			<!-- -->
 			<td>회사명</td>
 			<td>직종</td>
 			<td>직무</td>
 			<td>마감일</td>
-
-			<!-- 			<td>수정</td> -->
-			<!-- 			<td>삭제</td> -->
 		</tr>
+
 		<tr>
 			<c:forEach var="orMap" items="${ORlist }">
 				<td>${orMap.or_name }</td>
@@ -42,9 +37,6 @@
 				<td>${orMap.occupation_name}</td>
 				<td>${orMap.job_name }</td>
 				<td>${orMap.or_deadline }</td>
-
-				<%-- 			<td><a href="${pageContext.request.contextPath }/manager/openrecruit_update">수정</a></td> --%>
-				<!-- 			<td><button>삭제</button></td> -->
 			</c:forEach>
 		</tr>
 
