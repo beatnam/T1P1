@@ -30,6 +30,11 @@ public class MyPageService {
 		
 		return myPageMapper.getMyProfileByMemberNum(myPageDTO);
 	}
+
+	public void updateMyIntroduce(MyPageDTO myPageDTO) {
+		myPageMapper.updateMyIntroduce(myPageDTO);
+		
+	}
 		
 	
 	

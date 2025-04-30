@@ -81,12 +81,12 @@
             <div class="email">이메일 인증 강화</div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="memberInfoC" value="agree" 
-                    <c:if test="${MyPageDTO.memberInfoC == 'agree'}">checked</c:if> disabled />동의
+                    <input type="radio" name="memberInfoC" value="1" 
+                    <c:if test="${MyPageDTO.memberInfoC == 1}">checked</c:if> disabled />동의
                 </label>
                 <label>
-                    <input type="radio" name="memberInfoC" value="disagree" 
-                    <c:if test="${MyPageDTO.memberInfoC == 'disagree'}">checked</c:if> disabled /> 비동의
+                    <input type="radio" name="memberInfoC" value="0" 
+                    <c:if test="${MyPageDTO.memberInfoC == 0}">checked</c:if> disabled /> 비동의
                 </label>	
             </div>
         </div>

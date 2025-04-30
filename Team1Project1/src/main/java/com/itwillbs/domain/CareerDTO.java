@@ -1,5 +1,7 @@
 package com.itwillbs.domain;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,8 +17,8 @@ public class CareerDTO {
 	private String JH_Corporation;
 	private String JH_department;
 	private String work_content;
-	private String start_date;
-	private String end_date;
+	private Date start_date;
+	private Date end_date;
 	
 	
 	

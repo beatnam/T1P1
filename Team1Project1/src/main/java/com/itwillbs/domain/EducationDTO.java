@@ -11,7 +11,7 @@ public class EducationDTO {
 
 	private int memberNum;
 	private int educationSchool;
-	private int eduhighId;
+//	private int eduhighId;
 	
 	private String eduhighName;
 	private String educationMajor;

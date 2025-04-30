@@ -25,6 +25,8 @@ public interface MyPageMapper {
 
 	public MyPageDTO getMyProfileByMemberNum(MyPageDTO myPageDTO);
 
+	public void updateMyIntroduce(MyPageDTO myPageDTO);
+
 	
 }
 

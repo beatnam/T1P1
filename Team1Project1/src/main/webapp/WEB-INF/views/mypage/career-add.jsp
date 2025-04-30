@@ -25,7 +25,7 @@
 </head>
 <body>
     <h2>경력 정보 입력</h2>
-    <form name="careerForm">
+    <form id="careerForm" name="careerForm" action="${pageContext.request.contextPath }/mypage/career-add" method="post">
         <input type="text" name="JH_Corporation" placeholder="회사명" required>
     	<input type="text" name="JH_department" placeholder="부서명" required>
     	<input type="text" name="work_content" placeholder="담당업무" required>
@@ -45,9 +45,23 @@
             };
             
             console.log("팝업창에서 부모창으로 보낼 데이터:", data);
-            
-            window.opener.postMessage(data, "*");
-            window.close();
+                    
+        
+        fetch('${pageContext.request.contextPath}/mypage/insert-career-ajax', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(res => res.text())
+          .then(response => {
+              if (response === 'success') {
+            	  console.log("저장 성공");
+                  window.opener.postMessage(data, "*");
+                  window.close();
+              } else {
+                  alert("저장 실패");
+              }
+          });
+        
         }
     </script>
 </body>

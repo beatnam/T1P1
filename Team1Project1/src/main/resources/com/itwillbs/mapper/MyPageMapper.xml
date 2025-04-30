@@ -41,5 +41,28 @@
 		(#{JH_Corporation}, #{JH_department}, #{work_content}, #{start_date}, #{end_date}, #{member_num})
   </insert>
   
+  <insert id="insertEducation" parameterType="EducationDTO">
+  		insert into education
+  		(mamber_num, education_school, education_major, major_detail)
+  		values
+  		(#{memberNum}, #{educationSchool}, #{educationMajor}, #{majorDetail})
+  </insert>
+  
+  <update id="updateEducation" parameterType="EducationDTO">
+		update education
+		set
+		education_school = #{educationSchool}, 
+		education_major = #{educationMajor},
+		major_detail = #{majorDetail}
+		where member_num = #{memberNum}  
+  </update>
+  
+  <update id="updateMyIntroduce" parameterType="com.itwillbs.domain.MyPageDTO">
+  		update member
+  		set 
+  		member_introduce = #{memberIntroduce},
+  		member_infoC = #{memberInfoC}
+  		where member_num = #{memberNum}
+  </update>
 
 </mapper>
