@@ -44,7 +44,7 @@
 				<td>${openrecruit.or_deadline }</td>
 				<td><a
 						href="${pageContext.request.contextPath}/manager/openrecruit_update?orId=
-									${openrecruit.recruit_id }">글수정</a></td>
+									${openrecruit.or_id }">글수정</a></td>
 				<td><a
 						href="
 						${pageContext.request.contextPath}/manager/openrecruit_delete?orId=${openrecruit.or_id}">삭제</a></td>

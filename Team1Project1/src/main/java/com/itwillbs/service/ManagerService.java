@@ -116,4 +116,14 @@ public class ManagerService {
 		managerMapper.deleteOpenRecruit(orId);
 	}
 
+	public Map<Object, Object> contentOR(int orId) {
+		
+		return managerMapper.contentOR(orId);
+	}
+
+	public void updateOR(Map<Object, Object> updateOR) {
+		// TODO Auto-generated method stub
+		managerMapper.updateOR(updateOR);
+	}
+
 }

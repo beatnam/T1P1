@@ -20,6 +20,22 @@
 		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}
 		)
 	</insert>
+	
+	<update id="updateOR">
+		update open_recruit 
+		set 
+		or_corporation_name = #{orCorporationName}, 
+		or_name = #{orName},
+		or_occupation =  #{orOccupation}, 
+		or_job = #{orJob},
+		or_location = #{orLocation},
+		or_salary = #{orSalary},
+		or_eduhigh = #{orEduhigh}, 
+		or_url = #{orUrl},
+		or_deadline = #{orDeadline}
+		where or_id = #{orId}
+		
+	</update>
 
 
 
@@ -32,6 +48,23 @@
 		select count(*)
 		from recruit
 
+	</select>
+	
+	<select id = "contentOR" resultType="map">
+		select o.or_id, o.member_num,
+		o.or_corporation_name, o.or_name,
+		c.occupation_name, j.job_name,
+		o.or_location, o.or_salary,
+		e.eduhigh_name, o.or_url, o.or_deadline
+		from open_recruit o join occupation c
+		on o.or_occupation =
+		c.occupation_id
+		join job j
+		on o.or_job = j.job_id
+		join edu_high e
+		on
+		o.or_eduhigh = e.eduhigh_id
+		where o.or_id = #{orId}
 	</select>
 
 	<select id="listRecruit" resultType="map">

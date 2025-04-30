@@ -23,21 +23,22 @@
 
 	<h1>공개 채용 수정</h1>
 	<form
-		action="${pageContext.request.contextPath}/manager/openrecruit_writePro"
+		action="${pageContext.request.contextPath}/manager/openrecruit_updatePro"
 		method="post" id="appForm">
-		<input type="hidden" name="memberNum"
-			value="${sessionScope.num }">
+		<input type="hidden" name="orId" value="${contentOR.or_id }">
 
 		<div class="main_content">
 			<table border="1">
 				<tr>
 					<td>제목입력</td>
-					<td><input type="text" name="orName" value=""></td>
+					<td><input type="text" name="orName"
+							value="${contentOR.or_name }"></td>
 				</tr>
 
 				<tr>
 					<td>회사명</td>
-					<td><input type="text" name="orCorporationName" value=""></td>
+					<td><input type="text" name="orCorporationName"
+							value="${contentOR.or_corporation_name }"></td>
 				</tr>
 				<tr>
 					<td>학력</td>
@@ -72,24 +73,27 @@
 				</tr>
 				<tr>
 					<td>연봉</td>
-					<td><input type="text"  name="orSalary" value=""></td>
+					<td><input type="text" name="orSalary"
+							value="${contentOR.or_salary }"></td>
 				</tr>
 				<tr>
 					<td>근무지역</td>
-					<td><input type="text"  name="orLocation" value=""></td>
+					<td><input type="text" name="orLocation"
+							value="${contentOR.or_location }"></td>
 				</tr>
 				<tr>
 					<td>마감일자</td>
-					<td><input type="date"  name="orDeadline"></td>
+					<td><input type="date" name="orDeadline"></td>
 				</tr>
 				<tr>
 					<td>회사 홈페이지</td>
-					<td><input type="text" name="orUrl" value="http://"></td>
+					<td><input type="text" name="orUrl"
+							value="${contentOR.or_url }"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<!-- 로그인 되어있고(세션값이 있으면) => 로그인표시값, 글쓴이 일치 => 글수정, 글삭제 버튼 보이기 --> <input
-							type="submit" value="공고 올리기"> <input type="button"
+							type="submit" value="공고 수정"> <input type="button"
 							value="공고 리스트"
 							onclick="location.href='${pageContext.request.contextPath}/manager/openrecruit_mng'">
 

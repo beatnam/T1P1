@@ -34,5 +34,9 @@ public interface ManagerMapper {
 
 	public void deleteOpenRecruit(int orId);
 
+	public Map<Object, Object> contentOR(int orId);
+
+	public void updateOR(Map<Object, Object> updateOR);
+
 
 }
