@@ -12,12 +12,12 @@
 		member_num,
 		or_corporation_name, or_name, or_occupation, or_job,
 		or_location,
-		or_salary, or_eduhigh, or_url, or_deadline
+		or_salary, or_eduhigh, or_url, or_deadline ,or_workday, or_careear
 		)
 		VALUES (
 		#{memberNum},
 		#{orCorporationName}, #{orName}, #{orOccupation}, #{orJob},
-		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}
+		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}, #{orWorkday}, #{orCareear}
 		)
 	</insert>
 
@@ -34,7 +34,9 @@
 		or_salary = #{orSalary},
 		or_eduhigh = #{orEduhigh},
 		or_url = #{orUrl},
-		or_deadline = #{orDeadline}
+		or_deadline = #{orDeadline},
+		or_workday = #{orWorkday},
+		or_careear = #{orCareear}
 		where or_id = #{orId}
 
 	</update>
@@ -73,7 +75,7 @@
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
 		o.or_location, o.or_salary,
-		e.eduhigh_name, o.or_url, o.or_deadline
+		e.eduhigh_name, o.or_url, o.or_deadline , o.or_workday
 		from open_recruit o join occupation c
 		on o.or_occupation =
 		c.occupation_id
@@ -161,8 +163,9 @@
 		select o.or_id, o.member_num,
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
-		o.or_location, o.or_salary,
+		o.or_location, o.or_salary, a.careear_name,
 		e.eduhigh_name, o.or_url, o.or_deadline
+		
 		from open_recruit o join occupation c
 		on o.or_occupation =
 		c.occupation_id
@@ -171,6 +174,9 @@
 		join edu_high e
 		on
 		o.or_eduhigh = e.eduhigh_id
+		join careear a
+		on a.careear_id = o.or_careear
+		
 	</select>
 	<select id="listCopMember" resultType="map">
 		select m.mt_name,

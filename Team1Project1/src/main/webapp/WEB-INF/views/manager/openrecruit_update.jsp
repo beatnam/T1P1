@@ -77,10 +77,28 @@
 							value="${contentOR.or_salary }"></td>
 				</tr>
 				<tr>
+					<td>경력</td>
+					<td><select name="Careear" id="orCareer" required>
+							<option value="">-- 선택 --</option>
+							<option value="1">경력 무관</option>
+							<option value="2">1년 미만</option>
+							<option value="3">1년 ~ 3년</option>
+							<option value="4">3년 ~ 5년</option>
+							<option value="5">5년 ~ 7년</option>
+							<option value="6">7년 이상</option>
+					</select></td>
+				</tr>
+				<tr>
 					<td>근무지역</td>
 					<td><input type="text" name="orLocation"
 							value="${contentOR.or_location }"></td>
 				</tr>
+				<tr>
+					<td>근무 일자</td>
+					<td><input type="text" name="orWorkday"
+							value="${contentOR.or_workday }"></td>
+				</tr>
+				<tr>
 				<tr>
 					<td>마감일자</td>
 					<td><input type="date" name="orDeadline"></td>

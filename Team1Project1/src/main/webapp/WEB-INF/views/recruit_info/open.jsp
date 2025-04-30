@@ -48,6 +48,7 @@
 				<td>회사명</td>
 				<td>직종</td>
 				<td>직무</td>
+				<td>경력</td>
 				<td>마감일</td>
 
 			</tr>
@@ -59,6 +60,7 @@
 					<td><a href="${openrecruit.or_url}">${openrecruit.or_corporation_name }</a></td>
 					<td>${openrecruit.occupation_name}</td>
 					<td>${openrecruit.job_name }</td>
+					<td>${openrecruit.careear_name }</td>
 					<td>${openrecruit.or_deadline }</td>
 
 				</c:forEach>

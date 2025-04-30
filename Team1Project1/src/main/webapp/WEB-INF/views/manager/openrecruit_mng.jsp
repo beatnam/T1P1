@@ -29,18 +29,22 @@
 			<td>회사명</td>
 			<td>직종</td>
 			<td>직무</td>
+			<td>요구 경력</td>
+			<td>주 근무일</td>
 			<td>마감일</td>
 			<td>수정</td>
 			<td>삭제</td>
 		</tr>
+		<c:forEach var="openrecruit" items="${ORlist }">
+			<tr>
 
-		<tr>
-			<c:forEach var="openrecruit" items="${ORlist }">
 				<td>${openrecruit.or_id }</td>
 				<td>${openrecruit.or_name }</td>
 				<td>${openrecruit.or_corporation_name }</td>
 				<td>${openrecruit.occupation_name}</td>
 				<td>${openrecruit.job_name }</td>
+				<td>${openrecruit.careear_name}</td>
+				<td>${openrecruit.or_workday }</td>
 				<td>${openrecruit.or_deadline }</td>
 				<td><a
 						href="${pageContext.request.contextPath}/manager/openrecruit_update?orId=
@@ -48,9 +52,9 @@
 				<td><a
 						href="
 						${pageContext.request.contextPath}/manager/openrecruit_delete?orId=${openrecruit.or_id}">삭제</a></td>
-			</c:forEach>
-		</tr>
 
+			</tr>
+		</c:forEach>
 	</table>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
