@@ -21,7 +21,6 @@
 			<a href="${pageContext.request.contextPath }/main/communitymain">커뮤니티</a>
 			<a href="${pageContext.request.contextPath }/main/customerService">고객센터</a>
 
-			<a href="${pageContext.request.contextPath }/main/my-profile">마이페이지</a>
 
 			<c:if test="${!empty sessionScope.id}">
 				<c:choose>

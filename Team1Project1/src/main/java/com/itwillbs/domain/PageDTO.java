@@ -24,3 +24,5 @@ public class PageDTO {
 	private int corporationMemberNum;
 	
 }
+
+

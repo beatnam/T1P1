@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.MyPageDTO;
 import com.itwillbs.service.MemberService;
 
 @Controller
@@ -32,18 +33,17 @@ public class MemberController {
 	public String joinPro(MemberDTO memberDTO, HttpServletRequest request) {
 		System.out.println("memberController joinPro");
 
-		int memberNum =  Integer.parseInt(request.getParameter("memberNum"));
+		
 		String memberJumin = request.getParameter("memberJumin1") + request.getParameter("memberJumin2"); 
 		String memberEmail = request.getParameter("memberEmail1") + "@" + request.getParameter("memberEmail2"); 
 
 		memberDTO.setMTId(200);		
 		memberDTO.setMemberEmail(memberEmail);
 		memberDTO.setMemberJumin(memberJumin);
-		memberDTO.setMemberNum(memberNum);
 		
-	
-
+		
 		memberService.joinMember(memberDTO);
+	
 		return "redirect:/main/main";
 	}
 
@@ -68,6 +68,9 @@ public class MemberController {
 			session.setAttribute("type", memberDTO2.getMTId());
 
 			session.setAttribute("num", memberDTO2.getMemberNum());
+			
+	        System.out.println("세션 ID : " + memberDTO2.getMTId());
+	        System.out.println("세션 member_num : " + memberDTO2.getMemberNum());
 			return "redirect:/main/main";
 		} else{
 			return "/main/msg";
