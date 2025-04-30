@@ -1,5 +1,8 @@
 package com.itwillbs.controller;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RcBoardCMDTO;
 import com.itwillbs.domain.RcBoardDTO;
 import com.itwillbs.domain.RiBoardDTO;
+import com.itwillbs.service.CommentService;
 import com.itwillbs.service.MemberService;
 import com.itwillbs.service.ReviewBoardService;
 
@@ -28,6 +33,9 @@ public class ReviewBoardController {
 	
 	@Inject
 	private ReviewBoardService reviewBoardService;
+	
+	@Inject
+	private CommentService commentService;
 	
 	@GetMapping("/rilist")
 	public String riList(HttpServletRequest request, Model model) {
@@ -105,7 +113,7 @@ public class ReviewBoardController {
 	}//update()
 	
 	@PostMapping("/riupdatepro")
-	public String riupdatePro(HttpServletRequest request, Model model ) {
+	public String riupdatePro(HttpServletRequest request ) {
 		System.out.println("ReviewBoardController update()");
 		RiBoardDTO riBoardDTO = new RiBoardDTO();
 	    riBoardDTO.setRiNum(Integer.parseInt(request.getParameter("riNum"))); // 글 번호
@@ -236,6 +244,11 @@ public class ReviewBoardController {
 		memberDTO.setMemberNum(num);
 		memberDTO = reviewBoardService.infoName(memberDTO);
 		model.addAttribute("memberDTO", memberDTO);
+		
+		List<Map<String, Object>> comments = commentService.getCommentsByReNum(reNum);
+        model.addAttribute("comments", comments);
+//        model.addAttribute("re_num", reNum);
+        
 		return "/community/commentboard_content";
 	}//content()
 	

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>면접후기 게시판 | 게시판 내용</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/comment.css">
 </head>
 <style>
 /* 메인 콘텐츠 스타일 */
@@ -95,6 +96,35 @@
 				<a href="${pageContext.request.contextPath}/rvborad/rilist" class="btn_list">글목록</a>
 			</p>
 		</form>
+		</div>
+		<div class="comment-section">
+    
+			<!-- 댓글 작성 -->
+		    <form action="${pageContext.request.contextPath}/comment/add" method="post" class="comment-form">
+		        <input type="hidden" name="re_num" value="${re_num}">
+		        <textarea name="ce_content" rows="4" placeholder="댓글을 입력하세요" required></textarea>
+		        <button type="submit">작성</button>
+		    </form>
+		    <h3>댓글 목록</h3>
+		    <!-- 댓글 목록 -->
+		    <div class="comment-list">
+		        <c:forEach var="comment" items="${comments}">
+		            <div class="comment-item">
+		                <p><strong>${comment.memberId}</strong> | ${comment.ce_date}</p>
+		                <p>${comment.ce_content}</p>
+		                <form action="${pageContext.request.contextPath}/comment/delete" method="post">
+		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                    <button type="submit">삭제</button>
+		                </form>
+		                <!-- 수정 폼 -->
+		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
+		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                    <textarea name="ce_content">${comment.ce_content}</textarea>
+		                    <button type="submit">수정</button>
+		                </form>
+		            </div>
+		        </c:forEach>
+		    </div>
 		</div>
 		
 <jsp:include page="../inc/footer.jsp"></jsp:include>

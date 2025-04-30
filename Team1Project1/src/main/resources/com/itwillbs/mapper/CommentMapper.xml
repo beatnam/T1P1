@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.CommentMapper">
+    <!-- 댓글 조회 -->
+    <select id="selectCommentsByReNum" resultType="map">
+        SELECT c.ce_id, c.re_num, c.parent_id, c.ce_content, c.member_num, c.ce_date, m.member_id
+        FROM comment_employment c
+        JOIN member m ON c.member_num = m.member_num
+        WHERE c.re_num = #{reNum}
+        ORDER BY c.ce_date ASC;
+    </select>
+
+    <!-- 댓글 삽입 -->
+    <insert id="insertComment" parameterType="com.itwillbs.domain.RcBoardCMDTO">
+        INSERT INTO comment_employment (re_num, parent_id, ce_content, member_num, ce_date)
+        VALUES (#{reNum}, #{parentId}, #{ceContent}, #{memberNum}, NOW());
+    </insert>
+
+    <!-- 댓글 수정 -->
+    <update id="updateComment" parameterType="com.itwillbs.domain.RcBoardCMDTO">
+        UPDATE comment_employment
+        SET ce_content = #{ceContent}, ce_date = NOW()
+        WHERE ce_id = #{ceId};
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comment_employment
+        WHERE ce_id = #{ceId};
+    </delete>
+</mapper>
