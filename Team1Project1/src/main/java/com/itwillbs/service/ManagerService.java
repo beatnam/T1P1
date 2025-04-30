@@ -106,4 +106,14 @@ public class ManagerService {
 		return managerMapper.contentRecruit(recruitId);
 	}
 
+	public void deleteRecruit(int recruitId) {
+	managerMapper.deleteRecruit(recruitId);
+		
+	}
+
+	public void deleteOpenRecruit(int orId) {
+		// TODO Auto-generated method stub
+		managerMapper.deleteOpenRecruit(orId);
+	}
+
 }

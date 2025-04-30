@@ -75,12 +75,27 @@ public class ManagerController {
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 
-		
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("recruitList", recruitList);
 
 		return "/manager/recruit_mng";
 
+	}
+
+	@GetMapping("/recruit_delete")
+	public String deleteRecruit(@RequestParam int recruitId) {
+		System.out.println("ManagerController deleteRecruit()");
+		managerService.deleteRecruit(recruitId);
+
+		return "redirect:/manager/recruit_mng";
+	}
+
+	@GetMapping("/openrecruit_delete")
+	public String deleteOpenRecruit(@RequestParam int orId) {
+		System.out.println("ManagerController deleteOpenRecruit()");
+		managerService.deleteOpenRecruit(orId);
+
+		return "redirect:/manager/openrecruit_mng";
 	}
 
 	@GetMapping("/board_mng")
@@ -182,12 +197,11 @@ public class ManagerController {
 
 	@GetMapping("/openrecruit_mng")
 	public String openrecruitMng(Model model) {
-  
-		List<Map<Object,Object>> ORlist = managerService.listOR();
-		
-		model.addAttribute("ORlist",ORlist);
-		
-		
+
+		List<Map<Object, Object>> ORlist = managerService.listOR();
+
+		model.addAttribute("ORlist", ORlist);
+
 		return "/manager/openrecruit_mng";
 	}
 
@@ -207,7 +221,7 @@ public class ManagerController {
 
 	@PostMapping("/openrecruit_writePro")
 	public String openrecruitWritePro(HttpServletRequest request, OpenrecruitDTO openrecruitDTO) {
-		
+
 		System.out.println("ManagerController openrecruitWritePro()");
 		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 		openrecruitDTO.setMemberNum(memberNum);

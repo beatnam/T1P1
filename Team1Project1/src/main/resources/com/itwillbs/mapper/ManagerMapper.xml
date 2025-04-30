@@ -9,16 +9,19 @@
 
 	<insert id="insertOR">
 		INSERT INTO open_recruit (
-		member_num, or_corporation_name, or_name, or_occupation, or_job,
-		or_location, or_salary, or_eduhigh, or_url, or_deadline
+		member_num,
+		or_corporation_name, or_name, or_occupation, or_job,
+		or_location,
+		or_salary, or_eduhigh, or_url, or_deadline
 		)
 		VALUES (
-		#{memberNum}, #{orCorporationName}, #{orName}, #{orOccupation}, #{orJob},
+		#{memberNum},
+		#{orCorporationName}, #{orName}, #{orOccupation}, #{orJob},
 		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}
 		)
 	</insert>
-	
-	
+
+
 
 	<select id="countMember" resultType="java.lang.Integer">
 		select count(*)
@@ -58,15 +61,17 @@
 		order by 1 desc
 		limit #{startRow}, #{pageSize}
 	</select>
-	
+
 	<select id="contentRecruit" resultType="map">
-			select r.recruit_id,
+		select r.recruit_id,
 		r.recruit_name,
 		c.corporation_name,
-		o.occupation_name, j.job_name,
+		o.occupation_name,
+		j.job_name,
 		r.recruit_location,
 		e.eduhigh_name,
-		r.recruit_salary, r.recruit_photo, r.recruit_deatline
+		r.recruit_salary,
+		r.recruit_photo, r.recruit_deatline
 		from recruit r join
 		corporation c
 		on
@@ -82,20 +87,37 @@
 		join edu_high e
 		on r.recruit_eduhigh =
 		e.eduhigh_id
+
+		where r.recruit_id = #{recruitId}
+	</select>
+
+	<delete id="deleteRecruit">
+	delete from recruit
+	where recruit_id = #{recruitId}
+
+	</delete>
 	
-	where r.recruit_id = #{recruitId}
-	</select>	
+	<delete id="deleteOpenRecruit">
+	delete from open_recruit
+	where or_id = #{orId}
+
+	</delete>
+	
 
 	<select id="listOR" resultType="map">
-		select o.or_id, o.member_num, o.or_corporation_name, o.or_name,
-		c.occupation_name, j.job_name, o.or_location, o.or_salary,
+		select o.or_id, o.member_num,
+		o.or_corporation_name, o.or_name,
+		c.occupation_name, j.job_name,
+		o.or_location, o.or_salary,
 		e.eduhigh_name, o.or_url, o.or_deadline
 		from open_recruit o join occupation c
-		on o.or_occupation = c.occupation_id
+		on o.or_occupation =
+		c.occupation_id
 		join job j
 		on o.or_job = j.job_id
 		join edu_high e
-		on o.or_eduhigh = e.eduhigh_id
+		on
+		o.or_eduhigh = e.eduhigh_id
 	</select>
 	<select id="listCopMember" resultType="map">
 		select m.mt_name,

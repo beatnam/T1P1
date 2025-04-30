@@ -82,24 +82,27 @@
 			<td>학력</td>
 			<td>제시 급여</td>
 			<td>삭제</td>
+
 		</tr>
 
-		<c:forEach var="recruitMap" items="${recruitList }">
+		<c:forEach var="recruit" items="${recruitList }">
 			<tr>
-				<td>${recruitMap.recruit_id }</td>
-				<td>${recruitMap.recruit_name}</td>
-				<td>${recruitMap.corporation_name}</td>
-				<td>${recruitMap.occupation_name}</td>
-				<td>${recruitMap.job_name}</td>
-				<td>${recruitMap.recruit_location}</td>
-				<td>${recruitMap.eduhigh_name}</td>
-				<td>${recruitMap.recruit_salary}</td>
-
-				<td><button>삭제</button></td>
+				<td>${recruit.recruit_id }</td>
+				<td>${recruit.recruit_name}</td>
+				<td>${recruit.corporation_name}</td>
+				<td>${recruit.occupation_name}</td>
+				<td>${recruit.job_name}</td>
+				<td>${recruit.recruit_location}</td>
+				<td>${recruit.eduhigh_name}</td>
+				<td>${recruit.recruit_salary}</td>
+				<td><a
+						href="${pageContext.request.contextPath}/manager/recruit_delete?recruitId=${recruit.recruit_id}"
+						id="deleteBtn">글삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+
 </body>
 
 </html>

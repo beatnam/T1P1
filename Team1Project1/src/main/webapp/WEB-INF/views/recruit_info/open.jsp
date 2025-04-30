@@ -53,13 +53,13 @@
 			</tr>
 
 			<tr>
-				<c:forEach var="orMap" items="${ORlist }">
+				<c:forEach var="openrecruit" items="${ORlist }">
 
-					<td>${orMap.or_name }</td>
-					<td><a href="${orMap.or_url}">${orMap.or_corporation_name }</a></td>
-					<td>${orMap.occupation_name}</td>
-					<td>${orMap.job_name }</td>
-					<td>${orMap.or_deadline }</td>
+					<td>${openrecruit.or_name }</td>
+					<td><a href="${openrecruit.or_url}">${openrecruit.or_corporation_name }</a></td>
+					<td>${openrecruit.occupation_name}</td>
+					<td>${openrecruit.job_name }</td>
+					<td>${openrecruit.or_deadline }</td>
 
 				</c:forEach>
 			</tr>

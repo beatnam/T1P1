@@ -30,5 +30,9 @@ public interface ManagerMapper {
 
 	public Map<Object, Object> contentRecruit(int recruitId);
 
+	public void deleteRecruit(int recruitId);
+
+	public void deleteOpenRecruit(int orId);
+
 
 }

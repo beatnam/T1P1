@@ -103,17 +103,17 @@
 			<td>제시 급여</td>
 		</tr>
 
-		<c:forEach var="recruitMap" items="${recruitList }">
+		<c:forEach var="recruit" items="${recruitList }">
 			<tr>
-				<td>${recruitMap.recruit_id }</td>
+				<td>${recruit.recruit_id }</td>
 				<td><a
-						href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruitMap.recruit_id}">${recruitMap.recruit_name}</a></td>
-				<td>${recruitMap.corporation_name}</td>
-				<td>${recruitMap.occupation_name}</td>
-				<td>${recruitMap.job_name}</td>
-				<td>${recruitMap.recruit_location}</td>
-				<td>${recruitMap.eduhigh_name}</td>
-				<td>${recruitMap.recruit_salary}</td>
+						href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruit.recruit_id}">${recruit.recruit_name}</a></td>
+				<td>${recruit.corporation_name}</td>
+				<td>${recruit.occupation_name}</td>
+				<td>${recruit.job_name}</td>
+				<td>${recruit.recruit_location}</td>
+				<td>${recruit.eduhigh_name}</td>
+				<td>${recruit.recruit_salary}</td>
 			</tr>
 		</c:forEach>
 	</table>
