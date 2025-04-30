@@ -48,7 +48,7 @@
       $.ajax({
         url: '${pageContext.request.contextPath }/manager/filter',
         method: 'GET',
-        data: { mtId: mtId },
+        data: { mtId : mtId },
         dataType: 'json',
         success: function(result) {
         	const tbody = $('#memberTableBody');
@@ -58,7 +58,7 @@
             const row = `
               <tr>
             	<td>${item.mt_name}</td>
-                <td>${item.orporationmember_id}</td>
+                <td>${item.corporationmember_id}</td>
                 <td>${item.corporation_name}</td>
                 <td>
                   <button id="deleteBtn" data-id="">삭제</button>
@@ -70,6 +70,7 @@
         }//success
       });
     });
+		$('#memberTypeFilter').trigger('change');
   });
 </script>
 </body>

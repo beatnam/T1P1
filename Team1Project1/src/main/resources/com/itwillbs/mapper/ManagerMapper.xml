@@ -20,21 +20,21 @@
 		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}
 		)
 	</insert>
-	
+
 	<update id="updateOR">
-		update open_recruit 
-		set 
-		or_corporation_name = #{orCorporationName}, 
+		update open_recruit
+		set
+		or_corporation_name = #{orCorporationName},
 		or_name = #{orName},
-		or_occupation =  #{orOccupation}, 
+		or_occupation = #{orOccupation},
 		or_job = #{orJob},
 		or_location = #{orLocation},
 		or_salary = #{orSalary},
-		or_eduhigh = #{orEduhigh}, 
+		or_eduhigh = #{orEduhigh},
 		or_url = #{orUrl},
 		or_deadline = #{orDeadline}
 		where or_id = #{orId}
-		
+
 	</update>
 
 
@@ -49,8 +49,8 @@
 		from recruit
 
 	</select>
-	
-	<select id = "contentOR" resultType="map">
+
+	<select id="contentOR" resultType="map">
 		select o.or_id, o.member_num,
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
@@ -104,7 +104,8 @@
 		r.recruit_location,
 		e.eduhigh_name,
 		r.recruit_salary,
-		r.recruit_photo, r.recruit_deatline
+		r.recruit_photo,
+		r.recruit_deatline
 		from recruit r join
 		corporation c
 		on
@@ -121,21 +122,22 @@
 		on r.recruit_eduhigh =
 		e.eduhigh_id
 
-		where r.recruit_id = #{recruitId}
+		where
+		r.recruit_id = #{recruitId}
 	</select>
 
 	<delete id="deleteRecruit">
-	delete from recruit
-	where recruit_id = #{recruitId}
+		delete from recruit
+		where recruit_id = #{recruitId}
 
 	</delete>
-	
+
 	<delete id="deleteOpenRecruit">
-	delete from open_recruit
-	where or_id = #{orId}
+		delete from open_recruit
+		where or_id = #{orId}
 
 	</delete>
-	
+
 
 	<select id="listOR" resultType="map">
 		select o.or_id, o.member_num,
@@ -163,8 +165,8 @@
 	<select id="listCopMember1" resultType="map">
 		select m.mt_id,
 		m.mt_name, c.corporationmember_id, c.corporation_name
-		from member_type
-		m join corporation c
+		from member_type m join 
+		corporation c
 		on m.mt_id = c.mt_id
 		where m.mt_id = #{mtId}
 	</select>
