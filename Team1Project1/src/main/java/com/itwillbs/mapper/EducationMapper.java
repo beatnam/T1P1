@@ -21,6 +21,8 @@ public interface EducationMapper {
 
 	public EducationDTO getEducationByMemberNum(int member_num);
 
+	public List<String> searchSchoolsByName(String keyword);
+
 	
 	
 

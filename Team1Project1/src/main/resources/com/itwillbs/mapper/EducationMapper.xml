@@ -57,5 +57,10 @@
   	WHERE member_num = #{memberNum}
   </update>
 
-  
+  <select id="searchSchoolsByName" resultType="String">
+  	select DISTINCT school_name
+  	from school
+  	where education_school like concat('%', #{keyword}, '%')
+  	limit 10
+  </select>  
 </mapper>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.domain.CareerDTO;
@@ -181,6 +182,13 @@ public class MyPageController {
     	educationService.insertEducation(educationDTO);
     	return "<script>alert('수정되었습니다.'); window.opener.location.reload(); window.close();</script>";
     }//insertEducation
+    
+    @GetMapping("/mypage/school-search") 
+    @ResponseBody  
+    public List<String> searchSchool(@RequestParam("keyword") String keyword) {
+        return educationService.searchSchoolsByName(keyword); 
+    }
+
     
     @GetMapping("/mypage/education-update")
     public String showEducationUpdate(HttpSession session, Model model) {

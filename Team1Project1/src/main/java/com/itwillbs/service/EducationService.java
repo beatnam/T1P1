@@ -37,6 +37,11 @@ public class EducationService {
 		
 	}
 
+	public List<String> searchSchoolsByName(String keyword) {
+		
+		return educationMapper.searchSchoolsByName(keyword);
+	}
+
 	
 		
 	
