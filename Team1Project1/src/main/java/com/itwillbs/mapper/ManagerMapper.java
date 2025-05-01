@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.OpenrecruitDTO;
 import com.itwillbs.domain.PageDTO;
 
 @Mapper
@@ -18,5 +19,27 @@ public interface ManagerMapper {
 	public int countRecruit();
 
 	public List<Map<String, Object>> listRecruit(PageDTO pageDTO);
+
+	public List<Map<String, Object>> listCopMember();
+
+	public List<Map<String, Object>> listCopMember1(int mtId);
+
+	public void insertOR(OpenrecruitDTO openrecruitDTO);
+
+	public List<Map<Object, Object>> listOR();
+
+	public Map<Object, Object> contentRecruit(int recruitId);
+
+	public void deleteRecruit(int recruitId);
+
+	public void deleteOpenRecruit(int orId);
+
+	public Map<Object, Object> contentOR(int orId);
+
+	public void updateOR(Map<Object, Object> updateOR);
+
+	public void upgradeCorp(String corpId);
+
+	public Map<Object, Object> contentCorp(String corpId);
 
 }

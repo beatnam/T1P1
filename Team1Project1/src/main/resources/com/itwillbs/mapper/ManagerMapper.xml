@@ -7,6 +7,56 @@
 
 <mapper namespace="com.itwillbs.mapper.ManagerMapper">
 
+	<insert id="insertOR">
+		INSERT INTO open_recruit (
+		member_num,
+		or_corporation_name, or_name, or_occupation, or_job,
+		or_location,
+		or_salary, or_eduhigh, or_url, or_deadline
+		)
+		VALUES (
+		#{memberNum},
+		#{orCorporationName}, #{orName}, #{orOccupation}, #{orJob},
+		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}
+		)
+	</insert>
+
+	<update id="updateOR">
+		update open_recruit
+		set
+		or_corporation_name =
+		#{orCorporationName},
+		or_name = #{orName},
+		or_occupation =
+		#{orOccupation},
+		or_job = #{orJob},
+		or_location = #{orLocation},
+		or_salary = #{orSalary},
+		or_eduhigh = #{orEduhigh},
+		or_url = #{orUrl},
+		or_deadline = #{orDeadline}
+		where or_id = #{orId}
+
+	</update>
+
+	<update id="upgradeCorp">
+		update corporation
+		set mt_id = 500
+		where
+		corporationmember_id = #{corpId}
+	</update>
+	<select id="contentCorp" resultType="map">
+		SELECT
+		mt_name, corporationmember_id,
+		corporationmember_email, corporationmember_phone, recruit_id, corporation_name,
+		corporation_registration, corporation_phone,
+		corporation_registrationPdf, corporation_intro, corporationmember_name,
+		corporation_address
+		FROM corporation c join member_type m
+		on c.mt_id = m.mt_id
+		where corporationmember_id = #{corpId};
+	</select>
+
 	<select id="countMember" resultType="java.lang.Integer">
 		select count(*)
 		from member
@@ -15,29 +65,129 @@
 	<select id="countRecruit" resultType="java.lang.Integer">
 		select count(*)
 		from recruit
-		
+
+	</select>
+
+	<select id="contentOR" resultType="map">
+		select o.or_id, o.member_num,
+		o.or_corporation_name, o.or_name,
+		c.occupation_name, j.job_name,
+		o.or_location, o.or_salary,
+		e.eduhigh_name, o.or_url, o.or_deadline
+		from open_recruit o join occupation c
+		on o.or_occupation =
+		c.occupation_id
+		join job j
+		on o.or_job = j.job_id
+		join edu_high e
+		on
+		o.or_eduhigh = e.eduhigh_id
+		where o.or_id = #{orId}
 	</select>
 
 	<select id="listRecruit" resultType="map">
-		select r.recruit_id, r.recruit_name,
+		select r.recruit_id,
+		r.recruit_name,
 		c.corporation_name,
-		o.occupation_name, j.job_name, r.recruit_location,
+		o.occupation_name, j.job_name,
+		r.recruit_location,
 		e.eduhigh_name,
 		r.recruit_salary
-		from recruit r join corporation c
+		from recruit r join
+		corporation c
 		on
 		r.corporationMember_num = c.corporationMember_num
-		join occupation o
+		join
+		occupation o
 		on
 		r.recruit_occupation = o.occupation_id
 		join job j
-		on r.recruit_job =
+		on
+		r.recruit_job =
 		j.job_id
 		join edu_high e
-		on r.recruit_eduhigh = e.eduhigh_id
-		
+		on r.recruit_eduhigh =
+		e.eduhigh_id
+
 		order by 1 desc
 		limit #{startRow}, #{pageSize}
+	</select>
+
+	<select id="contentRecruit" resultType="map">
+		select r.recruit_id,
+		r.recruit_name,
+		c.corporation_name,
+		o.occupation_name,
+		j.job_name,
+		r.recruit_location,
+		e.eduhigh_name,
+		r.recruit_salary,
+		r.recruit_photo,
+		r.recruit_deatline
+		from recruit r join
+		corporation c
+		on
+		r.corporationMember_num = c.corporationMember_num
+		join
+		occupation o
+		on
+		r.recruit_occupation = o.occupation_id
+		join job j
+		on
+		r.recruit_job =
+		j.job_id
+		join edu_high e
+		on r.recruit_eduhigh =
+		e.eduhigh_id
+
+		where
+		r.recruit_id = #{recruitId}
+	</select>
+
+	<delete id="deleteRecruit">
+		delete from recruit
+		where recruit_id = #{recruitId}
+
+	</delete>
+
+	<delete id="deleteOpenRecruit">
+		delete from open_recruit
+		where or_id = #{orId}
+
+	</delete>
+
+
+	<select id="listOR" resultType="map">
+		select o.or_id, o.member_num,
+		o.or_corporation_name, o.or_name,
+		c.occupation_name, j.job_name,
+		o.or_location, o.or_salary,
+		e.eduhigh_name, o.or_url, o.or_deadline
+		from open_recruit o join occupation c
+		on o.or_occupation =
+		c.occupation_id
+		join job j
+		on o.or_job = j.job_id
+		join edu_high e
+		on
+		o.or_eduhigh = e.eduhigh_id
+	</select>
+	<select id="listCopMember" resultType="map">
+		select m.mt_name,
+		c.corporationmember_id, c.corporation_name
+		from member_type m join
+		corporation c
+		on m.mt_id = c.mt_id
+	</select>
+
+	<select id="listCopMember1" resultType="map">
+		select m.mt_id,
+		m.mt_name, c.corporationmember_id, c.corporation_name
+		from member_type
+		m join
+		corporation c
+		on m.mt_id = c.mt_id
+		where m.mt_id = #{mtId}
 	</select>
 
 
