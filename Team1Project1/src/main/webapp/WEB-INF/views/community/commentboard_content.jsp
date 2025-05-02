@@ -111,17 +111,27 @@
 		            <div class="comment-item">
 		                <p><strong>${comment.member_id}</strong> | ${comment.ce_date}</p>
 		                <p>${comment.ce_content}</p>
-		                <form action="${pageContext.request.contextPath}/comment/delete" method="post">
+		                <!-- 수정 폼 -->
+		                <div class="btn-updelete">
+		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
+		                    
 		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
 		                    <input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
-		                    <button type="submit">삭제</button>
-		                </form>
-		                <!-- 수정 폼 -->
-		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
-		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                    <input type="hidden" name="memberNum" value="${rcBoardDTO.memberNum}">
 		                    <textarea name="ce_content">${comment.ce_content}</textarea>
+		                    <c:if test="${comment.member_id eq sessionScope.id}">
 		                    <button type="submit">수정</button>
+		                    </c:if>
 		                </form>
+		                <!-- 삭제 폼 -->
+		                <form action="${pageContext.request.contextPath}/comment/delete" method="post" class="delete-form">
+		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                   	<input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
+		                    <c:if test="${comment.member_id eq sessionScope.id}">
+		                    <button type="submit">삭제</button>
+		                    </c:if>
+		                </form>
+		                </div>
 		            </div>
 		        </c:forEach>
 		    </div>

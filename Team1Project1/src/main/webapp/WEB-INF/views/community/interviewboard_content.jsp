@@ -100,28 +100,34 @@
 		<div class="comment-section">
     
 			<!-- 댓글 작성 -->
-		    <form action="${pageContext.request.contextPath}/comment/add" method="post" class="comment-form">
-		        <input type="hidden" name="re_num" value="${re_num}">
-		        <textarea name="ce_content" rows="4" placeholder="댓글을 입력하세요" required></textarea>
+		    <form action="${pageContext.request.contextPath}/comment/riadd" method="post" class="comment-form">
+		        <input type="hidden" name="ri_num" value="${riBoardDTO.riNum}">
+		        <textarea name="ci_content" rows="4" placeholder="댓글을 입력하세요" required></textarea>
 		        <button type="submit">작성</button>
 		    </form>
 		    <h3>댓글 목록</h3>
 		    <!-- 댓글 목록 -->
 		    <div class="comment-list">
-		        <c:forEach var="comment" items="${comments}">
+		        <c:forEach var="riComment" items="${riComments}">
 		            <div class="comment-item">
-		                <p><strong>${comment.memberId}</strong> | ${comment.ce_date}</p>
-		                <p>${comment.ce_content}</p>
-		                <form action="${pageContext.request.contextPath}/comment/delete" method="post">
-		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
-		                    <button type="submit">삭제</button>
-		                </form>
+		                <p><strong>${riComment.member_id}</strong> | ${riComment.ci_date}</p>
+		                <p>${riComment.ci_content}</p>
+		                <div class="btn-updelete">
 		                <!-- 수정 폼 -->
-		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
-		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
-		                    <textarea name="ce_content">${comment.ce_content}</textarea>
+		                <form action="${pageContext.request.contextPath}/comment/riupdate" method="post" class="update-form">
+		                    <input type="hidden" name="ci_id" value="${riComment.ci_id}">
+		                    <input type="hidden" name="ri_num" value="${riBoardDTO.riNum}">
+		                    <input type="hidden" name="memberNum" value="${riBoardDTO.memberNum}">
+		                    <textarea name="ci_content">${riComment.ci_content}</textarea>
 		                    <button type="submit">수정</button>
 		                </form>
+		                <!-- 삭제 폼 -->
+		                <form action="${pageContext.request.contextPath}/comment/ridelete" method="post" class="delete-form">
+		                    <input type="hidden" name="ci_id" value="${riComment.ci_id}">
+		                    <input type="hidden" name="ri_num" value="${riBoardDTO.riNum}">
+		                    <button type="submit">삭제</button>
+		                </form>
+		                </div>
 		            </div>
 		        </c:forEach>
 		    </div>

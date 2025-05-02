@@ -227,11 +227,15 @@ public class ReviewBoardController {
 		memberDTO.setMemberNum(num);
 		memberDTO = reviewBoardService.infoName(memberDTO);
 		model.addAttribute("memberDTO", memberDTO);
+		
+		List<Map<String, Object>> riComments = commentService.getriCommentsByReNum(riNum);
+        model.addAttribute("riComments", riComments);
+		
 		return "/community/interviewboard_content";
 	}//content()
 	
 	@GetMapping("/rccontent")
-	public String ciContent(HttpServletRequest request, Model model, HttpSession session) {
+	public String rcContent(HttpServletRequest request, Model model, HttpSession session) {
 		System.out.println("ReviewBoardController ciContent()");
 		int reNum = Integer.parseInt(request.getParameter("reNum"));
 		reviewBoardService.updateRcReadcount(reNum);

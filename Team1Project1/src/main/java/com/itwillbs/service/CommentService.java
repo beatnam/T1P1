@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.domain.RcBoardCMDTO;
+import com.itwillbs.domain.RiBoardCMDTO;
 import com.itwillbs.mapper.CommentMapper;
 
 @Service
@@ -34,5 +35,25 @@ public class CommentService {
     public void deleteComment(int ceId) {
         commentMapper.deleteComment(ceId);
     }
+
+	public void addriComment(RiBoardCMDTO riBoardCMDTO) {
+		// TODO Auto-generated method stub
+		commentMapper.insertriComment(riBoardCMDTO);
+	}
+
+	public void updateriComment(RiBoardCMDTO riBoardCMDTO) {
+		// TODO Auto-generated method stub
+		commentMapper.updateriComment(riBoardCMDTO);
+	}
+
+	public void deleteriComment(int ciId) {
+		// TODO Auto-generated method stub
+		commentMapper.deleteriComment(ciId);
+	}
+
+	public List<Map<String, Object>> getriCommentsByReNum(int riNum) {
+		// TODO Auto-generated method stub
+		return commentMapper.selectriCommentsByReNum(riNum);
+	}
 }
 

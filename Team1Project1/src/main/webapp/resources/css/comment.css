@@ -11,6 +11,13 @@
 	padding: 10px 0;
 }
 
+.btn-updelete button[type="submit"] {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    margin-top: 5px; /* 위쪽 여백 추가 */
+}
+
 .comment-form, .update-form {
 	margin-top: 20px;
 }

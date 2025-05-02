@@ -30,4 +30,31 @@
         DELETE FROM comment_employment
         WHERE ce_id = #{ceId};
     </delete>
+    
+    <select id="selectriCommentsByReNum" resultType="map">
+        SELECT c.ci_id, c.ri_num, c.parent_id, c.ci_content, c.member_num, c.ci_date, m.member_id
+        FROM comment_interview c
+        JOIN member m ON c.member_num = m.member_num
+        WHERE c.ri_num = #{riNum}
+        ORDER BY c.ci_date ASC;
+    </select>
+
+    <!-- 댓글 삽입 -->
+    <insert id="insertriComment" parameterType="com.itwillbs.domain.RiBoardCMDTO">
+        INSERT INTO comment_interview (ri_num, parent_id, ci_content, member_num, ci_date)
+        VALUES (#{riNum}, #{parentId}, #{ciContent}, #{memberNum}, NOW());
+    </insert>
+
+    <!-- 댓글 수정 -->
+    <update id="updateriComment" parameterType="com.itwillbs.domain.RiBoardCMDTO">
+        UPDATE comment_interview
+        SET ci_content = #{ciContent}, ci_date = NOW()
+        WHERE ci_id = #{ciId};
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteriComment" parameterType="int">
+        DELETE FROM comment_interview
+        WHERE ci_id = #{ciId};
+    </delete>
 </mapper>
