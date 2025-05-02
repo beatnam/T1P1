@@ -47,6 +47,7 @@
 		where
 		corporationmember_id = #{corpId}
 	</update>
+	
 	<select id="contentCorp" resultType="map">
 		SELECT
 		mt_name, corporationmember_id,
@@ -164,9 +165,8 @@
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
 		o.or_location, o.or_salary, a.careear_name,
-		e.eduhigh_name, o.or_url, o.or_deadline
-		
-		from open_recruit o join occupation c
+		e.eduhigh_name, o.or_url, o.or_deadline, o.or_workday
+		from open_recruit o left outer join occupation c
 		on o.or_occupation =
 		c.occupation_id
 		join job j

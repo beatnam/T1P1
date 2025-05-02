@@ -78,7 +78,7 @@
 				</tr>
 				<tr>
 					<td>경력</td>
-					<td><select name="Careear" id="orCareer" required>
+					<td><select name="orCareear" id="orCareer" required>
 							<option value="">-- 선택 --</option>
 							<option value="1">경력 무관</option>
 							<option value="2">1년 미만</option>

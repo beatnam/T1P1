@@ -40,10 +40,10 @@ public class FilteringController {
 		System.out.println(filter);
 
 		List<Map<Object, Object>> resultOR = mainService.listOR(filter);
-		List<Map<Object, Object>> resultRecruit = mainService.listRecruit(filter);
-
+		//List<Map<Object, Object>> resultRecruit = mainService.listRecruit(filter);
+		System.out.println(resultOR);
 		model.addAttribute("resultOR", resultOR);
-		model.addAttribute("resultRecruit", resultRecruit);
+		//model.addAttribute("resultRecruit", resultRecruit);
 
 		return "redirect:/first/coverletter";
 	}

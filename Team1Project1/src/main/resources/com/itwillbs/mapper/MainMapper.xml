@@ -8,11 +8,18 @@
 <mapper namespace="com.itwillbs.mapper.MainMapper">
 
 	<select id="listOR" resultType="map">
-	
-
+		select or_corporation_name
+		from open_recruit
+		where or_occupation = #{Occupation}
+		and or_job = #{Job}
+		and or_eduhigh = #{Eduhigh}
+		and or_careear = #{Careear}
+		and or_salary = #{Salary}
+		and or_workday = #{WorkingDay}
 	</select>
+	
 	<select id="listRecruit" resultType="map">
-
+		
 	</select>
 
 </mapper>

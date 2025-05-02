@@ -53,18 +53,18 @@
 
 			</tr>
 
-			<tr>
-				<c:forEach var="openrecruit" items="${ORlist }">
 
+			<c:forEach var="openrecruit" items="${ORlist }">
+				<tr>
 					<td>${openrecruit.or_name }</td>
 					<td><a href="${openrecruit.or_url}">${openrecruit.or_corporation_name }</a></td>
 					<td>${openrecruit.occupation_name}</td>
 					<td>${openrecruit.job_name }</td>
 					<td>${openrecruit.careear_name }</td>
 					<td>${openrecruit.or_deadline }</td>
+				</tr>
+			</c:forEach>
 
-				</c:forEach>
-			</tr>
 
 		</table>
 	</div>

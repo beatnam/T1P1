@@ -81,7 +81,7 @@ button {
 		<!-- 5. 연봉 -->
 		<div id="salaryDiv" class="hidden">
 			<label for="Salary">희망 연봉 (만원):</label>
-			<input type="number" name="salary" id="salary" min="0"
+			<input type="number" name="Salary" id="salary" min="0"
 				onchange="nextStep()" required>
 			<br> <br>
 			<button type="button" onclick="prevStep()">이전으로</button>
@@ -90,7 +90,7 @@ button {
 		<!-- 6. 근무일수 -->
 		<div id="workingDaysDiv" class="hidden">
 			<label for="workingDays">희망 근무일수:</label>
-			<select name="WorkingDays" id="workingDays" onchange="nextStep()"
+			<select name="WorkingDay" id="workingDays" onchange="nextStep()"
 				required>
 				<option value="">-- 선택 --</option>
 				<option value="3">주 3일</option>
