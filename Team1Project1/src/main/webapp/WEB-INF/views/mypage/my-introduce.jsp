@@ -7,11 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 | 자기소개서</title>
-<<<<<<< HEAD
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/my-introduce.css">
-=======
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-introduce.css">
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 
 </head>

@@ -7,13 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 | 지원현황</title>
-<<<<<<< HEAD
- <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/my-ing.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-=======
+
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-ing.css">
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
+
  
 </head>
 <body>

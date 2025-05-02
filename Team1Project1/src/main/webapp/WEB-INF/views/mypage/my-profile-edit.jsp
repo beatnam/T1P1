@@ -69,11 +69,23 @@
             	
             	<c:forEach var="career" items="${careerList}" varStatus="status">
           			<div class="career-view">
-            			<input type="text" name="careerList[${status.index}].JH_Corporation" value="${career.JH_Corporation}" readonly>
-            			<input type="text" name="careerList[${status.index}].JH_department" value="${career.JH_department}" readonly>
-            			<input type="text" name="careerList[${status.index}].work_content" value="${career.work_content}" readonly>
-            			<input type="text" name="careerList[${status.index}].start_date" value="${career.start_date}" readonly>
-            			<input type="text" name="careerList[${status.index}].end_date" value="${career.end_date}" readonly>
+            			<input type="text" value="${career.jhCorporation}" readonly>
+						<input type="hidden" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}">
+            			<input type="text" value="${career.jhDepartment}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}">
+            			<input type="text" value="${career.workContent}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].workContent" value="${career.workContent}">
+            			<input type="text" value="${career.startDate}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].startDate" value="${career.startDate}">
+            			<input type="text" value="${career.endDate}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].endDate" value="${career.endDate}">
+            			
+<%--             			<input type="text" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].workContent" value="${career.workContent}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].startDate" value="${career.startDate}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].endDate" value="${career.endDate}" readonly> --%>
+
           			</div>
         		</c:forEach>
         
@@ -121,10 +133,7 @@
 
 <script>
     function openCareerPopup() {
-    	const form = document.getElementById("careerForm");
-    	
-//     	form.querySelectorAll("input[name^='careerList[].']").forEach(input => input.remove());
-    	
+    	const form = document.getElementById("careerForm");    	
         window.open(
             '${pageContext.request.contextPath}/mypage/career-add',
             '경력추가',
@@ -134,59 +143,65 @@
 </script>
 
 <script>
-let careerIndex = 0;
+let careerIndex = document.querySelectorAll(".career-view").length;
 
-document.addEventListener("DOMContentLoaded", function () {
-	const form = document.getElementById("careerForm");
-	careerIndex = document.querySelectorAll(".career-view").length;
-	
-	window.addEventListener("message", function(event) {	
+window.addEventListener("message", function(event) {
     const data = event.data;
-    console.log("data : ", data);
-    
+    console.log("받은 데이터:", data);
     if (data) {
-        
-        const inbox3 = document.querySelector(".inbox3");
-        
-        const newCareer = document.createElement("div");
-        newCareer.className = "career-view"; 
+        const inbox = document.querySelector(".inbox3");
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "career-view";
+
+        const index = document.querySelectorAll(".career-view").length;
         
         const fields = [
-        	{ field: "member_num", value: data.member_num, type: "hidden" },
-            { field: "JH_Corporation", value: data.JH_Corporation, type: "text" },
-            { field: "JH_department", value: data.JH_department, type: "text" },
-            { field: "work_content", value: data.work_content, type: "text" },
-            { field: "start_date", value: data.start_date, type: "date" },
-            { field: "end_date", value: data.end_date, type: "date" }
-        ];        
-        console.log("careerIndex used inside forEach:", careerIndex);
-        fields.forEach(field => {
-            const input = document.createElement("input");
-            input.type = field.type;
-            input.name = `careerList[${careerIndex}].${field.field}`;
-            input.value = field.value;
-            input.readOnly = true;
-            input.style.marginRight = "10px"; 
-            newCareer.appendChild(input);
-        });
-               
-        inbox3.appendChild(newCareer);
-        careerIndex++; 
-        alert("경력 추가 성공");
+            { name: "jhCorporation", value: data.jhCorporation },
+            { name: "jhDepartment", value: data.jhDepartment },
+            { name: "workContent", value: data.workContent },
+            { name: "startDate", value: data.startDate },
+            { name: "endDate", value: data.endDate }
+        ];
+
+        const memberNum = document.querySelector('input[name="memberNum"]').value;
+        const hiddenMemberNum = document.createElement("input");
+        hiddenMemberNum.type = "hidden";
+        hiddenMemberNum.name = `careerList[${index}].memberNum`;
+        hiddenMemberNum.value = memberNum;
+        wrapper.appendChild(hiddenMemberNum);
+
         
+        fields.forEach(field => {
+        	 const visibleInput = document.createElement("input");
+             visibleInput.type = "text";
+             visibleInput.value = field.value;
+             visibleInput.readOnly = true;
+             
+             const hiddenInput = document.createElement("input");
+             hiddenInput.type = "hidden";
+             hiddenInput.name = `careerList[${index}].${field.name}`;
+             hiddenInput.value = field.value;
+             
+             wrapper.appendChild(visibleInput);
+             wrapper.appendChild(hiddenInput);
+             
+//             const input = document.createElement("input");
+//             input.type = "text";
+//             input.name = `careerList[${index}].${field.name}`;
+//             input.value = field.value;
+//             input.readOnly = true;
+//             wrapper.appendChild(input);
+        });
+
+        const buttonInInbox = inbox.querySelector("button");
+        inbox.insertBefore(wrapper, buttonInInbox);
+//         careerIndex++;
     }
 });
-        
-form.addEventListener("submit", function (e) {
-    const badInputs = this.querySelectorAll("input[name*='careerList[].']");
-    badInputs.forEach(input => {
-      console.warn("빈 인덱스 input 제거됨:", input.name);
-      input.remove();
-          });
-	});
 
-});
 </script>
+
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 

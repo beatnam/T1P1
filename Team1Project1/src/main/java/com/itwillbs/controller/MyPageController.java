@@ -1,29 +1,34 @@
 package com.itwillbs.controller;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CareerListDTO;
-import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.EducationDTO;
 import com.itwillbs.domain.MyPageDTO;
+import com.itwillbs.domain.SchoolDTO;
 import com.itwillbs.service.CareerService;
 import com.itwillbs.service.EducationService;
 import com.itwillbs.service.MyPageService;
+import com.itwillbs.service.SchoolService;
 
 @RequestMapping("/mypage/*")
 @Controller
@@ -37,6 +42,9 @@ public class MyPageController {
 	
 	@Inject
 	private EducationService educationService;
+	
+	@Inject
+	private SchoolService schoolService;
 
 	@RequestMapping("/")
 	public String main() {
@@ -77,7 +85,7 @@ public class MyPageController {
     	return "mypage/my-profile";
     }//myProfilePage
     
-    @RequestMapping("mypage/my-profile-edit")
+    @GetMapping("mypage/my-profile-edit")
     public String myProfileEdit(HttpSession session, Model model) {
     	
     	Integer member_num = (Integer) session.getAttribute("member_num");
@@ -98,7 +106,6 @@ public class MyPageController {
         model.addAttribute("educationList", educationList);
             
         List<CareerDTO> careerList = careerService.getCareerList(member_num);
-        System.out.println("careerList 사이즈 : " + careerList.size());
         model.addAttribute("careerList", careerList);
     	    	
     	return "mypage/my-profile-edit";
@@ -118,51 +125,33 @@ public class MyPageController {
     public String resumeEdit(){
         return "resume/my-resume-edit";  
     }//resumeEdit
-    
-    @GetMapping("/mypage/career-add")
-    public String openCareerPopup() {
-    	return "mypage/career-add";
-    }//openCareerPopup
-
-    @PostMapping("/mypage/insert-career")
-    public String insertCareer(@ModelAttribute CareerListDTO careerListDTO, 
-    		HttpSession session) {
-    	
-    	List<CareerDTO> careerList = careerListDTO.getCareerList();
-    	System.out.println("받은 careerList : careerList");
-    	Integer member_num = (Integer)session.getAttribute("member_num");
-    	
-    	if(member_num == null) {
-    		System.out.println("로그인이 필요합니다.");
-    		return "redirect:/main/login";
-    	}
-    	if(careerList != null) {
-    		for(CareerDTO careerDTO : careerList) {
-    			careerDTO.setMember_num(member_num);
-    			myPageService.insertCareer(careerDTO);
-    		}
-    		System.out.println("경력 저장이 완료되었습니다.");
-    	}else {
-    		System.out.println("경력 리스트가 비어있습니다.");
-    	}
-    	
-    	return "redirect:/mypage/my-profile";
-    }//insertCareer
-    
-    @PostMapping("/mypage/insert-career-ajax")
-    @ResponseBody
-    public String insertCareerAjax(CareerDTO careerDTO, HttpSession session) {
-        Integer member_num = (Integer) session.getAttribute("member_num");
-        if (member_num == null) return "fail";
-
-        careerDTO.setMember_num(member_num);
-        myPageService.insertCareer(careerDTO);
-        return "success";
-    }//insertCareerAjax
+       
     
     @PostMapping("/mypage/my-profile-edit")
-    public String updateMyIntroduce(MyPageDTO myPageDTO) {
+    public String updateMyIntroduce(MyPageDTO myPageDTO, @ModelAttribute CareerListDTO careerListDTO, HttpSession session) {
     	myPageService.updateMyIntroduce(myPageDTO);
+    	Integer member_num = (Integer)session.getAttribute("member_num");
+    	careerService.deleteCareerByMemberNum(member_num);
+    	
+    	
+    	if (careerListDTO == null) {
+            System.out.println("careerListDTO == null");
+        } else if (careerListDTO.getCareerList() == null) {
+            System.out.println("careerListDTO.getCareerList() == null");
+        } else {
+            System.out.println("careerList.size: " + careerListDTO.getCareerList().size());
+            for (CareerDTO dto : careerListDTO.getCareerList()) {
+                System.out.println(">>> 커리어 데이터: " + dto);
+            }
+        }
+    	
+    	
+    	if(careerListDTO != null && careerListDTO.getCareerList() != null) {
+    		for(CareerDTO careerDTO : careerListDTO.getCareerList()) {
+    			careerDTO.setMemberNum(member_num);
+    			careerService.insertCareer(careerDTO);
+    		}
+    	}
     	
     	System.out.println("한 줄 소개 : " + myPageDTO.getMemberIntroduce());
     	System.out.println("회원번호 : " + myPageDTO.getMemberNum());
@@ -180,13 +169,38 @@ public class MyPageController {
     @ResponseBody
     public String insertEducation(EducationDTO educationDTO) {
     	educationService.insertEducation(educationDTO);
+    	System.out.println("학교 ID: " + educationDTO.getEducationSchool());
+        System.out.println("전공: " + educationDTO.getEducationMajor());
+        System.out.println("세부전공: " + educationDTO.getMajorDetail());
+    	
     	return "<script>alert('수정되었습니다.'); window.opener.location.reload(); window.close();</script>";
     }//insertEducation
     
     @GetMapping("/mypage/school-search") 
     @ResponseBody  
-    public List<String> searchSchool(@RequestParam("keyword") String keyword) {
-        return educationService.searchSchoolsByName(keyword); 
+    public List<SchoolDTO> searchSchool(@RequestParam String keyword) {
+    	System.out.println(keyword);
+        List<SchoolDTO> schoolList = schoolService.searchSchoolByKeyword(keyword);
+
+        List<Map<String, Object>> result = new ArrayList<>();
+        
+        if (schoolList != null) {
+            for (SchoolDTO schoolDTO : schoolList) {
+                if (schoolDTO != null) { // ← 이 체크가 핵심
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("schoolId", schoolDTO.getSchoolId());
+                    map.put("schoolName", schoolDTO.getSchoolName());
+                    result.add(map);
+                } else {
+                    System.out.println("schoolDTO가 null입니다!");
+                }
+            }
+        } else {
+            System.out.println("schoolList 자체가 null입니다!");
+        }
+        System.out.println(schoolList);
+        
+        return schoolList;
     }
 
     
@@ -210,7 +224,23 @@ public class MyPageController {
     	return "<script>alert('수정되었습니다.'); window.opener.location.reload(); window.close();</script>";
     }
     
+    @PostMapping("/mypage/member-delete")
+    public String deleteMember(HttpSession session, RedirectAttributes rttr) {
+    	int memberNum = (int)session.getAttribute("member_num");
+    	
+    	if(memberNum != 0) {
+    		myPageService.deleteMember(memberNum);
+    		session.invalidate();
+    		rttr.addFlashAttribute("deleted", "true");
+    	}
+    	
+    	return "redirect:/main/main";
+    }
     
+    @GetMapping("/mypage/career-add")
+    public String showCareerAddPage() {
+    	return "mypage/career-add";
+    }
     
     
 }

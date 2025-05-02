@@ -1,6 +1,8 @@
 package com.itwillbs.domain;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,22 +13,18 @@ import lombok.ToString;
 @ToString
 public class CareerDTO {
 
-	private int JH_id;
-	private int member_num;
+	private int jhId;
+	private int memberNum;
 	
-	private String JH_Corporation;
-	private String JH_department;
-	private String work_content;
-	private Date start_date;
-	private Date end_date;
+	private String jhCorporation;
+	private String jhDepartment;
+	private String workContent;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date startDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date endDate;
 	
-	
-	
-	
-
-    
-
     
 }
 

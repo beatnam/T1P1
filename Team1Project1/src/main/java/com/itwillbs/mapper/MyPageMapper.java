@@ -21,11 +21,13 @@ public interface MyPageMapper {
 
 	public MyPageDTO getMyProfile(Integer member_num);
 
-	void insertCareer(CareerDTO careerDTO);
+	
 
 	public MyPageDTO getMyProfileByMemberNum(MyPageDTO myPageDTO);
 
 	public void updateMyIntroduce(MyPageDTO myPageDTO);
+
+	public void deleteMember(int memberNum);
 
 	
 }

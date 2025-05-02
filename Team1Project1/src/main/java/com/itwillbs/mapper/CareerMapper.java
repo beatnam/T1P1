@@ -13,6 +13,8 @@ public interface CareerMapper {
 	
 	public List<CareerDTO> getCareerList(int member_num);
 
+	void deleteCareerByMemberNum(Integer member_num);
+
 	
 	
 	

@@ -27,6 +27,11 @@ public class CareerService {
 	    return careerMapper.getCareerList(member_num);
 	}
 
+	public void deleteCareerByMemberNum(Integer member_num) {
+		careerMapper.deleteCareerByMemberNum(member_num);
+		
+	}
+
 
 	
 

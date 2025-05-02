@@ -20,20 +20,17 @@ public class MyPageService {
 //		return myPageMapper.getMyProfile(member_num);
 //	}
 
-	public void insertCareer(CareerDTO careerDTO) {
-		
-		
-	}
 
 	public MyPageDTO getMyProfileByMemberNum(MyPageDTO myPageDTO) {
-		
-		
 		return myPageMapper.getMyProfileByMemberNum(myPageDTO);
 	}
 
 	public void updateMyIntroduce(MyPageDTO myPageDTO) {
 		myPageMapper.updateMyIntroduce(myPageDTO);
-		
+	}
+
+	public void deleteMember(int memberNum) {
+		myPageMapper.deleteMember(memberNum);		
 	}
 		
 	

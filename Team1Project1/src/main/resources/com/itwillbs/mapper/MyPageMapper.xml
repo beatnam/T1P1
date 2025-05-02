@@ -34,16 +34,11 @@
         where member_num = #{memberNum}        		
    </select>
   
-  <insert id="insertCareer" parameterType="com.itwillbs.domain.CareerDTO">
-		insert into job_history
-		(JH_Corporation, JH_department, work_content, start_date, end_date, member_num)
-		values
-		(#{JH_Corporation}, #{JH_department}, #{work_content}, #{start_date}, #{end_date}, #{member_num})
-  </insert>
+  
   
   <insert id="insertEducation" parameterType="EducationDTO">
   		insert into education
-  		(mamber_num, education_school, education_major, major_detail)
+  		(member_num, education_school, education_major, major_detail)
   		values
   		(#{memberNum}, #{educationSchool}, #{educationMajor}, #{majorDetail})
   </insert>
@@ -65,4 +60,9 @@
   		where member_num = #{memberNum}
   </update>
 
+  <delete id="deleteMember" parameterType="int">
+		delete 
+		from member 
+		where member_num = #{memberNum}  
+  </delete>
 </mapper>

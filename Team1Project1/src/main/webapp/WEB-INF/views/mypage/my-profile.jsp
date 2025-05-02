@@ -92,7 +92,9 @@
         </div>
 
         <div class="inbox8">
-            <a href="#" onclick="return handleDelete()">회원 탈퇴</a>
+            <form action="${pageContext.request.contextPath}/mypage/member-delete" method="post" onsubmit="return confirm('정말 탈퇴하시겠습니까?');">
+        	<button type="submit" class="edit-btn">회원 탈퇴</button>
+    		</form>
             <a href="${pageContext.request.contextPath}/mypage/my-profile-edit" class="edit-btn">수정</a>
         </div>
 
@@ -100,17 +102,7 @@
 
 </div>
 
-<script>
-function handleDelete() {
-    if (confirm("정말 탈퇴하시겠습니까?")) {
-        alert("탈퇴 되었습니다.");
-        location.href = "#";
 
-        return false; 
-    }
-    return false; 
-}
-</script>
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 
