@@ -110,8 +110,32 @@
 		    <div class="comment-list">
 		        <c:forEach var="riComment" items="${riComments}">
 		            <div class="comment-item">
-		                <p><strong>${riComment.member_id}</strong> | ${riComment.ci_date}</p>
+		            	<c:if test="${riComment.parent_id ne null}">
+		            	<p>${riComment.parent_id}번글의 = 대댓글</p>
+		            	</c:if>
+		                <p>[${riComment.ci_id}] <strong>${riComment.member_id}</strong> | ${riComment.ci_date}</p>
 		                <p>${riComment.ci_content}</p>
+						<input type="hidden" name="parent_id" value="${riComment.ci_id}">
+						
+<!-- 					    대댓글 목록 -->
+<!-- 					    <div class="replies"> -->
+<%-- 				            <c:forEach var="rireplies" items="${rireplies}"> --%>
+<!-- 				                <div class="rireply-item"> -->
+<%-- 				                    <p><strong>${rireply.member_id}</strong></p> --%>
+<%-- 				                    <p>${rireply.ci_content}</p> --%>
+<!-- 				                </div> -->
+<%-- 				            </c:forEach> --%>
+<!-- 				        </div> -->
+					    <!-- 대댓글 입력 폼 -->
+					    
+					    <form action="${pageContext.request.contextPath}/comment/rirepliesadd" method="post" class="reply-form">
+					        <input type="hidden" name="parent_id" value="${riComment.ci_id}">
+					        <input type="hidden" name="ri_num" value="${riBoardDTO.riNum}">
+					        <input type="hidden" name="member_Num" value="${riBoardDTO.memberNum}">
+					        <textarea name="ci_content" rows="2" placeholder="대댓글을 입력하세요" required></textarea>
+					        <button type="submit">답글 작성</button>
+					    </form>
+							                
 		                <div class="btn-updelete">
 		                <!-- 수정 폼 -->
 		                <form action="${pageContext.request.contextPath}/comment/riupdate" method="post" class="update-form">
@@ -132,8 +156,93 @@
 		        </c:forEach>
 		    </div>
 		</div>
-		
+
 <jsp:include page="../inc/footer.jsp"></jsp:include>
+<!-- <!-- <script type="text/javascript"> --> -->
+<!-- document.addEventListener("DOMContentLoaded", function() { -->
+<!--     document.querySelectorAll(".reply-btn").forEach(button => { -->
+<!--         button.addEventListener("click", function() { -->
+<!--             const ciId = this.getAttribute("data-ciid"); -->
+<!--             console.log("Received ciId:", ciId); -->
+<!--             alert(ciId); // 디버깅용 -->
+
+<!--             loadReplies(ciId, this); -->
+<!--         }); -->
+<!--     }); -->
+<!-- }); -->
+
+<!-- function loadReplies(ciId, button) { -->
+<!--     console.log("loadReplies 실행됨. ciId:", ciId); -->
+
+<%--     const repliesContainer = document.getElementById(`replies-${ciId}`); --%>
+
+<!--     if (!repliesContainer) { -->
+<%--         console.error(`❌ Element #replies-${ciId}를 찾을 수 없습니다.`); --%>
+<!--         return; -->
+<!--     } -->
+
+<!--     // 이미 열려있으면 숨기기 -->
+<!--     if (repliesContainer.style.display === "block") { -->
+<!--         repliesContainer.style.display = "none"; -->
+<!--         button.textContent = "대댓글 보기"; -->
+<!--         return; -->
+<!--     } -->
+
+<!--     // 서버에서 대댓글 로드 -->
+<%--     fetch(`/comment/rireplies/${ciId}`) --%>
+<!--         .then(response => { -->
+<!--             if (!response.ok) throw new Error("응답 실패"); -->
+<!--             return response.json(); -->
+<!--         }) -->
+<!--         .then(data => { -->
+<!--             console.log("✅ AJAX 응답 데이터:", data); -->
+
+<!--             repliesContainer.innerHTML = ""; -->
+
+<!--             if (!data || data.length === 0) { -->
+<!--                 repliesContainer.innerHTML = "<p>대댓글이 없습니다.</p>"; -->
+<!--             } else { -->
+<!--                 data.forEach(reply => { -->
+<!--                     const replyItem = document.createElement("div"); -->
+<!--                     replyItem.classList.add("reply-item"); -->
+<!--                     replyItem.innerHTML = ` -->
+<%--                         <p><strong>${reply.member_id}</strong></p> --%>
+<%--                         <p>${reply.ci_content}</p> --%>
+<!--                     `; -->
+<!--                     repliesContainer.appendChild(replyItem); -->
+<!--                 }); -->
+<!--             } -->
+
+<!--             repliesContainer.style.display = "block"; -->
+<!--             button.textContent = "대댓글 숨기기"; -->
+<!--         }) -->
+<!--         .catch(error => { -->
+<!--             console.error("🚨 대댓글 불러오기 오류:", error); -->
+<!--         }); -->
+<!-- } -->
+
+
+<%-- function replies(${ciId}) { --%>
+<!-- 	alert(ciId); -->
+<%--     const replies = document.getElementById('replies-${ciId}'); --%>
+<!--     alert(replies); -->
+<!--     if (ciId) { -->
+<!--     	$.ajax({ -->
+<!-- 			type : "GET", -->
+<%-- 			url:'${pageContext.request.contextPath}/rireplies/${ciId}', --%>
+<!-- 			data: {'ciId' : ciId}, -->
+<!-- 			dataType:'json', -->
+<!-- 			success:function(result){ -->
+<!-- 				$('#replies').html(''); -->
+<!-- 				$.each(result, function(index,item){ -->
+<%-- 					$('#job-select').append('<p><strong>' + ${reply.member_id} + '</strong></p><p>' + ${reply.ci_content} + '</p>'); --%>
+<!-- 				}); -->
+<!-- 			}, -->
+<!-- 		});//ajax() -->
+<!--     } -->
+<!-- } -->
+<!-- </script> -->
+
 
 </body>
 </html>

@@ -227,10 +227,8 @@ public class ReviewBoardController {
 		memberDTO.setMemberNum(num);
 		memberDTO = reviewBoardService.infoName(memberDTO);
 		model.addAttribute("memberDTO", memberDTO);
-		
 		List<Map<String, Object>> riComments = commentService.getriCommentsByReNum(riNum);
         model.addAttribute("riComments", riComments);
-		
 		return "/community/interviewboard_content";
 	}//content()
 	
@@ -248,11 +246,8 @@ public class ReviewBoardController {
 		memberDTO.setMemberNum(num);
 		memberDTO = reviewBoardService.infoName(memberDTO);
 		model.addAttribute("memberDTO", memberDTO);
-		
 		List<Map<String, Object>> comments = commentService.getCommentsByReNum(reNum);
         model.addAttribute("comments", comments);
-//        model.addAttribute("re_num", reNum);
-        
 		return "/community/commentboard_content";
 	}//content()
 	

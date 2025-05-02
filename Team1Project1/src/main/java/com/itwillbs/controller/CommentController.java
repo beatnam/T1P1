@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.domain.RcBoardCMDTO;
 import com.itwillbs.domain.RiBoardCMDTO;
@@ -22,15 +26,7 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
-
-//    // 댓글 조회
-//    @GetMapping("/list")
-//    public String listComments(@RequestParam("re_num") int reNum, Model model) {
-//        List<RcBoardCMDTO> comments = commentService.getCommentsByReNum(reNum);
-//        model.addAttribute("comments", comments);
-//        model.addAttribute("re_num", reNum);
-//        return "/rvborad/";
-//    }
+    
     //취업 후기 댓글
     // 댓글 삽입
     @PostMapping("/add")
@@ -109,6 +105,41 @@ public class CommentController {
         commentService.deleteriComment(ciId);
         return "redirect:/rvborad/ricontent?riNum=" + riNum;
     }
+    
+    @PostMapping("/rirepliesadd")
+    public String addriReplies(@RequestParam("ri_num") int riNum,
+    						@RequestParam("parent_id") int parentId,
+				            @RequestParam("ci_content") String ciContent,
+				            HttpSession session) {
+    	int memberNum = (int) session.getAttribute("num");
+		RiBoardCMDTO riBoardCMDTO = new RiBoardCMDTO();
+		riBoardCMDTO.setRiNum(riNum);
+		riBoardCMDTO.setCiContent(ciContent);
+		riBoardCMDTO.setParentId(parentId);
+		riBoardCMDTO.setMemberNum(memberNum);
+		System.out.println("riBoardCMDTO = " + riBoardCMDTO);
+		commentService.addriReplies(riBoardCMDTO);
+		return "redirect:/rvborad/ricontent?riNum=" + riNum;
+	}
+    
+    
+    @PostMapping("/rerepliesadd")
+    public String rerepliesadd(@RequestParam("re_num") int reNum,
+							@RequestParam("parent_id") int parentId,
+				            @RequestParam("ce_content") String ceContent,
+				            HttpSession session) {
+		int memberNum = (int) session.getAttribute("num");
+		RcBoardCMDTO rcBoardCMDTO = new RcBoardCMDTO();
+		rcBoardCMDTO.setReNum(reNum);
+		rcBoardCMDTO.setCeContent(ceContent);
+		rcBoardCMDTO.setParentId(parentId);
+		rcBoardCMDTO.setMemberNum(memberNum);
+		System.out.println("rcBoardCMDTO = " + rcBoardCMDTO);
+		commentService.addreReplies(rcBoardCMDTO);
+		return "redirect:/rvborad/rccontent?reNum=" + reNum;
+	}
+    
+    
     
 }
 

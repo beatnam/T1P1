@@ -55,5 +55,18 @@ public class CommentService {
 		// TODO Auto-generated method stub
 		return commentMapper.selectriCommentsByReNum(riNum);
 	}
+
+	public void addriReplies(RiBoardCMDTO riBoardCMDTO) {
+		// TODO Auto-generated method stub
+		commentMapper.addriReplies(riBoardCMDTO);
+	}
+
+	public void addreReplies(RcBoardCMDTO rcBoardCMDTO) {
+		// TODO Auto-generated method stub
+		commentMapper.addreReplies(rcBoardCMDTO);
+	}
+	
+	
+	
 }
 

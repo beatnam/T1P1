@@ -109,8 +109,19 @@
 		    <div class="comment-list">
 		        <c:forEach var="comment" items="${comments}">
 		            <div class="comment-item">
-		                <p><strong>${comment.member_id}</strong> | ${comment.ce_date}</p>
+		            	<c:if test="${comment.parent_id ne null}">
+		            	<p>${comment.parent_id}번글의 = 대댓글</p>
+		            	</c:if>
+		                <p>[${comment.ce_id}]  <strong>${comment.member_id}</strong> | ${comment.ce_date}</p>
 		                <p>${comment.ce_content}</p>
+		                <input type="hidden" name="parent_id" value="${comment.ce_id}">
+		                <form action="${pageContext.request.contextPath}/comment/rerepliesadd" method="post" class="reply-form">
+					        <input type="hidden" name="parent_id" value="${comment.ce_id}">
+					        <input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
+					        <input type="hidden" name="member_Num" value="${rcBoardDTO.memberNum}">
+					        <textarea name="ce_content" rows="2" placeholder="대댓글을 입력하세요" required></textarea>
+					        <button type="submit">답글 작성</button>
+					    </form>
 		                <!-- 수정 폼 -->
 		                <div class="btn-updelete">
 		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
