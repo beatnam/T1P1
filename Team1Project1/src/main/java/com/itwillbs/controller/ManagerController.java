@@ -202,6 +202,7 @@ public class ManagerController {
 
 		model.addAttribute("ORlist", ORlist);
 
+		System.out.println(ORlist);
 		return "/manager/openrecruit_mng";
 	}
 
@@ -255,12 +256,12 @@ public class ManagerController {
 	@GetMapping("/content_corp")
 	public String contentCorp(@RequestParam String corpId, Model model) {
 
-		Map<Object,Object> corporation = managerService.contentCorp(corpId);
-		
-		model.addAttribute("corporation" ,corporation);
+		Map<Object, Object> corporation = managerService.contentCorp(corpId);
+
+		model.addAttribute("corporation", corporation);
 		return "/manager/content_copmember";
 	}
-	
+
 	@GetMapping("/review_employment_mng")
 	public String reviewEmploymentMng() {
 

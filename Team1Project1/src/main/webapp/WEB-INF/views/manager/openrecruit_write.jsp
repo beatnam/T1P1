@@ -25,8 +25,7 @@
 	<form
 		action="${pageContext.request.contextPath}/manager/openrecruit_writePro"
 		method="post" id="appForm">
-		<input type="hidden" name="memberNum"
-			value="${sessionScope.num }">
+		<input type="hidden" name="memberNum" value="${sessionScope.num }">
 
 		<div class="main_content">
 			<table border="1">
@@ -72,15 +71,32 @@
 				</tr>
 				<tr>
 					<td>연봉</td>
-					<td><input type="text"  name="orSalary" value=""></td>
+					<td><input type="text" name="orSalary" value=""></td>
 				</tr>
 				<tr>
+					<td>경력</td>
+					<td><select name="orCareear" id="career" required>
+							<option value="">-- 선택 --</option>
+							<option value="1">경력 무관</option>
+							<option value="2">1년 미만</option>
+							<option value="3">1년 ~ 3년</option>
+							<option value="4">3년 ~ 5년</option>
+							<option value="5">5년 ~ 7년</option>
+							<option value="6">7년 이상</option>
+					</select></td>
+				</tr>
+
+				<tr>
 					<td>근무지역</td>
-					<td><input type="text"  name="orLocation" value=""></td>
+					<td><input type="text" name="orLocation" value=""></td>
+				</tr>
+				<tr>
+					<td>근무 일자</td>
+					<td><input type="text" name="orWorkday" placeholder="주 근무 일수"></td>
 				</tr>
 				<tr>
 					<td>마감일자</td>
-					<td><input type="date"  name="orDeadline"></td>
+					<td><input type="date" name="orDeadline"></td>
 				</tr>
 				<tr>
 					<td>회사 홈페이지</td>

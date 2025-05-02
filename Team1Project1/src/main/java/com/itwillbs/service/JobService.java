@@ -15,22 +15,22 @@ import com.itwillbs.mapper.JobMapper;
 
 @Service
 public class JobService {
-    private final JobMapper jobMapper;
+	private final JobMapper jobMapper;
 
-    public JobService(JobMapper jobMapper) {
-    	System.out.println("JobService JobService()");
-        this.jobMapper = jobMapper;
-    }
+	public JobService(JobMapper jobMapper) {
+		System.out.println("JobService JobService()");
+		this.jobMapper = jobMapper;
+	}
 
-    public List<OccupationDTO> getOccupations() {
-    	System.out.println("JobService getOccupations()");
-        return jobMapper.getOccupations();
-    }
+	public List<OccupationDTO> getOccupations() {
+		System.out.println("JobService getOccupations()");
+		return jobMapper.getOccupations();
+	}
 
-    public List<JobDTO> getJobsByOccupation(int occupationId) {
-    	System.out.println("JobService getJobsByOccupation()");
-        return jobMapper.getJobsByOccupation(occupationId);
-    }
+	public List<JobDTO> getJobsByOccupation(int occupationId) {
+		System.out.println("JobService getJobsByOccupation()");
+		return jobMapper.getJobsByOccupation(occupationId);
+	}
 
 	public void insertRecruit(RecruitDTO recruitDTO) {
 		System.out.println("JobService insertRecruit()");
@@ -42,25 +42,26 @@ public class JobService {
 
 	public List<RecruitDTO> coverList(PageDTO pageDTO) {
 		System.out.println("JobService coverList()");
-		
+
 		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
 		int endRow = startRow + pageDTO.getPageSize() - 1;
-		
+
 		pageDTO.setStartRow(startRow - 1);
 		pageDTO.setEndRow(endRow);
-		
+
 		return jobMapper.coverList(pageDTO);
 	}
 
 	public RecruitDTO contentBoard(int recruitId) {
 		System.out.println("JobService contentBoard()");
-		
+
 		return jobMapper.contentBoard(recruitId);
 	}
 
 	public OccupationDTO occupationNum(OccupationDTO OccupationDTO) {
 		System.out.println("JobService occupationNum()");
 		System.out.println("OccupationDTO" + OccupationDTO);
+
 		return jobMapper.occupationNum(OccupationDTO);
 	}
 
@@ -91,6 +92,5 @@ public class JobService {
 		System.out.println("JobService countBoard()");
 		return jobMapper.countBoard(pageDTO);
 	}
-	
-	
+
 }
