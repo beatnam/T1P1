@@ -24,10 +24,12 @@ import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CareerListDTO;
 import com.itwillbs.domain.EducationDTO;
 import com.itwillbs.domain.MyPageDTO;
+import com.itwillbs.domain.MyResumeDTO;
 import com.itwillbs.domain.SchoolDTO;
 import com.itwillbs.service.CareerService;
 import com.itwillbs.service.EducationService;
 import com.itwillbs.service.MyPageService;
+import com.itwillbs.service.MyResumeService;
 import com.itwillbs.service.SchoolService;
 
 @RequestMapping("/mypage/*")
@@ -45,6 +47,9 @@ public class MyPageController {
 	
 	@Inject
 	private SchoolService schoolService;
+	
+	@Inject
+	private MyResumeService myResumeService;
 
 	@RequestMapping("/")
 	public String main() {
@@ -52,8 +57,16 @@ public class MyPageController {
 	}//main
 	
 	
-    @RequestMapping("/mypage/my-resume")
-    public String myResumePage() {
+    @GetMapping("/mypage/my-resume")
+    public String myResumePage(HttpSession session, Model model) {
+    	    Integer member_num = (Integer) session.getAttribute("member_num");
+    	    if(member_num == null) {
+    	        return "redirect:/main/login";
+    	    }
+
+    	    List<MyResumeDTO> resumeList = myResumeService.getResumeList(member_num);
+    	    model.addAttribute("resumeList", resumeList);
+    	    
         return "mypage/my-resume"; 
     }//myResumePage
     

@@ -29,6 +29,13 @@ public class MemberService {
 		return memberMapper.loginMember(memberDTO);
 	}
 
+	public MemberDTO getMemberInfo(Integer member_num) {
+		
+		return memberMapper.getMemberInfo(member_num);
+	}
+
+	
+
 	
 
 }//클래스

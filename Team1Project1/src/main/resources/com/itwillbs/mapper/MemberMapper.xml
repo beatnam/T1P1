@@ -33,4 +33,29 @@
 
 	</select>
 
+
+	<select id="getMemberInfo" parameterType="int" resultType="com.itwillbs.domain.MemberDTO">
+    SELECT 
+    member_num,
+    member_id,
+    member_passwd,
+    member_jumin,
+    member_name,
+    member_phone,
+    member_email,
+    member_introduce,
+    member_info,
+    member_infoC,
+    member_postcode,
+    member_address
+    FROM member
+    WHERE member_num = #{memberNum}
+</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

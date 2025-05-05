@@ -14,6 +14,10 @@ public interface MemberMapper {
 
 	public MemberDTO loginMember(MemberDTO memberDTO);
 
+	public MemberDTO getMemberInfo(Integer member_num);
+
+	
+
 	
 	
 }//인터페이스

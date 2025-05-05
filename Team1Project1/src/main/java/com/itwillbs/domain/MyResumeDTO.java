@@ -1,5 +1,8 @@
 package com.itwillbs.domain;
 
+import java.sql.Date;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,42 +12,48 @@ import lombok.ToString;
 @ToString
 public class MyResumeDTO {
 
-	private int resumeID;
-	private String title;  //이력서 제목
+	private int memberNum;
 	
+//	resume 테이블
+	private int resumeID;
+//	private String title;  //이력서 제목
+	private String resumePhoto;
+	
+//	member 테이블
 	private String memberName;
-	private int memberAge;
-	private String memberGender;
-	private String memberJumin1;
-	private String memberJumin2;
+//	private int memberAge;
+//	private String memberGender;
+	private String memberJumin;
 	private String memberEmail;
-	private String memberEmailDomain;
 	private String memberPhone;
 	private String memberPostcode;
 	private String memberAddress;
     
 
-	
-	private String eduType;
+//	education 테이블
+//	private String eduType;
 	private String educationSchool;
 	private String educationMajor;
+	private String majorDetail;
 	
-	
-	private String JHId;
-	private String JHDepartment;
+//	job_history 테이블
+	private int jhId;
+	private String jhDepartment;
 	private String workContent;
-	private String startDate;
-	private String endDate;
+	private Date startDate;
+	private Date endDate;
 	
-	
+//	certification 테이블 
 	private String certificationName;
 	private String certificationIssuer;
+//	certification_mapping 테이블
 	private String cermapAquiredDate;
 	
-	
+//	language 테이블
 	private String languageName;
 	private String languageNameCustom;
 	private String languageIssuer;
+//	language_mapping 테이블
 	private String langmapGrade;
     
 }

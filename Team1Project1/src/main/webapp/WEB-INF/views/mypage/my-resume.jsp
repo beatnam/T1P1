@@ -32,8 +32,16 @@
     <div class="box">
         <c:forEach var="resume" items="${resumeList}">
             <div class="inbox">
-                <div>${resume.title}</div>
-                <button onclick="location.href='/resume/edit?id=${resume.id}'">수정</button>
+                <div>${resume.memberName}</div>
+                <button onclick="location.href='/resume/edit?resumeID=${resume.resumeID}'">수정</button>
+                <div style="margin-top: 10px;">
+            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" target="_blank">
+                	<button>📄 보기</button>
+            		</a>
+            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" download>
+                	<button>📥 다운로드</button>
+            		</a>
+        		</div>
             </div>
         </c:forEach>
 

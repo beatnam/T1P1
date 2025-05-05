@@ -10,11 +10,6 @@
 <title>이력서 상세보기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-resume-detail.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
-
 </head>
 <body>
 

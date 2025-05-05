@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.domain.CertificationDTO;
+import com.itwillbs.domain.EducationDTO;
+import com.itwillbs.domain.JobHistoryDTO;
+import com.itwillbs.domain.LanguageDTO;
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.MyResumeDTO;
 
 
@@ -15,6 +20,28 @@ public interface MyResumeMapper {
 	void insertResume(MyResumeDTO myResumeDTO);
 	
 	void updateResume(MyResumeDTO myResumeDTO);
+
+	void saveResumePhoto(MyResumeDTO myResumeDTO);
+
+	void updateMemberFromResume(MyResumeDTO myResumeDTO);
+
+	void insertEducation(EducationDTO educationDTO);
+
+	void insertJobHistory(JobHistoryDTO jobHistoryDTO);
+
+	List<MyResumeDTO> getResumeList(Integer member_num);
+
+	MemberDTO getMemberInfoFromResume(Integer member_num);
+
+	List<EducationDTO> getEducationList(Integer member_num);
+
+	List<CertificationDTO> getCertificationList(Integer member_num);
+
+	List<LanguageDTO> getLanguageList(Integer member_num);
+
+	
+
+	
 
 	
 	
