@@ -101,4 +101,9 @@
   WHERE lm.member_num = #{memberNum}
   </select>
   
+  <delete id="deleteResume" parameterType="int">
+	delete from resume
+	where resume_id = #{resumeID}  
+  </delete>
+  
 </mapper>

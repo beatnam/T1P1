@@ -32,8 +32,8 @@
     <div class="box">
         <c:forEach var="resume" items="${resumeList}">
             <div class="inbox">
-                <div>${resume.memberName}</div>
-                <button onclick="location.href='/resume/edit?resumeID=${resume.resumeID}'">수정</button>
+                <div>${resume.resumePhoto}</div>
+                
                 <div style="margin-top: 10px;">
             		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" target="_blank">
                 	<button>📄 보기</button>
@@ -41,6 +41,12 @@
             		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" download>
                 	<button>📥 다운로드</button>
             		</a>
+            		<form action="${pageContext.request.contextPath}/resume/delete" method="post" style="display: inline;" 
+                  		onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                		<input type="hidden" name="resumeID" value="${resume.resumeID}">
+                		<input type="hidden" name="resumePhoto" value="${resume.resumePhoto}">
+                		<button type="submit">🗑 삭제</button>
+            		</form>
         		</div>
             </div>
         </c:forEach>

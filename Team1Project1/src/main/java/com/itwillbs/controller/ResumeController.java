@@ -72,6 +72,9 @@ public class ResumeController {
 	    List<LanguageDTO> langList = myResumeService.getLanguageList(member_num);
 	    model.addAttribute("languageList", langList);
 	    
+	    List<MyResumeDTO> resumeList = myResumeService.getResumeList(member_num);
+	    model.addAttribute("resumeList", resumeList);
+	    
 	    String uploadPath = "C:/upload/resume";
 	    File folder = new File(uploadPath);
 	    File[] files = folder.listFiles((dir, name) -> name.startsWith("resume_" + member_num + "_") && name.endsWith(".pdf"));
@@ -86,7 +89,7 @@ public class ResumeController {
 	    
 	    
 	    return "resume/my-resume";
-	}
+	}//resumeView
 	
 	
     @GetMapping("/my-resume-edit")
@@ -201,6 +204,17 @@ public class ResumeController {
     	    	
     	return "redirect:/mypage/my-resume";
     }//resumeSubmit
+    
+    @PostMapping("/delete")
+    public String deleteResume(@RequestParam("resumeID")int resumeID, @RequestParam("resumePhoto")String resumePhoto) {
+    	myResumeService.deleteResume(resumeID);
+    	String uploadPath = "C:/upload/resume";
+    	File file = new File(uploadPath, resumePhoto);
+    	if(file.exists()) {
+    		file.delete();
+    	}
+    	return "redirect:/mypage/my-resume";
+    }//deleteResume
     
 }
 

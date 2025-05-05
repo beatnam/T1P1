@@ -93,6 +93,10 @@ public class MyResumeService {
 		return myResumeMapper.getLanguageList(member_num);
 	}
 
+	public void deleteResume(int resumeID) {
+		myResumeMapper.deleteResume(resumeID);
+	}
+
 	
 
 	

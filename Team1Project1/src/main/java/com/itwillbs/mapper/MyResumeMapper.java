@@ -39,6 +39,8 @@ public interface MyResumeMapper {
 
 	List<LanguageDTO> getLanguageList(Integer member_num);
 
+	void deleteResume(int resumeID);
+
 	
 
 	
