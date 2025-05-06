@@ -36,12 +36,12 @@
 
     <div class="container">
         <div class="box">
-            <a href="${pageContext.request.contextPath }/main/riboard">
+            <a href="${pageContext.request.contextPath }/rvborad/rilist">
                 <h3>면접 후기 게시판</h3>
             </a>
         </div>
         <div class="box">
-            <a href="${pageContext.request.contextPath }/main/ciboard">
+            <a href="${pageContext.request.contextPath }/rvborad/rclist">
                 <h3>취업 후기 게시판</h3>
             </a>
         </div>

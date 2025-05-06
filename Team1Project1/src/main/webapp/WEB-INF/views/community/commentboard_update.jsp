@@ -70,22 +70,31 @@
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 	<div class="main_content">	
-		<form action=""  method="post" id="">		
+		<form action="${pageContext.request.contextPath}/rvborad/rcupdatepro"  method="post" id="appForm">		
 			<ul class="bo_info">
-				<li class="">글제목 : <input type="text" name="subject"></li>
-				<li class="">작성자 : <input type="text" name="name" readonly></li>
+				<li class="">글제목 : <input type="text" name="reSubject" value="${rcBoardDTO.reSubject}"></li>
+				<li class="">작성자 : <input type="text" name="" value="${memberDTO.memberId}" readonly>
+				<input type="hidden" name="memberNum" value="${rcBoardDTO.memberNum}">
+				<input type="hidden" name="reNum" value="${rcBoardDTO.reNum}"></li>
 				<li class="">
 					<div class="content_text">
-					    글내용 : <textarea name="" rows="30" cols="40"></textarea>
+					    글내용 : <textarea name="reContent" rows="30" cols="40">${rcBoardDTO.reContent}</textarea>
                     </div>
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<a href="${pageContext.request.contextPath}/rvborad/rcupdatepro" class="" id="">저장</a>
+				<a href="#" class="" id="btn_up">저장</a>
 				<a href="${pageContext.request.contextPath}/rvborad/rclist" class="">글목록</a>
 			</p>
 		</form>
 	</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
+<script type="text/javascript">
+let submitBtn = document.querySelector("#btn_up");
+let appForm = document.querySelector("#appForm");
+submitBtn.onclick = function () {
+	appForm.submit();
+}
+</script>
 </body>
 </html>

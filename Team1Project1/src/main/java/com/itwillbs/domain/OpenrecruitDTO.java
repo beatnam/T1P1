@@ -23,5 +23,6 @@ public class OpenrecruitDTO {
 	private int orEduhigh;
 	private String orUrl;
 	private Date orDeadline;
-	
+	private int orWorkday;
+	private int orCareear;
 }

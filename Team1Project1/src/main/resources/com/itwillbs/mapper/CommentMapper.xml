@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.CommentMapper">
+    <!-- 댓글 조회 -->
+    <select id="selectCommentsByReNum" resultType="map">
+        SELECT c.ce_id, c.re_num, c.parent_id, c.ce_content, c.member_num, c.ce_date, m.member_id
+        FROM comment_employment c
+        JOIN member m ON c.member_num = m.member_num
+        WHERE c.re_num = #{reNum}
+        order by coalesce(c.parent_id, c.ce_id),
+		c.parent_id is not null,
+		c.ce_date asc
+    </select>
+
+    <!-- 댓글 삽입 -->
+    <insert id="insertComment" parameterType="com.itwillbs.domain.RcBoardCMDTO">
+        INSERT INTO comment_employment (re_num, parent_id, ce_content, member_num, ce_date)
+        VALUES (#{reNum}, #{parentId}, #{ceContent}, #{memberNum}, NOW());
+    </insert>
+
+    <!-- 댓글 수정 -->
+    <update id="updateComment" parameterType="com.itwillbs.domain.RcBoardCMDTO">
+        UPDATE comment_employment
+        SET ce_content = #{ceContent}, ce_date = NOW()
+        WHERE ce_id = #{ceId};
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comment_employment
+        WHERE ce_id = #{ceId};
+    </delete>
+    
+    <select id="selectriCommentsByReNum" resultType="map">
+    	select c.ci_id, c.ri_num, c.parent_id, c.ci_content, m.member_id, c.ci_date
+		from comment_interview c join member m on c.member_num = m.member_num
+		where c.ri_num = #{riNum}
+		order by coalesce(c.parent_id, c.ci_id),
+		c.parent_id is not null,
+		c.ci_date asc
+<!--         SELECT c.ci_id, c.ri_num, c.parent_id, c.ci_content, c.member_num, c.ci_date, m.member_id -->
+<!--         FROM comment_interview c -->
+<!--         JOIN member m ON c.member_num = m.member_num -->
+<!--         WHERE c.ri_num = #{riNum} and c.parent_id IS NULL -->
+<!--         ORDER BY c.ci_date ASC; -->
+    </select>
+
+    <!-- 댓글 삽입 -->
+    <insert id="insertriComment" parameterType="com.itwillbs.domain.RiBoardCMDTO">
+        INSERT INTO comment_interview (ri_num, parent_id, ci_content, member_num, ci_date)
+        VALUES (#{riNum}, #{parentId}, #{ciContent}, #{memberNum}, NOW());
+    </insert>
+
+    <!-- 댓글 수정 -->
+    <update id="updateriComment" parameterType="com.itwillbs.domain.RiBoardCMDTO">
+        UPDATE comment_interview
+        SET ci_content = #{ciContent}, ci_date = NOW()
+        WHERE ci_id = #{ciId};
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteriComment" parameterType="int">
+        DELETE FROM comment_interview
+        WHERE ci_id = #{ciId};
+    </delete>
+    
+    <!-- 대댓글 삽입 -->
+    <insert id="addriReplies" parameterType="com.itwillbs.domain.RiBoardCMDTO">
+        INSERT INTO comment_interview (ri_num, parent_id, ci_content, member_num, ci_date)
+        VALUES (#{riNum}, #{parentId}, #{ciContent}, #{memberNum}, NOW());
+    </insert>
+    <insert id="addreReplies" parameterType="com.itwillbs.domain.RcBoardCMDTO">
+        INSERT INTO comment_employment (re_num, parent_id, ce_content, member_num, ce_date)
+        VALUES (#{reNum}, #{parentId}, #{ceContent}, #{memberNum}, NOW());
+    </insert>
+    <!-- 대댓글 조회 -->
+    <select id="getRepliesriByCommentId" resultType="map">
+        SELECT c.ci_id, c.member_num, c.ci_content, m.member_id
+        FROM comment_interview c
+        JOIN member m ON c.member_num = m.member_num
+        WHERE c.parent_id = #{parent_id}
+        ORDER BY c.ci_date ASC
+    </select>
+    
+</mapper>

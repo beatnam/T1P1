@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://mybatis.org/mybatis-3/getting-started.html src/main/resources/mapper폴더/MemberMapper.xml파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.MainMapper">
+
+	<select id="listOR" resultType="map">
+		select or_corporation_name
+		from open_recruit
+		where or_occupation = #{Occupation}
+		and or_job = #{Job}
+		and or_eduhigh = #{Eduhigh}
+		and or_careear = #{Careear}
+		and or_salary = #{Salary}
+		and or_workday = #{WorkingDay}
+	</select>
+	
+	<select id="listRecruit" resultType="map">
+		
+	</select>
+
+</mapper>
