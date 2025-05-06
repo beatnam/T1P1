@@ -1,12 +1,15 @@
 package com.itwillbs.controller;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -18,16 +21,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CareerListDTO;
 import com.itwillbs.domain.EducationDTO;
+import com.itwillbs.domain.IntroduceDTO;
 import com.itwillbs.domain.MyPageDTO;
 import com.itwillbs.domain.MyResumeDTO;
 import com.itwillbs.domain.SchoolDTO;
 import com.itwillbs.service.CareerService;
 import com.itwillbs.service.EducationService;
+import com.itwillbs.service.IntroduceService;
 import com.itwillbs.service.MyPageService;
 import com.itwillbs.service.MyResumeService;
 import com.itwillbs.service.SchoolService;
@@ -50,6 +56,9 @@ public class MyPageController {
 	
 	@Inject
 	private MyResumeService myResumeService;
+	
+	@Inject
+	private IntroduceService introduceService;
 
 	@RequestMapping("/")
 	public String main() {
@@ -253,6 +262,76 @@ public class MyPageController {
     @GetMapping("/mypage/career-add")
     public String showCareerAddPage() {
     	return "mypage/career-add";
+    }
+    
+    @PostMapping("/mypage/uploadIntroduceFile")
+    public String uploadIntroduceFile(@RequestParam("introduceFile") MultipartFile file, HttpSession session, HttpServletRequest request, Model model) {
+    	Integer memberNum = (Integer)session.getAttribute("member_num");
+    	
+    	if(memberNum == null) {
+    		return "redirect:/main/login";
+    	}
+    	
+    	if(file.isEmpty()) {
+    		model.addAttribute("error", "파일이 비어 있습니다.");
+    		return "redirect:/mypage/my-introduce";
+    	}
+    	
+    	try {
+    		String uploadDir = "c:/upload/introduce";
+    		File dir = new File(uploadDir);
+    		if(!dir.exists()) {
+    			dir.mkdirs();
+    		}
+    		
+    		String uuid = UUID.randomUUID().toString();
+    		String originalFilename = file.getOriginalFilename();
+    		String savedFilename = uuid + "_" + originalFilename;
+    		file.transferTo(new File(uploadDir, savedFilename));
+    		
+    		IntroduceDTO introduceDTO = new IntroduceDTO();
+    		introduceDTO.setMemberNum(memberNum);
+    		introduceDTO.setCvFileName(originalFilename);
+    		introduceDTO.setCvFilePath("/upload/introduce/" + savedFilename);            
+            
+    		
+    		System.out.println("파일 디비 저장 직전 디티오 " + introduceDTO);
+    		introduceService.insertIntroduceFile(introduceDTO);
+            
+    		System.out.println("자소서 업로드 완료");
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    		model.addAttribute("error", "파일 업로드 실패");
+    	}
+    	return "redirect:/mypage/my-introduce";
+    }//uploadIntroduceFile
+    
+    @GetMapping("/mypage/my-introduce")
+    public String myIntroducePage(HttpSession session, Model model) {
+    	Integer memberNum = (Integer)session.getAttribute("member_num");
+    	
+    	if(memberNum == null) {
+    		return "redirect:/main/login";
+    	}
+    	
+    	List<IntroduceDTO> introduceList = introduceService.getIntroduceByMemberNum(memberNum);
+    	model.addAttribute("introduceList", introduceList);
+    	
+    	return "mypage/my-introduce";
+    	
+    }//myIntroducePage
+    
+    @PostMapping("/mypage/deleteIntroduce")
+    public String deleteIntroduce(@RequestParam("cvId") int cvId, @RequestParam("cvFilePath") String cvFilePath) {
+    	
+    	introduceService.deleteIntroduce(cvId);
+    	
+    	File file = new File(cvFilePath);
+    	if(file.exists()) {
+    		file.delete();
+    	}
+    	
+    	return "redirect:/mypage/my-introduce";
     }
     
     

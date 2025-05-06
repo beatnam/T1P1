@@ -30,18 +30,24 @@
 
     <div class="box">
 
-        <c:forEach var="intro" items="${introList}">
+        <c:forEach var="introduce" items="${introduceList}">
     		<div class="inbox">
-        		<div>${intro.title}</div>
+        		<div>${introduce.memberNum}</div>
         		<button onclick="location.href='/introduce/edit?id=${intro.id}'">수정</button>
+    			<form action="${pageContext.request.contextPath}/mypage/deleteIntroduce" method="post" style="display:inline;">
+        		<input type="hidden" name="cvId" value="${introduce.cvId}">
+        		<input type="hidden" name="cvFilePath" value="${introduce.cvFilePath}">
+        		<button type="submit">삭제</button>
+    			</form>
     		</div>
 		</c:forEach>
-
-        <div class="actions">
-            <label for="resumeFile" class="file-btn">파일로 등록</label>
-    		<input type="file" id="resumeFile" name="resumeFile" style="display: none;">
-            <a href="#" class="new-btn">새 자소서 (첨삭)</a>	
+		<form action="${pageContext.request.contextPath}/mypage/uploadIntroduceFile" method="post" enctype="multipart/form-data">
+    	<div class="actions">       
+            <label for="introduceFile" class="file-btn">파일로 등록</label>
+    		<input type="file" id="introduceFile" name="introduceFile" style="display: none;" onchange="this.form.submit();">
+            <a href="#" class="new-btn">새 자소서 (첨삭)</a>	       
         </div>
+        </form>
 
     </div>
 </div>
