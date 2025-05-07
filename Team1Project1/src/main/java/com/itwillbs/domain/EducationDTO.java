@@ -10,6 +10,7 @@ import lombok.ToString;
 public class EducationDTO {
 
 	private int memberNum;
+
 	private Integer educationSchool;
 //	private int eduhighId;
 	
@@ -19,5 +20,6 @@ public class EducationDTO {
 	private String educationVenification;
 	
 	private String schoolName;
+
 
 }
