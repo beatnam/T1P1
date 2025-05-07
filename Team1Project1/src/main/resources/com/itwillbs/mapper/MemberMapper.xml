@@ -8,7 +8,7 @@
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
 
-  
+
 
 <insert id="joinMember">
     insert into member(MT_id,  member_id, member_passwd, member_jumin, member_name, 
@@ -17,7 +17,7 @@
     values (#{MTId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
     #{memberPhone},#{memberPostcode},#{memberAddress},#{memberEmail},
     #{memberInfo},#{memberInfoC})
- </insert>
+ </insert>	
 
 
 <select id="memberNum" resultType="java.lang.Integer">
@@ -29,16 +29,24 @@
 <insert id="joineducationId" >
      insert into education(member_num)
      values ( #{memberNum})
- </insert>
+</insert>
 
   
-  
-  <select id="loginMember" resultType="com.itwillbs.domain.MemberDTO">
+ <select id="loginMember" resultType="com.itwillbs.domain.MemberDTO">
   
   select * from member
   where member_id = #{memberId} and member_passwd = #{memberPasswd}
   
+ </select>
+
+<select id="getMemberByEmail" resultType="com.itwillbs.domain.MemberDTO">
   
-  </select>
+  select * from member
+  where member_email = #{memberEmail} 
+  
+ </select>
 	
+
+	
+
 </mapper>

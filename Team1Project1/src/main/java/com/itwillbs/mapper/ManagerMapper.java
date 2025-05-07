@@ -17,6 +17,6 @@ public interface ManagerMapper {
 
 	public int countRecruit();
 
-	public List<Map<String, Object>> listRecruit();
+	public List<Map<String, Object>> listRecruit(PageDTO pageDTO);
 
 }

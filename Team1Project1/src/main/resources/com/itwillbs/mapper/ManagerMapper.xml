@@ -15,6 +15,7 @@
 	<select id="countRecruit" resultType="java.lang.Integer">
 		select count(*)
 		from recruit
+		
 	</select>
 
 	<select id="listRecruit" resultType="map">
@@ -34,6 +35,9 @@
 		j.job_id
 		join edu_high e
 		on r.recruit_eduhigh = e.eduhigh_id
+		
+		order by 1 desc
+		limit #{startRow}, #{pageSize}
 	</select>
 
 

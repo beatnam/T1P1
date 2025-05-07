@@ -41,7 +41,7 @@ public class ManagerController {
 		pageDTO.setCurrentPage(currentPage);
 		// pageDTO.setSearch(search);
 
-		List<Map<String, Object>> recruitList = managerService.listRecruit();
+		List<Map<String, Object>> recruitList = managerService.listRecruit(pageDTO);
 
 		// 게시판 전체 글개수
 		int count = managerService.countRecruit();

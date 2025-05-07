@@ -18,6 +18,8 @@ public interface MemberMapper {
 	public Integer memberNum(String memberId);
 	public void joineducationId(int num);
 
+	public MemberDTO getMemberByEmail(String email);
+
 
 	
 	
