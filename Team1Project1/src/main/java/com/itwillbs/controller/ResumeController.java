@@ -35,6 +35,7 @@ import com.itwillbs.service.MyResumeService;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.Font;
+import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfWriter;
@@ -141,6 +142,19 @@ public class ResumeController {
             BaseFont bfKorean = BaseFont.createFont("c:/windows/fonts/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontKorean = new Font(bfKorean, 12);
             doc.add(new Paragraph("이력서", fontKorean));
+            doc.add(Chunk.NEWLINE);
+            
+            if(resumePhoto != null && !resumePhoto.isEmpty()) {
+            	String photoPath = uploadPath + "/" + resumePhoto.getOriginalFilename();
+            	File photoFile = new File(photoPath);
+            	resumePhoto.transferTo(photoFile);
+            	
+            	Image photo = Image.getInstance(photoFile.getAbsolutePath());
+            	photo.scaleToFit(120, 120);
+            	
+            	doc.add(photo);
+            }
+            
             doc.add(new Paragraph("■ 기본정보", fontKorean));
             doc.add(new Paragraph("이름: " + memberDTO.getMemberName(), fontKorean));
             doc.add(new Paragraph("주민등록번호: " + memberDTO.getMemberJumin(), fontKorean));

@@ -33,21 +33,32 @@
         <c:forEach var="introduce" items="${introduceList}">
     		<div class="inbox">
         		<div>${introduce.memberNum}</div>
-        		<button onclick="location.href='/introduce/edit?id=${intro.id}'">수정</button>
-    			<form action="${pageContext.request.contextPath}/mypage/deleteIntroduce" method="post" style="display:inline;">
-        		<input type="hidden" name="cvId" value="${introduce.cvId}">
-        		<input type="hidden" name="cvFilePath" value="${introduce.cvFilePath}">
-        		<button type="submit">삭제</button>
-    			</form>
+        		
+        		<c:if test="${not empty introduce.cvContent }">
+        			<button onclick="location.href='${pageContext.request.contextPath }'">수정</button>
+        		</c:if>
+        		
+        		<form action="${pageContext.request.contextPath }/mypage/deleteIntroduce" method="post" style="display:inline;">
+        			<input type="hidden" name="cvId" value="${introduce.cvId}">
+                    <input type="hidden" name="cvFilePath" value="${introduce.cvFilePath}">
+                    <button type="submit">삭제</button>
+        		</form>
+    			
     		</div>
 		</c:forEach>
-		<form action="${pageContext.request.contextPath}/mypage/uploadIntroduceFile" method="post" enctype="multipart/form-data">
+		
+		<form id="fileForm" action="${pageContext.request.contextPath}/mypage/uploadIntroduceFile" method="post" enctype="multipart/form-data">
+<%-- 		<form action="${pageContext.request.contextPath}/mypage/uploadIntroduceFile" method="post" enctype="multipart/form-data"> --%>
     	<div class="actions">       
             <label for="introduceFile" class="file-btn">파일로 등록</label>
-    		<input type="file" id="introduceFile" name="introduceFile" style="display: none;" onchange="this.form.submit();">
-            <a href="#" class="new-btn">새 자소서 (첨삭)</a>	       
+    		<input type="file" id="introduceFile" name="introduceFile" style="display: none;" onchange="document.getElementById('fileForm').submit()">
+            
+            <a href="${pageContext.request.contextPath }/" class="new-btn">새 자소서 (첨삭)</a>	       
         </div>
-        </form>
+<!--         </form> -->
+
+		
+		</form>
 
     </div>
 </div>
