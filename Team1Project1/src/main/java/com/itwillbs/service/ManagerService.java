@@ -168,4 +168,10 @@ public class ManagerService {
 
 	}
 
+	public void downgradeCorp(String corpId) {
+		
+		managerMapper.downgradeCorp(corpId);
+		
+	}
+
 }

@@ -42,6 +42,7 @@ public class AjaxController {
 
 	}
 
+	// 기업 회원 가입시 DB와 비교하여 아이디 중복 체크
 	@GetMapping("/copmember/idCheck")
 	public String copIdCheck(@RequestParam String id) {
 		System.out.println("AjaxController idCheck()");
