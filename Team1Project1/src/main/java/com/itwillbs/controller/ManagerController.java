@@ -123,15 +123,55 @@ public class ManagerController {
 	}
 
 	@GetMapping("/FAQ_mng")
-	public String faqMng() {
+	public String FAQMng(Model model) {
+		System.out.println("ManagerController FAQMng()");
 
+		List<Map<Object, Object>> listFAQ = managerService.listFAQ();
+		model.addAttribute("listFAQ", listFAQ);
 		return "/manager/FAQ_mng";
 	}
 
-	@GetMapping("/faq_write")
-	public String faqWrite() {
+	@GetMapping("/FAQ_write")
+	public String FAQWrite() {
 
-		return "/manager/faq_write";
+		return "/manager/FAQ_write";
+	}
+
+	@PostMapping("/FAQ_writePro")
+	public String FAQWritePro(@RequestParam Map<Object, Object> faq) {
+		System.out.println("ManagerController FAQWritePro()");
+
+		managerService.insertFAQ(faq);
+
+		return "redirect:/manager/FAQ_mng";
+	}
+
+	@GetMapping("/FAQ_update")
+	public String FAQUpdate(@RequestParam int faqNum, Model model) {
+
+		Map<Object, Object> FAQ = managerService.contentFAQ(faqNum);
+
+		model.addAttribute("FAQ", FAQ);
+
+		return "/manager/FAQ_update";
+	}
+
+	@PostMapping("/FAQ_updatePro")
+	public String FAQUpdatePro(@RequestParam Map<Object, Object> faq) {
+		System.out.println("ManagerController FAQUpdatePro()");
+		managerService.updateFAQ(faq);
+
+		return "redirect:/manager/FAQ_mng";
+	}
+	
+	@GetMapping("/FAQ_delete")
+	public String FAQDelete(@RequestParam int faqNum) {
+		System.out.println("ManagerController FAQDelete()");
+		managerService.deleteFAQ(faqNum);
+
+		
+
+		return "redirect:/manager/FAQ_mng";
 	}
 
 	@GetMapping("/member_mng")

@@ -215,5 +215,33 @@
 		order by member_num desc
 		limit #{startRow}, #{pageSize}
 	</select>
+	
+	<insert id="insertFAQ" parameterType="map">
+		insert into faq(faq_subject, faq_content)
+		values(#{faqSubject}, #{faqContent})
+	</insert>
+	
+	<select id="listFAQ" resultType="map">
+		select *
+		from faq;
+	</select>
+	
+	<select id="contentFAQ" resultType="map">
+		select *
+		from faq
+		where faq_num = #{faqNum}
+	</select>
 
+	<update id="updateFAQ">
+		update faq
+		set faq_subject = #{faqSubject} , faq_content = #{faqContent}
+		where faq_num = #{faqNum}
+		
+	</update>
+	
+	<delete id="deleteFAQ">
+		delete from faq
+		where faq_num = #{faqNum}
+	
+	</delete>
 </mapper>
