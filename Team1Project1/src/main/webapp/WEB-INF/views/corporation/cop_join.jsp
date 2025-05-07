@@ -170,6 +170,16 @@
 								// 					success:function(){
 
 								// 				}
+
+								let idCheck = RegExp(/^[a-zA-z0-9_\-]{5,20}$/);
+								if (!idCheck.test($('#id_lbl').val())) {
+
+									let result1 = '잘못된 형식입니다.';
+									$('#idCheck').html(result1).css('color',
+											'red');
+									$('#id_lbl').focus();
+									return false;
+								}
 								$
 										.ajax({
 											type : "GET",
@@ -197,14 +207,6 @@
 							});//blur()
 
 			$('#submitBtn').click(function() {
-				let idCheck = RegExp(/^[a-zA-z0-9_\-]{5,20}$/);
-				if (!idCheck.test($('#id_lbl').val())) {
-					
-					let result1 = '잘못된 형식입니다.';
-					$('#idCheck').html(result1).css('color', 'red');
-					$('#id_lbl').focus();
-					return false;
-				}
 
 				$('#copJoinForm').submit();
 
