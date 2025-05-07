@@ -39,6 +39,7 @@
 		<li>${recruitContent.job_name}</li>
 		<li>${recruitContent.recruit_location}</li>
 		<li>${recruitContent.eduhigh_name}</li>
+		<li>${recruitContent.careear_name }</li>
 		<li>${recruitContent.recruit_salary}</li>
 		<li>${recruitContent.recruit_photo}</li>
 		<li>${recruitContent.recruit_content}</li>

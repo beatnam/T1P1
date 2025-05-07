@@ -42,4 +42,14 @@ public interface ManagerMapper {
 
 	public Map<Object, Object> contentCorp(String corpId);
 
+	public void insertFAQ(Map<Object, Object> faq);
+
+	public List<Map<Object, Object>> listFAQ();
+
+	public Map<Object, Object> contentFAQ(int faqNum);
+
+	public void updateFAQ(Map<Object, Object> faq);
+
+	public void deleteFAQ(int faqNum);
+
 }

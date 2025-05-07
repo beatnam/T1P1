@@ -46,7 +46,7 @@
             </a>
         </div>
         <div class="box">
-            <a href="">
+            <a href="${pageContext.request.contextPath }/rvborad/FAQ">
                 <h3>자주 묻는 질문</h3>
             </a>
         </div>

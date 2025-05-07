@@ -109,7 +109,7 @@ public class ManagerService {
 	public void deleteRecruit(int recruitId) {
 		System.out.println("ManagerService deleteRecruit()");
 		managerMapper.deleteRecruit(recruitId);
-		
+
 	}
 
 	public void deleteOpenRecruit(int orId) {
@@ -133,9 +133,33 @@ public class ManagerService {
 	}
 
 	public Map<Object, Object> contentCorp(String corpId) {
-		
-		
+
 		return managerMapper.contentCorp(corpId);
+	}
+
+	public void insertFAQ(Map<Object, Object> faq) {
+		System.out.println("ManagerService insertFAQ()");
+		managerMapper.insertFAQ(faq);
+	}
+
+	public List<Map<Object, Object>> listFAQ() {
+		// TODO Auto-generated method stub
+		return managerMapper.listFAQ();
+	}
+
+	public Map<Object, Object> contentFAQ(int faqNum) {
+		// TODO Auto-generated method stub
+		return managerMapper.contentFAQ(faqNum);
+	}
+
+	public void updateFAQ(Map<Object, Object> faq) {
+		managerMapper.updateFAQ(faq);
+	}
+
+	public void deleteFAQ(int faqNum) {
+
+		managerMapper.deleteFAQ(faqNum);
+		
 	}
 
 }

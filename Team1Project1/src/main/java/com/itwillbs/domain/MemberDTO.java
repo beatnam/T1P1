@@ -40,6 +40,6 @@ public class MemberDTO {
 	private Boolean memberInfoC;
 	private String memberPostcode;
 	private String memberAddress;
-	private int eduhighId;
+
 	
 }

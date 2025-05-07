@@ -100,6 +100,7 @@
 			<td>직무</td>
 			<td>지역</td>
 			<td>학력</td>
+			<td>경력</td>
 			<td>제시 급여</td>
 		</tr>
 
@@ -113,6 +114,7 @@
 				<td>${recruit.job_name}</td>
 				<td>${recruit.recruit_location}</td>
 				<td>${recruit.eduhigh_name}</td>
+				<td>${recruit.careear_name}</td>
 				<td>${recruit.recruit_salary}</td>
 			</tr>
 		</c:forEach>

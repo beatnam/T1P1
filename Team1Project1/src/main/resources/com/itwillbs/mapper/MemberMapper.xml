@@ -10,28 +10,44 @@
 
 
 
-	<insert id="joinMember">
+<insert id="joinMember">
+    insert into member(MT_id,  member_id, member_passwd, member_jumin, member_name, 
+   							 member_phone, member_postcode, member_address, member_email, 
+    						member_info, member_infoC) 
+    values (#{MTId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
+    #{memberPhone},#{memberPostcode},#{memberAddress},#{memberEmail},
+    #{memberInfo},#{memberInfoC})
+ </insert>	
 
 
-		insert into member(MT_id, member_id, member_passwd, member_jumin,
-		member_name,
-		member_phone, member_postcode, member_address, member_email,
-		member_info, member_infoC)
-		values (#{MTId},#{memberId},#{memberPasswd}, #{memberJumin}, #{memberName},
-		#{memberPhone},#{memberPostcode},#{memberAddress},#{memberEmail},
-		#{memberInfo},#{memberInfoC})
+<select id="memberNum" resultType="java.lang.Integer">
+    select member_num from member 
+    where  member_id = #{memberId}
 
-	</insert>
+</select>
 
+<insert id="joineducationId" >
+     insert into education(member_num)
+     values ( #{memberNum})
+</insert>
 
-	<select id="loginMember"
-		resultType="com.itwillbs.domain.MemberDTO">
+  
+ <select id="loginMember" resultType="com.itwillbs.domain.MemberDTO">
+  
+  select * from member
+  where member_id = #{memberId} and member_passwd = #{memberPasswd}
+  
+ </select>
 
-		select * from member
-		where member_id = #{memberId} and member_passwd = #{memberPasswd}
+<select id="getMemberByEmail" resultType="com.itwillbs.domain.MemberDTO">
+  
+  select * from member
+  where member_email = #{memberEmail} 
+  
+ </select>
+	
 
-
-	</select>
+	
 
 
 	<select id="getMemberInfo" parameterType="int" resultType="com.itwillbs.domain.MemberDTO">

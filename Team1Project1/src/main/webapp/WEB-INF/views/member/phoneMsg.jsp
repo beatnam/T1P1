@@ -22,7 +22,7 @@
 	<div class="container">
 		<form action="${pageContext.request.contextPath}/member/loginPro" method="post" class="appForm" id="appForm">
 			<fieldset>
-				<legend>로그인</legend>
+				<legend>인증번호</legend>
 				<p class="joinLogin">개인회원</p>
 
 				<ul>
@@ -59,18 +59,7 @@
 </body>
 <script type="text/javascript">
 
-let submitBtn = document.querySelector("#submitBtn");
-let appForm =  document.querySelector("#appForm");
-let id_lbl = document.querySelector("#id_lbl");
 
-submitBtn.onclick = function () {
-	if(id_lbl.value ==""){
-		alert("아이디를 입력하시오");
-		 id_lbl.focus();
-		 return;
-	}
-	appForm.submit();
-};
 
 </script>
 

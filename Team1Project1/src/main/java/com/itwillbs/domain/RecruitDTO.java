@@ -25,5 +25,6 @@ public class RecruitDTO {
 	private int recruitWorkday;
 	private String recruitPhoto;
 	private Date recruitDeatline;
+	private int recruitCareear;
 	
 }

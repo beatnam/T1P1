@@ -80,6 +80,7 @@
 			<td>직무</td>
 			<td>지역</td>
 			<td>학력</td>
+			<td>경력</td>
 			<td>제시 급여</td>
 			<td>삭제</td>
 
@@ -94,6 +95,7 @@
 				<td>${recruit.job_name}</td>
 				<td>${recruit.recruit_location}</td>
 				<td>${recruit.eduhigh_name}</td>
+				<td>${recruit.careear_name }</td>
 				<td>${recruit.recruit_salary}</td>
 				<td><a
 						href="${pageContext.request.contextPath}/manager/recruit_delete?recruitId=${recruit.recruit_id}"

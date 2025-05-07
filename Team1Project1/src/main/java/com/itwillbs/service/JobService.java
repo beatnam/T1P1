@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.itwillbs.domain.CareearDTO;
 import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;
@@ -92,5 +93,4 @@ public class JobService {
 		System.out.println("JobService countBoard()");
 		return jobMapper.countBoard(pageDTO);
 	}
-
 }
