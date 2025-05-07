@@ -52,4 +52,6 @@ public interface ManagerMapper {
 
 	public void deleteFAQ(int faqNum);
 
+	public void deleteMember(String memberId);
+
 }

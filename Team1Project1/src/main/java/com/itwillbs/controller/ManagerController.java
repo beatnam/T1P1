@@ -163,13 +163,11 @@ public class ManagerController {
 
 		return "redirect:/manager/FAQ_mng";
 	}
-	
+
 	@GetMapping("/FAQ_delete")
 	public String FAQDelete(@RequestParam int faqNum) {
 		System.out.println("ManagerController FAQDelete()");
 		managerService.deleteFAQ(faqNum);
-
-		
 
 		return "redirect:/manager/FAQ_mng";
 	}
@@ -224,6 +222,14 @@ public class ManagerController {
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("pageDTO", pageDTO);
 		return "/manager/member_mng";
+	}
+
+	@GetMapping("/deleteMember")
+	public String deleteMember(@RequestParam String memberId) {
+		System.out.println(memberId);
+
+		managerService.deleteMember(memberId);
+		return "redirect:/manager/member_mng";
 	}
 
 	@GetMapping("/copmember_mng")
