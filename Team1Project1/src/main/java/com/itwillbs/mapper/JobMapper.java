@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.domain.CareearDTO;
 import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
 import com.itwillbs.domain.OccupationDTO;

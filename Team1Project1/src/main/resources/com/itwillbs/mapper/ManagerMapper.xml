@@ -95,6 +95,7 @@
 		o.occupation_name, j.job_name,
 		r.recruit_location,
 		e.eduhigh_name,
+		a.careear_name,
 		r.recruit_salary
 		from recruit r join
 		corporation c
@@ -111,6 +112,9 @@
 		join edu_high e
 		on r.recruit_eduhigh =
 		e.eduhigh_id
+		join careear a
+		on r.recruit_careear =
+		a.careear_id
 
 		order by 1 desc
 		limit #{startRow}, #{pageSize}
@@ -126,7 +130,8 @@
 		e.eduhigh_name,
 		r.recruit_salary,
 		r.recruit_photo,
-		r.recruit_deatline
+		r.recruit_deatline,
+		a.careear_name
 		from recruit r join
 		corporation c
 		on
@@ -142,6 +147,9 @@
 		join edu_high e
 		on r.recruit_eduhigh =
 		e.eduhigh_id
+		join careear a
+		on r.recruit_careear =
+		a.careear_name
 
 		where
 		r.recruit_id = #{recruitId}
