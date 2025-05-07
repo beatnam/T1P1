@@ -244,4 +244,10 @@
 		where faq_num = #{faqNum}
 	
 	</delete>
+	
+	<delete id ="deleteMember">
+		delete from member
+		where member_id = #{memberId}
+	</delete>
+	
 </mapper>

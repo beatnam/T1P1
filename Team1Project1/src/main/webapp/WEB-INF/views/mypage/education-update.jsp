@@ -7,19 +7,23 @@
 
 <style>
     #autocomplete-box {
-        background-color: white !important;
-        color: black !important;
-        font-size: 16px !important;
-        line-height: 1.6 !important;
-        padding: 10px !important;
+    background-color: white;
+  	color: black;
+  	font-size: 10px;
+  	line-height: 1.6;
+  	padding: 10px;
+  	max-height: 200px;
+  	overflow-y: auto;
     }
     .school-option {
-    background-color: yellow !important;
-    color: black !important;
-    font-weight: bold !important;
-    display: block !important;
-    overflow: visible !important;
-    white-space: nowrap !important; 
+    color: black;
+  	font-weight: bold;
+  	display: block;
+  	overflow: hidden;
+  	white-space: nowrap;
+  	padding: 5px;
+  	cursor: pointer;
+  	font-size: 10px;
 }
 
 </style>
@@ -72,7 +76,7 @@ $(document).ready(function () {
                     let result = '';
                     data.forEach(function (school, index) {
                     	console.log(`자동완성 ${index} : `, school.schoolName);
-                        result += '<div class="school-option" data-id="'+school.schoolId+'" style="padding: 5px; cursor: pointer; color: black; font-size: 10px; line-height: 1.5; white-space: nowrap;"><span>'+school.schoolName+'</span></div>';
+                        result += '<div class="school-option" data-id="'+school.schoolId+'"><span>'+school.schoolName+'</span></div>';
                     });
                     console.log(result);
                     $('#autocomplete-box').html(result).show();

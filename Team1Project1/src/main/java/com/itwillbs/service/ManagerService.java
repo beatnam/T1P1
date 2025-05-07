@@ -159,7 +159,13 @@ public class ManagerService {
 	public void deleteFAQ(int faqNum) {
 
 		managerMapper.deleteFAQ(faqNum);
+
+	}
+
+	public void deleteMember(String memberId) {
 		
+		managerMapper.deleteMember(memberId);
+
 	}
 
 }
