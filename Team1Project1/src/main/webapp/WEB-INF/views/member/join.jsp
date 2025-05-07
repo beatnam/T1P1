@@ -10,11 +10,6 @@
 <body>
 <div class="container">
 
-  <!-- 회원 유형 선택 -->
-  <div class="member_type">
-    <label><input type="radio" name="mtId" value="200"> 개인</label>
-    <label><input type="radio" name="mtId" value="300"> 기업</label>
-  </div>
 
   <!-- 회원가입 양식 -->
   <form action="${pageContext.request.contextPath}/member/joinPro" method="post" id="joinMember">
