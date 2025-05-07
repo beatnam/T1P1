@@ -29,7 +29,7 @@
 			<td>회원 아이디</td>
 			<td>회원 이름</td>
 			<!--기업 회원의 경우 기업 이름-->
-			<td>회원 유형 변경</td>
+
 			<td>삭제</td>
 		</tr>
 		<c:forEach var="memberDTO" items="${memberList }">
@@ -38,8 +38,7 @@
 				<td>${memberDTO.memberId}</td>
 				<td>${memberDTO.memberName}</td>
 
-				<td><button>회원 유형 변경</button></td>
-				<td><button>삭제</button></td>
+				<td><a href="${pageContext.request.contextPath }/manager/deleteMember?memberId=${memberDTO.memberId}">회원 삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>
