@@ -126,6 +126,8 @@ public class MemberController {
 					session.setAttribute("id", memberDTO.getMemberId());
 					// 세션값에 멤버타입도 같이 넘겨줌 
 					session.setAttribute("type", memberDTO.getMTId());
+					
+					session.setAttribute("member_num", memberDTO.getMemberNum());
 
 					session.setAttribute("num", memberDTO.getMemberNum());
 					
