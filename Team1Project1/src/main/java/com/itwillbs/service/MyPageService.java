@@ -16,13 +16,21 @@ public class MyPageService {
 	@Inject
 	private MyPageMapper myPageMapper;
 	
-	public MyPageDTO getMyProfile(String id) {
-		return myPageMapper.getMyProfile(id);
+//	public MyPageDTO getMyProfile(Integer member_num) {
+//		return myPageMapper.getMyProfile(member_num);
+//	}
+
+
+	public MyPageDTO getMyProfileByMemberNum(MyPageDTO myPageDTO) {
+		return myPageMapper.getMyProfileByMemberNum(myPageDTO);
 	}
 
-	public void insertCareer(CareerDTO careerDTO) {
-		
-		
+	public void updateMyIntroduce(MyPageDTO myPageDTO) {
+		myPageMapper.updateMyIntroduce(myPageDTO);
+	}
+
+	public void deleteMember(int memberNum) {
+		myPageMapper.deleteMember(memberNum);		
 	}
 		
 	

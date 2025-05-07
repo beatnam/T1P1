@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">
 
@@ -29,18 +29,39 @@
     </div>
 
     <div class="box">
- 	<form id="careerForm" action="${pageContext.request.contextPath}/mypage/insert-career" method="post">
+ 	<form id="careerForm" action="${pageContext.request.contextPath}/mypage/my-profile-edit" method="post">
         <div class="inbox1">
             <div class="so">한 줄 소개</div>
             <div>
-                <input type="text" name="member_introduce" value="${MyPageDTO.memberIntroduce}" required>
+            	<input type="hidden" name="memberNum" value="${MyPageDTO.memberNum}">
+            	<input type="text" name="memberIntroduce" value="${MyPageDTO.memberIntroduce}">
             </div>
         </div>
 
         <div class="inbox2">
             <div class="che">최종 학력</div>
-            <div><input type="text" name="eduhigh_id" value="허거덩" required></div>
-            <div><input type="text" name="eduhigh_id" value="허거덩"></div>
+            <c:if test="${empty educationList }">
+            	<p>학력 정보가 없습니다.</p>
+				<button type="button" onclick=
+				"window.open('${pageContext.request.contextPath}/mypage/education-insert', 'educationInsert', 'width=600,height=400')">
+				학력 추가하기</button>
+			</c:if>
+            <c:if test="${not empty educationList }">
+            	<c:forEach var="edu" items="${educationList }">
+            		<div>            			
+            			<label>학교명 : </label>
+            			<input type="text" name="schoolName" value="${edu.schoolName}" readonly />
+            			<label>전공 : </label>
+            			<input type="text" name="major" value="${edu.educationMajor}" readonly />
+            			<label>세부 전공 : </label>
+            			<input type="text" name="majorDetail" value="${edu.majorDetail}" readonly />
+            		</div>
+            	</c:forEach>
+				<button type="button" onclick=
+				"window.open('${pageContext.request.contextPath}/mypage/education-update', 'educationUpdate', 'width=600,height=400')">
+        		학력 수정하기</button>            
+        	</c:if>
+            
         </div>
 
         <div class="inbox3">
@@ -48,11 +69,23 @@
             	
             	<c:forEach var="career" items="${careerList}" varStatus="status">
           			<div class="career-view">
-            			<input type="text" name="careerList[${status.index}].JH_Corporation" value="${career.JH_Corporation}" readonly>
-            			<input type="text" name="careerList[${status.index}].JH_department" value="${career.JH_department}" readonly>
-            			<input type="text" name="careerList[${status.index}].work_content" value="${career.work_content}" readonly>
-            			<input type="text" name="careerList[${status.index}].start_date" value="${career.start_date}" readonly>
-            			<input type="text" name="careerList[${status.index}].end_date" value="${career.end_date}" readonly>
+            			<input type="text" value="${career.jhCorporation}" readonly>
+						<input type="hidden" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}">
+            			<input type="text" value="${career.jhDepartment}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}">
+            			<input type="text" value="${career.workContent}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].workContent" value="${career.workContent}">
+            			<input type="text" value="${career.startDate}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].startDate" value="${career.startDate}">
+            			<input type="text" value="${career.endDate}" readonly>
+            			<input type="hidden" name="careerList[${status.index}].endDate" value="${career.endDate}">
+            			
+<%--             			<input type="text" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].workContent" value="${career.workContent}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].startDate" value="${career.startDate}" readonly> --%>
+<%-- 						<input type="text" name="careerList[${status.index}].endDate" value="${career.endDate}" readonly> --%>
+
           			</div>
         		</c:forEach>
         
@@ -61,12 +94,12 @@
 
         <div class="inbox4">
             <div class="ii">이름</div>
-            <div><input type="text" name="member_name" value="${MyPageDTO.memberName }" required></div>
+            <div><input type="text" name="member_name" value="${MyPageDTO.memberName }" readonly></div>
         </div>
 
         <div class="inbox5">
             <div class="hyu">휴대전화</div>
-            <div><input type="text" name="member_phone" value="${MyPageDTO.memberPhone }" required></div>
+            <div><input type="text" name="member_phone" value="${MyPageDTO.memberPhone }" readonly></div>
         </div>
 
         <div class="inbox6">
@@ -78,10 +111,12 @@
             <div class="email">이메일 인증 강화</div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="member_infoC" value="${MyPageDTO.memberInfoC }" required>동의
+                    <input type="radio" name="memberInfoC" value="1" required
+                    <c:if test="${MyPageDTO.memberInfoC == 1 }">checked</c:if>>동의
                 </label>
                 <label>
-                    <input type="radio" name="member_infoC" value="${MyPageDTO.memberInfoC }">비동의
+                    <input type="radio" name="memberInfoC" value="0"
+                    <c:if test="${MyPageDTO.memberInfoC == 0 }">checked</c:if>>비동의
                 </label>	
             </div>
         </div>
@@ -98,10 +133,7 @@
 
 <script>
     function openCareerPopup() {
-    	const form = document.getElementById("careerForm");
-    	
-    	form.querySelectorAll("input[name^='careerList[].']").forEach(input => input.remove());
-    	
+    	const form = document.getElementById("careerForm");    	
         window.open(
             '${pageContext.request.contextPath}/mypage/career-add',
             '경력추가',
@@ -111,50 +143,67 @@
 </script>
 
 <script>
-window.addEventListener("message", function(event) {	
+let careerIndex = document.querySelectorAll(".career-view").length;
+
+window.addEventListener("message", function(event) {
     const data = event.data;
-    
+    console.log("받은 데이터:", data);
     if (data) {
-        const form = document.getElementById("careerForm");
+        const inbox = document.querySelector(".inbox3");
 
-        const newCareer = document.createElement("div");
-        newCareer.className = "career-view"; 
+        const wrapper = document.createElement("div");
+        wrapper.className = "career-view";
+
+        const index = document.querySelectorAll(".career-view").length;
         
-        const index = form.querySelectorAll(".career-view").length;
-
         const fields = [
-            { field: "JH_Corporation", value: data.JH_Corporation, type: "text" },
-            { field: "JH_department", value: data.JH_department, type: "text" },
-            { field: "work_content", value: data.work_content, type: "text" },
-            { field: "start_date", value: data.start_date, type: "date" },
-            { field: "end_date", value: data.end_date, type: "date" }
+            { name: "jhCorporation", value: data.jhCorporation },
+            { name: "jhDepartment", value: data.jhDepartment },
+            { name: "workContent", value: data.workContent },
+            { name: "startDate", value: data.startDate },
+            { name: "endDate", value: data.endDate }
         ];
+
+        const memberNum = document.querySelector('input[name="memberNum"]').value;
+        const hiddenMemberNum = document.createElement("input");
+        hiddenMemberNum.type = "hidden";
+        hiddenMemberNum.name = `careerList[${index}].memberNum`;
+        hiddenMemberNum.value = memberNum;
+        wrapper.appendChild(hiddenMemberNum);
+
         
         fields.forEach(field => {
-            const input = document.createElement("input");
-            input.type = field.type;
-            input.name = `careerList[${index}].${field.field}`;
-            input.value = field.value;
-            input.readOnly = true;
-            input.style.marginRight = "10px"; 
-            newCareer.appendChild(input);
+        	 const visibleInput = document.createElement("input");
+             visibleInput.type = "text";
+             visibleInput.value = field.value;
+             visibleInput.readOnly = true;
+             
+             const hiddenInput = document.createElement("input");
+             hiddenInput.type = "hidden";
+             hiddenInput.name = `careerList[${index}].${field.name}`;
+             hiddenInput.value = field.value;
+             
+             wrapper.appendChild(visibleInput);
+             wrapper.appendChild(hiddenInput);
+             
+//             const input = document.createElement("input");
+//             input.type = "text";
+//             input.name = `careerList[${index}].${field.name}`;
+//             input.value = field.value;
+//             input.readOnly = true;
+//             wrapper.appendChild(input);
         });
-        
-         const allCareers = form.querySelectorAll(".career-view"); 
-        if (allCareers.length > 0) {
-            const lastCareer = allCareers[allCareers.length - 1];
-            lastCareer.after(newCareer);
-        } else {
-            const button = form.querySelector("button[type='button']");
-            form.insertBefore(newCareer, button);
-        }
-        
-        alert("경력 추가 성공");
+
+        const buttonInInbox = inbox.querySelector("button");
+        inbox.insertBefore(wrapper, buttonInInbox);
+//         careerIndex++;
     }
 });
+
 </script>
 
-<%@ include file="../inc/footer.jsp" %>
+
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>

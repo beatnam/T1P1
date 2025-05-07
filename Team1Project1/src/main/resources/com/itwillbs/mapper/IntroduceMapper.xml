@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mapper.IntroduceMapper">
+
+	<insert id="insertIntroduceFile" parameterType="com.itwillbs.domain.IntroduceDTO">
+		insert into cover_letter
+		(member_num, cv_file_name, cv_file_path, cv_date)
+		values
+		(#{memberNum},#{cvFileName}, #{cvFilePath}, now());
+	</insert>
+
+	<select id="getIntroduceByMemberNum" parameterType="int" resultType="com.itwillbs.domain.IntroduceDTO">
+		select * from cover_letter
+		where member_num = #{memberNum}
+	</select>
+	
+	<delete id="deleteIntroduce" parameterType="int">
+		delete from cover_letter
+		where cv_id = #{cvId}	
+	</delete>
+	
+	
+</mapper>

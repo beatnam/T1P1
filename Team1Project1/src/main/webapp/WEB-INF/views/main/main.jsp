@@ -39,5 +39,12 @@
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
+<c:if test="${deleted eq 'true'}">
+	<script>
+	    alert("탈퇴되었습니다.");
+	</script>
+</c:if>
+	
+	
 </body>
 </html>

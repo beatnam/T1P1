@@ -28,6 +28,7 @@ public class MemberDTO {
 	private int memberNum;
 	private int MTId;
 	private int	addressId;
+
 	private String memberId;
 	private String memberPasswd;
 	private String memberJumin;

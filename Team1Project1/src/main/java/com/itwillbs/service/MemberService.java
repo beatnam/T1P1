@@ -48,6 +48,13 @@ public class MemberService {
 			
 	}
 
+	public MemberDTO getMemberInfo(Integer member_num) {
+		
+		return memberMapper.getMemberInfo(member_num);
+	}
+
+	
+
 	
 	public void joineducationId(String memberId) {
 		// TODO Auto-generated method stub

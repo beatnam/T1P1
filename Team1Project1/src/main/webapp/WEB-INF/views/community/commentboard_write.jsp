@@ -66,22 +66,23 @@
 .bo_btn a:hover {
     background-color: #005a99;
 }
+
 </style>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 		<div class="main_content">	
-		<form action=""  method="post" id="">
+		<form action="${pageContext.request.contextPath}/rvborad/rcwritepro"  method="post" id="">
 			<ul class="bo_info">
-				<li class="">글제목 : <input type="text" name="subject"></li>
-				<li class="">글쓴이 : <input type="text" name="name"></li>
+				<li class="">글제목 : <input type="text" name="reSubject"></li>
+				<li class="">글쓴이 : <input type="text" name="" value="${memberDTO.memberId}" readonly></li>
 				<li class="">
 					<div class="content_text">
-					    글내용 : <textarea name="" rows="30" cols="40"></textarea>
+					    글내용 : <textarea name="reContent" rows="30" cols="40"></textarea>
                     </div>
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<a href="" class="" id="${pageContext.request.contextPath}/rvborad/rcwritepro">글쓰기</a>
+				<button type="submit" class="">글쓰기</button>
 				<a href="" class="${pageContext.request.contextPath}/rvborad/rclist">글목록</a>
 			</p>
 		</form>

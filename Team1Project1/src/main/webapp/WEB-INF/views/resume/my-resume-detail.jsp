@@ -10,12 +10,10 @@
 <title>이력서 상세보기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-resume-detail.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-
-
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">
  <div class="banner">
@@ -123,7 +121,7 @@
 	
     
 
-<%@ include file="../inc/footer.jsp" %>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -5,23 +5,105 @@
 <mapper namespace="com.itwillbs.mapper.MyResumeMapper">
 
   <insert id="insertResume" parameterType="com.itwillbs.domain.MyResumeDTO">
-    INSERT INTO resume (
-      member_name, member_age, member_gender, member_jumin1, member_jumin2,
-      member_email, member_email_domain, member_phone, member_postcode, member_address,
-      edu_type, education_school, education_major,
-      jh_id, jh_department, work_content, start_date, end_date,
-      certification_name, certification_issuer, cermap_aquired_date,
-      language_name, language_name_custom, language_issuer, langmap_grade
-    )
-    
-    VALUES (
-      #{memberName}, #{memberAge}, #{memberGender}, #{memberJumin1}, #{memberJumin2},
-      #{memberEmail}, #{memberEmailDomain}, #{memberPhone}, #{memberPostcode}, #{memberAddress},
-      #{eduType}, #{educationSchool}, #{educationMajor},
-      #{JHId}, #{JHDepartment}, #{workContent}, #{startDate}, #{endDate},
-      #{certificationName}, #{certificationIssuer}, #{cermapAquiredDate},
-      #{languageName}, #{languageNameCustom}, #{languageIssuer}, #{langmapGrade}
-    )
+	insert into resume
+	(member_num, resume_photo)
+	values
+	(#{memberNum}, #{resumePhoto})
   </insert>
+  
+<!--   <select id="getResumeList" parameterType="int" resultType="com.itwillbs.domain.MyResumeDTO"> -->
+<!--   	select -->
+<!--   	resume_id, member_name, member_age, member_gender, member_jumin, -->
+<!--   	member_email, member_phone, member_postcode, member_address,  -->
+<!--   	edu_type, education_school, education_major, major_detail, jh_id, jh_department, -->
+<!--   	work_content, start_date, end_date, certification_name, certification_issuer, -->
+<!--   	cermap_aquired_date, language_name, language_name_custom, language_issuer,  -->
+<!--   	langmap_grade -->
+<!--   	from resume -->
+<!--   	where member_num = #{memberNum} -->
+<!--   </select> -->
 
+  <select id="getEducationList" resultType="com.itwillbs.domain.EducationDTO">
+    SELECT 
+     e.member_num, e.education_school, s.school_name as schoolName, 
+     e.eduhigh_id, h.eduhigh_name as eduhighName, 
+     e.education_major, e.major_detail, e.education_verification as educationVerification
+    FROM education e
+    left join edu_high h on e.eduhigh_id = h.eduhigh_id
+    left join school s on e.education_school = s.school_id
+    WHERE e.member_num = #{memberNum}
+  </select>
+  
+  <insert id="saveResumePhoto" parameterType="com.itwillbs.domain.MyResumeDTO">
+    insert into resume
+    (member_num, resume_photo)
+    values
+    (#{memberNum}, #{resumePhoto})
+  </insert> 
+  
+  <update id="updateMemberFromResume" parameterType="com.itwillbs.domain.MyResumeDTO">
+    UPDATE member
+    SET
+      member_name = #{memberName},
+      member_jumin = #{memberJumin},
+      member_email = #{memberEmail},
+      member_phone = #{memberPhone},
+      member_postcode = #{memberPostcode},
+      member_address = #{memberAddress}
+    WHERE member_num = #{memberNum}
+  </update>
+  
+  <insert id="insertEducation" parameterType="com.itwillbs.domain.EducationDTO">
+    INSERT INTO education 
+    (member_num, education_school, education_major, major_detail)
+    VALUES 
+    (#{memberNum}, #{educationSchool}, #{educationMajor}, #{majorDetail})
+  </insert>
+  
+  <insert id="insertJobHistory" parameterType="com.itwillbs.domain.JobHistoryDTO">
+    INSERT INTO job_history 
+    (member_num, jh_department, work_content, start_date, end_date)
+    VALUES 
+    (#{memberNum}, #{jhDepartment}, #{workContent}, #{startDate}, #{endDate})
+  </insert>
+  
+  <select id="getResumeList" resultType="com.itwillbs.domain.MyResumeDTO">
+  	select resume_id, member_num, resume_photo
+  	from resume 
+  	where member_num = #{memberNum}
+  </select>
+  
+  <select id="getMemberInfoFromResume" resultType="com.itwillbs.domain.MemberDTO">
+  	select member_name, member_jumin, member_email, member_phone, 
+  	member_postcode, member_address
+  	from member
+  	where member_num = #{memberNum}
+  </select>
+  
+  <select id="getCertificationList" parameterType="int" resultType="com.itwillbs.domain.CertificationDTO">
+  SELECT 
+    c.certification_name,
+    c.certification_issuer,
+    cm.cermap_aquired_date
+  FROM certification_mapping cm
+  LEFT JOIN certification c ON cm.certification_id = c.certification_id
+  WHERE cm.member_num = #{memberNum}
+  </select>
+  
+  <select id="getLanguageList" parameterType="int" resultType="com.itwillbs.domain.LanguageDTO">
+  SELECT
+    lm.member_num,
+    l.language_name,
+    l.language_issuer,
+    lm.langmap_grade
+  FROM language_mapping lm
+  LEFT JOIN language l ON lm.language_id = l.language_id
+  WHERE lm.member_num = #{memberNum}
+  </select>
+  
+  <delete id="deleteResume" parameterType="int">
+	delete from resume
+	where resume_id = #{resumeID}  
+  </delete>
+  
 </mapper>

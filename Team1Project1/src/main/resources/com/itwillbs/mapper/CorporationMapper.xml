@@ -35,6 +35,7 @@
 	<update id="updateRegist">
 		UPDATE corporation
 		SET
+		mt_id = 400,
 		corporation_registrationPdf = #{corporationRegistrationPdf},
 		corporation_photo = #{corporationPhoto}
 		WHERE

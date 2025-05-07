@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">
  <div class="banner">
@@ -32,6 +33,8 @@
     <h2>이력서 작성</h2>
     <form action="${pageContext.request.contextPath}/resume/submit" method="post" enctype="multipart/form-data" onsubmit="return handleSubmit()">
 
+		
+		
         <!-- 사진 -->
         <div class="section">
             <h2>사진</h2>
@@ -46,51 +49,52 @@
             <div class="row">
                 <div>
                     <label for="name">성명</label>
-                    <input type="text" name="memberName" id="name" required>
+                    <input type="text" name="memberName" id="name" value="${memberDTO.memberName}" required>
                 </div>
-                <div>
-                    <label for="age">나이</label>
-                    <input type="number" name="memberAge" id="age" required>
-                </div>
-                <div>
-                    <label for="gender">성별</label>
-                    <select name="memberGender" id="gender" required>
-                        <option value="">선택</option>
-                        <option value="남">남</option>
-                        <option value="여">여</option>
-                    </select>
-                </div>
+<!--                 <div> -->
+<!--                     <label for="age">나이</label> -->
+<!--                     <input type="number" name="memberAge" id="age" required> -->
+<!--                 </div> -->
+<!--                 <div> -->
+<!--                     <label for="gender">성별</label> -->
+<!--                     <select name="memberGender" id="gender" required> -->
+<!--                         <option value="">선택</option> -->
+<!--                         <option value="남">남</option> -->
+<!--                         <option value="여">여</option> -->
+<!--                     </select> -->
+<!--                 </div> -->
             </div>
 
             <div class="row inline-group">
                 <div>
                     <label>주민등록번호</label>
                     <div class="inline-inputs">
-                    	<input type="text" name="memberJumin1" maxlength="6" placeholder="앞 6자리" required>
-                    	-
-                    	<input type="password" name="memberJumin2" maxlength="1" placeholder="뒤 1자리" required>
+                    	<input type="text" name="memberJumin" maxlength="13" placeholder="0001111234567" value="${memberDTO.memberJumin}" required>
+<!--                     	- -->
+<!--                     	<input type="password" name="memberJumin2" maxlength="1" placeholder="뒤 1자리" required> -->
                 	</div>
                 </div>
 
                 <div class="form-inline-group">
                     <label for="email">이메일</label>
-                    <div class="inline-inputs">
-                        <input type="text" id="emailId" name="memberEmail" placeholder="이메일 입력" required>
-                        <span>@</span>
-                        <input type="text" id="customDomain" name="memberEmailDomain" placeholder="직접입력 또는 선택" disabled>
-                        <select id="domainSelect" required>
-                            <option value="">-- 도메인 선택 --</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="custom">직접 입력</option>
-                        </select>
-                    </div>
+                    	<input type="text" name="memberEmail" placeholder="이메일 입력" value="${memberDTO.memberEmail}" required>
+<!--                     <div class="inline-inputs"> -->
+<%--                         <input type="text" id="emailId" name="memberEmail" placeholder="이메일 입력" value="${fn:split(memberDTO.memberEmail, '@')[0]}" required> --%>
+<!--                         <span>@</span> -->
+<%--                         <input type="text" id="customDomain" name="memberEmail" placeholder="직접입력 또는 선택" value="${fn:split(memberDTO.memberEmail, '@')[1]}" disabled> --%>
+<!--                         <select id="domainSelect" required> -->
+<!--                             <option value="">-- 도메인 선택 --</option> -->
+<!--                             <option value="naver.com">naver.com</option> -->
+<!--                             <option value="gmail.com">gmail.com</option> -->
+<!--                             <option value="daum.net">daum.net</option> -->
+<!--                             <option value="custom">직접 입력</option> -->
+<!--                         </select> -->
+<!--                     </div> -->
                 </div>
 
                 <div>
                     <label for="phone">휴대폰번호</label>
-                    <input type="text" name="memberPhone" id="phone" required>
+                    <input type="text" name="memberPhone" id="phone" value="${memberDTO.memberPhone}" required>
                 </div>
             </div>
         </div>
@@ -99,11 +103,11 @@
         <div class="section">
             <h2>주소</h2>
             <label for="zipcode">우편번호</label>
-            <input type="text" name="memberPostcode" id="postcode" placeholder="우편번호" readonly required>
+            <input type="text" name="memberPostcode" id="postcode" placeholder="우편번호" value="${memberDTO.memberPostcode }" readonly required>
             <button type="button" onclick="execDaumPostcode()">우편번호 검색</button><br>
 
             <label for="address">기본주소</label>
-            <input type="text" name="memberAddress" id="address" readonly required><br>
+            <input type="text" name="memberAddress" id="address" value="${memberDTO.memberAddress }"readonly required><br>
 
 <!--             <label for="detailAddress">상세주소</label> -->
 <!--             <input type="text" name="detail" id="detailAddress"> -->
@@ -112,17 +116,21 @@
         <!-- 학력 -->
         <div class="section">
             <h2>최종 학력</h2>
-            <label>학력구분</label>
-            <select name="eduType" required>
-                <option value="">선택</option>
-                <option value="고등학교">고등학교</option>
-                <option value="대학교">대학교</option>
-                <option value="대학원">대학원</option>
-            </select><br>
+<!--             <label>학력구분</label> -->
+<!--             <select name="eduType" required> -->
+<!--                 <option value="">선택</option> -->
+<!--                 <option value="고등학교">고등학교</option> -->
+<!--                 <option value="대학교">대학교</option> -->
+<!--                 <option value="대학원">대학원</option> -->
+<!--             </select><br> -->
+			<c:forEach var="edu" items="${educationList }" varStatus="status">
             <label>학교명</label>
-            <input type="text" name="educationSchool" required><br>
+            <input type="text" name="educationSchool" value="${edu.schoolName}" required><br>
             <label>전공명</label>
-            <input type="text" name="educationMajor" required><br>
+            <input type="text" name="educationMajor" value="${edu.educationMajor}" required><br>
+            <label>세부전공</label>
+            <input type="text" name="majorDetail" value="${edu.majorDetail }" required><br>
+        	</c:forEach>
         </div>
 
         <!-- 경력 -->
@@ -130,31 +138,31 @@
             <h2>경력</h2>
             <label>총 경력</label>
             <div class="career-row">
-            <input type="text" name="JHId" placeholder="회사명" style="flex: 1 !important; min-width: 250px !important;"> 
-            <input type="text" name="JHDepartment" placeholder="부서명">
+            <input type="text" name="jhId" placeholder="회사명" style="flex: 1 !important; min-width: 250px !important;"> 
+            <input type="text" name="jhDepartment" placeholder="부서명">
             <input type="text" name="workContent" placeholder="담당업무">
             <input type="date" name="startDate" placeholder="시작일"> 
             <span>~</span>
             <input type="date" name="endDate" placeholder="종료일"> 
             </div>
-            <br>
-            <div class="career-row">
-            <input type="text" name="JHId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;">
-            <input type="text" name="JHDepartment" placeholder="부서명"> 
-            <input type="text" name="workContent" placeholder="담당업무">
-            <input type="date" name="startDate" placeholder="시작일"> 
-            <span>~</span>
-            <input type="date" name="endDate" placeholder="종료일"> 
-            </div>
-            <br>
-			<div class="career-row">
-            <input type="text" name="JHId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;"> 
-            <input type="text" name="JHDepartment" placeholder="부서명">
-            <input type="text" name="workContent" placeholder="담당업무">
-            <input type="date" name="startDate" placeholder="시작일"> 
-            <span>~</span>
-            <input type="date" name="endDate" placeholder="종료일"> 
-            </div>
+<!--             <br> -->
+<!--             <div class="career-row"> -->
+<!--             <input type="text" name="jhId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;"> -->
+<!--             <input type="text" name="jhDepartment" placeholder="부서명">  -->
+<!--             <input type="text" name="workContent" placeholder="담당업무"> -->
+<!--             <input type="date" name="startDate" placeholder="시작일">  -->
+<!--             <span>~</span> -->
+<!--             <input type="date" name="endDate" placeholder="종료일">  -->
+<!--             </div> -->
+<!--             <br> -->
+<!-- 			<div class="career-row"> -->
+<!--             <input type="text" name="jhId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;">  -->
+<!--             <input type="text" name="jhDepartment" placeholder="부서명"> -->
+<!--             <input type="text" name="workContent" placeholder="담당업무"> -->
+<!--             <input type="date" name="startDate" placeholder="시작일">  -->
+<!--             <span>~</span> -->
+<!--             <input type="date" name="endDate" placeholder="종료일">  -->
+<!--             </div> -->
         </div>
 
         <!-- 자격증 -->
@@ -225,23 +233,25 @@
         }
     </script>
 
-    <!-- 이메일 도메인 선택 스크립트 -->
-    <script>
-        let domainSelect = document.getElementById("domainSelect");
-        let customDomain = document.getElementById("customDomain");
+<!--     이메일 도메인 선택 스크립트 -->
+<!--     <script> -->
+<!--          let domainSelect = document.getElementById("domainSelect"); -->
+<!--          let customDomain = document.getElementById("customDomain"); -->
 
-        domainSelect.addEventListener("change", function () {
-            const selected = domainSelect.value;
-            if (selected === "custom") {
-                customDomain.value = "";
-                customDomain.disabled = false;
-                customDomain.focus();
-            } else {
-                customDomain.value = selected;
-                customDomain.disabled = true;
-            }
-        });
-    </script>
+<!--          domainSelect.addEventListener("change", function () { -->
+<!--              const selected = domainSelect.value; -->
+<!--              if (selected === "custom") { -->
+<!--                  customDomain.value = ""; -->
+<!--                  customDomain.disabled = false; -->
+<!--                  customDomain.focus(); -->
+<!--              } else { -->
+<!--                  customDomain.value = selected; -->
+<!--                  customDomain.disabled = true; -->
+<!--             } -->
+<!--          }); -->
+<!--     </script> -->
+    
+
     
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -287,7 +297,7 @@
 	</script>
     
 
-<%@ include file="../inc/footer.jsp" %>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>

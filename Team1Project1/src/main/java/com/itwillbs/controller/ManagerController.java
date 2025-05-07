@@ -5,21 +5,27 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.OccupationDTO;
+import com.itwillbs.domain.OpenrecruitDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.JobService;
 import com.itwillbs.service.ManagerService;
 
 @Controller
 @RequestMapping("/manager/*")
 public class ManagerController {
-
+	@Inject
+	private JobService jobService;
 	@Inject
 	private ManagerService managerService;
 
@@ -63,12 +69,33 @@ public class ManagerController {
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
 
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("recruitList", recruitList);
 
 		return "/manager/recruit_mng";
 
+	}
+
+	@GetMapping("/recruit_delete")
+	public String deleteRecruit(@RequestParam int recruitId) {
+		System.out.println("ManagerController deleteRecruit()");
+		managerService.deleteRecruit(recruitId);
+
+		return "redirect:/manager/recruit_mng";
+	}
+
+	@GetMapping("/openrecruit_delete")
+	public String deleteOpenRecruit(@RequestParam int orId) {
+		System.out.println("ManagerController deleteOpenRecruit()");
+		managerService.deleteOpenRecruit(orId);
+
+		return "redirect:/manager/openrecruit_mng";
 	}
 
 	@GetMapping("/board_mng")
@@ -160,33 +187,79 @@ public class ManagerController {
 	}
 
 	@GetMapping("/copmember_mng")
-	public String copMemberMng() {
+	public String copMemberMng(HttpServletRequest request, Model model) {
+//		List<Map<String, Object>> copmemList = managerService.listCopMember();
+//		
+//		model.addAttribute("copmemList",copmemList);
 
 		return "/manager/copmember_mng";
 	}
 
 	@GetMapping("/openrecruit_mng")
-	public String openrecruitMng() {
+	public String openrecruitMng(Model model) {
 
+		List<Map<Object, Object>> ORlist = managerService.listOR();
+
+		model.addAttribute("ORlist", ORlist);
+
+		System.out.println(ORlist);
 		return "/manager/openrecruit_mng";
 	}
 
-	@GetMapping("/openrecruit_update")
-	public String openrecruitUpdate() {
-
-		return "/manager/openrecruit_update";
-	}
-
 	@GetMapping("/openrecruit_write")
-	public String openrecruitWrite() {
+	public String openrecruitWrite(Model model, HttpSession session) {
+		List<OccupationDTO> occupations = jobService.getOccupations();
 
+		model.addAttribute("occupations", occupations);
 		return "/manager/openrecruit_write";
 	}
 
 	@PostMapping("/openrecruit_writePro")
-	public String openrecruitWritePro() {
+	public String openrecruitWritePro(HttpServletRequest request, OpenrecruitDTO openrecruitDTO) {
+
+		System.out.println("ManagerController openrecruitWritePro()");
+		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
+		openrecruitDTO.setMemberNum(memberNum);
+		System.out.println(openrecruitDTO);
+		managerService.insertOR(openrecruitDTO);
 
 		return "redirect:/manager/openrecruit_mng";
+	}
+
+	@GetMapping("/openrecruit_update")
+	public String openrecruitUpdate(@RequestParam int orId, Model model) {
+		List<OccupationDTO> occupations = jobService.getOccupations();
+
+		model.addAttribute("occupations", occupations);
+		Map<Object, Object> contentOR = managerService.contentOR(orId);
+
+		model.addAttribute("contentOR", contentOR);
+		return "/manager/openrecruit_update";
+	}
+
+	@PostMapping("/openrecruit_updatePro")
+	public String openrecruitUpdatePro(@RequestParam Map<Object, Object> updateOR) {
+		System.out.println(updateOR);
+
+		managerService.updateOR(updateOR);
+		return "redirect:/manager/openrecruit_mng";
+	}
+
+	@GetMapping("/upgradeCorp")
+	public String upgradeCorp(@RequestParam String corpId) {
+		System.out.println("AjaxController updateCorp()");
+		managerService.upgradeCorp(corpId);
+
+		return "redirect:/manager/copmember_mng";
+	}
+
+	@GetMapping("/content_corp")
+	public String contentCorp(@RequestParam String corpId, Model model) {
+
+		Map<Object, Object> corporation = managerService.contentCorp(corpId);
+
+		model.addAttribute("corporation", corporation);
+		return "/manager/content_copmember";
 	}
 
 	@GetMapping("/review_employment_mng")

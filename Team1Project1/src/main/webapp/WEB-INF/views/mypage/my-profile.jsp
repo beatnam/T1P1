@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">
 
@@ -39,8 +39,13 @@
 
         <div class="inbox2">
             <div class="che">최종 학력</div>
-            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
-            <div><input type="text" name="eduhighId" value="허거덩" readonly></div>
+            	<c:forEach var="edu" items="${educationList }">
+            		<div>
+            			<p>학교 이름 : ${edu.schoolName }</p>
+            			<p>전공 : ${edu.educationMajor }</p>
+            			<p>세부 전공 : ${edu.majorDetail }</p>
+            		</div>
+            	</c:forEach>
         </div>
 		
         <div class="inbox3">
@@ -48,11 +53,11 @@
             
             <c:forEach var="career" items="${careerList}">
             	<div class="career-view">
-            		<input type="text" value="${career.JH_Corporation}" readonly>
-        			<input type="text" value="${career.JH_department}" readonly>
-        			<input type="text" value="${career.work_content}" readonly>
-        			<input type="text" value="${career.start_date}" readonly>
-        			<input type="text" value="${career.end_date}" readonly>
+            		<p><strong>회사명:</strong> ${career.JH_Corporation}</p>
+      				<p><strong>부서:</strong> ${career.JH_department}</p>
+      				<p><strong>업무 내용:</strong> ${career.work_content}</p>
+      				<p><strong>시작일:</strong> ${career.start_date}</p>
+      				<p><strong>종료일:</strong> ${career.end_date}</p>
         		</div>
         	</c:forEach>
         </div>
@@ -76,18 +81,20 @@
             <div class="email">이메일 인증 강화</div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="memberInfoC" value="agree" 
-                    <c:if test="${MyPageDTO.memberInfoC == 'agree'}">checked</c:if> disabled />동의
+                    <input type="radio" name="memberInfoC" value="1" 
+                    <c:if test="${MyPageDTO.memberInfoC == 1}">checked</c:if> disabled />동의
                 </label>
                 <label>
-                    <input type="radio" name="memberInfoC" value="disagree" 
-                    <c:if test="${MyPageDTO.memberInfoC == 'disagree'}">checked</c:if> disabled /> 비동의
+                    <input type="radio" name="memberInfoC" value="0" 
+                    <c:if test="${MyPageDTO.memberInfoC == 0}">checked</c:if> disabled /> 비동의
                 </label>	
             </div>
         </div>
 
         <div class="inbox8">
-            <a href="#" onclick="return handleDelete()">회원 탈퇴</a>
+            <form action="${pageContext.request.contextPath}/mypage/member-delete" method="post" onsubmit="return confirm('정말 탈퇴하시겠습니까?');">
+        	<button type="submit" class="edit-btn">회원 탈퇴</button>
+    		</form>
             <a href="${pageContext.request.contextPath}/mypage/my-profile-edit" class="edit-btn">수정</a>
         </div>
 
@@ -95,19 +102,9 @@
 
 </div>
 
-<script>
-function handleDelete() {
-    if (confirm("정말 탈퇴하시겠습니까?")) {
-        alert("탈퇴 되었습니다.");
-        location.href = "#";
 
-        return false; 
-    }
-    return false; 
-}
-</script>
 
-<%@ include file="../inc/footer.jsp" %>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -22,24 +22,47 @@
 <!--     ) -->
   </insert>
   
-  <select id="getMyProfile" parameterType="String" resultType="com.itwillbs.domain.MyPageDTO">
-        SELECT
-        m.member_introduce AS memberIntroduce,
-        m.member_name AS memberName,
-        m.member_phone AS memberPhone,
-        m.member_infoC AS memberInfoC,
-        e.eduhigh_id AS eduhighId
-    	FROM member m
-    	LEFT JOIN education e ON m.member_num = e.member_num
-        WHERE member_Id = #{id}
+  <select id="getMyProfileByMemberNum" resultType="com.itwillbs.domain.MyPageDTO">
+        select 
+        member_num,
+        member_name,
+        member_phone,
+        member_introduce,
+        member_InfoC
+<!--         eduhigh_id as eduhighId -->
+        from member
+        where member_num = #{memberNum}        		
    </select>
   
-  <insert id="insertCareer" parameterType="com.itwillbs.domain.CareerDTO">
-		insert into job_history
-		(JH_Corporation, JH_department, work_content, start_date, end_date, member_num)
-		values
-		(#{JH_Corporation}, #{JH_department}, #{work_content}, #{start_date}, #{end_date}, #{member_num})
+  
+  
+  <insert id="insertEducation" parameterType="EducationDTO">
+  		insert into education
+  		(member_num, education_school, education_major, major_detail)
+  		values
+  		(#{memberNum}, #{educationSchool}, #{educationMajor}, #{majorDetail})
   </insert>
   
+  <update id="updateEducation" parameterType="EducationDTO">
+		update education
+		set
+		education_school = #{educationSchool}, 
+		education_major = #{educationMajor},
+		major_detail = #{majorDetail}
+		where member_num = #{memberNum}  
+  </update>
+  
+  <update id="updateMyIntroduce" parameterType="com.itwillbs.domain.MyPageDTO">
+  		update member
+  		set 
+  		member_introduce = #{memberIntroduce},
+  		member_infoC = #{memberInfoC}
+  		where member_num = #{memberNum}
+  </update>
 
+  <delete id="deleteMember" parameterType="int">
+		delete 
+		from member 
+		where member_num = #{memberNum}  
+  </delete>
 </mapper>

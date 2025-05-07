@@ -43,7 +43,7 @@
             </a>
         </div>
         <div class="box">
-            <a href="${pageContext.request.contextPath }/recruit_info/always">
+            <a href="${pageContext.request.contextPath }/recruit_info/always_list">
                 <h3>상시 채용</h3>
                 <p>간편한 입사 지원</p>
             </a>

@@ -7,13 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 | 지원현황</title>
+
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my-ing.css">
  <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+
  
 </head>
 <body>
 
-<%@ include file="../inc/top.jsp" %>
+<jsp:include page="../inc/top.jsp"></jsp:include>
 
 <div class="all">    
     <div class="banner">
@@ -40,7 +42,7 @@
     </div>
 </div>
 
-<%@ include file="../inc/footer.jsp" %>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
 </html>
