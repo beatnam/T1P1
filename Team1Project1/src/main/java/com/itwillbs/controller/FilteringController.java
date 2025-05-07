@@ -37,15 +37,15 @@ public class FilteringController {
 
 	@PostMapping("/filteringPro")
 	public String FilterPro(@RequestParam Map<Object, Object> filter, Model model) {
-		System.out.println(filter);
 
 		List<Map<Object, Object>> resultOR = mainService.listOR(filter);
-		//List<Map<Object, Object>> resultRecruit = mainService.listRecruit(filter);
+		List<Map<Object, Object>> resultRecruit = mainService.listRecruit(filter);
 		System.out.println(resultOR);
+		System.out.println(resultRecruit);
 		model.addAttribute("resultOR", resultOR);
-		//model.addAttribute("resultRecruit", resultRecruit);
+		model.addAttribute("resultRecruit", resultRecruit);
 
-		return "redirect:/first/coverletter";
+		return "/first/coverletter";
 	}
 
 	@GetMapping("/coverletter")

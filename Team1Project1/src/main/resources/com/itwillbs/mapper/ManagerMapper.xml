@@ -48,6 +48,13 @@
 		corporationmember_id = #{corpId}
 	</update>
 	
+	<update id="downgradeCorp">
+		update corporation
+		set mt_id = 300
+		where
+		corporationmember_id = #{corpId}
+	</update>
+	
 	<select id="contentCorp" resultType="map">
 		SELECT
 		mt_name, corporationmember_id,

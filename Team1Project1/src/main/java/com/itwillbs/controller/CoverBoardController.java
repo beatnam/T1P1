@@ -93,7 +93,7 @@ public class CoverBoardController {
 		int recruitOccupation = recruitDTO.getRecruitOccupation();
 		int recruitJob = recruitDTO.getRecruitJob();
 		int recruitEduhigh = recruitDTO.getRecruitEduhigh();
-		int recruitCareear = recruitDTO.getRecruitCareear();
+
 		model.addAttribute("recruitDTO", recruitDTO);
 		System.out.println("recruitOccupation" + recruitOccupation);
 		System.out.println("recruitJob" + recruitJob);

@@ -17,6 +17,8 @@
 
 		<fieldset>
 			<legend>대표 이미지 | 사업자 등록증 업로드</legend>
+			
+			아직 사업자 제출 등록전이시거나, 제출하신 등록증이 형식에 맞지 않는 경우 업로드 해주시기 바랍니다.
 			<ul class="joinList">
 				<li class="start">
 					<div class="join_content">

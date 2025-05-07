@@ -298,6 +298,15 @@ public class ManagerController {
 
 		return "redirect:/manager/copmember_mng";
 	}
+	
+	@GetMapping("/downgradeCorp")
+	public String downgradeCorp(@RequestParam String corpId) {
+		System.out.println("AjaxController updateCorp()");
+		managerService.downgradeCorp(corpId);
+
+		return "redirect:/manager/copmember_mng";
+	}
+	
 
 	@GetMapping("/content_corp")
 	public String contentCorp(@RequestParam String corpId, Model model) {

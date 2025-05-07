@@ -12,21 +12,22 @@
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<c:forEach var="FAQ" items="${listFAQ}">
+		<table border="1">
 
-	<table border="1">
-		<c:forEach var="FAQ" items="${listFAQ}">
 			<tr>
-				<td>질문 내용</td>
+				<td>Q</td>
 				<td>${FAQ.faq_subject}</td>
 			</tr>
 			<tr>
-				<td>답변</td>
+				<td>A</td>
 				<td>${FAQ.faq_content}</td>
 			</tr>
+	
 
-
-		</c:forEach>
-	</table>
+		</table>
+		<br>
+	</c:forEach>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>

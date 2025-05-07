@@ -41,9 +41,17 @@
 <!-- 				</div> -->
 
 				<button type="submit">로그인</button>
+				
+				<a href="${pageContext.request.contextPath}/main/copjoin">회원 가입</a>
 			</fieldset>
 		</form>
 	</div>
+
+
+
+
+
+
 
 </body>
 </html>
