@@ -45,15 +45,18 @@ public class MemberController {
 		System.out.println("memberController joinPro");
 
 	    // 인증 여부 확인
-	    String smsVerified = request.getParameter("smsVerified");
-	    if (!"true".equals(smsVerified)) {
-	        System.out.println("인증되지 않은 사용자입니다.");
-	        return "/member/sms_fail"; // 실패 메시지 페이지 만들어도 좋고, alert 띄워도 됨
-	    }
+		/*
+		 * String smsVerified = request.getParameter("smsVerified"); if
+		 * (!"true".equals(smsVerified)) { System.out.println("인증되지 않은 사용자입니다."); return
+		 * "/main/snsmsg"; // 실패 메시지 페이지 만들어도 좋고, alert 띄워도 됨 }
+		 */
 
 	    String memberJumin = request.getParameter("memberJumin1") + request.getParameter("memberJumin2");
 	    String memberEmail = request.getParameter("memberEmail1") + "@" + request.getParameter("memberEmail2");
 	    String memberId = request.getParameter("memberId");
+	
+	    
+	    
 
 	    memberDTO.setMTId(200);
 	    memberDTO.setMemberId(memberId);

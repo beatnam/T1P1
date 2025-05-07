@@ -5,6 +5,7 @@
 <head>
   <title>회원가입</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/join.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -23,13 +24,13 @@
 
         <li class="start">
           <div class="join_content">
-            <input type="text" name="memberId" id="id_lbl" placeholder="5 ~ 20자리" required />
+            <input type="text" name="memberId" id="id_lbl" placeholder="아이디 영어와 숫자를 포함한 5 ~ 20자리" required />
           </div>
         </li>
 
         <li class="start">
           <div class="join_content">
-            <input type="password" name="memberPasswd" id="pwd_lbl" placeholder="특수문자 소문자 숫자 5~20자리" required />
+            <input type="password" name="memberPasswd" id="pwd_lbl" placeholder="비밀번호 특수문자와 영어대소문자 숫자 5~20자리" required />
           </div>
         </li>
 
@@ -80,6 +81,8 @@
           <div class="join_content">
             <input type="tel" name="memberPhone" id="phone_lbl" placeholder="휴대전화" required />
             <button type="button" class="aceept_content" id="phone_lbl1" onclick="sendSMS()">인증번호 전송</button>
+          	<!-- 인증 여부 숨김 필드 -->
+      		<input type="hidden" name="smsVerified" id="smsVerified" value="false" />
           </div>
         </li>
         
@@ -99,18 +102,17 @@
         </li>
         <li class="start">
           <div class="join_content checkbox_area">
-            <label><input type="checkbox" name="memberInfoC" id="infoC" /> <strong>[선택]</strong> 광고성 정보 수신에 동의합니다.</label>
+            <label><input type="checkbox" name="memberInfoC" id="infoC" value="true" /> <strong>[선택]</strong> 광고성 정보 수신에 동의합니다.</label>
           </div>
         </li>
 
       </ul>
 
-      <!-- 인증 여부 숨김 필드 -->
-      <input type="hidden" name="smsVerified" id="smsVerified" value="false" />
+      
 
       <!-- 회원가입 버튼 -->
       <p class="btn_line">
-        <button type="submit" class="btn_baseColor" id="submitBtn">회원가입</button>
+        	<button type="button" class="btn_baseColor" id="submitBtn">회원가입</button>
       </p>
     </fieldset>
   </form>
@@ -131,7 +133,7 @@
 </script>
 
 <!-- 휴대폰 인증 관련 스크립트 -->
-<script type="text/javascript">
+<!--  <script type="text/javascript">
   function sendSMS() {
     const phone = document.getElementById('phone_lbl').value;
 
@@ -183,7 +185,7 @@
       console.error("검증 오류:", error);
     });
   }
- </script>
+ </script>  -->
   
   
   
@@ -239,7 +241,7 @@
 	         
 	         //비밀번호 => 영문 대소문자, 숫자, 특수문자( !@#$%^* ), _, - 입력가능
 	         //5 ~ 20 자리 입력 체크
-	         let passCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*]).{8,16}$/);
+	         let passCheck = RegExp(/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^*]).{8,16}$/);
 	         if(! passCheck .test($('#pwd_lbl').val())){
 	            
 	            alert("비번 형식 아님");
@@ -248,59 +250,75 @@
 	            
 	      }
 	         
-	        //작성자명 => 한글 2~6 자 = "name_lbl"
-	        let nameCheck = RegExp(/^[가-힣]{2,6}$/);
-			if(! nameCheck .test($('#name_lbl').val())){
-						            
-						            alert("작성자명 형식 아님");
-						            $('#name_lbl').focus();
-						            return false;
-						            
-		}
+	         let jumin1Check = RegExp(/^\d{6}$/);
+	         if (!jumin1Check.test($('#jumin_lbl1').val())) {
+	        	    alert("주민번호 앞자리 6자리를 입력해 주세요");
+	        	    $('#jumin_lbl1').focus();
+	        	    return false;
+	        	}
+
+	         
+	         let jumin2Check = RegExp(/^\d{7}$/);
+	         if (!jumin2Check.test($('#jumin_lbl2').val())) {
+	        	    alert("주민번호 뒷자리 7자리를 입력해 주세요");
+	        	    $('#jumin_lbl2').focus();
+	        	    return false;
+	        	} 
+	         
 			//이메일 => 아이디@naver.com id="email_lbl1"
 	         
 	         let emailCheck = RegExp(/^[a-zA-Z0-9_\.\-]/);
-	         if(! emailCheck.test($('#email_lbl1').val())){
-	            alert("이메일 아이디 다시 입력");
+	         if(! emailCheck.test($('#email_lbl').val())){
+	            alert("이메일 앞부분을 다시 입력해주세요");
 	            $('#email_lbl').focus();
 	            return false;
 	         }
 	         
+	         
 	         let emailCheck1 = RegExp(/^[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]/);
 	         if(! emailCheck1.test($('#email_lbl2').val())){
-	            alert("이메일 뒷부분 다시 입력");
+	            alert("이메일 뒷부분 다시 입력해주세요");
 	            $('#email_lbl2').focus();
 	            return false;
 	         }
 	         
-			
-
-			
 	         
-	
+	        //작성자명 => 한글 2~6 자 = "name_lbl"
+	        let nameCheck = RegExp(/^[가-힣]{2,6}$/);
 			if(! nameCheck .test($('#name_lbl').val())){
 						            
-						            alert("작성자명 형식 아님");
-						            $('#name_lbl').focus();
-						            return false;
+				alert("이름을 똑바로 입력해주세요");
+				$('#name_lbl').focus();
+			return false;
 						            
 		}
-	         
+			
+			//주소 체크	        
+	         if($('#address_lbl').val().trim() === ""){
+	            alert("주소를 입력해주세요");
+	            $('#address_lbl').focus();
+	            return false;
+	            
+	         }  	
+
+			//핸드폰 체크	         
 	         let phoneCheck = RegExp(/^[0-9]{11}$/);
 	         if(! phoneCheck .test($('#phone_lbl').val())){
 	            
-	            alert("연락처 형식 아님");
+	            alert("휴대폰 번호를 제대로 입력해주세요");
 	            $('#phone_lbl').focus();
 	            return false;
 	            
-	         }         
+	         }  
+	         
+	         //필수 동의여부 체크 
 	         if($('#info').is(':checked')==false){
 	        	
 	        	 alert('필수 동의를 체크해주세요');
 	        	return false;	 
 	         }
 	         
-	       
+	         
 	         
 	        $('#joinMember').submit();
 	      });
