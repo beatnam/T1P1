@@ -7,7 +7,8 @@
 <title>기업 | 회원가입</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/join.css">
-
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -17,10 +18,11 @@
 					<input type="text" name="corporationMemberId" class="w100p"
 						id="id_lbl" placeholder="아이디" required />
 				</div>
+				<div id="idCheck"></div>
 			</li>
 
 			<li class="start"><label for="id_lbl"
-					class="tit_lbl pilsoo_item"></label>
+				class="tit_lbl pilsoo_item"></label>
 				<div class="join_content" id="idCheck"></div></li>
 
 			<li class="start">
@@ -148,6 +150,39 @@
 			//id="appForm" 전송
 			copJoinForm.submit();
 		}
+	</script>
+	<script type="text/javascript">
+		$(function() {
+
+			$('#id_lbl').blur(function() {
+				// 	alert('포커스 해제');
+				// 				$.ajax({
+				// 					url:'서버주소',
+				// 					data:{들고갈 데이터},
+				// 					success:function(){
+
+				// 				}
+				$.ajax({
+					type : "GET",
+					url : '${pageContext.request.contextPath}/copmember/idCheck',
+					data : {
+						'id' : $('#id_lbl').val()
+					},
+					success : function(result) {
+						//alert(result);
+
+						if (result == 'iddup') {
+							result = "이미 사용중인 아이디입니다.";
+							$('#idCheck').html(result).css('color', 'red');
+						} else {
+
+							result = "사용 가능한 아이디입니다."
+							$('#idCheck').html(result).css('color', 'blue');
+						}
+					}//success
+				});//ajax
+			});//blur()
+		}); //ready
 	</script>
 
 
