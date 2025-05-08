@@ -15,7 +15,9 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
+	<div class="box">
 	<h1>FAQ 관리</h1>
 	<a href="${pageContext.request.contextPath }/manager/FAQ_write">자주
 		묻는 질문 등록</a>
@@ -43,7 +45,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

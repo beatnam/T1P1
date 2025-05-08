@@ -18,16 +18,15 @@
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
-
+<div class="box">
 	<h1>공개 채용 수정</h1>
 	<form
 		action="${pageContext.request.contextPath}/manager/openrecruit_updatePro"
 		method="post" id="appForm">
 		<input type="hidden" name="orId" value="${contentOR.or_id }">
 
-		<div class="main_content">
 			<table border="1">
 				<tr>
 					<td>제목입력</td>
@@ -117,8 +116,9 @@
 
 					</td>
 			</table>
-		</div>
-	</form>
+			</form>
+		</div></div>
+
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 	<script>

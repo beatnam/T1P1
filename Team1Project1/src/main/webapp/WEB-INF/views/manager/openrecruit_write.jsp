@@ -19,15 +19,15 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
-
+<div class="box">
 	<h1>공개 채용 등록</h1>
 	<form
 		action="${pageContext.request.contextPath}/manager/openrecruit_writePro"
 		method="post" id="appForm">
 		<input type="hidden" name="memberNum" value="${sessionScope.num }">
 
-		<div class="main_content">
 			<table border="1">
 				<tr>
 					<td>제목입력</td>
@@ -111,8 +111,9 @@
 
 					</td>
 			</table>
+		</form>
 		</div>
-	</form>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 	<script>
