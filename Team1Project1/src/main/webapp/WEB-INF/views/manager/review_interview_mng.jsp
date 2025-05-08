@@ -13,32 +13,34 @@
 </head>
 
 <body>
- <jsp:include page="../inc/top.jsp"></jsp:include>
-<jsp:include page="../inc/mng.jsp"></jsp:include>
-	<h1>면접 후기 관리</h1>
-	<table border="1">
-		<input type="text" placeholder="검색어를 입력하세요.">
-		<button>검색</button>
-		<tr>
-			<td>글번호</td>
-			<td>글제목</td>
-			<td>글쓴이</td>
-			<td>글내용</td>
-			<td>작성 일시</td>
-			<td>조회수</td>
-			<td>삭제</td>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>글제목</td>
-			<td>글쓴이</td>
-			<td>글내용</td>
-			<td>작성 일시</td>
-			<td>조회수</td>
-			<td><button>삭제</button></td>
-		</tr>
+	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/mng.jsp"></jsp:include>
+	<div class="box">
+		<h1>면접 후기 관리</h1>
+		<table border="1">
+			<input type="text" placeholder="검색어를 입력하세요.">
+			<button>검색</button>
+			<tr>
+				<td>글번호</td>
+				<td>글제목</td>
+				<td>글쓴이</td>
+				<td>글내용</td>
+				<td>작성 일시</td>
+				<td>조회수</td>
+				<td>삭제</td>
+			</tr>
+			<tr>
+				<td>글번호</td>
+				<td>글제목</td>
+				<td>글쓴이</td>
+				<td>글내용</td>
+				<td>작성 일시</td>
+				<td>조회수</td>
+				<td><button>삭제</button></td>
+			</tr>
 
-	</table>
+		</table>
+	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

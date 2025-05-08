@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
-
+<div class="box">
 	<h1>회원 관리</h1>
 	<table border="1">
 		<thead>
@@ -35,7 +35,7 @@
 		<tbody id="memberTableBody">
 		</tbody>
 	</table>
-
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 	<script>

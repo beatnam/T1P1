@@ -15,6 +15,7 @@
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
+	<div class="box">
 	<h1>공개 채용 관리</h1>
 	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공개
 		채용 작성</a>
@@ -109,6 +110,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 

@@ -16,6 +16,7 @@
 <body>
  <jsp:include page="../inc/top.jsp"></jsp:include>
  <jsp:include page="../inc/mng.jsp"></jsp:include>
+ <div class="box">
     <h1>취업 박람회 수정</h1>
 
     <form action="#" method="post">
@@ -37,6 +38,8 @@
         <input type="date" id="convention_enddate" name="conventionEnddate" required><br><br>
 
         <input type="submit" value="수정">
+        </form>
+       </div> 
  <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

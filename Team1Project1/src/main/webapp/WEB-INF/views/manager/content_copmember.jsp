@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
-
+<div class="box">
 	<a
 		href="${pageContext.request.contextPath }/manager/upgradeCorp?corpId=${corporation.corporationmember_id }">
 		정식 기업 회원으로 승인하기. </a>
@@ -29,7 +29,7 @@
 		<li>사업자 번호 : ${corporation.corporation_registration }</li>
 		<li>사업자 등록증 사본 : <img src="${corporation.corporation_registrationPdf }"></li>
 	</ul>
-
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
