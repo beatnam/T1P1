@@ -1,100 +1,153 @@
 @charset "UTF-8";
+
 body {
-  margin: 0;
-  font-family: '맑은 고딕', sans-serif;
+    margin: 0;
+    font-family: '맑은 고딕', sans-serif;
 }
- 
+
 .all {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
-  
+
 .banner {
-  width: 200px;
-  background-color: #f3f3f3;
-  padding: 20px;
-  border-right: 1px solid #ccc;
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #dcdcdc;
 }
-  
+
 .banner h2 a {
-  text-decoration: none;
-  color: #000;
-  font-size: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
 }
-  
+
 .banner ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
 }
-  
+
 .banner li {
-  margin-bottom: 15px;
+    margin-bottom: 18px;
 }
-  
+
 .banner li a {
-  text-decoration: none;
-  color: #333;
+    text-decoration: none;
+    color: #666;
 }
-  
+
 .banner li.active a {
-  border-bottom: 3px solid #28a745;
-  padding-bottom: 4px; 
-  color: #28a745; 
-  font-weight: bold;
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 4px;
+    color: #28a745;
+    font-weight: bold;
 }
 
 .box {
-  flex: 1;
-  padding: 40px;
+    flex: 1;
+    padding: 40px 220px 40px 40px;
 }
-  
-.box > div {
-  margin-bottom: 25px;
+
+.box > form > div {
+    margin-bottom: 30px;
 }
-  
+
 .box div div:first-child {
-  font-weight: bold;
-  margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
-  
-input[type="text"] {
-  width: 400px;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+
+.inbox1 input,
+.inbox4 input,
+.inbox5 input {
+    width: 100%;
+    max-width: 600px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
 }
-  
-.radio label {
-  margin-right: 20px;
+
+.inbox2 input[type="text"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 600px;
+    display: block;
 }
-  
+
+button[type="button"] {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    background-color: #218838;
+}
+
+.career-view {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.career-view input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.edit-btn {
+    width: 120px;
+    height: 40px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
 .inbox8 {
-  margin-top: 30px;
-}
-  
-button.edit-btn {
-  all: unset; /* ← 기본 스타일 초기화! */
-  background-color: #4CAF50 !important;
-  color: white !important;
-  padding: 10px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  border: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
 }
 
-button.edit-btn:hover {
-  background-color: #45a049 !important;
+.checkbox label {
+    margin-right: 20px;
+    font-size: 15px;
+    color: #555;
+    font-weight: normal;
 }
 
-
-    
 form {
-  margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */
+    margin-top: 40px;
 }
-
