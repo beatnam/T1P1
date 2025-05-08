@@ -8,12 +8,13 @@
 <title>기업 관리 | 공고 작성</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/corptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corp.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+<div class="all">
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
+<div class="box">
 	<div class="parent_div">
 		<h1>공고 내용</h1>
 		<form action="#" method="get" id="appForm">
@@ -89,9 +90,11 @@
 						</td>
 					</tr>
 				</table>
-			</div>
-		</form>
+				</div>
+			</form>
+		</div>
 	</div>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

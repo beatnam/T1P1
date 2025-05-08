@@ -7,16 +7,14 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 이력서 열람실</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/my-resume.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corp.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+<div class="all">
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
-	<header id="base">
-
-		<div class="parent_div">
-			<!-- 좌측 메뉴 영역 -->
-		</div>
+<div class="box">
+	<div class="parent_div">
 		<!-- 본문 영역 -->
 		<div class="main_content">
 			<h3>지원 자소서 모음</h3>
@@ -78,7 +76,9 @@
 			<%-- 			</c:if> --%>
 			<!-- 			</div> -->
 		</div>
-	</header>
+	</div>
+</div>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 

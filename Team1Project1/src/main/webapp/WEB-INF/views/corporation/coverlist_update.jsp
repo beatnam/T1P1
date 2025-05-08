@@ -8,15 +8,16 @@
 <title>기업 관리 | 공고 수정</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/corptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corp.css">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<!-- 다른계획있을시 수정 -->
+<div class="all">
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
+<div class="box">
 	<div class="parent_div">
 		<h1>공고 수정</h1>
 		<form action="${pageContext.request.contextPath}/corplist/updatepro"
@@ -121,6 +122,8 @@
 			</div>
 		</form>
 	</div>
+</div>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

@@ -8,17 +8,14 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 지원 이력서 모음</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corp.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+<div class="all">
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
-	<header id="base">
-
-		<div class="parent_div">
-			<!-- 좌측 메뉴 영역 -->
-			
-		</div>
+<div class="box">
+<div class="parent_div">
 		<div>
 			<button name="refresh" id="refresh" onclick="location.reload()">화면갱신</button>
 		</div>
@@ -90,8 +87,9 @@
 				<input type="button" id="na_btn" value="불합격 처리">
 			</div>
 		</div>
-	</header>
-	<jsp:include page="../inc/footer.jsp"></jsp:include>
-	
+	</div>
+</div>
+</div>
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>

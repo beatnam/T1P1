@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 업로드 공고 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corp.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+<div class="all">
 	<jsp:include page="../inc/corptop.jsp"></jsp:include>
-	<header id="base">
-		<!-- 본문 영역 -->
+<div class="box">
+	<div class="parent_div">
 		<div class="main_content">
 			<h3>업로드 공고 리스트</h3>
 			<table border="1">
@@ -60,8 +61,9 @@
 				<a href="${pageContext.request.contextPath}/corplist/write" class="btn_srch">글쓰기</a>
 			</div>
 		</div>
-
-	</header>
+	</div>
+</div>
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
