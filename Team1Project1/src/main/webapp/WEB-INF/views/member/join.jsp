@@ -345,7 +345,7 @@ $(function() {
 		$(function() {
 			$('#phone_lbl').blur(function() {
 								
-					//핸드폰 체크	         
+			?		//핸드폰 체크	         
 				         let phoneNumCheck = RegExp(/^[0-9]{11}$/);
 				         if(! phoneNumCheck .test($('#phone_lbl').val())){
 				            

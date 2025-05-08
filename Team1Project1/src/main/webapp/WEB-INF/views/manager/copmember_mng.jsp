@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>관리자 | 회원 관리</title>
+<title>관리자 | 기업 회원 관리</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
 <script
