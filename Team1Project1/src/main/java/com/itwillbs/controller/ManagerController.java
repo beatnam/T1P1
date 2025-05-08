@@ -356,14 +356,114 @@ public class ManagerController {
 	}
 
 	@GetMapping("/review_employment_mng")
-	public String reviewEmploymentMng() {
+	public String reviewEmploymentMng(HttpServletRequest request, Model model, PageDTO pageDTO) {
+		System.out.println("ManagerController reviewEmploymentMng()");
+		int pageSize = 20;
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
 
+		PageDTO pageDTO1 = new PageDTO();
+		pageDTO1.setPageSize(pageSize);
+		pageDTO1.setPageNum(pageNum);
+		pageDTO1.setCurrentPage(currentPage);
+
+		// pageDTO.setSearch(search);
+
+		List<Map<Object, Object>> listREBoard = managerService.listREBoard(pageDTO1);
+
+		// 게시판 전체 글개수
+//		int count = boardService.countBoard();
+		// 검색어 포함한 글 개수
+		int count = managerService.countMember();
+
+		// 한 화면에 보여줄 페이지 개수
+		int pageBlock = 5;
+		// 한 화면에 보여줄 시작페이지 번호
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+		// 한 화면에 보여줄 끝페이지 번호
+		int endPage = startPage + pageBlock - 1;
+		// 전체 페이지 개수 구하기
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		pageDTO1.setCount(count);
+		pageDTO1.setPageBlock(pageBlock);
+		pageDTO1.setStartPage(startPage);
+		pageDTO1.setEndPage(endPage);
+		pageDTO1.setPageCount(pageCount);
+
+		model.addAttribute("listREBoard", listREBoard);
+		model.addAttribute("pageDTO", pageDTO1);
 		return "/manager/review_employment_mng";
 	}
 
 	@GetMapping("/review_interview_mng")
-	public String reviewInterviewMng() {
+	public String reviewInterviewMng(HttpServletRequest request, Model model, PageDTO pageDTO) {
+		int pageSize = 20;
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
 
+		PageDTO pageDTO2 = new PageDTO();
+		pageDTO2.setPageSize(pageSize);
+		pageDTO2.setPageNum(pageNum);
+		pageDTO2.setCurrentPage(currentPage);
+
+		// pageDTO.setSearch(search);
+
+		List<Map<Object, Object>> listRIBoard = managerService.listRIBoard(pageDTO2);
+
+		// 게시판 전체 글개수
+//		int count = boardService.countBoard();
+		// 검색어 포함한 글 개수
+		int count = managerService.countMember();
+
+		// 한 화면에 보여줄 페이지 개수
+		int pageBlock = 5;
+		// 한 화면에 보여줄 시작페이지 번호
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+		// 한 화면에 보여줄 끝페이지 번호
+		int endPage = startPage + pageBlock - 1;
+		// 전체 페이지 개수 구하기
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		pageDTO2.setCount(count);
+		pageDTO2.setPageBlock(pageBlock);
+		pageDTO2.setStartPage(startPage);
+		pageDTO2.setEndPage(endPage);
+		pageDTO2.setPageCount(pageCount);
+
+		model.addAttribute("listRIBoard", listRIBoard);
+		model.addAttribute("pageDTO", pageDTO2);
 		return "/manager/review_interview_mng";
+	}
+
+	@GetMapping("/deleteRE")
+	public String deleteRE(@RequestParam String re_num) {
+		int num = Integer.parseInt(re_num);
+
+		managerService.deleteRE(num);
+		return "redirect:/manager/review_employment_mng";
+	}
+
+	
+	@GetMapping("/deleteRI")
+	public String deleteRI(@RequestParam String ri_num) {
+		int num = Integer.parseInt(ri_num);
+
+		managerService.deleteRI(num);
+		return "redirect:/manager/review_interview_mng";
 	}
 }

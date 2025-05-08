@@ -58,4 +58,12 @@ public interface ManagerMapper {
 
 	public int countOR();
 
+	public List<Map<Object, Object>> listREBoard(PageDTO pageDTO);
+
+	public List<Map<Object, Object>> listRIBoard(PageDTO pageDTO2);
+
+	public void deleteRE(int num);
+
+	public void deleteRI(int num);
+
 }
