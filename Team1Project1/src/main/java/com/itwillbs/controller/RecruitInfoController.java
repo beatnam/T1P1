@@ -135,7 +135,7 @@ public class RecruitInfoController {
 		pageDTO.setStartPage(startPage);
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
-	
+
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("ORlist", ORlist);
 

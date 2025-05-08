@@ -16,11 +16,11 @@ String kakaoUrl = "https://kauth.kakao.com/oauth/authorize" + "?client_id=69648c
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 <style>
-.container {
+.login_container {
 	display: none;
 }
 
-.container.active {
+.login_container.active {
 	display: block;
 }
 </style>
@@ -32,7 +32,7 @@ String kakaoUrl = "https://kauth.kakao.com/oauth/authorize" + "?client_id=69648c
 		<button class="tab-button" data-tab="corporation">기업회원</button>
 	</div>
 	
-	<div class="container active" id="personal">
+	<div class="login_container active" id="personal">
 		<form action="${pageContext.request.contextPath}/member/loginPro"
 			method="post" class="tab-content login-form">
 			<fieldset>
@@ -71,7 +71,7 @@ String kakaoUrl = "https://kauth.kakao.com/oauth/authorize" + "?client_id=69648c
 		</form>
 	</div>
 
-	<div class="container" id="corporation">
+	<div class="login_container" id="corporation">
 		<form
 			action="${pageContext.request.contextPath}/corporation/copLoginPro"
 			method="post" class="tab-content login-form">
