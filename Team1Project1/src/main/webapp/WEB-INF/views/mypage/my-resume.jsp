@@ -45,6 +45,7 @@
                   		onsubmit="return confirm('정말 삭제하시겠습니까?');">
                 		<input type="hidden" name="resumeID" value="${resume.resumeID}">
                 		<input type="hidden" name="resumePhoto" value="${resume.resumePhoto}">
+                		<input type="hidden" name="memberNum" value="${member.memberNum}">
                 		<button type="submit">🗑 삭제</button>
             		</form>
         		</div>

@@ -1,117 +1,89 @@
 @charset "UTF-8";
+
 body {
-  margin: 0;
-  font-family: '맑은 고딕', sans-serif;
-}
- 
-.all {
-  display: flex;
-  min-height: 100vh;
-}
-  
-.banner {
-  width: 200px;
-  background-color: #f3f3f3;
-  padding: 20px;
-  border-right: 1px solid #ccc;
-}
-  
-.banner h2 a {
-  text-decoration: none;
-  color: #000;
-  font-size: 20px;
-}
-  
-.banner ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-  
-.banner li {
-  margin-bottom: 15px;
-}
-  
-.banner li a {
-  text-decoration: none;
-  color: #333;
-}
-  
-.banner li.active a {
-  border-bottom: 3px solid #28a745;
-  padding-bottom: 4px; 
-  color: #28a745; 
-  font-weight: bold;
+    margin: 0;
+    font-family: '맑은 고딕', sans-serif;
 }
 
-.box {
-  flex: 1;
-  padding: 40px;
-}
-  
+
+
 .box > div {
-  margin-bottom: 25px;
+    margin-bottom: 30px;
 }
-  
+
 .box div div:first-child {
-  font-weight: bold;
-  margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
-  
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"] {
-  width: 400px;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+
+.inbox1 input,
+.inbox4 input,
+.inbox5 input {
+    width: 100%;
+    max-width: 600px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.career-view {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.edit-btn {
+  width: 120px;  /* ✅ 고정 너비 */
+  height: 40px;
+  background-color: #28a745;
+  color: white;
+  border: none;
   border-radius: 4px;
-}
-  
-.radio label {
-  margin-right: 20px;
-}
-
-.withdraw-link {
-  color: #999;
-  text-decoration: underline;
   font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.inbox8 a:not(.edit-btn) {
-  color: red;
-  margin-right: 20px;
-  text-decoration: none;
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+.inbox8 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.inbox8 form{
+	margin: 0;
 }
 
 .inbox8 a.edit-btn {
-  background-color: #4CAF50;
-  color: white !important;
-  padding: 10px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
+    display: inline-block;
+    min-width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 }
 
-.inbox8 a.edit-btn:hover {
-  background-color: #45a049;
-}
 
-  
-.inbox8 {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 30px;
+.checkbox label {
+    margin-right: 20px;
+    font-size: 15px;
+    color: #555;
+    font-weight: normal;
 }
-
 
 form {
-  margin-top: 40px; /* top.jsp 영역 피해서 내려옴 */
+    margin-top: 40px;
 }
-

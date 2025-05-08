@@ -24,6 +24,8 @@ public interface MemberMapper {
 
 	public MemberDTO getMemberByEmail(String email);
 
+	public MemberDTO infoMember(String id);
+
 
 	
 	

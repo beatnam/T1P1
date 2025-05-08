@@ -1,5 +1,7 @@
 package com.itwillbs.domain;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,9 +13,12 @@ public class LanguageDTO {
 
 	private int memberNum;
 	private int languageId;
+	private int resumeID;
 	private String languageName;
 	private String languageIssuer;
-	private String langmapGrade;
+	private Date languageAcquiredDate;
+	private String languageGrade;
+	private String languageVerification;
 	
     
 }
