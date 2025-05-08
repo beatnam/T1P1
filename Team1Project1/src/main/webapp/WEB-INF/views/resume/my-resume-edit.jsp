@@ -166,21 +166,31 @@
         </div>
 
         <!-- 자격증 -->
-        <div class="section">        	
-            <h2>자격증</h2>
+        <div class="section" id="certSection">        	
+            <h2 style="display: inline-block;">자격증</h2>
+            <button type="button" onclick="addCertification()" style="display: inline-block; font-size: 18px; margin-left: 10px;">＋</button>
+            
+            <div class="cert-item">
+            
             <label>자격명</label>
             <input type="text" name="certificationName">    
             <label>발급기관</label>
             <input type="text" name="certificationIssuer">
             <label>취득일</label>
-            <input type="date" name="cermapAquiredDate">
+            <input type="date" name="certificationAcquiredDate">
+            
+            </div>
         </div>
 
         <!-- 외국어 -->
-        <div class="section">
-            <h2>외국어</h2>
+        <div class="section" id="langSection">
+            <h2 style="display: inline-block;">외국어</h2>
+            <button type="button" onclick="addLanguage()" style="display: inline-block; font-size: 18px; margin-left: 10px;">＋</button>
+                        
+            <div class="lang-item">
+            
             <label>언어</label>
-            <select name="languageName" id="languageSelect">
+            <select name="languageName" class="languageSelect">
                 <option value="">선택</option>
                 <option>TOEIC(토익)</option>
                 <option>OPIc(오픽)</option>
@@ -193,12 +203,15 @@
                 <option>텝스(TEPS)</option>
                 <option value="custom">직접 입력</option>
             </select>
-            <input type="text" name="languageNameCustom" id="languageCustomInput" 
+            
+            <input type="text" name="languageNameCustom" class="languageCustomInput" 
             placeholder="외국어를 직접 입력하세요" style="display:none;">
             <label>발급 기관</label>
             	<input type="text" name="languageIssuer">
             <label>성적</label>
-            	<input type="text" name="langmapGrade">	
+            	<input type="text" name="languageGrade">	
+            
+            </div>
         </div>
 
         <!-- 제출 -->
@@ -255,23 +268,62 @@
     
     <script>
 		document.addEventListener("DOMContentLoaded", function () {
-    	const select = document.getElementById("languageSelect");
-    	const customInput = document.getElementById("languageCustomInput");
+			document.body.addEventListener("change", function(e){
+				if(e.target && e.target.classList.contains("languageSelect")){
+					const select = e.target;
+					const container = select.closest(".lang-item");
+					const customInput = container.querySelector(".languageCustomInput");
+					
+					if (select.value === "custom") {
+		            	customInput.style.display = "inline-block";
+		            	customInput.name = "languageName"; 
+		            	select.name = ""; 
+		        	} else {
+		            	customInput.style.display = "none";
+		            	customInput.value = "";
+		            	customInput.name = "languageNameCustom"; 
+		            	select.name = "languageName"; 
+		        	}
+				}
+			});
+//     	const select = document.getElementById("languageSelect");
+//     	const customInput = document.getElementById("languageCustomInput");
 
-    	select.addEventListener("change", function () {
-        	if (this.value === "custom") {
-            	customInput.style.display = "inline-block";
-            	customInput.name = "languageName"; 
-            	select.name = ""; 
-        	} else {
-            	customInput.style.display = "none";
-            	customInput.value = "";
-            	customInput.name = "languageNameCustom"; 
-            	select.name = "languageName"; 
-        	}
-    	});
+//     	select.addEventListener("change", function () {
+//         	if (this.value === "custom") {
+//             	customInput.style.display = "inline-block";
+//             	customInput.name = "languageName"; 
+//             	select.name = ""; 
+//         	} else {
+//             	customInput.style.display = "none";
+//             	customInput.value = "";
+//             	customInput.name = "languageNameCustom"; 
+//             	select.name = "languageName"; 
+//         	}
+//     	});
 	});
 	</script>
+	<script>
+		function addLanguage(){
+			const section = document.getElementById("langSection");
+			const item = document.querySelector(".lang-item");
+			const clone = item.cloneNode(true);
+			
+			clone.querySelectorAll("input, select").forEach(el => {
+				el.value = "";
+				
+				if(el.classList.contains("languageCustomInput")){
+					el.style.display = "none";
+					el.name = "languageNameCustom";
+				}
+				if(el.classList.contains("languageSelect")){
+					el.name = "languageName";
+				}
+			});
+			section.appendChild(clone);
+		}
+	</script>
+	
    
    <script>
 	document.addEventListener("DOMContentLoaded", function () {
@@ -296,6 +348,31 @@
 	});
 	</script>
     
+
+<script>
+let certIndex = 1; 
+
+function addCertification() {
+    const certSection = document.getElementById("certSection");
+    const certDiv = document.createElement("div");
+    certDiv.classList.add("cert-item");
+    certDiv.innerHTML = `
+        <label>자격명</label>
+        <input type="text" name="certificationName">
+
+        <label>발급기관</label>
+        <input type="text" name="certificationIssuer">
+
+        <label>취득일</label>
+        <input type="date" name="certificationAcquiredDate">
+        <br><br>
+    `;
+    certSection.appendChild(certDiv);
+    certIndex++;
+}
+</script>
+
+
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 

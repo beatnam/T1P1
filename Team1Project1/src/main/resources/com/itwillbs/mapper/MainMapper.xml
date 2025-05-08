@@ -8,17 +8,42 @@
 <mapper namespace="com.itwillbs.mapper.MainMapper">
 
 	<select id="listOR" resultType="map">
-		select or_corporation_name
-		from open_recruit
+		select or_corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary, or_workday 
+		from open_recruit o join edu_high e
+		on o.or_eduhigh = e.eduhigh_id
+		join careear c
+		on o.or_careear = c.careear_id
+		join occupation p
+		on o.or_occupation = p.occupation_id
+		join job j
+		on o.or_job = j.job_id
+		
 		where or_occupation = #{Occupation}
-		and or_job = #{Job}
-		and or_eduhigh = #{Eduhigh}
-		and or_careear = #{Careear}
-		and or_salary = #{Salary}
-		and or_workday = #{WorkingDay}
+		and or_eduhigh &lt;= #{Eduhigh}
+		and or_careear &lt;= #{Careear}
+		and or_salary &gt;= #{Salary}
+		and or_workday &lt;= #{WorkingDay}
 	</select>
 	
+	
 	<select id="listRecruit" resultType="map">
+		select c.corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, recruit_salary, recruit_workday
+		from recruit r join corporation c
+		on r.corporationMember_num = c.corporationMember_num
+		join edu_high e
+		on r.recruit_eduhigh = e.eduhigh_id
+		join careear a
+		on r.recruit_careear = a.careear_id
+		join occupation p
+		on r.recruit_occupation = p.occupation_id
+		join job j
+		on r.recruit_job = j.job_id
+		
+		where recruit_occupation = #{Occupation}
+		and recruit_eduhigh &lt;= #{Eduhigh}
+		and recruit_careear &lt;= #{Careear}
+		and recruit_salary &gt;= #{Salary}
+		and recruit_workday &lt;= #{WorkingDay}
 		
 	</select>
 

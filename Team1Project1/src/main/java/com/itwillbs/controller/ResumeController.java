@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -113,9 +114,10 @@ public class ResumeController {
     
     @PostMapping("/submit")
     public String resumeSubmit(HttpSession session, HttpServletRequest request, 
-    		HttpServletResponse response, @RequestParam(value = "resumePhoto", required = false) MultipartFile resumePhoto) {
+    		HttpServletResponse response,Map<String, Object> map, @RequestParam(value = "resumePhoto", required = false) MultipartFile resumePhoto) {
     	
     	System.out.println("이력서 제출 컨트롤러 진입");
+    	System.out.println(map);
     	Integer member_num = (Integer)session.getAttribute("member_num");
     	if(member_num == null) {
     		return "redirect:/main/login";
@@ -153,6 +155,7 @@ public class ResumeController {
             	photo.scaleToFit(120, 120);
             	
             	doc.add(photo);
+            	doc.add(Chunk.NEWLINE);
             }
             
             doc.add(new Paragraph("■ 기본정보", fontKorean));
@@ -173,34 +176,111 @@ public class ResumeController {
                 doc.add(Chunk.NEWLINE);
             }
             
-            doc.add(new Paragraph("■ 자격증", fontKorean));
-            String certificationName = request.getParameter("certificationName");
-            String certificationIssuer = request.getParameter("certificationIssuer");
-            String cermapAquiredDate = request.getParameter("cermapAquiredDate");
-
-            doc.add(new Paragraph("자격명: " + (certificationName != null ? certificationName : ""), fontKorean));
-            doc.add(new Paragraph("발급기관: " + (certificationIssuer != null ? certificationIssuer : ""), fontKorean));
-            doc.add(new Paragraph("취득일: " + (cermapAquiredDate != null ? cermapAquiredDate : ""), fontKorean));
-            doc.add(Chunk.NEWLINE);
+            MyResumeDTO myResumeDTO = new MyResumeDTO();
+            myResumeDTO.setMemberNum(member_num);
+            myResumeDTO.setResumePhoto(fileName);
             
-            doc.add(new Paragraph("■ 외국어", fontKorean));
-            String languageName = request.getParameter("languageName");
-            String languageIssuer = request.getParameter("languageIssuer");
-            String langmapGrade = request.getParameter("langmapGrade");
+            List<CertificationDTO> certList = myResumeService.getCertificationList(member_num);
             
-            doc.add(new Paragraph("언어: " + (languageName != null ? languageName : ""), fontKorean));
-            doc.add(new Paragraph("발급기관: " + (languageIssuer != null ? languageIssuer : ""), fontKorean));
-            doc.add(new Paragraph("성적: " + (langmapGrade != null ? langmapGrade : ""), fontKorean));
-            doc.add(Chunk.NEWLINE);
+//            doc.add(new Paragraph("■ 자격증", fontKorean));
+//            if(certList != null && !certList.isEmpty()) {
+//            	for (CertificationDTO certificationDTO : certList) {
+//            		certificationDTO.setMemberNum(member_num);
+//            		myResumeService.insertCertification(certificationDTO);
+//            		
+//            	    System.out.println("== 자격증 ==");
+//            	    System.out.println("이름: " + certificationDTO.getCertificationName());
+//            	    System.out.println("취득일: " + certificationDTO.getCertificationAcquiredDate());
+//            	    
+//            	    doc.add(new Paragraph("자격명 : " + (certificationDTO.getCertificationName()), fontKorean));
+//            		doc.add(new Paragraph("발급기관: " + (certificationDTO.getCertificationIssuer()), fontKorean));
+//                    doc.add(new Paragraph("취득일: " + (certificationDTO.getCertificationAcquiredDate()), fontKorean));
+//                    doc.add(Chunk.NEWLINE);
+//            	}
+//            	
+//            	}else {
+//            		doc.add(new Paragraph("입력된 자격증이 없습니다.", fontKorean));
+//            		doc.add(Chunk.NEWLINE);
+//            	}
+            
+            String certificationName[] = request.getParameterValues("certificationName");
+            String certificationIssuer[] = request.getParameterValues("certificationIssuer");
+            String certificationAcquiredDate[] = request.getParameterValues("certificationAcquiredDate");
+            myResumeService.insertResume(myResumeDTO);
+            int resumeId = myResumeDTO.getResumeID();
+            
+            if(certificationName != null) {
+            	List<CertificationDTO> certList2 = new ArrayList<CertificationDTO>();
+            	for(int i = 0; i < certificationName.length; i++) {
+            		System.out.println(i);
+            		doc.add(new Paragraph("■ 자격증"+(i+1), fontKorean));
+            		CertificationDTO certificationDTO = new CertificationDTO();
+            		certificationDTO.setMemberNum(member_num);
+            		certificationDTO.setResumeID(resumeId);
+            		certificationDTO.setCertificationName(certificationName[i]);
+            		certificationDTO.setCertificationIssuer(certificationIssuer[i]);
+            		certificationDTO.setCertificationAcquiredDate(certificationAcquiredDate[i]);
+            		certList2.add(certificationDTO);
+            		myResumeService.insertCertification(certificationDTO);
+            		doc.add(new Paragraph("자격명 : " + (certificationDTO.getCertificationName()), fontKorean));
+            		doc.add(new Paragraph("발급기관: " + (certificationDTO.getCertificationIssuer()), fontKorean));
+                    doc.add(new Paragraph("취득일: " + (certificationDTO.getCertificationAcquiredDate()), fontKorean));
+                    doc.add(Chunk.NEWLINE);
+            	}
+            			
+            }else {
+            	doc.add(new Paragraph("입력된 자격증이 없습니다.", fontKorean));
+            	doc.add(Chunk.NEWLINE);
+            }
+            
+//            외국어
+            String languageName[] = request.getParameterValues("languageName");
+            String languageNameCustom[] = request.getParameterValues("languageNameCustom");
+            String languageIssuer[] = request.getParameterValues("languageIssuer");
+            String languageGrade[] = request.getParameterValues("languageGrade");
+            
+            if(languageIssuer != null && languageGrade != null) {
+            	for(int i = 0; i < languageIssuer.length; i++) {
+            		String finalLang = "";
+            		
+            		if (languageName != null && i < languageName.length && languageName[i] != null && !"custom".equals(languageName[i])) {
+                        finalLang = languageName[i];
+                    } else if (languageNameCustom != null && i < languageNameCustom.length && languageNameCustom[i] != null) {
+                        finalLang = languageNameCustom[i];
+                    }
+            		
+            		if(!finalLang.isEmpty() || !languageIssuer[i].isEmpty()) {
+            			LanguageDTO languageDTO = new LanguageDTO();
+            			languageDTO.setMemberNum(member_num);
+            			languageDTO.setResumeID(resumeId);
+            			languageDTO.setLanguageName(finalLang);
+            			languageDTO.setLanguageIssuer(languageIssuer[i]);
+            			languageDTO.setLanguageGrade(languageGrade[i]);
+            			
+            			myResumeService.isertLanguage(languageDTO);
+            			
+            			doc.add(new Paragraph("■ 외국어"+(i+1), fontKorean));
+                        doc.add(new Paragraph("언어: " + (languageDTO.getLanguageName()), fontKorean));
+                        doc.add(new Paragraph("발급기관: " + (languageDTO.getLanguageIssuer()), fontKorean));
+                        doc.add(new Paragraph("성적: " + (languageDTO.getLanguageGrade()), fontKorean));
+                        doc.add(Chunk.NEWLINE);
+            		}
+            	}
+            }
+            
+            
+//            String languageName = request.getParameter("languageName");
+//            String languageIssuer = request.getParameter("languageIssuer");
+//            String langmapGrade = request.getParameter("langmapGrade");
             
             doc.close();
             
             System.out.println("PDF 생성 완료");
             
-            MyResumeDTO myResumeDTO = new MyResumeDTO();
-            myResumeDTO.setMemberNum(member_num);
-            myResumeDTO.setResumePhoto(fileName);
-            myResumeService.insertResume(myResumeDTO);
+            
+            
+//            myResumeService.insertResume(myResumeDTO);
+            
             
     	}catch(Exception e) {
     		e.printStackTrace();
@@ -215,18 +295,23 @@ public class ResumeController {
     	    System.out.println("학교명: " + edu.getSchoolName());
     	    System.out.println("전공: " + edu.getEducationMajor());
     	}
-    	    	
+    	
+    	
     	return "redirect:/mypage/my-resume";
     }//resumeSubmit
     
     @PostMapping("/delete")
     public String deleteResume(@RequestParam("resumeID")int resumeID, @RequestParam("resumePhoto")String resumePhoto) {
     	myResumeService.deleteResume(resumeID);
+    	myResumeService.deleteCertification(resumeID);
+    	myResumeService.deleteLanguage(resumeID);
+    	
     	String uploadPath = "C:/upload/resume";
     	File file = new File(uploadPath, resumePhoto);
     	if(file.exists()) {
     		file.delete();
     	}
+    	
     	return "redirect:/mypage/my-resume";
     }//deleteResume
     

@@ -15,6 +15,8 @@
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
+
+<div class ="box">
 	<h1>회원 관리</h1>
 	<table border="1">
 		<input type="text" placeholder="검색어를 입력하세요.">
@@ -42,6 +44,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+</div>
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>

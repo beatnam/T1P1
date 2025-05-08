@@ -18,7 +18,7 @@
           <li><a href="#">출근Team</a></li>
           <li><a href="#">회원약관</a></li>
           <li><a href="#"><strong>개인정보처리방침</strong></a></li>
-          <li><a href="#">자주묻는질문 FAQ</a></li>
+          <li><a href="${pageContext.request.contextPath}/rvborad/FAQ">자주묻는질문 FAQ</a></li>
         </ul>
       </div>
     </div>

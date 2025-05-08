@@ -145,57 +145,43 @@ body {
 }
 
 .all {
-  display: flex;
-  min-height: 100vh;
-}
-
-.all {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
 
 .banner {
-  width: 220px;
-  background-color: #f8f9fa;
-  padding: 30px 20px;
-  border-right: 1px solid #ddd;
-}
-
-.banner h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #222;
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #dcdcdc;
 }
 
 .banner h2 a {
-  text-decoration: none;
-  color: #111;
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
 }
 
 .banner ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
 }
 
-.banner ul li {
-  margin-bottom: 14px;
-  font-weight: bold;
-  font-size: 18px;
+.banner li {
+    margin-bottom: 18px;
 }
 
-.banner ul li a {
-  text-decoration: none;
-  color: #111;
-  font-size: 16px;
-  display: inline-block;
-  padding: 4px 0;
+.banner li a {
+    text-decoration: none;
+    color: #666;
 }
 
-.banner ul li a:hover {
-  color: #28a745;
-  border-bottom: 2px solid #28a745;
+.banner li.active a {
+    border-bottom: 3px solid #28a745;
+    padding-bottom: 4px;
+    color: #28a745;
+    font-weight: bold;
 }
 
 /* 2단 서브메뉴 */
@@ -206,29 +192,10 @@ body {
   border-left: 2px solid #ddd;
 }
 
-.banner ul li ul li {
-  font-weight: normal;
-  font-size: 14px;
-  margin-bottom: 6px;
+.box {
+    flex: 1;
+    padding: 40px 220px 40px 40px;
 }
-
-.banner ul li ul li a {
-  color: #555;
-  font-size: 14px;
-  padding-left: 5px;
-}
-
-.banner ul li ul li a:hover {
-  color: #28a745;
-}
-
-/* 활성화 표시 */
-.banner ul li.active > a {
-  border-bottom: 3px solid #28a745;
-  color: #28a745;
-  font-weight: bold;
-}
-
 
 
 

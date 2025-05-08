@@ -3,195 +3,26 @@
 body {
     margin: 0;
     font-family: '맑은 고딕', sans-serif;
-    background-color: #fdfdfd;
+    background-color: #fff;
 }
 
-.all {
-  display: flex;
-  min-height: 100vh;
-}
-
-h2 {
-    margin: 30px 0 10px;
-    color: #333;
-}
-
-.banner {
-    width: 220px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-right: 1px solid #dcdcdc;
-}
-
-.banner h2 a {
-    text-decoration: none;
-    color: #333;
-    font-size: 22px;
-}
-
-.banner ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 30px;
-}
-
-.banner li {
-    margin-bottom: 18px;
-}
-
-.banner li a {
-    text-decoration: none;
-    color: #666;
-}
-
-.banner li.active a {
-    border-bottom: 3px solid #28a745;
-    padding-bottom: 4px;
-    color: #28a745;
-    font-weight: bold;
-}
 
 .box {
     flex: 1;
-    padding: 40px;
-<<<<<<< HEAD
-    margin: 0 auto;
+    padding: 40px 220px 40px 40px;
     max-width: 1300px;
-}
-
-form {
-  padding: 30px;
-  max-width: 1200px; 
-  width: 100%;      
-  margin: 0 auto;
-}
-
-.section {
-  width: 100%;
-  max-width: none;
-}
-
-.section.basic-info .row {
-    display: block;
-}
-
-.basic-info .inline-row {
-    display: flex;
-    gap: 30px;
-    margin-top: 10px;
-}
-
-.basic-info .inline-row > div {
-    flex: 1;
-}
-
-.form-inline-group {
-    margin-bottom: 20px;
-}
-
-.inline-inputs {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.inline-inputs span {
-    font-weight: bold;
-    color: #333;
-}
-
-label {
-    display: block;
-    margin-bottom: 6px;
-    color: #555;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="email"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type="file"] {
-    padding: 8px 0;
-}
-
-.career-row {
-  display: flex;
-  flex-wrap: wrap; 
-  gap: 10px;
-  width: 100%;
-}
-
-.career-row input {
-  width: auto;
-  flex-shrink: 1;
-}
-
-.career-row input[name="JHId"] {
-  flex: 2;
-  min-width: 200px;
-}
-
-.career-row input[name="JHDepartment"],
-.career-row input[name="workContent"] {
-  flex: 1.5;
-  min-width: 150px;
-}
-
-.career-row input[type="date"] {
-  flex: 1;
-  min-width: 130px;
-}
-
-
-.career-row span {
-  align-self: center;
-  padding: 0 4px;
-  white-space: nowrap;
-}
-
-
-
-
-button[type="submit"],
-button[type="button"] {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-.submit-section {
-    text-align: right;
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-
-=======
-}
-
-form {
-    padding: 30px;
-    max-width: 900px;
     margin: 0 auto;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+form {
+    margin-top: 40px;
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section {
@@ -200,35 +31,6 @@ form {
     border-bottom: 1px solid #ddd;
 }
 
-.section.basic-info .row {
-    display: block;
-}
-
-.basic-info .inline-row {
-    display: flex;
-    gap: 30px;
-    margin-top: 10px;
-}
-
-.basic-info .inline-row > div {
-    flex: 1;
-}
-
-.form-inline-group {
-    margin-bottom: 20px;
-}
-
-.inline-inputs {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.inline-inputs span {
-    font-weight: bold;
-    color: #333;
-}
-
 label {
     display: block;
     margin-bottom: 6px;
@@ -253,18 +55,6 @@ input[type="file"] {
     padding: 8px 0;
 }
 
-.career-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 300px;
-    margin-top: 10px;
-}
-
-.career-row input[type="number"] {
-    width: 80px;
-}
-
 button[type="submit"],
 button[type="button"] {
     padding: 10px 20px;
@@ -287,7 +77,57 @@ button:hover {
     padding-bottom: 0;
 }
 
-form {
-    margin-left: 240px; /* banner 너비 + 여백 정도 */
+.inline-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
->>>>>>> branch 'TeamTest' of https://github.com/beatnam/T1P1.git
+
+.inline-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.inline-group > div {
+    flex: 1;
+}
+
+.career-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.career-row input,
+.career-row select {
+    flex: 1;
+    min-width: 130px;
+}
+
+.career-row span {
+    align-self: center;
+    padding: 0 4px;
+    white-space: nowrap;
+}
+
+.cert-item,
+.lang-item {
+    margin-top: 20px;
+}
+
+.cert-item label,
+.lang-item label {
+    margin-top: 10px;
+}
+
+img#photoPreview {
+    display: block;
+    margin-top: 10px;
+    max-width: 200px;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 4px;
+}

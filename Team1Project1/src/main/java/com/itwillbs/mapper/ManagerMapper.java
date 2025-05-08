@@ -54,4 +54,6 @@ public interface ManagerMapper {
 
 	public void deleteMember(String memberId);
 
+	public void downgradeCorp(String corpId);
+
 }

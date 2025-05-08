@@ -94,7 +94,29 @@ public class MyResumeService {
 	}
 
 	public void deleteResume(int resumeID) {
+		myResumeMapper.deleteCertification(resumeID);
+		myResumeMapper.deleteLanguage(resumeID);
 		myResumeMapper.deleteResume(resumeID);
+	}
+
+	public void insertCertification(CertificationDTO certificationDTO) {
+		myResumeMapper.insertCertification(certificationDTO);
+		
+	}
+
+	public void isertLanguage(LanguageDTO languageDTO) {
+		myResumeMapper.insertLanguage(languageDTO);
+		
+	}
+
+	public void deleteCertification(int resumeID) {
+		myResumeMapper.deleteCertification(resumeID);
+		
+	}
+
+	public void deleteLanguage(int resumeID) {
+		myResumeMapper.deleteLanguage(resumeID);
+		
 	}
 
 	
