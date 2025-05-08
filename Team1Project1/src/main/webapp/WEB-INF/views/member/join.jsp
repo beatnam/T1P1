@@ -19,13 +19,17 @@
 
         <li class="start">
           <div class="join_content">
-            <input type="text" name="memberId" id="id_lbl" placeholder="아이디 영어와 숫자를 포함한 5 ~ 20자리" required />
+            <input type="text" name="memberId" id="id_lbl" placeholder="아이디 5 ~ 20자리" required />
+            <div id= "idcheck"></div>
           </div>
         </li>
+        
+        
 
         <li class="start">
           <div class="join_content">
-            <input type="password" name="memberPasswd" id="pwd_lbl" placeholder="비밀번호 특수문자와 영어대소문자 숫자 5~20자리" required />
+            <input type="password" name="memberPasswd" id="pwd_lbl" placeholder="비밀번호 특수문자와 영어소문자 숫자 8~16자리" required />
+         	<div id= "pwdcheck"></div>
           </div>
         </li>
 
@@ -34,6 +38,7 @@
             <div class="jumin_area">
               <input type="text" name="memberJumin1" id="jumin_lbl1" placeholder="주민등록번호 앞자리" required />
               <input type="password" name="memberJumin2" id="jumin_lbl2" placeholder="주민등록번호 뒷자리" required />
+              <div id= "jumincheck"></div>
             </div>
           </div> 
         </li>
@@ -44,6 +49,7 @@
             <input type="text" name="memberEmail1" id="email_lbl" placeholder="이메일 주소" required />
             <span>@</span>
             <input type="text" name="memberEmail2" id="email_lbl2" class="w160" placeholder="이메일주소" required /> 
+            <div id= "emailcheck"></div>
             <div class="select_common">
               <select onchange="document.getElementsByName('memberEmail2')[0].value=this.value">
                 <option value="">직접입력</option>
@@ -75,6 +81,7 @@
         <li class="start">         
           <div class="join_content">
             <input type="tel" name="memberPhone" id="phone_lbl" placeholder="휴대전화" required />
+            <div id= "phonecheck"></div>
             <button type="button" class="aceept_content" id="phone_lbl1" onclick="sendSMS()">인증번호 전송</button>
           	<!-- 인증 여부 숨김 필드 -->
       		<input type="hidden" name="smsVerified" id="smsVerified" value="false" />
@@ -180,22 +187,25 @@
       console.error("검증 오류:", error);
     });
   }
- </script>  -->
+ </script> -->
   
   
   
   
 <script type="text/javascript">
-	/* $(function() {
+ $(function() {
 
 		$('#id_lbl').blur(function() {
-			// 	alert('포커스 해제');
-			// 				$.ajax({
-			// 					url:'서버주소',
-			// 					data:{들고갈 데이터},
-			// 					success:function(){
-
-			// 				}
+			
+			  //아이디 => 영문 대소문자, 숫자, 특수문자, _, - 입력가능
+	         //5 ~ 20 자리 입력 체크
+			let idCheck = RegExp(/^[a-zA-Z0-9_\-]{5,20}$/);
+	        if(! idCheck.test($('#id_lbl').val())){
+	   
+	            $('#idcheck').html("아이디 형식이 아닙니다").css('color', 'red');
+	            $('#id_lbl').focus();
+	            return false;
+	        }
 			$.ajax({
 				type : "GET",
 				url : '${pageContext.request.contextPath}/member/idCheck',
@@ -204,79 +214,181 @@
 				},
 				success : function(result) {
 					//alert(result);
-
 					if (result == 'iddup') {
-						result = "아이디 중복";
-						$('#idcheck').html(result).css('color', 'red');
+						alert('아이디 중복');
+						$('#id_lbl').val('');
+						
 					} else {
-
-						result = "아이디 사용 가능"
+						result = "사용가능한 아이디 입니다";
 						$('#idcheck').html(result).css('color', 'blue');
 					}
 				}//success
 			});//ajax
 		});//blur()
-	}); //ready */
+	}); //ready 
+	
+
+	$(function(){
+	$('#pwd_lbl').blur(function() {
+		//비밀번호 => 영문 소문자, 숫자, 특수문자( !@#$%^* ), _, - 입력가능
+        //8 ~ 16 자리 입력 체크
+        let passCheck = RegExp(/^(?=.*[a-z])(?=.*[!@#$%^*])(?=.*[0-9]).{8,16}$/);
+        if(! passCheck .test($('#pwd_lbl').val())){
+
+           $('#pwdcheck').html("비밀번호 형식이 아닙니다").css('color', 'red');
+           $('#pwd_lbl').focus();
+           return false;
+     }else{
+
+         $('#pwdcheck').html("");
+     }
+	});
+});
+	
+	
+	
+$(function() {
+		 $('#jumin_lbl1').blur(function() {
+	         let jumin1Check = RegExp(/^\d{6}$/);
+	         if (!jumin1Check.test($('#jumin_lbl1').val())){
+	        	$('#jumincheck').html("주민번호를 앞자리를 올바르게 입력하세요").css('color', 'red');
+	        	$('#jumin_lbl1').focus();
+	             return false;
+	        }else{
+	        	$('#jumincheck').html("");
+	        }
+		 
+		$('#jumin_lbl2').blur(function() {
+		       let jumin2Check = RegExp(/^\d{7}$/);
+		       if (!jumin2Check.test($('#jumin_lbl2').val())) {        	 	    
+		        	  $('#jumincheck').html("주민번호를 뒷자리를 올바르게 입력하세요").css('color', 'red');
+		              $('#jumin_lbl2').focus();
+		               return false;
+		     }else{
+		    	 $('#jumincheck').html("");	   	 
+		     }
+		       
+		    let j1 = $('#jumin_lbl1').val();
+		    let j2 = $('#jumin_lbl2').val();
+
+				$.ajax({
+					type : "GET",
+					url : '${pageContext.request.contextPath}/member/jumincheck',
+					data : {
+						'jumin' : j1 + j2
+					},
+					success : function(result) {
+						if (result != 'jumin') {
+							result = "주민번호를 올바르게 입력하세요";
+							$('#jumincheck').html(result).css('color', 'red');
+						}else{
+							$('#jumincheck').html("");
+						}
+					}//success
+				});//ajax
+			});//blur()
+		});
+});//ready 
+		
+		
+		
+		/* 이메일 */
+$(function() {
+			$('#email_lbl').blur(function() {
+					
+					let email1Check = RegExp(/^[a-zA-Z0-9_\.\-]/);
+			         if(! email1Check.test($('#email_lbl').val())){
+			      	    $('#emailcheck').html("이메일을 올바르게 하세요").css('color', 'red');
+		                $('#email_lbl').focus();
+			            return false;
+			         }else{
+			        	 $('#emailcheck').html("");
+			         }
+			  
+			  $('#email_lbl2').blur(function() {
+							
+							let email2Check = RegExp(/^[a-zA-Z0-9_\.\-]/);
+					         if(! email2Check.test($('#email_lbl2').val())){
+					      	    $('#emailcheck').html("이메일을 올바르게 하세요").css('color', 'red');
+				                $('#email_lbl2').focus();
+					            return false;
+					         }else{
+					        	 $('#emailcheck').html("");
+					         }
+					         
+				let e1 = $('#email_lbl').val();
+				let e2 = $('#email_lbl2').val();        
+			         
+					$.ajax({
+						type : "GET",
+						url : '${pageContext.request.contextPath}/member/emailcheck',
+						data : {
+							'email' : e1 + e2
+							},
+					
+				success : function(result) {
+							if (result != 'email') {
+								result = "이메일이 중복되어 있습니다";
+								$('#emailcheck').html(result).css('color', 'red');
+							}else{
+					        	 $('#emailcheck').html("");
+					         }
+						}//success
+					});//ajax	
+				});//blur()1
+			});//blur()2
+		}); //ready 
+
+			
+	
+	
+		$(function() {
+			$('#phone_lbl').blur(function() {
+								
+			?		//핸드폰 체크	         
+				         let phoneNumCheck = RegExp(/^[0-9]{11}$/);
+				         if(! phoneNumCheck .test($('#phone_lbl').val())){
+				            
+				        	 $('#phonecheck').html("휴대폰 번호를 올바르게 입력하세요").css('color', 'red');
+				                $('#phone_lbl').focus();
+					            return false;
+					         }else{
+					        	 $('#phonecheck').html("");
+					         }
+						        
+			
+						$.ajax({
+							type : "GET",
+							url : '${pageContext.request.contextPath}/member/phonecheck',
+							data : {
+								'phone' : $('#phone_lbl').val()
+								},
+						
+					success : function(result) {
+								if (result != 'phone') {
+									result = "휴대폰 번호를올바르게 입력하세요";
+									$('#phonecheck').html(result).css('color', 'red');
+								}else{
+						        	 $('#phonecheck').html("");
+						        }
+							}//success
+						});//ajax
+					});//blur()
+				}); //ready 	
+			
+			
+			
+			
+			
+			
+			
+			
+	
 
 	
 	$(function() {
 	      $('#submitBtn').click(function(){
 	      
-	         
-	         //아이디 => 영문 대소문자, 숫자, 특수문자, _, - 입력가능
-	         //5 ~ 20 자리 입력 체크
-	         let idCheck = RegExp(/^[a-zA-Z0-9_\-]{5,20}$/);
-	         if(! idCheck.test($('#id_lbl').val())){
-	            
-	            alert("아이디 형식 아님");
-	            $('#id_lbl').focus();
-	            return false;
-	            
-	         }
-	         
-	         //비밀번호 => 영문 대소문자, 숫자, 특수문자( !@#$%^* ), _, - 입력가능
-	         //5 ~ 20 자리 입력 체크
-	         let passCheck = RegExp(/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^*]).{8,16}$/);
-	         if(! passCheck .test($('#pwd_lbl').val())){
-	            
-	            alert("비번 형식 아님");
-	            $('#pwd_lbl').focus();
-	            return false;
-	            
-	      }
-	         
-	         let jumin1Check = RegExp(/^\d{6}$/);
-	         if (!jumin1Check.test($('#jumin_lbl1').val())) {
-	        	    alert("주민번호 앞자리 6자리를 입력해 주세요");
-	        	    $('#jumin_lbl1').focus();
-	        	    return false;
-	        	}
-
-	         
-	         let jumin2Check = RegExp(/^\d{7}$/);
-	         if (!jumin2Check.test($('#jumin_lbl2').val())) {
-	        	    alert("주민번호 뒷자리 7자리를 입력해 주세요");
-	        	    $('#jumin_lbl2').focus();
-	        	    return false;
-	        	} 
-	         
-			//이메일 => 아이디@naver.com id="email_lbl1"
-	         
-	         let emailCheck = RegExp(/^[a-zA-Z0-9_\.\-]/);
-	         if(! emailCheck.test($('#email_lbl').val())){
-	            alert("이메일 앞부분을 다시 입력해주세요");
-	            $('#email_lbl').focus();
-	            return false;
-	         }
-	         
-	         
-	         let emailCheck1 = RegExp(/^[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]/);
-	         if(! emailCheck1.test($('#email_lbl2').val())){
-	            alert("이메일 뒷부분 다시 입력해주세요");
-	            $('#email_lbl2').focus();
-	            return false;
-	         }
-	         
 	         
 	        //작성자명 => 한글 2~6 자 = "name_lbl"
 	        let nameCheck = RegExp(/^[가-힣]{2,6}$/);
@@ -296,15 +408,7 @@
 	            
 	         }  	
 
-			//핸드폰 체크	         
-	         let phoneCheck = RegExp(/^[0-9]{11}$/);
-	         if(! phoneCheck .test($('#phone_lbl').val())){
-	            
-	            alert("휴대폰 번호를 제대로 입력해주세요");
-	            $('#phone_lbl').focus();
-	            return false;
-	            
-	         }  
+			 
 	         
 	         //필수 동의여부 체크 
 	         if($('#info').is(':checked')==false){
