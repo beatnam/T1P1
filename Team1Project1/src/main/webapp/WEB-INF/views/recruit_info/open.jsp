@@ -23,6 +23,59 @@
 	</c:if>
 	<div class="recruit-list">
 		<h2>채용 정보</h2>
+		
+		
+		
+		<!-- 	pagination -->
+		<div class="pagination">
+			<a
+				href="${pageContext.request.contextPath}/recruit_info/open?pageNum=1"
+				class="firstpage  pbtn">
+				<strong> 맨 앞으로 </strong>
+			</a>
+
+			<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
+				<a
+					href="${pageContext.request.contextPath}/recruit_info/open?pageNum=${pageDTO.currentPage -1 }"
+					class="prevpage  pbtn">
+					<strong> 하나 뒤로 </strong>
+				</a>
+			</c:if>
+
+			<c:forEach var="i" begin="${pageDTO.startPage }"
+				end="${pageDTO.endPage }" step="1">
+				<c:if test="${i eq pageDTO.currentPage }">
+					<a
+						href="${pageContext.request.contextPath}/recruit_info/open?pageNum=${i}">
+						<span class="pagenum currentpage">${i }</span>
+					</a>
+
+				</c:if>
+				<c:if test="${i ne pageDTO.currentPage }">
+
+					<a
+						href="${pageContext.request.contextPath}/recruit_info/open?pageNum=${i}">
+						<span class="pagenum">${i }</span>
+					</a>
+				</c:if>
+			</c:forEach>
+
+
+			<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+				<a
+					href="${pageContext.request.contextPath}/recruit_info/open?pageNum=${pageDTO.currentPage +1}"
+					class="nextpage  pbtn">
+					<strong> 하나 다음 </strong>
+				</a>
+			</c:if>
+
+			<a
+				href="${pageContext.request.contextPath}/recruit_info/open?pageNum=${pageDTO.pageCount}"
+				class="lastpage  pbtn">
+				<strong>제일 뒤로</strong>
+			</a>
+		</div>
+		<!-- 				pagination -->
 		<table border="1">
 
 			<tr>
@@ -48,10 +101,10 @@
 					<td>${openrecruit.or_deadline }</td>
 				</tr>
 			</c:forEach>
-
-
 		</table>
 	</div>
+	
+	
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>

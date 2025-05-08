@@ -20,6 +20,12 @@
 		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}, #{orWorkday}, #{orCareear}
 		)
 	</insert>
+	
+	<select id="countOR" resultType="java.lang.Integer">
+	select count(*)
+	from open_recruit
+	
+	</select>
 
 	<update id="updateOR">
 		update open_recruit
@@ -156,7 +162,7 @@
 		e.eduhigh_id
 		join careear a
 		on r.recruit_careear =
-		a.careear_name
+		a.careear_id
 
 		where
 		r.recruit_id = #{recruitId}
@@ -192,6 +198,8 @@
 		join careear a
 		on a.careear_id = o.or_careear
 		
+		order by 1 desc
+		limit #{startRow}, #{pageSize}
 	</select>
 	<select id="listCopMember" resultType="map">
 		select m.mt_name,

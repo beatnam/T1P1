@@ -26,7 +26,7 @@ public interface ManagerMapper {
 
 	public void insertOR(OpenrecruitDTO openrecruitDTO);
 
-	public List<Map<Object, Object>> listOR();
+	public List<Map<Object, Object>> listOR(PageDTO pageDTO);
 
 	public Map<Object, Object> contentRecruit(int recruitId);
 
@@ -55,5 +55,7 @@ public interface ManagerMapper {
 	public void deleteMember(String memberId);
 
 	public void downgradeCorp(String corpId);
+
+	public int countOR();
 
 }

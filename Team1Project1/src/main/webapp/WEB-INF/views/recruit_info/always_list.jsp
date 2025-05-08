@@ -28,14 +28,14 @@
 		<!-- 	pagination -->
 		<div class="pagination">
 			<a
-				href="${pageContext.request.contextPath}${pageContext.request.contextPath }/recruit_info/always?pageNum=1"
+				href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=1"
 				class="firstpage  pbtn">
 				<strong> 맨 앞으로 </strong>
 			</a>
 
 			<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
 				<a
-					href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.currentPage -1 }"
+					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage -1 }"
 					class="prevpage  pbtn">
 					<strong> 하나 뒤로 </strong>
 				</a>
@@ -45,7 +45,7 @@
 				end="${pageDTO.endPage }" step="1">
 				<c:if test="${i eq pageDTO.currentPage }">
 					<a
-						href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${i}">
+						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
 						<span class="pagenum currentpage">${i }</span>
 					</a>
 
@@ -53,7 +53,7 @@
 				<c:if test="${i ne pageDTO.currentPage }">
 
 					<a
-						href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${i}">
+						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
 						<span class="pagenum">${i }</span>
 					</a>
 				</c:if>
@@ -62,34 +62,23 @@
 
 			<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
 				<a
-					href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.currentPage +1}"
+					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage +1}"
 					class="nextpage  pbtn">
 					<strong> 하나 다음 </strong>
 				</a>
 			</c:if>
 
 			<a
-				href="${pageContext.request.contextPath}/${pageContext.request.contextPath }/recruit_info/always?pageNum=${pageDTO.pageCount}"
+				href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.pageCount}"
 				class="lastpage  pbtn">
 				<strong>제일 뒤로</strong>
 			</a>
 		</div>
 		<!-- 				pagination -->
-		<tr>
-			<td>공고번호</td>
-			<td>공고명</td>
-			<td>회사명</td>
-			<td>직종</td>
-			<td>직무</td>
-			<td>지역</td>
-			<td>학력</td>
-			<td>경력</td>
-			<td>제시 급여</td>
-		</tr>
 
 		<c:forEach var="recruit" items="${recruitList }">
 			<tr>
-				<td>${recruit.recruit_id }</td>
+				<td id="hidden">${recruit.recruit_id }</td>
 				<td><a
 						href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruit.recruit_id}">${recruit.recruit_name}</a></td>
 				<td>${recruit.corporation_name}</td>

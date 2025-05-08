@@ -24,6 +24,7 @@ import com.itwillbs.service.ManagerService;
 @Controller
 @RequestMapping("/manager/*")
 public class ManagerController {
+
 	@Inject
 	private JobService jobService;
 	@Inject
@@ -242,10 +243,48 @@ public class ManagerController {
 	}
 
 	@GetMapping("/openrecruit_mng")
-	public String openrecruitMng(Model model) {
+	public String openrecruitMng(HttpServletRequest request, Model model) {
+		int pageSize = 20;
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
 
-		List<Map<Object, Object>> ORlist = managerService.listOR();
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
 
+		// pageDTO.setSearch(search);
+
+		List<Map<Object, Object>> ORlist = managerService.listOR(pageDTO);
+
+		// 게시판 전체 글개수
+//		int count = boardService.countBoard();
+		// 검색어 포함한 글 개수
+		int count = managerService.countMember();
+
+		// 한 화면에 보여줄 페이지 개수
+		int pageBlock = 5;
+		// 한 화면에 보여줄 시작페이지 번호
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+		// 한 화면에 보여줄 끝페이지 번호
+		int endPage = startPage + pageBlock - 1;
+		// 전체 페이지 개수 구하기
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+
+		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("ORlist", ORlist);
 
 		System.out.println(ORlist);
@@ -298,7 +337,7 @@ public class ManagerController {
 
 		return "redirect:/manager/copmember_mng";
 	}
-	
+
 	@GetMapping("/downgradeCorp")
 	public String downgradeCorp(@RequestParam String corpId) {
 		System.out.println("AjaxController updateCorp()");
@@ -306,7 +345,6 @@ public class ManagerController {
 
 		return "redirect:/manager/copmember_mng";
 	}
-	
 
 	@GetMapping("/content_corp")
 	public String contentCorp(@RequestParam String corpId, Model model) {
