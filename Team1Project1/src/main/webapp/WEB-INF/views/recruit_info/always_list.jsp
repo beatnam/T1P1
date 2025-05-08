@@ -15,24 +15,7 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<h1>상시 채용</h1>
-
-	<div class="include_menu">
-		<ul>
-			<li><a
-					href="${pageContext.request.contextPath }/recruit_info/open">공개
-					채용</a></li>
-			<li><a
-					href="${pageContext.request.contextPath }/recruit_info/always_list">상시
-					채용</a></li>
-			<li><a
-					href="${pageContext.request.contextPath }/recruit_info/fair">취업
-					박람회</a></li>
-			<li><a
-					href="${pageContext.request.contextPath }/recruit_info/50">50대
-					기업</a></li>
-		</ul>
-	</div>
+	<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
 	<input type="text" placeholder="검색어를 입력하세요.">
 	<button>검색</button>

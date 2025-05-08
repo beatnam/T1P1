@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회사 선택 / 자소서 작성</title>
+<title>회사 선택 | 자소서 작성</title>
 </head>
 <body>
 

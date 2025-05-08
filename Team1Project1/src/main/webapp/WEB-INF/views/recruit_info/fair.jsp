@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<h1>취업 박람회</h1>
+	<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
 	<c:if test="${sessionScope.type eq 100 }">
 		<a href="${pageContext.request.contextPath }/manager/fair_mng">관리자
