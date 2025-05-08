@@ -9,14 +9,14 @@
 <meta charset="UTF-8">
 <title>관리자 | 공개 채용 관리</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common.css">
+	href="${pageContext.request.contextPath }/resources/css/common.css"><link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
-	<h1>공개 채용 관리</h1>
 	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공개
 		채용 작성</a>
 	<h5>회사명을 클릭하면 해당 인사페이지로 이동합니다</h5>
@@ -110,7 +110,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	</div>
+	</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 

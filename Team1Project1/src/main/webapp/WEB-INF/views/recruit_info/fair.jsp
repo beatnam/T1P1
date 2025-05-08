@@ -11,7 +11,7 @@
 	href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
 	<c:if test="${sessionScope.type eq 100 }">
@@ -43,7 +43,7 @@
 		<td>박람회 사진 2</td>
 	</tr>
 	밑으로 쭉 내려가고 사진 누르면 박람회 홈페이지로 이동
-
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>

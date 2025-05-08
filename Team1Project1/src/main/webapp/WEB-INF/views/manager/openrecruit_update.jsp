@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 <div class="box">
 	<h1>공개 채용 수정</h1>
@@ -117,7 +117,7 @@
 					</td>
 			</table>
 			</form>
-		</div>
+		</div></div>
 
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 

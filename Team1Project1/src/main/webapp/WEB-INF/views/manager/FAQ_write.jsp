@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
 	<h1>FAQ 등록</h1>
@@ -28,7 +28,7 @@
 		<br> <br>
 		<input type="submit" value="등록">
 	</form>
-	</div>
+	</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

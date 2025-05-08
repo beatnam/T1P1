@@ -14,6 +14,7 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="all">
 	<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
 
@@ -31,7 +32,7 @@
 		<li>${recruitContent.recruit_deatline}</li>
 	</ul>
 
-
+</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

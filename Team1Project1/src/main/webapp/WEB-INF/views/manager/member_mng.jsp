@@ -27,15 +27,9 @@
 				<input type="text" placeholder="검색어를 입력하세요.">
 				<button>검색</button>
 				<tr>
-					<!-- 			<td><select name="mtId"> -->
-					<!-- 					<option value="all">전체</option> -->
-					<!-- 					<option value="200">회원</option> -->
-					<!-- 					<option value="100">관리자</option> -->
-					<!-- 			</select></td> -->
-					<!-- -->
+				
 					<td>회원 아이디</td>
 					<td>회원 이름</td>
-					<!--기업 회원의 경우 기업 이름-->
 
 					<td>삭제</td>
 				</tr>

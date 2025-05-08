@@ -15,82 +15,84 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
+	<div class="all">
+		<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
-	<input type="text" placeholder="검색어를 입력하세요.">
-	<button>검색</button>
-	<c:if test="${sessionScope.type eq 100 }">
-		<a href="${pageContext.request.contextPath }/manager/recruit_mng">관리자
-			페이지</a>
-	</c:if>
-	<table border="1">
+		<c:if test="${sessionScope.type eq 100 }">
+			<a href="${pageContext.request.contextPath }/manager/recruit_mng">관리자
+				페이지</a>
+		</c:if>
 
-		<!-- 	pagination -->
-		<div class="pagination">
-			<a
-				href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=1"
-				class="firstpage  pbtn">
-				<strong> 맨 앞으로 </strong>
-			</a>
-
-			<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
+		<div class="recruit-list">
+			<h4>상시 채용</h4>
+			<!-- 	pagination -->
+			<div class="pagination">
 				<a
-					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage -1 }"
-					class="prevpage  pbtn">
-					<strong> 하나 뒤로 </strong>
+					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=1"
+					class="firstpage  pbtn">
+					<strong> 맨 앞으로 </strong>
 				</a>
-			</c:if>
 
-			<c:forEach var="i" begin="${pageDTO.startPage }"
-				end="${pageDTO.endPage }" step="1">
-				<c:if test="${i eq pageDTO.currentPage }">
+				<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
 					<a
-						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
-						<span class="pagenum currentpage">${i }</span>
-					</a>
-
-				</c:if>
-				<c:if test="${i ne pageDTO.currentPage }">
-
-					<a
-						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
-						<span class="pagenum">${i }</span>
+						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage -1 }"
+						class="prevpage  pbtn">
+						<strong> 하나 뒤로 </strong>
 					</a>
 				</c:if>
-			</c:forEach>
+
+				<c:forEach var="i" begin="${pageDTO.startPage }"
+					end="${pageDTO.endPage }" step="1">
+					<c:if test="${i eq pageDTO.currentPage }">
+						<a
+							href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
+							<span class="pagenum currentpage">${i }</span>
+						</a>
+
+					</c:if>
+					<c:if test="${i ne pageDTO.currentPage }">
+
+						<a
+							href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${i}">
+							<span class="pagenum">${i }</span>
+						</a>
+					</c:if>
+				</c:forEach>
 
 
-			<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+				<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+					<a
+						href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage +1}"
+						class="nextpage  pbtn">
+						<strong> 하나 다음 </strong>
+					</a>
+				</c:if>
+
 				<a
-					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.currentPage +1}"
-					class="nextpage  pbtn">
-					<strong> 하나 다음 </strong>
+					href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.pageCount}"
+					class="lastpage  pbtn">
+					<strong>제일 뒤로</strong>
 				</a>
-			</c:if>
-
-			<a
-				href="${pageContext.request.contextPath }/recruit_info/always_list?pageNum=${pageDTO.pageCount}"
-				class="lastpage  pbtn">
-				<strong>제일 뒤로</strong>
-			</a>
+			</div>
+			<!-- 				pagination -->
+			<table border="1">
+				<c:forEach var="recruit" items="${recruitList }">
+					<tr>
+						<td id="hidden">${recruit.recruit_id }</td>
+						<td><a
+								href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruit.recruit_id}">${recruit.recruit_name}</a></td>
+						<td>${recruit.corporation_name}</td>
+						<td>${recruit.occupation_name}</td>
+						<td>${recruit.job_name}</td>
+						<td>${recruit.recruit_location}</td>
+						<td>${recruit.eduhigh_name}</td>
+						<td>${recruit.careear_name}</td>
+						<td>${recruit.recruit_salary}</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
-		<!-- 				pagination -->
-
-		<c:forEach var="recruit" items="${recruitList }">
-			<tr>
-				<td id="hidden">${recruit.recruit_id }</td>
-				<td><a
-						href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruit.recruit_id}">${recruit.recruit_name}</a></td>
-				<td>${recruit.corporation_name}</td>
-				<td>${recruit.occupation_name}</td>
-				<td>${recruit.job_name}</td>
-				<td>${recruit.recruit_location}</td>
-				<td>${recruit.eduhigh_name}</td>
-				<td>${recruit.careear_name}</td>
-				<td>${recruit.recruit_salary}</td>
-			</tr>
-		</c:forEach>
-	</table>
+	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>

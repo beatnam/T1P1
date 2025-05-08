@@ -15,6 +15,7 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
 	<h1>FAQ 관리</h1>
@@ -44,7 +45,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-</div>
+</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

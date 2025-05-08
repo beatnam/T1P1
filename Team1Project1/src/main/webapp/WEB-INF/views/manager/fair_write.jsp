@@ -15,6 +15,7 @@
 
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
 		<h1>취업 박람회 등록</h1>
@@ -61,7 +62,7 @@
 
 			<input type="submit" value="등록">
 		</form>
-	</div>
+	</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

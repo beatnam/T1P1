@@ -9,15 +9,14 @@
 <meta charset="UTF-8">
 <title>관리자 | 상시 채용 관리</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common.css">
+	href="${pageContext.request.contextPath }/resources/css/common.css"><link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
-		<h1>상시 채용 관리</h1>
-
 		<table border="1">
 			<input type="text" placeholder="검색어를 입력하세요.">
 			<button>검색</button>
@@ -103,7 +102,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
+	</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 </body>
