@@ -103,11 +103,14 @@ public class ResumeController {
     	
     	MemberDTO memberDTO = memberService.getMemberInfo(member_num);
     	List<EducationDTO> educationList = educationService.getEducationList(member_num);
+    	List<CareerDTO> careerList = careerService.getCareerList(member_num);
     	
     	System.out.println("educationList : " + educationList);
+    	System.out.println("careerList" + careerList);
     	
     	model.addAttribute("memberDTO", memberDTO);
     	model.addAttribute("educationList", educationList);
+    	model.addAttribute("careerList", careerList);
         return "resume/my-resume-edit";  
     }//resumeEdit
     
@@ -125,7 +128,6 @@ public class ResumeController {
     	
     	MemberDTO memberDTO = memberService.getMemberInfo(member_num);
     	List<EducationDTO> educationList = educationService.getEducationList(member_num);
-    	List<CareerDTO> careerList = careerService.getCareerList(member_num);
     	
     	String intro = request.getParameter("additionalIntro");
     	
@@ -175,6 +177,21 @@ public class ResumeController {
                 doc.add(new Paragraph("세부전공: " + edu.getMajorDetail(), fontKorean));
                 doc.add(Chunk.NEWLINE);
             }
+            
+//            경력
+        	List<CareerDTO> careerList = careerService.getCareerList(member_num);
+        	if(careerList != null && !careerList.isEmpty()) {
+        		doc.add(new Paragraph("■ 경력사항", fontKorean));
+        		for(int i = 0; i < careerList.size(); i++) {
+        			CareerDTO careerDTO = careerList.get(i);
+        			doc.add(new Paragraph("회사명 : " + careerDTO.getJhCorporation(), fontKorean));
+        			doc.add(new Paragraph("부서명 : " + careerDTO.getJhDepartment(), fontKorean));
+        			doc.add(new Paragraph("업무 내용 : " + careerDTO.getWorkContent(), fontKorean));
+        			doc.add(new Paragraph("근무 기간 : " + careerDTO.getStartDate() + " ~ " + careerDTO.getEndDate(), fontKorean));
+        			doc.add(Chunk.NEWLINE);
+        		}
+        	}
+            
             
             MyResumeDTO myResumeDTO = new MyResumeDTO();
             myResumeDTO.setMemberNum(member_num);

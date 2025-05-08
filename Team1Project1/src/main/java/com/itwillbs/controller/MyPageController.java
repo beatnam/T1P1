@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -150,37 +151,42 @@ public class MyPageController {
        
     
     @PostMapping("/mypage/my-profile-edit")
-    public String updateMyIntroduce(MyPageDTO myPageDTO, @ModelAttribute CareerListDTO careerListDTO, HttpSession session) {
+    public String updateMyIntroduce(MyPageDTO myPageDTO, HttpServletRequest request, HttpSession session) {
     	myPageService.updateMyIntroduce(myPageDTO);
+    	
     	Integer member_num = (Integer)session.getAttribute("member_num");
     	careerService.deleteCareerByMemberNum(member_num);
     	
-    	
-    	if (careerListDTO == null) {
-            System.out.println("careerListDTO == null");
-        } else if (careerListDTO.getCareerList() == null) {
-            System.out.println("careerListDTO.getCareerList() == null");
-        } else {
-            System.out.println("careerList.size: " + careerListDTO.getCareerList().size());
-            for (CareerDTO dto : careerListDTO.getCareerList()) {
-                System.out.println(">>> 커리어 데이터: " + dto);
-            }
-        }
-    	
-    	
-    	if(careerListDTO != null && careerListDTO.getCareerList() != null) {
-    		for(CareerDTO careerDTO : careerListDTO.getCareerList()) {
+    	String jhCorporation[] = request.getParameterValues("jhCorporation");
+    	String jhDepartment[] = request.getParameterValues("jhDepartment");
+    	String workContent[] = request.getParameterValues("workContent");
+    	String startDate[] = request.getParameterValues("startDate");
+    	String endDate[] = request.getParameterValues("endDate");
+
+    	if(jhCorporation != null){
+    		for (int i = 0; i < jhCorporation.length; i++){
+    			
+    			if (jhCorporation[i] == null || jhCorporation[i].trim().equals("")) continue;
+    			
+    			CareerDTO careerDTO = new CareerDTO();
     			careerDTO.setMemberNum(member_num);
+    			careerDTO.setJhCorporation(jhCorporation[i]);
+    			careerDTO.setJhDepartment(jhDepartment[i]);
+    			careerDTO.setWorkContent(workContent[i]);
+    			careerDTO.setStartDate(startDate[i]);
+    			careerDTO.setEndDate(endDate[i]);
+
     			careerService.insertCareer(careerDTO);
     		}
-    	}
+    	}	
+    	
     	
     	System.out.println("한 줄 소개 : " + myPageDTO.getMemberIntroduce());
     	System.out.println("회원번호 : " + myPageDTO.getMemberNum());
     	System.out.println("이메일 여부 : " + myPageDTO.getMemberInfoC());
     	
     	return "redirect:/mypage/my-profile";
-    }
+    }//updateMyIntroduce
 
     @GetMapping("/mypage/education-insert")
     public String showEducationInsert() {
@@ -332,7 +338,15 @@ public class MyPageController {
     	}
     	
     	return "redirect:/mypage/my-introduce";
+    }//deleteIntroduce
+    
+    @PostMapping("/mypage/career-delete")
+    @ResponseBody
+    public String deleteCareer(@RequestParam("jhId") int jhId) {
+    	careerService.deleteCareer(jhId);
+    	return "삭제 성공";
     }
+    
     
     
 }

@@ -32,6 +32,11 @@ public class CareerService {
 		
 	}
 
+	public void deleteCareer(int jhId) {
+		careerMapper.deleteCareer(jhId);
+		
+	}
+
 
 	
 

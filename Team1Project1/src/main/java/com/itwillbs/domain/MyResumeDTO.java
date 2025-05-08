@@ -38,6 +38,7 @@ public class MyResumeDTO {
 	
 //	job_history 테이블
 	private int jhId;
+	private String jhCorporation;
 	private String jhDepartment;
 	private String workContent;
 	private Date startDate;
