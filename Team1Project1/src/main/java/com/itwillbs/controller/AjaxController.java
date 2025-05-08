@@ -18,6 +18,7 @@ public class AjaxController {
 
 	@Inject
 	private ManagerService managerService;
+	
 
 	@GetMapping("/manager/filter")
 	public List<Map<String, Object>> memberTypeFilter(HttpServletRequest request) {

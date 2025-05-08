@@ -143,3 +143,92 @@ body {
 .footer-right ul li a:hover {
 	text-decoration: underline;
 }
+
+.all {
+  display: flex;
+  min-height: 100vh;
+}
+
+.all {
+  display: flex;
+  min-height: 100vh;
+}
+
+.banner {
+  width: 220px;
+  background-color: #f8f9fa;
+  padding: 30px 20px;
+  border-right: 1px solid #ddd;
+}
+
+.banner h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.banner h2 a {
+  text-decoration: none;
+  color: #111;
+}
+
+.banner ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.banner ul li {
+  margin-bottom: 14px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.banner ul li a {
+  text-decoration: none;
+  color: #111;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 0;
+}
+
+.banner ul li a:hover {
+  color: #28a745;
+  border-bottom: 2px solid #28a745;
+}
+
+/* 2단 서브메뉴 */
+.banner ul li ul {
+  margin-top: 5px;
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 2px solid #ddd;
+}
+
+.banner ul li ul li {
+  font-weight: normal;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.banner ul li ul li a {
+  color: #555;
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+.banner ul li ul li a:hover {
+  color: #28a745;
+}
+
+/* 활성화 표시 */
+.banner ul li.active > a {
+  border-bottom: 3px solid #28a745;
+  color: #28a745;
+  font-weight: bold;
+}
+
+
+
+
