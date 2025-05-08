@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>기업 관리 | 이력서 열람실</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/corptop.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/my-resume.css">
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>

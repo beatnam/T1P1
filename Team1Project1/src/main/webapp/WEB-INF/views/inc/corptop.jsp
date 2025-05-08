@@ -4,11 +4,10 @@
 
 	<!-- 다른계획있을시 수정 -->
 	<!-- 기업 페이지, 공고 업로드, 지원 이력서 모음, 지원 자소서 모음, 이력서 열람실 -->
-	<header id="header">
-		<div class="include-menu">
-			<h2>기업 회원 페이지</h2>
-			<div class="cop-menu-list">
-				<ul>
+	
+			<div class="banner1">
+				<h2>기업 회원 페이지</h2>
+				<ul class="banner-list">
 					<li><a href="${pageContext.request.contextPath}/corpmain/main">기업 페이지</a></li>
 					<li><a href="${pageContext.request.contextPath}/corplist/list">공고 업로드</a></li>
 					<li><a href="${pageContext.request.contextPath}/corpmain/applyresume">지원 이력서 모음</a></li>
@@ -16,5 +15,3 @@
 					<li><a href="${pageContext.request.contextPath}/corpmain/openresume">이력서 열람실</a></li>
 				</ul>
 			</div>
-		</div>
-	</header>
