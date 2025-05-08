@@ -4,7 +4,8 @@
 
 <mapper namespace="com.itwillbs.mapper.MyResumeMapper">
 
-  <insert id="insertResume" parameterType="com.itwillbs.domain.MyResumeDTO">
+  <insert id="insertResume" parameterType="com.itwillbs.domain.MyResumeDTO"
+  useGeneratedKeys="true" keyProperty="resumeID">
 	insert into resume
 	(member_num, resume_photo)
 	values
@@ -80,30 +81,51 @@
   	where member_num = #{memberNum}
   </select>
   
-  <select id="getCertificationList" parameterType="int" resultType="com.itwillbs.domain.CertificationDTO">
-  SELECT 
-    c.certification_name,
-    c.certification_issuer,
-    cm.cermap_aquired_date
-  FROM certification_mapping cm
-  LEFT JOIN certification c ON cm.certification_id = c.certification_id
-  WHERE cm.member_num = #{memberNum}
+  <select id="getCertificationList" resultType="com.itwillbs.domain.CertificationDTO">
+  	select
+  	certification_name, certification_issuer, certification_acquired_date, certification_grade
+  	from certification
+  	where member_num = #{memberNum}
   </select>
   
-  <select id="getLanguageList" parameterType="int" resultType="com.itwillbs.domain.LanguageDTO">
+  <insert id="insertCertification" parameterType="com.itwillbs.domain.CertificationDTO">
+  	insert into certification
+  	(member_num, certification_name, certification_issuer, certification_acquired_date, certification_grade, resume_id)
+  	values
+  	(#{memberNum}, #{certificationName}, #{certificationIssuer}, #{certificationAcquiredDate}, #{certificationGrade}, #{resumeID})
+  </insert>
+  
+  <select id="getLanguageList"  parameterType="int" resultType="com.itwillbs.domain.LanguageDTO">
   SELECT
-    lm.member_num,
-    l.language_name,
-    l.language_issuer,
-    lm.langmap_grade
-  FROM language_mapping lm
-  LEFT JOIN language l ON lm.language_id = l.language_id
-  WHERE lm.member_num = #{memberNum}
+    language_name,
+    language_issuer,
+    language_grade
+  FROM language 
+  WHERE member_num = #{memberNum}
   </select>
+  
+  <insert id="insertLanguage" parameterType="com.itwillbs.domain.LanguageDTO">
+  	insert into language
+  	(member_num, language_name, language_issuer, language_grade, resume_id)
+  	values
+  	(#{memberNum}, #{languageName}, #{languageIssuer}, #{languageGrade}, #{resumeID})
+  </insert>
   
   <delete id="deleteResume" parameterType="int">
 	delete from resume
 	where resume_id = #{resumeID}  
+  </delete>
+  
+  <delete id="deleteCertification">
+  	delete
+  	from certification
+  	where resume_id = #{resumeID}
+  </delete>
+  
+  <delete id="deleteLanguage">
+  	delete  
+  	from language
+  	where resume_id = #{resumeID}
   </delete>
   
 </mapper>

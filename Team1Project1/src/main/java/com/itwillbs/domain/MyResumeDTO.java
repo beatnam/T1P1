@@ -44,17 +44,18 @@ public class MyResumeDTO {
 	private Date endDate;
 	
 //	certification 테이블 
-	private String certificationName;
-	private String certificationIssuer;
+//	private String certificationName;
+//	private String certificationIssuer;
 //	certification_mapping 테이블
-	private String cermapAquiredDate;
+//	private String cermapAquiredDate;
+	private List<CertificationDTO> certificationList;
 	
 //	language 테이블
-	private String languageName;
-	private String languageNameCustom;
-	private String languageIssuer;
-//	language_mapping 테이블
-	private String langmapGrade;
+//	private String languageName;
+//	private String languageNameCustom;
+//	private String languageIssuer;
+	private List<LanguageDTO> languageList;
+
     
 }
 

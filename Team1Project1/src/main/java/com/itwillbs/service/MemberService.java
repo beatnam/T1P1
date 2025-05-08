@@ -107,6 +107,13 @@ public class MemberService {
 	    private String generateCode() {
 	        return String.valueOf((int)(Math.random() * 900000) + 100000);
 	    }
+
+
+		public MemberDTO infoMember(String id) {
+			System.out.println("MemberService infoMember()");
+
+			return memberMapper.infoMember(id);
+		}
 	
 
 }//클래스

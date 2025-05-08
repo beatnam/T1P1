@@ -41,6 +41,14 @@ public interface MyResumeMapper {
 
 	void deleteResume(int resumeID);
 
+	void insertCertification(CertificationDTO certificationDTO);
+
+	void insertLanguage(LanguageDTO languageDTO);
+
+	void deleteCertification(int resumeID);
+
+	void deleteLanguage(int resumeID);
+
 	
 
 	
