@@ -18,9 +18,8 @@
 <div class="parent_div">
  	<form action="${pageContext.request.contextPath}/corpmain/main" method="get">
  		<div class="main_content">
- 		
+ 		<h3>회사 정보</h3>
  			<img alt="" src="">
- 			<input type="button" id="cop_file" name="cop_file" value="첨부 파일">
  			<ul> 
  				<li><a>기업 아이디</a><input type="text" id="corpId" name="corpId" value="${corporationDTO.corporationMemberId}" readonly></li>
  				<li><a>기업 이름</a><input type="text" id="corpName" name="corpName" value="${corporationDTO.corporationName}" readonly></li>
