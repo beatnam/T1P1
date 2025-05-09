@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.domain.ApplicationDTO;
 import com.itwillbs.domain.CareearDTO;
 import com.itwillbs.domain.EduHighDTO;
 import com.itwillbs.domain.JobDTO;
@@ -26,5 +28,9 @@ public interface JobMapper {
 	public EduHighDTO eduHighName(EduHighDTO eduHighDTO);
 	public void deleteBoard(int recruitId);
 	public Integer countBoard(PageDTO pageDTO);
+	public List<Map<String, Object>> resumeList(PageDTO pageDTO);
+	public Integer countResume(PageDTO pageDTO);
+	public void updateApplicationStatus(@Param("applicationIds") List<String> applicationIds, @Param("status") String status);
 	
+
 }
