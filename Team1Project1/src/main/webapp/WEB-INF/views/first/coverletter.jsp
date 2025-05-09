@@ -169,8 +169,8 @@
 			});
 		});
 		// 자기소개서 전송 시 GPT 결과 받기
-		$("#resumeForm").submit(function() {
-
+		$("#resumeForm").submit(function(e) {
+			e.preventDefault(); // 기본 제출 막기
 			const contextPath = '${pageContext.request.contextPath}';
 			var coverLetter = $("#coverLetter").val();
 			$.ajax({
@@ -184,7 +184,6 @@
 				}
 			});
 		});
-	});
 </script>
 </body>
 </html>

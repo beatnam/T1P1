@@ -28,7 +28,8 @@ public class GPTController {
 		return result;
 	}
 
-	@GetMapping("/first/coverletter")
+	@GetMapping(value  = "/first/coverletter", produces = "text/plain;charset=UTF-8")
+	@ResponseBody
 	public String updateCoverletter(@RequestParam String coverLetter, Model model) {
 		System.out.println("GPTController updateCoverletter()");
 
