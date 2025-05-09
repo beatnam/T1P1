@@ -12,51 +12,117 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 
 <style>
-/* 전체 레이아웃: 7등분 기반으로 상단 3:1:3 */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
 .grid-container {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr); /* 7등분 */
-	grid-template-rows: auto auto;
-	gap: 20px;
-	padding: 20px;
-	width: 100%;
-	box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-#open_recruit {
-	grid-column: 1/span 3;
-}
-
-#gpt_comment {
-	grid-column: 4/span 1;
-}
-
-#recruit {
-	grid-column: 5/span 3;
-}
-
-#resume {
-	grid-column: 1/span 7; /* 하단 영역 전체 사용 */
-}
-
-#gpt_result {
-	grid-column: 1/span 7; /* 필요 시 추가로 전체 사용 */
-}
-
-/* 기타 스타일 유지 */
-.two-column {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr); /* 2열 배치 */
-	gap: 12px;
+h4 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #333;
+  border-left: 5px solid #4CAF50;
+  padding-left: 10px;
 }
 
 .item-card {
-	background-color: #ffffff;
-	border: 1px solid #cccccc;
-	border-radius: 10px;
-	padding: 12px;
-	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
+
+.item-card:hover {
+  transform: translateY(-4px);
+}
+
+.item-card strong {
+  display: block;
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.item-card .content {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+#gpt_comment {
+  background-color: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  color: #256029;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+input[type="submit"], button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-right: 8px;
+  transition: background-color 0.2s ease;
+}
+
+input[type="submit"]:hover, button:hover {
+  background-color: #388e3c;
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
 </style>
 </head>
 <body>
@@ -79,10 +145,6 @@
 						</div>
 					</div>
 				</c:forEach>
-
-
-
-
 
 
 			</div>
