@@ -18,6 +18,7 @@
 <div class="parent_div">
  	<form action="${pageContext.request.contextPath}/corpmain/updatepro" method="post">
  		<div class="main_content">
+ 		<h3>회사 정보 수정</h3>
  			<ul>
  				<li><a href="">기업 아이디</a><input type="text" id="corpId" name="corporationMemberId" value="${corporationDTO.corporationMemberId}" readonly></li>
  				<li><a href="">비밀번호</a><input type="password" id="corpPasswd" name="corporationMemberPasswd" value="${corporationDTO.corporationMemberPasswd}" ></li>

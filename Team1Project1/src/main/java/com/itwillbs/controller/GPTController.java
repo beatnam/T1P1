@@ -22,10 +22,22 @@ public class GPTController {
 		System.out.println("GPTController keyword()");
 		String prompt = name + "의 인재상 알려줘";
 		String result = gptService.askKeyword(prompt);
-		
+
 		System.out.println(result);
-		
+
 		return result;
+	}
+
+	@GetMapping("/first/coverletter")
+	public String updateCoverletter(@RequestParam String coverLetter, Model model) {
+		System.out.println("GPTController updateCoverletter()");
+
+		String prompt = coverLetter + "해당 회사에 맞게 다듬어줘";
+
+		String result = gptService.updateCoverLetter(prompt);
+
+		model.addAttribute("result", result);
+		return "/first/gpt_result";
 	}
 
 }

@@ -114,7 +114,7 @@
 		<a href="${pageContext.request.contextPath }/main/main">홈으로</a>
 
 		<div id="resume">
-			<form id="resumeForm" action="#" method="post">
+			<form id="resumeForm" action="${pageContext.request.contextPath}/first/coverletter" method="get">
 
 				<label for="coverLetter">자기소개서:</label>
 				<br>

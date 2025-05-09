@@ -75,15 +75,16 @@
 	margin-top: 10px;
 }
 
+/* 버튼 및 링크를 오른쪽으로 정렬 */
 .parent_div .apply_btn {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end; /* 버튼과 링크를 오른쪽으로 정렬 */
 	gap: 10px;
 	margin-top: 20px;
 	border-radius: 5px;
 }
 
-.parent_div .apply_btn a {
+.parent_div .apply_btn a, .refresh {
 	display: inline-block;
 	padding: 10px 20px;
 	background: #007bff;

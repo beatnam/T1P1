@@ -17,7 +17,7 @@
 <div class="box">
 <div class="parent_div">
 		<div>
-			<button name="refresh" id="refresh" onclick="location.reload()">화면갱신</button>
+			<button name="refresh" class="refresh" id="refresh" onclick="location.reload()">화면갱신</button>
 		</div>
 		<!-- 본문 영역 -->
 		<div class="main_content">

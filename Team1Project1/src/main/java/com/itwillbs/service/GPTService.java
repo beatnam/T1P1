@@ -29,4 +29,18 @@ public class GPTService {
 		
 	}
 
+	public String updateCoverLetter(String prompt) {
+		String result = gptClient.updateCoverLetter(prompt);
+
+		// 배열의 내용만 뽑아오기
+		JSONObject jsonObject = new JSONObject(result);
+		JSONArray jsonArray = jsonObject.getJSONArray("choices");
+		JSONObject firstChoice = jsonArray.getJSONObject(0);
+		JSONObject message = firstChoice.getJSONObject("message");
+
+		String cont = message.getString("content");
+
+		return cont;
+	}
+
 }

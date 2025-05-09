@@ -12,7 +12,7 @@
 				<label for="gptResult">GPT가 준 결과</label>
 				<br>
 				<textarea id="gptResult" name="gptResult" rows="10" cols="60"
-					readonly required></textarea>
+					readonly required>${result }</textarea>
 
 
 				<input type="hidden" id="actionType" name="actionType" value="">

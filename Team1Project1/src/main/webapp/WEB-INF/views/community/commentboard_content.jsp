@@ -52,12 +52,23 @@
 		    <div class="comment-list">
 		        <c:forEach var="comment" items="${comments}">
 		            <div class="comment-item">
-		            	<c:if test="${comment.parent_id ne null}">
-		            	<p>${comment.parent_id}번글의 = 대댓글</p>
-		            	</c:if>
+		            	
+		            	<c:if test="${comment.parent_id eq null}">
 		                <p>[${comment.ce_id}]  <strong>${comment.member_id}</strong> | ${comment.ce_date}</p>
 		                <p>${comment.ce_content}</p>
 		                <input type="hidden" name="parent_id" value="${comment.ce_id}">
+						</c:if>
+		            	
+		            	<c:if test="${comment.parent_id ne null}">
+		            	<div class="reple">
+		                <p>[${comment.ce_id}]  <strong>${comment.member_id}</strong> | ${comment.ce_date}</p>
+		                <p>${comment.ce_content}</p>
+		                <input type="hidden" name="parent_id" value="${comment.ce_id}">
+		                </div>
+						</c:if>
+		                
+		                <!-- 대댓글 입력 폼 -->
+		                <c:if test="${comment.parent_id eq null}">
 		                <form action="${pageContext.request.contextPath}/comment/rerepliesadd" method="post" class="reply-form">
 					        <input type="hidden" name="parent_id" value="${comment.ce_id}">
 					        <input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
@@ -65,27 +76,56 @@
 					        <textarea name="ce_content" rows="2" placeholder="대댓글을 입력하세요" required></textarea>
 					        <button type="submit">답글 작성</button>
 					    </form>
-		                <!-- 수정 폼 -->
+					    </c:if>
+					    
+					    <c:if test="${comment.parent_id eq null}">
+						<c:if test="${! empty sessionScope.id }">
+			            <c:if test="${sessionScope.id eq comment.member_id}">
 		                <div class="btn-updelete">
+		                <!-- 수정 폼 -->
 		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
-		                    
 		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
 		                    <input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
 		                    <input type="hidden" name="memberNum" value="${rcBoardDTO.memberNum}">
 		                    <textarea name="ce_content">${comment.ce_content}</textarea>
-		                    <c:if test="${comment.member_id eq sessionScope.id}">
 		                    <button type="submit">수정</button>
-		                    </c:if>
 		                </form>
 		                <!-- 삭제 폼 -->
 		                <form action="${pageContext.request.contextPath}/comment/delete" method="post" class="delete-form">
 		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
 		                   	<input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
-		                    <c:if test="${comment.member_id eq sessionScope.id}">
 		                    <button type="submit">삭제</button>
-		                    </c:if>
 		                </form>
 		                </div>
+		                </c:if>
+		                </c:if>
+		                </c:if>
+					    
+		                <c:if test="${comment.parent_id ne null}">
+		                <div class="reple_1">
+						<c:if test="${! empty sessionScope.id }">
+			            <c:if test="${sessionScope.id eq comment.member_id}">
+		                <div class="btn-updelete">
+		                <!-- 수정 폼 -->
+		                <form action="${pageContext.request.contextPath}/comment/update" method="post" class="update-form">
+		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                    <input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
+		                    <input type="hidden" name="memberNum" value="${rcBoardDTO.memberNum}">
+		                    <textarea name="ce_content">${comment.ce_content}</textarea>
+		                    <button type="submit">수정</button>
+		                </form>
+		                <!-- 삭제 폼 -->
+		                <form action="${pageContext.request.contextPath}/comment/delete" method="post" class="delete-form">
+		                    <input type="hidden" name="ce_id" value="${comment.ce_id}">
+		                   	<input type="hidden" name="re_num" value="${rcBoardDTO.reNum}">
+		                    <button type="submit">삭제</button>
+		                </form>
+		                </div>
+		                </c:if>
+		                </c:if>
+		                </div>
+		                </c:if>
+		                
 		            </div>
 		        </c:forEach>
 		    </div>
