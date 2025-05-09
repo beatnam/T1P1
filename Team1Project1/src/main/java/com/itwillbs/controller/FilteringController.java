@@ -64,9 +64,5 @@ public class FilteringController {
 		return "/first/coverletter";
 	}
 
-	@GetMapping("/coverletter")
-	public String coverletter() {
-
-		return "/first/coverletter";
-	}
+	
 }

@@ -114,7 +114,9 @@
 		<a href="${pageContext.request.contextPath }/main/main">홈으로</a>
 
 		<div id="resume">
-			<form id="resumeForm" action="${pageContext.request.contextPath}/first/coverletter" method="get">
+			<form id="resumeForm"
+				action="${pageContext.request.contextPath}/first/coverletter"
+				method="get">
 
 				<label for="coverLetter">자기소개서:</label>
 				<br>
@@ -125,6 +127,24 @@
 				<input type="submit" value="gpt 보내기">
 			</form>
 		</div>
+
+		<div id="gpt_result">
+			<form action="#" method="post">
+				<label for="gptResult">GPT가 준 결과</label>
+				<br>
+				<textarea id="gptResult" name="gptResult" rows="10" cols="60"
+					required></textarea>
+
+
+				<input type="hidden" id="actionType" name="actionType" value="">
+				<button type="submit" onclick="setAction('apply')">저장 +
+					지원하기</button>
+				<button type="submit" onclick="setAction('home')">저장 + 홈으로</button>
+				<button type="submit" onclick="setAction('draft')">임시저장</button>
+			</form>
+		</div>
+
+
 
 	</div>
 	<script>
@@ -148,6 +168,23 @@
 				});
 			});
 		});
-	</script>
+		// 자기소개서 전송 시 GPT 결과 받기
+		$("#resumeForm").submit(function() {
+
+			const contextPath = '${pageContext.request.contextPath}';
+			var coverLetter = $("#coverLetter").val();
+			$.ajax({
+				method: "GET",
+				url: contextPath + "/first/coverletter",
+				data: { coverLetter: coverLetter },
+				dataType: 'text',
+				success: function(result2) {
+					console.log(result2);
+					$("#gptResult").val(result2); // 결과 textarea에 출력
+				}
+			});
+		});
+	});
+</script>
 </body>
 </html>

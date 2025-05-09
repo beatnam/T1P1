@@ -34,10 +34,10 @@ public class GPTController {
 
 		String prompt = coverLetter + "해당 회사에 맞게 다듬어줘";
 
-		String result = gptService.updateCoverLetter(prompt);
-
-		model.addAttribute("result", result);
-		return "/first/gpt_result";
+		String result2 = gptService.updateCoverLetter(prompt);
+		System.out.println(result2);
+		//model.addAttribute("result", result);
+		return result2;
 	}
 
 }
