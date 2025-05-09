@@ -11,6 +11,8 @@
 <title>취업정보 | 상시채용</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/recruit.css">
 </head>
 
 <body>
@@ -25,6 +27,32 @@
 
 		<div class="recruit-list">
 			<h4>상시 채용</h4>
+
+			<div class="card-container">
+				<c:forEach var="recruit" items="${recruitList}">
+					<div class="job-card">
+						<div class="job-image">
+							<!-- 예시 이미지, 추후 회사 이미지가 있다면 동적으로 바꾸세요 -->
+							<img src="${recruit.recruit_photo }" alt="회사 이미지">
+						</div>
+						<div class="job-info">
+							<h3 class="job-title">
+								<a
+									href="${pageContext.request.contextPath}/recruit_info/always_content?recruitId=${recruit.recruit_id}">
+									${recruit.recruit_name} </a>
+							</h3>
+							<p class="corp-name">${recruit.corporation_name}</p>
+							<p class="tech-stack">${recruit.occupation_name}·
+								${recruit.job_name}</p>
+							<p class="location">${recruit.recruit_location}·
+								${recruit.careear_name}</p>
+							<p class="deadline">${recruit.recruit_deatline }</p>
+						</div>
+					</div>
+				</c:forEach>
+
+
+			</div>
 			<!-- 	pagination -->
 			<div class="pagination">
 				<a
@@ -75,24 +103,7 @@
 				</a>
 			</div>
 			<!-- 				pagination -->
-			<table border="1">
-				<c:forEach var="recruit" items="${recruitList }">
-					<tr>
-						<td id="hidden">${recruit.recruit_id }</td>
-						<td><a
-								href="${pageContext.request.contextPath }/recruit_info/always_content?recruitId=${recruit.recruit_id}">${recruit.recruit_name}</a></td>
-						<td>${recruit.corporation_name}</td>
-						<td>${recruit.occupation_name}</td>
-						<td>${recruit.job_name}</td>
-						<td>${recruit.recruit_location}</td>
-						<td>${recruit.eduhigh_name}</td>
-						<td>${recruit.careear_name}</td>
-						<td>${recruit.recruit_salary}</td>
-					</tr>
-				</c:forEach>
-			</table>
 		</div>
 	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
-
 </body>

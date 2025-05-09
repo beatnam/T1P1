@@ -91,6 +91,17 @@ public class RecruitInfoController {
 		return "recruit_info/fair";
 	}
 
+	@GetMapping("/corp_info")
+	public String corpInfo(@RequestParam String corpName, Model model) {
+		System.out.println("RecruitInfoController corpInfo()");
+		System.out.println(corpName);
+		
+		Map<Object, Object> info = managerService.contentCorp2(corpName);
+		
+		model.addAttribute("info", info);
+		return "/recruit_info/corp_info";
+	}
+
 	@GetMapping("/open")
 	public String open(HttpServletRequest request, Model model) {
 		int pageSize = 12;

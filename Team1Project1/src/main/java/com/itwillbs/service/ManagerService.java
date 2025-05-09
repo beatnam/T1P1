@@ -254,4 +254,9 @@ public class ManagerService {
 		
 	}
 
+	public Map<Object, Object> contentCorp2(String corpName) {
+		
+		return managerMapper.contentCorp2(corpName);
+	}
+
 }

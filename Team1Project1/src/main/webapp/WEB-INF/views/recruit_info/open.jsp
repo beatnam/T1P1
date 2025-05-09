@@ -10,6 +10,8 @@
 <title>취업 정보 | 공개 채용</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/recruit.css">
 </head>
 
 <body>
@@ -26,6 +28,31 @@
 
 
 
+			
+			<div class="card-container">
+				<c:forEach var="openrecruit" items="${ORlist}">
+					<div class="job-card">
+						<div class="job-info">
+							<h3 class="job-title">${openrecruit.or_name}</h3>
+							<p class="corp-name">
+								<a href="${openrecruit.or_url}" target="_blank">${openrecruit.or_corporation_name}</a>
+							</p>
+							<p class="job-detail">
+								<strong>직종:</strong> ${openrecruit.occupation_name}<br> <strong>직무:</strong>
+								${openrecruit.job_name}
+							</p>
+							<p class="edu-career">
+								<strong>학력:</strong> ${openrecruit.eduhigh_name}<br> <strong>경력:</strong>
+								${openrecruit.careear_name}
+							</p>
+							<p class="deadline">
+								<strong>마감일:</strong> ${openrecruit.or_deadline}
+							</p>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			
 			<!-- 	pagination -->
 			<div class="pagination">
 				<a
@@ -76,34 +103,6 @@
 				</a>
 			</div>
 			<!-- 				pagination -->
-			<table border="1">
-
-				<tr>
-
-					<td>공고명</td>
-					<!-- -->
-					<td>회사명</td>
-					<td>직종</td>
-					<td>직무</td>
-					<td>학력</td>
-					<td>경력</td>
-					<td>마감일</td>
-
-				</tr>
-
-
-				<c:forEach var="openrecruit" items="${ORlist }">
-					<tr>
-						<td>${openrecruit.or_name }</td>
-						<td><a href="${openrecruit.or_url}">${openrecruit.or_corporation_name }</a></td>
-						<td>${openrecruit.occupation_name}</td>
-						<td>${openrecruit.job_name }</td>
-						<td>${openrecruit.eduhigh_name }</td>
-						<td>${openrecruit.careear_name }</td>
-						<td>${openrecruit.or_deadline }</td>
-					</tr>
-				</c:forEach>
-			</table>
 		</div>
 	</div>
 
