@@ -25,7 +25,7 @@
 				</li>
 			</ul>
 			<p class="bo_btn">
-				<button type="submit" class="">글쓰기</button>
+				<button type="submit" class="btn_srch">글쓰기</button>
 				<a href="" class="${pageContext.request.contextPath}/rvborad/rclist">글목록</a>
 			</p>
 		</form>
