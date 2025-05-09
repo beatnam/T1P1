@@ -3,38 +3,78 @@
 .comment-section {
 	width: 80%;
 	margin: 0 auto;
-	padding: 10px;
+	padding: 20px;
+	background: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.comment-item {
-	border-bottom: 1px solid #ddd;
-	padding: 10px 0;
-}
-
-.btn-updelete button[type="submit"] {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-    margin-top: 5px; /* 위쪽 여백 추가 */
-}
-
-.comment-form, .update-form {
-	margin-top: 20px;
+.comment-form, .reply-form, .update-form, .delete-form {
+	display: flex;
+	justify-content: flex-start;
+	gap: 10px;
+	margin-top: 4px;
 }
 
 textarea, input[type="text"] {
-	width: 100%;
-	margin: 5px 0;
+	width: 70%;
+	height: 15px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	resize: none;
+	font-size: 14px;
+	background: #fff;
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 button {
 	background-color: #007acc;
 	color: #fff;
-	padding: 10px;
+	padding: 4px 6px; /* 패딩 줄이기 */
+	width: 10%; /* 버튼이 내용에 맞게 크기 조절 */
+	min-width: 50px; /* 최소 너비 설정 */
 	border: none;
 	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+	text-align: center;
 }
 
 button:hover {
 	background-color: #005a99;
+}
+
+.btn-updelete {
+	display: flex;
+	justify-content: flex-start; /* 우측 정렬 */
+	gap: 8px; /* 버튼 사이 간격 조정 */
+	margin-top: 3px;
+	width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
+}
+
+.comment-list {
+	margin-top: 20px;
+}
+
+.comment-item {
+	border-bottom: 1px solid #ddd;
+	background: #fff;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+h3 {
+	margin-top: 20px;
+	font-size: 18px;
+	color: #333;
+	text-align: left;
+}
+
+.reple, .reple_1 {
+	padding-left: 80px;
+	margin-top: -10px;
+	
 }
