@@ -85,5 +85,11 @@ public class CorpMemberController {
 		return "/corporation/apply_resume";
 	}//applyResume()
 	
+	@GetMapping("/applyemail")
+	public String applyEmail() {
+		System.out.println("corpmembercontroller applyEmail()");
+		
+		return "/corporation/email_apply";
+	}//applyResume()
 	
 }

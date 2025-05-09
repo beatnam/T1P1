@@ -56,7 +56,8 @@
 	<!-- </bean> -->
 	<context:property-placeholder
 		location="classpath:/config/appdata.properties" />
-
+	
+	
 
 </beans>
 

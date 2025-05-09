@@ -82,7 +82,7 @@
 			<!-- 			</div> -->
 
 			<div class="apply_btn" id="apply_btn">
-				<input type="button" id="m_btn" value="메시지 보내기">
+				<a href="${pageContext.request.contextPath}/corpmain/applyemail">이메일 보내기</a>
 				<input type="button" id="a_btn" value="합격 처리">
 				<input type="button" id="na_btn" value="불합격 처리">
 			</div>
