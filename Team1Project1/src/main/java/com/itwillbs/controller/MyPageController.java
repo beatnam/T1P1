@@ -1,7 +1,13 @@
 package com.itwillbs.controller;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +16,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
@@ -29,12 +36,14 @@ import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CareerListDTO;
 import com.itwillbs.domain.EducationDTO;
 import com.itwillbs.domain.IntroduceDTO;
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.MyPageDTO;
 import com.itwillbs.domain.MyResumeDTO;
 import com.itwillbs.domain.SchoolDTO;
 import com.itwillbs.service.CareerService;
 import com.itwillbs.service.EducationService;
 import com.itwillbs.service.IntroduceService;
+import com.itwillbs.service.MemberService;
 import com.itwillbs.service.MyPageService;
 import com.itwillbs.service.MyResumeService;
 import com.itwillbs.service.SchoolService;
@@ -60,6 +69,9 @@ public class MyPageController {
 	
 	@Inject
 	private IntroduceService introduceService;
+	
+	@Inject
+	private MemberService memberService;
 
 	@RequestMapping("/")
 	public String main() {
@@ -122,10 +134,18 @@ public class MyPageController {
         myPageDTO.setMemberNum(member_num);
         
         MyPageDTO myPageDTO2 = myPageService.getMyProfileByMemberNum(myPageDTO);
-        
         model.addAttribute("MyPageDTO", myPageDTO2);
     	
         List<EducationDTO> educationList = educationService.getEducationList(member_num);
+        for(EducationDTO educationDTO : educationList) {
+        	try {
+        		int schoolId = educationDTO.getEducationSchool();
+        		String schoolName = schoolService.getSchoolNameById(schoolId);
+        		educationDTO.setSchoolName(schoolName);
+        	}catch(NumberFormatException e){
+        		educationDTO.setSchoolName("학교 정보 없음");
+        	}
+        }
         model.addAttribute("educationList", educationList);
             
         List<CareerDTO> careerList = careerService.getCareerList(member_num);
@@ -229,7 +249,7 @@ public class MyPageController {
         System.out.println(schoolList);
         
         return schoolList;
-    }
+    }//searchSchool
 
     
     @GetMapping("/mypage/education-update")
@@ -238,7 +258,13 @@ public class MyPageController {
     	
     	EducationDTO educationDTO = educationService.getEducationByMemberNum(member_num);
     	
-    	
+    	try {
+            int schoolId = educationDTO.getEducationSchool();
+            String schoolName = schoolService.getSchoolNameById(schoolId);
+            educationDTO.setSchoolName(schoolName);  
+        } catch (Exception e) {
+            educationDTO.setSchoolName("학교 정보 없음");
+        }
     	model.addAttribute("educationDTO", educationDTO);
     	
     	
@@ -250,7 +276,7 @@ public class MyPageController {
     public String updateEducation(EducationDTO educationDTO) {
     	educationService.updateEducation(educationDTO);
     	return "<script>alert('수정되었습니다.'); window.opener.location.reload(); window.close();</script>";
-    }
+    }//updateEducation
     
     @PostMapping("/mypage/member-delete")
     public String deleteMember(HttpSession session, RedirectAttributes rttr) {
@@ -263,16 +289,17 @@ public class MyPageController {
     	}
     	
     	return "redirect:/main/main";
-    }
+    }//deleteMember
     
     @GetMapping("/mypage/career-add")
     public String showCareerAddPage() {
     	return "mypage/career-add";
-    }
+    }//showCareerAddPage
     
     @PostMapping("/mypage/uploadIntroduceFile")
     public String uploadIntroduceFile(@RequestParam("introduceFile") MultipartFile file, HttpSession session, HttpServletRequest request, Model model) {
     	Integer memberNum = (Integer)session.getAttribute("member_num");
+    	
     	
     	if(memberNum == null) {
     		return "redirect:/main/login";
@@ -290,14 +317,32 @@ public class MyPageController {
     			dir.mkdirs();
     		}
     		
-    		String uuid = UUID.randomUUID().toString();
+//    		String uuid = UUID.randomUUID().toString();
+//    		String originalFilename = file.getOriginalFilename();
+//    		String savedFilename = uuid + "_" + originalFilename;
+    		
+    		MemberDTO memberDTO = memberService.getMemberInfo(memberNum);
+    		String memberName = memberDTO.getMemberName().replaceAll("\\s+", "");
+    		
     		String originalFilename = file.getOriginalFilename();
-    		String savedFilename = uuid + "_" + originalFilename;
-    		file.transferTo(new File(uploadDir, savedFilename));
+    		String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+    		
+    		int index = 1;
+    		String baseName = "자기소개서_" + memberName;
+    		String savedFilename;
+    		File destFile;
+    		
+    		do {
+    			savedFilename = baseName + "_" + index + extension;
+    			destFile = new File(uploadDir, savedFilename);
+    			index++;
+    		}while(destFile.exists());
+    		
+    		file.transferTo(destFile);
     		
     		IntroduceDTO introduceDTO = new IntroduceDTO();
     		introduceDTO.setMemberNum(memberNum);
-    		introduceDTO.setCvFileName(originalFilename);
+    		introduceDTO.setCvFileName(savedFilename);
     		introduceDTO.setCvFilePath("/upload/introduce/" + savedFilename);            
             
     		
@@ -347,7 +392,25 @@ public class MyPageController {
     	return "삭제 성공";
     }
     
-    
+//    @GetMapping("/introduce/view")
+//    public void viewIntroduceFile(@RequestParam("filePath") String filePath, HttpServletResponse response) {
+//        File file = new File("C:/upload/introduce/" + filePath);
+//
+//        response.setCharacterEncoding("UTF-8");  // 인코딩 지정
+//        response.setContentType("text/plain; charset=UTF-8");
+//
+//        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
+//             PrintWriter out = response.getWriter()) {
+//
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                out.println(line);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     
 }
 

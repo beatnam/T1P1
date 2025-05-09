@@ -32,7 +32,12 @@
 
         <c:forEach var="introduce" items="${introduceList}">
     		<div class="inbox">
-        		<div>${introduce.memberNum}</div>
+    			
+        		<div>
+    			${introduce.cvFileName}
+<%--     			<a href="${pageContext.request.contextPath}/mypage/introduce/view?filePath=${introduce.cvFileName}" target="_blank">파일 보기</a> --%>
+				</div>
+
         		
         		<c:if test="${not empty introduce.cvContent }">
         			<button onclick="location.href='${pageContext.request.contextPath }'">수정</button>

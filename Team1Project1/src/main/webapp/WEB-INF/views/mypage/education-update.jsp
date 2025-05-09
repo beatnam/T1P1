@@ -34,7 +34,7 @@
 <form action="${pageContext.request.contextPath}/mypage/education-update" method="post">
     <label>학교명: </label>
     <div style="position: relative;">
-        <input type="text" id="schoolName" value="${educationDTO.educationSchool}" autocomplete="off"><br>
+        <input type="text" id="schoolName" value="${educationDTO.schoolName}" autocomplete="off"><br>
         <input type="hidden" name="educationSchool" id="schoolId">
         <div id="autocomplete-box" style="border: 1px solid #ccc; display: none; position: absolute; background: white; z-index: 10;"></div>
     </div><br>

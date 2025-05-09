@@ -12,4 +12,11 @@
 	limit 10
 </select>
   
+  
+<select id="getSchoolNameById" resultType="String" parameterType="int">
+	select school_name from school 
+	where school_id = #{schoolId}
+</select>  
+
+
 </mapper>

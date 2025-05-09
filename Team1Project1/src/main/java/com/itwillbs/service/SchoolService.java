@@ -23,6 +23,10 @@ public class SchoolService {
 	    
 	   return schoolMapper.searchSchoolByKeyword(keyword);
    }
+
+   public String getSchoolNameById(int schoolId) {
+	   return schoolMapper.getSchoolNameById(schoolId);  
+   }
 	
 	
 }
