@@ -28,31 +28,31 @@
 
 
 
-			
+
 			<div class="card-container">
 				<c:forEach var="openrecruit" items="${ORlist}">
-					<div class="job-card">
-						<div class="job-info">
-							<h3 class="job-title">${openrecruit.or_name}</h3>
-							<p class="corp-name">
-								<a href="${openrecruit.or_url}" target="_blank">${openrecruit.or_corporation_name}</a>
-							</p>
-							<p class="job-detail">
-								<strong>직종:</strong> ${openrecruit.occupation_name}<br> <strong>직무:</strong>
-								${openrecruit.job_name}
-							</p>
-							<p class="edu-career">
-								<strong>학력:</strong> ${openrecruit.eduhigh_name}<br> <strong>경력:</strong>
-								${openrecruit.careear_name}
-							</p>
-							<p class="deadline">
-								<strong>마감일:</strong> ${openrecruit.or_deadline}
-							</p>
+					<a href="${openrecruit.or_url}" target="_blank">
+						<div class="job-card">
+							<div class="job-info">
+								<h3 class="job-title">${openrecruit.or_name}</h3>
+								<p class="corp-name">${openrecruit.or_corporation_name}</p>
+								<p class="job-detail">
+									<strong>직종:</strong> ${openrecruit.occupation_name}<br> <strong>직무:</strong>
+									${openrecruit.job_name}
+								</p>
+								<p class="edu-career">
+									<strong>학력:</strong> ${openrecruit.eduhigh_name}<br> <strong>경력:</strong>
+									${openrecruit.careear_name}
+								</p>
+								<p class="deadline">
+									<strong>마감일:</strong> ${openrecruit.or_deadline}
+								</p>
+							</div>
 						</div>
-					</div>
+					</a>
 				</c:forEach>
 			</div>
-			
+
 			<!-- 	pagination -->
 			<div class="pagination">
 				<a
