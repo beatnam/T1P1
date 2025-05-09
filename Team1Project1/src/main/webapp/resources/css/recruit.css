@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.job-card {
+	width: 250px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	background-color: white;
+	transition: transform 0.2s;
+}
+
+.job-card:hover {
+	transform: translateY(-5px);
+}
+
+.job-image {
+	position: relative;
+	height: 150px;
+	background-color: #f0f0f0;
+}
+
+.job-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.d-day {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background-color: #444;
+	color: white;
+	padding: 5px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+.job-info {
+	padding: 15px;
+}
+
+.job-title {
+	font-size: 16px;
+	margin: 0 0 5px 0;
+}
+
+.corp-name {
+	font-weight: bold;
+	color: #555;
+}
+
+.tech-stack, .location {
+	font-size: 14px;
+	color: #777;
+}
+
+.recruit-list {
+	margin-left: 50px;
+}
+
+.recruit-detail-card {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 24px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #333;
+}
+
+.recruit-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 20px;
+	margin-bottom: 24px;
+}
+
+.recruit-title-box {
+	flex: 1;
+}
+
+.recruit-title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.corp-name {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 8px;
+}
+
+.corp-link {
+	font-size: 14px;
+	color: #0073e6;
+	text-decoration: none;
+}
+
+.corp-link:hover {
+	text-decoration: underline;
+}
+
+.recruit-image img {
+	width: 200px;
+	height: auto;
+	border-radius: 12px;
+	object-fit: cover;
+}
+
+.recruit-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px 24px;
+	font-size: 15px;
+	margin-bottom: 24px;
+}
+
+.recruit-description {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #444;
+}
+
+.company-detail-card {
+	max-width: 960px;
+	margin-left: 50px;
+	padding: 32px;
+	background-color: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #333;
+}
+
+.company-header {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+}
+
+.company-logo img {
+	width: 120px;
+	height: 120px;
+	border-radius: 12px;
+	object-fit: cover;
+	margin-right: 24px;
+}
+
+.company-info {
+	flex: 1;
+}
+
+.company-name {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.company-email {
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 8px;
+}
+
+.company-website {
+	font-size: 14px;
+	color: #0073e6;
+	text-decoration: none;
+}
+
+.company-website:hover {
+	text-decoration: underline;
+}
+
+.company-intro, .company-address {
+	margin-bottom: 24px;
+}
+
+.company-intro h4, .company-address h4 {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.company-intro p, .company-address p {
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	/* 간격 조절 */
+}
+
+.box {
+	width: calc(50% - 20px);
+	/* 2열이므로 50%에서 간격을 제외 */
+	height: 200px;
+	border: 1px solid black;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+/* 여백 및 레이아웃 설정 */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+}
+
+h1 {
+	text-align: center;
+	margin: 40px 0;
+	font-size: 2rem;
+	color: #333;
+}
+
+.card-container1 {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.recruit-card {
+	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+	padding: 20px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 200px;
+}
+
+.recruit-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.recruit-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.recruit-card p {
+	font-size: 1rem;
+	color: #777;
+}
+
+.recruit-card a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.recruit-card a:hover {
+	color: #007BFF;
+}
+
+.manager {
+	display: block;
+	text-align: right;
+}

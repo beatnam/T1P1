@@ -36,7 +36,7 @@
 				<c:forEach var="memberDTO" items="${memberList }">
 					<tr>
 						<!-- 			<td>회원 유형</td> -->
-						<td>${memberDTO.memberId}</td>
+						<td><a href="${pageContext.request.contextPath }/manager/content_member?memberId=${memberDTO.memberId}">${memberDTO.memberId}</a></td>
 						<td>${memberDTO.memberName}</td>
 
 						<td><a

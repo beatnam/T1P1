@@ -66,4 +66,8 @@ public interface ManagerMapper {
 
 	public void deleteRI(int num);
 
+	public Map<Object, Object> contentCorp2(String corpName);
+
+	public Map<Object, Object> contentMember(String memberId);
+
 }

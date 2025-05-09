@@ -254,4 +254,14 @@ public class ManagerService {
 		
 	}
 
+	public Map<Object, Object> contentCorp2(String corpName) {
+		
+		return managerMapper.contentCorp2(corpName);
+	}
+
+	public Map<Object, Object> contentMember(String memberId) {
+		// TODO Auto-generated method stub
+		return managerMapper.contentMember(memberId);
+	}
+
 }

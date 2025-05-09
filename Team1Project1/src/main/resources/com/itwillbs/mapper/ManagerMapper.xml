@@ -82,6 +82,21 @@
 		#{corpId};
 	</select>
 
+	<select id="contentCorp2" resultType="map">
+		SELECT
+		corporationmember_email,
+		corporation_name,
+		corporation_phone,
+		corporation_intro,
+		corporation_address,
+		corporation_photo,
+		corporation_url
+		from corporation
+		where
+		corporation_name =
+		#{corpName}
+	</select>
+
 	<select id="countMember" resultType="java.lang.Integer">
 		select count(*)
 		from member
@@ -158,6 +173,7 @@
 		r.recruit_salary,
 		r.recruit_photo,
 		r.recruit_deatline,
+		r.recruit_content,
 		a.careear_name
 		from recruit r join
 		corporation c
@@ -218,7 +234,8 @@
 		a.careear_id = o.or_careear
 
 		order by 1 desc
-		limit #{startRow}, #{pageSize}
+		limit #{startRow},
+		#{pageSize}
 	</select>
 	<select id="listCopMember" resultType="map">
 		select m.mt_name,
@@ -290,32 +307,42 @@
 	<select id="listREBoard" resultType="map">
 		select re_num, member_id,
 		re_subject, re_content, re_date, re_readcount
-		from review_employment r join member m
+		from review_employment r
+		join member m
 		where r.member_num = m.member_num
 
 		order by 1 desc
-		limit #{startRow}, #{pageSize}
+		limit
+		#{startRow}, #{pageSize}
 	</select>
 
 	<select id="listRIBoard" resultType="map">
 		select ri_num, member_id,
 		ri_subject, ri_content, ri_date, ri_readcount
-		from review_interview r join member m
+		from review_interview r
+		join member m
 		where r.member_num = m.member_num
 
 		order by 1 desc
-		limit #{startRow}, #{pageSize}
+		limit
+		#{startRow}, #{pageSize}
 	</select>
-	
+
 	<delete id="deleteRE">
 		delete from review_employment
 		where re_num = #{num}
-	
+
 	</delete>
-	
+
 	<delete id="deleteRI">
 		delete from review_interview
 		where ri_num = #{num}
-	
 	</delete>
+	
+	<select id="contentMember" resultType="map">
+		select member_id, member_name, member_email, member_address
+		from member
+		where member_id = #{memberId}
+	</select>
+	
 </mapper>

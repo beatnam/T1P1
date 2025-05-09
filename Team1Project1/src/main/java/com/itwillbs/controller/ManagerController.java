@@ -458,12 +458,21 @@ public class ManagerController {
 		return "redirect:/manager/review_employment_mng";
 	}
 
-	
 	@GetMapping("/deleteRI")
 	public String deleteRI(@RequestParam String ri_num) {
 		int num = Integer.parseInt(ri_num);
 
 		managerService.deleteRI(num);
 		return "redirect:/manager/review_interview_mng";
+	}
+
+	@GetMapping("/content_member")
+	public String contentMember(@RequestParam String memberId, Model model) {
+		System.out.println(memberId);
+
+		Map<Object, Object> contentMember = managerService.contentMember(memberId);
+		System.out.println(contentMember);
+		model.addAttribute("contentMember", contentMember);
+		return "/manager/content_member";
 	}
 }
