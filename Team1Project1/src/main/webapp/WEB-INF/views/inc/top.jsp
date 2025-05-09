@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <header>
 	<div class="top-bar">
 		<div class="logo">
@@ -9,9 +12,9 @@
 				출근<span>.</span>
 			</a>
 		</div>
-		<div class="search-bar">
-			<input type="text" placeholder="검색어를 입력해주세요" />
-		</div>
+		<form class="search-bar" id="searchForm" method="get" action="${pageContext.request.contextPath}/main/search">
+			<input type="text" placeholder="검색어를 입력해주세요" name = "query" id ="searchinput" required="required" />			
+		</form>
 	</div>
 
 	<div class="bottom-bar">
@@ -51,11 +54,31 @@
 
 			<c:if test="${! empty sessionScope.id}">
 				<!-- 로그인 했을때, 세션값이 있을때 (로그아웃, 회원정보수정) -->
-				<li><a href="#"> ${sessionScope.id }님 </a></li>
-				<li><a href="${pageContext.request.contextPath}/main/logout">로그아웃</a></li>
+				<div class = "login">
+					<a href="#"> ${sessionScope.id }님 </a>
+					<a href="${pageContext.request.contextPath}/main/logout">로그아웃</a>
+				</div>	
 			</c:if>
 
 		</div>
 
 	</div>
+	
+	
+	
+	
+<script type="text/javascript">
+		$(function() {
+			  $('#searchForm').submit(function(e) {
+			    let keyword = $('#searchinput').val().trim();
+	
+			    if (keyword === "") {
+			      alert("검색어를 입력해주세요.");
+			      e.preventDefault(); // 전송 방지
+			      return false;
+			    }
+			  });
+			});
+		
+	</script>
 </header>

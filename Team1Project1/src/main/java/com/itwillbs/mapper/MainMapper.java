@@ -15,4 +15,6 @@ public interface MainMapper {
 
 	public List<RecruitDTO> selectRecentRecruitList(int limit);
 
+	public List<Map<String, Object>> searchKeyword(Map<String, Object> paramMap);
+
 }

@@ -28,5 +28,11 @@ public class MainService {
 	public List<RecruitDTO> getRecentRecruitList(int limit) {
 		return mainMapper.selectRecentRecruitList(limit);
 	}
+	
+	public List<Map<String, Object>> search(Map<String, Object> paramMap) {
+	    System.out.println("MainService search");
+	    return mainMapper.searchKeyword(paramMap);
+	}
+
 
 }

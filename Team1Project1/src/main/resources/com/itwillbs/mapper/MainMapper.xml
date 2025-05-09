@@ -8,69 +8,110 @@
 <mapper namespace="com.itwillbs.mapper.MainMapper">
 
 	<select id="listOR" resultType="map">
-		select or_corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary, or_workday 
+		select or_corporation_name,
+		p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary,
+		or_workday
 		from open_recruit o join edu_high e
 		on o.or_eduhigh = e.eduhigh_id
-		join careear c
+		join
+		careear c
 		on o.or_careear = c.careear_id
 		join occupation p
-		on o.or_occupation = p.occupation_id
+		on
+		o.or_occupation = p.occupation_id
 		join job j
 		on o.or_job = j.job_id
-		
+
 		where or_occupation = #{Occupation}
 		and or_eduhigh &lt;= #{Eduhigh}
-		and or_careear &lt;= #{Careear}
+		and
+		or_careear &lt;= #{Careear}
 		and or_salary &gt;= #{Salary}
-		and or_workday &lt;= #{WorkingDay}
+		and or_workday
+		&lt;= #{WorkingDay}
 	</select>
-	
-	
+	<select id="searchKeyword" resultType="map">
+		SELECT r.recruit_id,
+		r.recruit_name,
+		c.corporation_name,
+		o.occupation_name,
+		j.job_name,
+		r.recruit_location,
+		e.eduhigh_name,
+		a.careear_name,
+		r.recruit_salary
+		FROM recruit r
+		JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
+		JOIN occupation o ON r.recruit_occupation = o.occupation_id
+		JOIN job j ON r.recruit_job = j.job_id
+		JOIN edu_high e ON r.recruit_eduhigh = e.eduhigh_id
+		JOIN careear a ON r.recruit_careear = a.careear_id
+		WHERE r.recruit_name LIKE #{keyword}
+		OR c.corporation_name LIKE #{keyword}
+		OR o.occupation_name LIKE #{keyword}
+		OR j.job_name LIKE #{keyword}
+		OR r.recruit_location LIKE #{keyword}
+		OR e.eduhigh_name LIKE #{keyword}
+		OR a.careear_name LIKE #{keyword}
+		OR CAST(r.recruit_salary AS CHAR) LIKE #{keyword}
+	</select>
+
+
+
+
 	<select id="listRecruit" resultType="map">
-		select c.corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, recruit_salary, recruit_workday
+		select c.corporation_name,
+		p.occupation_name, j.job_name, eduhigh_name, careear_name,
+		recruit_salary, recruit_workday
 		from recruit r join corporation c
-		on r.corporationMember_num = c.corporationMember_num
+		on
+		r.corporationMember_num = c.corporationMember_num
 		join edu_high e
-		on r.recruit_eduhigh = e.eduhigh_id
+		on
+		r.recruit_eduhigh = e.eduhigh_id
 		join careear a
-		on r.recruit_careear = a.careear_id
+		on r.recruit_careear =
+		a.careear_id
 		join occupation p
 		on r.recruit_occupation = p.occupation_id
 		join job j
 		on r.recruit_job = j.job_id
-		
+
 		where recruit_occupation = #{Occupation}
-		and recruit_eduhigh &lt;= #{Eduhigh}
+		and recruit_eduhigh &lt;=
+		#{Eduhigh}
 		and recruit_careear &lt;= #{Careear}
-		and recruit_salary &gt;= #{Salary}
+		and recruit_salary &gt;=
+		#{Salary}
 		and recruit_workday &lt;= #{WorkingDay}
-		
+
 	</select>
 
 
-	<select id="selectRecentRecruitList" parameterType="int" resultType="com.itwillbs.domain.RecruitDTO">
-    SELECT 
-        r.recruit_id,
-        r.recruit_name,
-        r.recruit_location,
-        r.recruit_photo,
-        r.recruit_deatline,
-        DATEDIFF(r.recruit_deatline, NOW()) AS dday,
-        c.corporation_name,
-        p.occupation_name,
-        j.job_name,
-        ca.careear_name
-    FROM recruit r
-    JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
-    JOIN occupation p ON r.recruit_occupation = p.occupation_id
-    JOIN job j ON r.recruit_job = j.job_id
-    JOIN careear ca ON r.recruit_careear = ca.careear_id
-    ORDER BY r.recruit_deatline ASC
-    LIMIT #{limit}
-</select>
+	<select id="selectRecentRecruitList" parameterType="int"
+		resultType="com.itwillbs.domain.RecruitDTO">
+		SELECT
+		r.recruit_id,
+		r.recruit_name,
+		r.recruit_location,
+		r.recruit_photo,
+		r.recruit_deatline,
+		DATEDIFF(r.recruit_deatline, NOW()) AS dday,
+		c.corporation_name,
+		p.occupation_name,
+		j.job_name,
+		ca.careear_name
+		FROM recruit r
+		JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
+		JOIN occupation p ON r.recruit_occupation = p.occupation_id
+		JOIN job j ON r.recruit_job = j.job_id
+		JOIN careear ca ON r.recruit_careear = ca.careear_id
+		ORDER BY r.recruit_deatline ASC
+		LIMIT #{limit}
+	</select>
 
 
-	
+
 
 
 </mapper>
