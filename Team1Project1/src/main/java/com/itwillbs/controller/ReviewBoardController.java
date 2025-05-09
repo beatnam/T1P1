@@ -44,11 +44,14 @@ public class ReviewBoardController {
 			pageNum = "1";
 		}
 		int currentPage = Integer.parseInt(pageNum);
-
+		//검색어 설정
+		String search = request.getParameter("search");
+		
 		PageDTO pageDTO = new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setSearch(search);
 		List<Map<String, Object>> listRibo = reviewBoardService.riboList(pageDTO);
 		int count = reviewBoardService.ricountBoard(pageDTO);
 		int pageBlock = 10;
@@ -133,11 +136,14 @@ public class ReviewBoardController {
 			pageNum = "1";
 		}
 		int currentPage = Integer.parseInt(pageNum);
-
+		//검색어 설정
+		String search = request.getParameter("search");
+		
 		PageDTO pageDTO = new PageDTO();
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setSearch(search);
 		List<Map<String, Object>> listRcbo = reviewBoardService.rcboList(pageDTO);
 		int count = reviewBoardService.rccountBoard(pageDTO);
 		int pageBlock = 10;

@@ -10,6 +10,9 @@
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
+<div class="all">
+	<jsp:include page="../inc/community.jsp"></jsp:include>
+<div class="box">
 		<div class="main_content">	
 		<form action="${pageContext.request.contextPath}/rvborad/riwritepro"  method="post" id="">
 			<ul class="bo_info">
@@ -26,6 +29,8 @@
 				<a href="${pageContext.request.contextPath}/rvborad/rilist" class="" id="">글목록</a>
 			</p>
 		</form>
+		</div>
+		</div>
 		</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>

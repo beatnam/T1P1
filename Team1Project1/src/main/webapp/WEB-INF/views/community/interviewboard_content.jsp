@@ -12,7 +12,9 @@
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-
+<div class="all">
+	<jsp:include page="../inc/community.jsp"></jsp:include>
+<div class="box">
 		<div class="main_content">	
 		<form action=""  method="get" id="">		
 			<ul class="bo_info">
@@ -97,7 +99,8 @@
 		        </c:forEach>
 		    </div>
 		</div>
-
+</div>
+</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 <!-- <!-- <script type="text/javascript"> --> -->
 <!-- document.addEventListener("DOMContentLoaded", function() { -->

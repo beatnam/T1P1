@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
     <div class="cm_main">
-    <h1>채용 정보</h1>
+    <h1>커뮤니티</h1>
 
     <div class="community_main">
         <div class="box_1">

@@ -24,10 +24,13 @@
 		where member_num = #{memberNum}
 	</select>
 	<select id="riboList" resultType="map">
-    	SELECT r.ri_num, r.ri_subject, r.ri_date, r.ri_readcount, 
+    	SELECT r.ri_num, r.ri_subject, r.ri_date, r.ri_content, r.ri_readcount, 
       	r.member_num, m.member_id
 		FROM review_interview r
 		JOIN member m ON r.member_num = m.member_num
+		<if test="search != null">
+            	where r.ri_subject like CONCAT('%',#{search},'%') or r.ri_content like CONCAT('%',#{search},'%')
+            </if>
 		order by ri_num desc
   		limit #{startRow}, #{pageSize}
     </select>
@@ -39,6 +42,9 @@
     	select i.re_num, m.member_id ,i.re_subject, i.re_content, i.re_date, i.re_readcount
 		from review_employment i join member m
 		where i.member_num = m.member_num
+		<if test="search != null">
+            	where i.re_subject like CONCAT('%',#{search},'%') or i.re_content like CONCAT('%',#{search},'%')
+            </if>
 		order by re_num desc
   		limit #{startRow}, #{pageSize}
     </select>

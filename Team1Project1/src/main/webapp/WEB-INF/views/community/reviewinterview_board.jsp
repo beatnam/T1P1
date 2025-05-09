@@ -11,22 +11,25 @@
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
-
-
+<div class="all">
+	<jsp:include page="../inc/community.jsp"></jsp:include>
+<div class="box">
 <div class="main-content">
 <h3>면접 후기 게시판</h3>
-<form action="#" class="rboard">
+<form action="${pageContext.request.contextPath}/rvborad/rilist" class="rboard">
 	<fieldset>
-		<legend>검색</legend>
-		<input type="text" class="search" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
+		<input type="text" name="search" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 			<a href="#" class="search">검색</a>
-			<c:if test="">
-					<a href="${pageContext.request.contextPath}/rvborad/riwite" class="">글쓰기</a>
-					</c:if>
 				</fieldset>
 			</form>
+			<div class="btn_a">
+			<c:if test="${! empty sessionScope.id }">
+				<c:if test="${sessionScope.type eq 200}">
+			    <a href="${pageContext.request.contextPath}/rvborad/riwrite" class="btn_srch">글쓰기</a>
+				</c:if>
+			</c:if>	
+			</div>
 			<table class="table_t1" summary="">
-				<caption class="">게시글 목록</caption>
 				<thead>
 					<tr>
 						<th scope="s1">글번호</th>
@@ -77,14 +80,18 @@
 				
 				<a href="${pageContext.request.contextPath}/rvborad/rilist?pageNum=${pageDTO.pageCount}" class="lastpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
 			</div>
-			<div class="btn_a">
-			<c:if test="${! empty sessionScope.id }">
-				<c:if test="${sessionScope.type eq 200}">
-			    <a href="${pageContext.request.contextPath}/rvborad/riwrite" class="btn_srch">글쓰기</a>
-				</c:if>
-			</c:if>	
-			</div>
+			
+		</div>
+		</div>
 		</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+<script type="text/javascript">
+let search = document.querySelector(".search");
+let minisrch_form = document.querySelector(".rboard");
+
+search.onclick = function () {
+	minisrch_form.submit();
+}
+</script>
 </body>
 </html>

@@ -20,11 +20,11 @@
         <table>
 	        <tr>
 	            <td>수신자 이메일:</td>
-	            <td><input type="email" name="to" size="35px" value="이메일을 입력하세요." required></td>
+	            <td><input type="email" name="to" size="35px" placeholder="이메일을 입력하세요." required></td>
 	        </tr>
 	        <tr>
 	            <td>제목:</td>
-	            <td><input type="text" name="subject" size="35px" value="제목입력란" required></td>
+	            <td><input type="text" name="subject" size="35px" placeholder="제목입력란" required></td>
 	        </tr>
 	        <tr>
 	            <td>메시지:</td>

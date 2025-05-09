@@ -23,5 +23,6 @@ public class PageDTO {
 	private int pageCount;
 	private String search;
 	private int corporationMemberNum;
+	
 
 }
