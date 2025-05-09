@@ -41,10 +41,7 @@
 								<option value="4">대학교졸업(4년)</option>
 								<option value="5">석사졸업</option>
 								<option value="6">박사졸업</option>
-								<option value="7">고등학교졸업이상</option>
-								<option value="8">대학졸업(2,3년)이상</option>
-								<option value="9">대학교졸업(4년)이상</option>
-								<option value="10">석사졸업이상</option>
+				
 						</select></td>
 					</tr>
 					<tr>

@@ -42,7 +42,7 @@ public class MemberController {
 
 	@PostMapping("/joinPro")
 	public String joinPro(MemberDTO memberDTO, HttpServletRequest request) {
-		System.out.println("memberController joinPro");
+		System.out.println("memberController joinPro()");
 
 	    // 인증 여부 확인
 		/*
@@ -62,7 +62,9 @@ public class MemberController {
 	    memberDTO.setMemberId(memberId);
 	    memberDTO.setMemberEmail(memberEmail);
 	    memberDTO.setMemberJumin(memberJumin);
-
+	    
+	    
+	    
 	    memberService.joinMember(memberDTO);
 	    memberService.joineducationId(memberId);
 
