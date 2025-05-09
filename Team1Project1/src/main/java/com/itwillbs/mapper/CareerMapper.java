@@ -16,5 +16,7 @@ public interface CareerMapper {
 
 	void deleteCareerByMemberNum(Integer member_num);
 
+	void deleteCareer(int jhId);
+
 
 }

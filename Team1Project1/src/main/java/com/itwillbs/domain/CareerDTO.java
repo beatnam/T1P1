@@ -20,10 +20,10 @@ public class CareerDTO {
 	private String jhDepartment;
 	private String workContent;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date startDate;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date endDate;
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String startDate;
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String endDate;
 	
     
 }

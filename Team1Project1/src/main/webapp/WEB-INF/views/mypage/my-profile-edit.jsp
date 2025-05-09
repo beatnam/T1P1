@@ -68,18 +68,19 @@
             	<div class="gyeong">경력 사항</div>
             	
             	<c:forEach var="career" items="${careerList}" varStatus="status">
-          			<div class="career-view">
+          			<div class="career-view" id="career-${career.jhId}" >
             			<input type="text" value="${career.jhCorporation}" readonly>
-						<input type="hidden" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}">
+						<input type="hidden" name="jhCorporation" value="${career.jhCorporation}">
             			<input type="text" value="${career.jhDepartment}" readonly>
-            			<input type="hidden" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}">
+            			<input type="hidden" name="jhDepartment" value="${career.jhDepartment}">
             			<input type="text" value="${career.workContent}" readonly>
-            			<input type="hidden" name="careerList[${status.index}].workContent" value="${career.workContent}">
+            			<input type="hidden" name="workContent" value="${career.workContent}">
             			<input type="text" value="${career.startDate}" readonly>
-            			<input type="hidden" name="careerList[${status.index}].startDate" value="${career.startDate}">
+            			<input type="hidden" name="startDate" value="${career.startDate}">
             			<input type="text" value="${career.endDate}" readonly>
-            			<input type="hidden" name="careerList[${status.index}].endDate" value="${career.endDate}">
+            			<input type="hidden" name="endDate" value="${career.endDate}">
             			
+            			<button type="button" onclick="deleteCareer(${career.jhId} )">삭제</button>
 <%--             			<input type="text" name="careerList[${status.index}].jhCorporation" value="${career.jhCorporation}" readonly> --%>
 <%-- 						<input type="text" name="careerList[${status.index}].jhDepartment" value="${career.jhDepartment}" readonly> --%>
 <%-- 						<input type="text" name="careerList[${status.index}].workContent" value="${career.workContent}" readonly> --%>
@@ -180,7 +181,7 @@ window.addEventListener("message", function(event) {
              
              const hiddenInput = document.createElement("input");
              hiddenInput.type = "hidden";
-             hiddenInput.name = `careerList[${index}].${field.name}`;
+             hiddenInput.name = field.name;
              hiddenInput.value = field.value;
              
              wrapper.appendChild(visibleInput);
@@ -202,6 +203,32 @@ window.addEventListener("message", function(event) {
 
 </script>
 
+<script>
+	function deleteCareer(jhId){
+		console.log("삭제 요청 jhId:", jhId);
+		if(!confirm("정말 삭제하시겠습니까?"))return;
+		
+		fetch("${pageContext.request.contextPath}/mypage/career-delete", {
+		      method: "POST",
+		      headers: {
+		        "Content-Type": "application/x-www-form-urlencoded"
+		      },
+		      body: "jhId=" + jhId
+		    })
+		    .then(response => {
+		      if (response.ok) {
+		        // 화면에서 해당 div 제거
+		        document.getElementById("career-" + jhId).remove();
+		      } else {
+		        alert("삭제 실패!");
+		      }
+		    })
+		    .catch(error => {
+		      alert("에러 발생: " + error);
+		    });
+		  
+	}
+</script>
 
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 

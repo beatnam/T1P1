@@ -53,11 +53,11 @@
             
             <c:forEach var="career" items="${careerList}">
             	<div class="career-view">
-            		<p><strong>회사명:</strong> ${career.JH_Corporation}</p>
-      				<p><strong>부서:</strong> ${career.JH_department}</p>
-      				<p><strong>업무 내용:</strong> ${career.work_content}</p>
-      				<p><strong>시작일:</strong> ${career.start_date}</p>
-      				<p><strong>종료일:</strong> ${career.end_date}</p>
+            		<p><strong>회사명:</strong> ${career.jhCorporation}</p>
+      				<p><strong>부서:</strong> ${career.jhDepartment}</p>
+      				<p><strong>업무 내용:</strong> ${career.workContent}</p>
+      				<p><strong>시작일:</strong> ${career.startDate}</p>
+      				<p><strong>종료일:</strong> ${career.endDate}</p>
         		</div>
         	</c:forEach>
         </div>

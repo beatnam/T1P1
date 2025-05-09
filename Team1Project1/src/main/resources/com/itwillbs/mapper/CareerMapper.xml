@@ -31,5 +31,12 @@ INSERT INTO job_history (
 	DELETE FROM job_history WHERE member_num = #{memberNum}
 </delete>
 
+<delete id="deleteCareer" parameterType="int">
+	delete from job_history
+	where jh_id = #{jhId}
+</delete>
+
+
+
 
 </mapper>
