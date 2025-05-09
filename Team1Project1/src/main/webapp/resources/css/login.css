@@ -77,11 +77,14 @@ li {
 }
 
 input[type="text"], input[type="password"] {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	font-size: 1em;
+    width: calc(100% - 20px); /* 양옆 여백을 고려한 크기 조정 */
+    padding: 12px; /* 내부 여백 동일하게 */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1em;
+    box-sizing: border-box; /* 박스 크기 조정 (패딩 포함) */
+    margin: 0 auto; /* 중앙 정렬 */
+    display: block;
 }
 
 .checkbox-group {
