@@ -79,4 +79,55 @@ public class GPTClient {
 		return responseEntity.getBody();
 	}
 
+	public String updateCoverLetter(String prompt) {
+		// REST API 요청을 위한 HTTP 통신
+		// 1) 헤더 정보 설정
+		HttpHeaders headers = new HttpHeaders();
+
+		// 헤더 정보의 컨텐츠 타입
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		// apiKey 담기
+		headers.set("Authorization", "Bearer " + apiKey);
+
+		// 2) 요청 파라미터 생성 (JSON 형식)
+		Map<String, String> roleSystem = new HashMap<String, String>();
+		roleSystem.put("role", "system");
+		roleSystem.put("content", "해당하는 회사에 자소서를 쓰고있어. 띄어쓰기, 오타, 어색한 표현 고쳐주고 회사에 맞게 다듬어줘");
+		Map<String, String> roleUser = new HashMap<String, String>();
+		roleUser.put("role", "user");
+		roleUser.put("content", prompt);
+
+		List<Map<String, String>> messages = new ArrayList<Map<String, String>>();
+		messages.add(roleSystem);
+		messages.add(roleUser);
+
+		JSONObject requestData = new JSONObject();
+
+		requestData.put("model", model);
+		requestData.put("temperature", temperature);
+		requestData.put("messages", messages);
+
+		// 3) HTTP 요청 정보를 관리하는 HttpEntity 객체 생성
+		// 헤더 정보와 요청 정보를 합치는 HttpEntity
+		HttpEntity<String> httpEntity = new HttpEntity<String>(requestData.toString(), headers);
+		System.out.println("HttpEntity : " + httpEntity);
+
+		// 4) RESTful API 요청 RestTemplate 객체 생성
+		RestTemplate restTemplate = new RestTemplate();
+
+		// UTF-8 요청
+		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+		messageConverters.add(new StringHttpMessageConverter(StandardCharsets.UTF_8));
+		messageConverters.addAll(restTemplate.getMessageConverters());
+		restTemplate.setMessageConverters(messageConverters);
+
+		ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
+		System.out.println("이까진 오니?");
+		System.out.println("responseEntity : " + responseEntity);
+		System.out.println("reponseEntity.getBody() : " + responseEntity.getBody());
+
+		return responseEntity.getBody();
+	}
+
 }
