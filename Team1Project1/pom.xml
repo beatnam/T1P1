@@ -30,6 +30,16 @@
 		<!-- </dependency> -->
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<!-- https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
+	   <!-- json -->
+      <dependency>
+         <groupId>org.json</groupId>
+         <artifactId>json</artifactId>
+         <version>20240303</version>
+      </dependency>
+	
+	
+	
+	
 		<dependency>
 			<groupId>jakarta.annotation</groupId>
 			<artifactId>jakarta.annotation-api</artifactId>
