@@ -202,7 +202,7 @@ a:hover {
 				<button type="submit" onclick="setAction('apply')">저장 +
 					지원하기</button>
 				<button type="submit" onclick="setAction('home')">저장 + 홈으로</button>
-				<button type="submit" onclick="setAction('draft')">임시저장</button>
+				<button type="submit" onclick="setAction('draft')">임시저장(저장만)</button>
 			</form>
 		</div>
 

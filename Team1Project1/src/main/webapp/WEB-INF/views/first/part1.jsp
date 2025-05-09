@@ -89,6 +89,7 @@ h2 {
 			<div id="educationDiv" class="hidden">
 				<label for="education">학력</label>
 				<select name="Eduhigh" id="education" onchange="nextStep()" required>
+					<option value="">-- 선택 --</option>
 					<option value="1">학력무관</option>
 					<option value="2">고등학교졸업</option>
 					<option value="3">대학졸업(2,3년)</option>
