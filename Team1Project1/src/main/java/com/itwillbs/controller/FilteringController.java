@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.OccupationDTO;
 import com.itwillbs.service.JobService;
 import com.itwillbs.service.MainService;
+import com.itwillbs.service.MemberService;
 
 @Controller
 @RequestMapping("/first/*")
@@ -26,13 +29,26 @@ public class FilteringController {
 	private JobService jobService;
 
 	@GetMapping("/filtering")
-	public String part1(Model model) {
+	public String part1(Model model, HttpSession session) {
 
-		List<OccupationDTO> occupations = jobService.getOccupations();
+		String id = (String) session.getAttribute("id");
+		if (id == null) {
+			return "redirect:/first/plz_login";
+		} else {
 
-		model.addAttribute("occupations", occupations);
+			List<OccupationDTO> occupations = jobService.getOccupations();
 
-		return "/first/part1";
+			model.addAttribute("occupations", occupations);
+
+			return "/first/part1";
+		}
+	}
+
+	//세션값 없으면 얼럿 후 로그인으로 이동
+	@GetMapping("/plz_login")
+	public String plzLogin() {
+
+		return "/first/plz_login";
 	}
 
 	@PostMapping("/filteringPro")

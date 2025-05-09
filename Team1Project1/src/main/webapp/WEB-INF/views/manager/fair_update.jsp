@@ -10,14 +10,15 @@
 
     <title>관리자 | 취업박람회 수정</title>
     <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common.css">
+	href="${pageContext.request.contextPath }/resources/css/common.css"><link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 </head>
 
 <body>
  <jsp:include page="../inc/top.jsp"></jsp:include>
+ <div class="all">
  <jsp:include page="../inc/mng.jsp"></jsp:include>
-    <h1>취업 박람회 수정</h1>
-
+ <div class="box">
     <form action="#" method="post">
         <label for="convention_name">박람회명:</label><br>
         <input type="text" id="convention_name" name="conventionName" required><br><br>
@@ -37,6 +38,8 @@
         <input type="date" id="convention_enddate" name="conventionEnddate" required><br><br>
 
         <input type="submit" value="수정">
+        </form>
+       </div> </div>
  <jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

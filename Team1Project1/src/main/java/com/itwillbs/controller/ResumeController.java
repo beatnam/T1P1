@@ -3,11 +3,11 @@ package com.itwillbs.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +17,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPCell;
 
 import com.itwillbs.domain.CareerDTO;
 import com.itwillbs.domain.CertificationDTO;
@@ -103,11 +105,14 @@ public class ResumeController {
     	
     	MemberDTO memberDTO = memberService.getMemberInfo(member_num);
     	List<EducationDTO> educationList = educationService.getEducationList(member_num);
+    	List<CareerDTO> careerList = careerService.getCareerList(member_num);
     	
     	System.out.println("educationList : " + educationList);
+    	System.out.println("careerList" + careerList);
     	
     	model.addAttribute("memberDTO", memberDTO);
     	model.addAttribute("educationList", educationList);
+    	model.addAttribute("careerList", careerList);
         return "resume/my-resume-edit";  
     }//resumeEdit
     
@@ -125,7 +130,6 @@ public class ResumeController {
     	
     	MemberDTO memberDTO = memberService.getMemberInfo(member_num);
     	List<EducationDTO> educationList = educationService.getEducationList(member_num);
-    	List<CareerDTO> careerList = careerService.getCareerList(member_num);
     	
     	String intro = request.getParameter("additionalIntro");
     	
@@ -134,8 +138,18 @@ public class ResumeController {
     		File folder = new File(uploadPath);
     		if(!folder.exists()) folder.mkdirs();
     		
-    		String fileName = "resume_" + member_num + "_" + System.currentTimeMillis() + ".pdf";
-    		File saveFile = new File(uploadPath, fileName);
+    		String mamberName = memberDTO.getMemberName();
+    		int index = 1;
+    		String baseName = "resume_" + mamberName;  
+    		String fileName;
+    		File saveFile;
+    		
+    		do {
+    			fileName = baseName + "_" + index + ".pdf";
+    			saveFile = new File(uploadPath, fileName);
+    			index++;
+    		}while (saveFile.exists());
+    		
     		
     		Document doc = new Document();
             PdfWriter.getInstance(doc, new FileOutputStream(saveFile));
@@ -143,7 +157,9 @@ public class ResumeController {
             doc.open();
             BaseFont bfKorean = BaseFont.createFont("c:/windows/fonts/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontKorean = new Font(bfKorean, 12);
-            doc.add(new Paragraph("이력서", fontKorean));
+            Font fontTitle = new Font(bfKorean, 14, Font.BOLD);
+            
+            doc.add(new Paragraph("이력서", fontTitle));
             doc.add(Chunk.NEWLINE);
             
             if(resumePhoto != null && !resumePhoto.isEmpty()) {
@@ -158,7 +174,7 @@ public class ResumeController {
             	doc.add(Chunk.NEWLINE);
             }
             
-            doc.add(new Paragraph("■ 기본정보", fontKorean));
+            doc.add(new Paragraph("■ 기본정보", fontKorean));    		
             doc.add(new Paragraph("이름: " + memberDTO.getMemberName(), fontKorean));
             doc.add(new Paragraph("주민등록번호: " + memberDTO.getMemberJumin(), fontKorean));
             doc.add(new Paragraph("이메일: " + memberDTO.getMemberEmail(), fontKorean));
@@ -176,32 +192,27 @@ public class ResumeController {
                 doc.add(Chunk.NEWLINE);
             }
             
+//            경력
+        	List<CareerDTO> careerList = careerService.getCareerList(member_num);
+        	if(careerList != null && !careerList.isEmpty()) {
+        		doc.add(new Paragraph("■ 경력사항", fontKorean));
+        		for(int i = 0; i < careerList.size(); i++) {
+        			CareerDTO careerDTO = careerList.get(i);
+        			doc.add(new Paragraph("회사명 : " + careerDTO.getJhCorporation(), fontKorean));
+        			doc.add(new Paragraph("부서명 : " + careerDTO.getJhDepartment(), fontKorean));
+        			doc.add(new Paragraph("업무 내용 : " + careerDTO.getWorkContent(), fontKorean));
+        			doc.add(new Paragraph("근무 기간 : " + careerDTO.getStartDate() + " ~ " + careerDTO.getEndDate(), fontKorean));
+        			doc.add(Chunk.NEWLINE);
+        		}
+        	}
+            
+            
             MyResumeDTO myResumeDTO = new MyResumeDTO();
             myResumeDTO.setMemberNum(member_num);
             myResumeDTO.setResumePhoto(fileName);
             
             List<CertificationDTO> certList = myResumeService.getCertificationList(member_num);
             
-//            doc.add(new Paragraph("■ 자격증", fontKorean));
-//            if(certList != null && !certList.isEmpty()) {
-//            	for (CertificationDTO certificationDTO : certList) {
-//            		certificationDTO.setMemberNum(member_num);
-//            		myResumeService.insertCertification(certificationDTO);
-//            		
-//            	    System.out.println("== 자격증 ==");
-//            	    System.out.println("이름: " + certificationDTO.getCertificationName());
-//            	    System.out.println("취득일: " + certificationDTO.getCertificationAcquiredDate());
-//            	    
-//            	    doc.add(new Paragraph("자격명 : " + (certificationDTO.getCertificationName()), fontKorean));
-//            		doc.add(new Paragraph("발급기관: " + (certificationDTO.getCertificationIssuer()), fontKorean));
-//                    doc.add(new Paragraph("취득일: " + (certificationDTO.getCertificationAcquiredDate()), fontKorean));
-//                    doc.add(Chunk.NEWLINE);
-//            	}
-//            	
-//            	}else {
-//            		doc.add(new Paragraph("입력된 자격증이 없습니다.", fontKorean));
-//            		doc.add(Chunk.NEWLINE);
-//            	}
             
             String certificationName[] = request.getParameterValues("certificationName");
             String certificationIssuer[] = request.getParameterValues("certificationIssuer");
@@ -219,7 +230,13 @@ public class ResumeController {
             		certificationDTO.setResumeID(resumeId);
             		certificationDTO.setCertificationName(certificationName[i]);
             		certificationDTO.setCertificationIssuer(certificationIssuer[i]);
-            		certificationDTO.setCertificationAcquiredDate(certificationAcquiredDate[i]);
+            		String rawDate = certificationAcquiredDate[i];
+            		if(rawDate == null || rawDate.trim().isEmpty()) {
+            			certificationDTO.setCertificationAcquiredDate(null);
+            		}else {
+            			certificationDTO.setCertificationAcquiredDate(rawDate);
+            		}
+//            		certificationDTO.setCertificationAcquiredDate(certificationAcquiredDate[i]);
             		certList2.add(certificationDTO);
             		myResumeService.insertCertification(certificationDTO);
             		doc.add(new Paragraph("자격명 : " + (certificationDTO.getCertificationName()), fontKorean));
@@ -228,9 +245,6 @@ public class ResumeController {
                     doc.add(Chunk.NEWLINE);
             	}
             			
-            }else {
-            	doc.add(new Paragraph("입력된 자격증이 없습니다.", fontKorean));
-            	doc.add(Chunk.NEWLINE);
             }
             
 //            외국어

@@ -13,6 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
         // /upload/resume/** 요청 → C:/upload/resume/ 실제 파일 경로로 연결
         registry.addResourceHandler("/upload/resume/**")
                 .addResourceLocations("file:///C:/upload/resume/");
+        
+        registry.addResourceHandler("/upload/introduce/**")
+        .addResourceLocations("file:///C:/upload/introduce/");
     }
 }
 	

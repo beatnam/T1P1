@@ -136,39 +136,25 @@
         <!-- 경력 -->
         <div class="section">
             <h2>경력</h2>
-            <label>총 경력</label>
-            <div class="career-row">
-            <input type="text" name="jhId" placeholder="회사명" style="flex: 1 !important; min-width: 250px !important;"> 
-            <input type="text" name="jhDepartment" placeholder="부서명">
-            <input type="text" name="workContent" placeholder="담당업무">
-            <input type="date" name="startDate" placeholder="시작일"> 
+            <label>경력</label>
+            <c:forEach var="career" items="${careerList }" varStatus="status">
+            <div class="career-row" id="career-${career.jhId}">
+            
+            <input type="text" name="careerList[${status.index }].jhCorporation" value="${career.jhCorporation }" placeholder="회사명" style="flex: 1 !important; min-width: 250px !important;"/> 
+            <input type="text" name="careerList[${status.index }].jhDepartment" value="${career.jhDepartment }" placeholder="부서명">
+            <input type="text" name="careerList[${status.index }].workContent" value="${career.workContent }" placeholder="담당업무">
+            <input type="date" name="careerList[${status.index }].startDate" value="${career.startDate }" placeholder="시작일"> 
             <span>~</span>
-            <input type="date" name="endDate" placeholder="종료일"> 
+            <input type="date" name="careerList[${status.index }].endDate" value="${career.endDate }" placeholder="종료일"> 
             </div>
-<!--             <br> -->
-<!--             <div class="career-row"> -->
-<!--             <input type="text" name="jhId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;"> -->
-<!--             <input type="text" name="jhDepartment" placeholder="부서명">  -->
-<!--             <input type="text" name="workContent" placeholder="담당업무"> -->
-<!--             <input type="date" name="startDate" placeholder="시작일">  -->
-<!--             <span>~</span> -->
-<!--             <input type="date" name="endDate" placeholder="종료일">  -->
-<!--             </div> -->
-<!--             <br> -->
-<!-- 			<div class="career-row"> -->
-<!--             <input type="text" name="jhId" placeholder="회사명"  style="flex: 1 !important; min-width: 250px !important;">  -->
-<!--             <input type="text" name="jhDepartment" placeholder="부서명"> -->
-<!--             <input type="text" name="workContent" placeholder="담당업무"> -->
-<!--             <input type="date" name="startDate" placeholder="시작일">  -->
-<!--             <span>~</span> -->
-<!--             <input type="date" name="endDate" placeholder="종료일">  -->
-<!--             </div> -->
+            </c:forEach>
+
         </div>
 
         <!-- 자격증 -->
         <div class="section" id="certSection">        	
             <h2 style="display: inline-block;">자격증</h2>
-            <button type="button" onclick="addCertification()" style="display: inline-block; font-size: 18px; margin-left: 10px;">＋</button>
+            <button type="button" onclick="addCertification()" class="add-btn">＋</button>
             
             <div class="cert-item">
             
@@ -185,7 +171,7 @@
         <!-- 외국어 -->
         <div class="section" id="langSection">
             <h2 style="display: inline-block;">외국어</h2>
-            <button type="button" onclick="addLanguage()" style="display: inline-block; font-size: 18px; margin-left: 10px;">＋</button>
+            <button type="button" onclick="addLanguage()" class="add-btn">＋</button>
                         
             <div class="lang-item">
             

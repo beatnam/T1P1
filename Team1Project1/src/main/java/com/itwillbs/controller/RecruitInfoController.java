@@ -23,10 +23,10 @@ public class RecruitInfoController {
 	private ManagerService managerService;
 
 	@GetMapping("/always_list")
-	public String alwaysList(HttpServletRequest request, Model model) {
+	public String listRecruit(HttpServletRequest request, Model model) {
 
 		// 상시채용 공고
-		System.out.println("ProgramController program()");
+		System.out.println("RecruitInfoController listRecruit()");
 		int pageSize = 12;
 		String pageNum = request.getParameter("pageNum");
 
@@ -72,7 +72,7 @@ public class RecruitInfoController {
 
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("recruitList", recruitList);
-		return "recruit_info/always_list";
+		return "/recruit_info/always_list";
 	}
 
 	@GetMapping("/always_content")
@@ -91,11 +91,63 @@ public class RecruitInfoController {
 		return "recruit_info/fair";
 	}
 
+	@GetMapping("/corp_info")
+	public String corpInfo(@RequestParam String corpName, Model model) {
+		System.out.println("RecruitInfoController corpInfo()");
+		System.out.println(corpName);
+		
+		Map<Object, Object> info = managerService.contentCorp2(corpName);
+		
+		model.addAttribute("info", info);
+		return "/recruit_info/corp_info";
+	}
+
 	@GetMapping("/open")
-	public String open(Model model) {
+	public String open(HttpServletRequest request, Model model) {
+		int pageSize = 12;
+		String pageNum = request.getParameter("pageNum");
 
-		List<Map<Object, Object>> ORlist = managerService.listOR();
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		PageDTO pageDTO = new PageDTO();
 
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
+		// pageDTO.setSearch(search);
+
+		List<Map<Object, Object>> ORlist = managerService.listOR(pageDTO);
+
+		// 게시판 전체 글개수
+		int count = managerService.countOR();
+		// 검색어 포함한 글 개수
+//		int count = boardService.countBoard(pageDTO);
+
+		// 한 화면에 보여줄 페이지 개수
+		int pageBlock = 5;
+
+		// 한 화면에 보여줄 시작페이지 번호
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+
+		// 한 화면에 보여줄 끝페이지 번호
+		int endPage = startPage + pageBlock - 1;
+
+		// 전체 페이지 개수 구하기
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+
+		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("ORlist", ORlist);
 
 		return "recruit_info/open";

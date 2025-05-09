@@ -9,18 +9,68 @@
 <meta charset="UTF-8">
 <title>관리자 | 공개 채용 관리</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common.css">
+	href="${pageContext.request.contextPath }/resources/css/common.css"><link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
+	<div class="box">
 	<h1>공개 채용 관리</h1>
 	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공개
 		채용 작성</a>
-	<h5>회사명을 클릭하면 해당 인사페이지로 이동합니다</h5>
-	<input type="text" placeholder="검색어를 입력하세요.">
-	<button>검색</button>
+
+	<!-- 	pagination -->
+	<div class="pagination">
+		<a
+			href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=1"
+			class="firstpage  pbtn">
+			<strong> 맨 앞으로 </strong>
+		</a>
+
+		<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
+			<a
+				href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=${pageDTO.currentPage -1 }"
+				class="prevpage  pbtn">
+				<strong> 하나 뒤로 </strong>
+			</a>
+		</c:if>
+
+		<c:forEach var="i" begin="${pageDTO.startPage }"
+			end="${pageDTO.endPage }" step="1">
+			<c:if test="${i eq pageDTO.currentPage }">
+				<a
+					href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=${i}">
+					<span class="pagenum currentpage">${i }</span>
+				</a>
+
+			</c:if>
+			<c:if test="${i ne pageDTO.currentPage }">
+
+				<a
+					href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=${i}">
+					<span class="pagenum">${i }</span>
+				</a>
+			</c:if>
+		</c:forEach>
+
+
+		<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+			<a
+				href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=${pageDTO.currentPage +1}"
+				class="nextpage  pbtn">
+				<strong> 하나 다음 </strong>
+			</a>
+		</c:if>
+
+		<a
+			href="${pageContext.request.contextPath}/manager/openrecruit_mng?pageNum=${pageDTO.pageCount}"
+			class="lastpage  pbtn">
+			<strong>제일 뒤로</strong>
+		</a>
+	</div>
+	<!-- 				pagination -->
 	<table border="1">
 
 		<tr>
@@ -56,6 +106,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div></div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 

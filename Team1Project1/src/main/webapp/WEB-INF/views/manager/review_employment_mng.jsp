@@ -10,36 +10,91 @@
 <title>관리자 | 취업 후기 관리</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 </head>
 
 <body>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
-	<jsp:include page="../inc/mng.jsp"></jsp:include>
-	<h1>취업 후기 관리</h1>
-	<input type="text" placeholder="검색어를 입력하세요.">
-	<button>검색</button>
-	<table border="1">
+	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
+		<jsp:include page="../inc/mng.jsp"></jsp:include>
+		<div class="box">
+			<h1>취업 후기 관리</h1>
+			
+			<!-- 	pagination -->
+	<div class="pagination">
+		<a
+			href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=1"
+			class="firstpage  pbtn">
+			<strong> 맨 앞으로 </strong>
+		</a>
 
-		<tr>
-			<td>글번호</td>
-			<td>글제목</td>
-			<td>글쓴이</td>
-			<td>글내용</td>
-			<td>작성 일시</td>
-			<td>조회수</td>
-			<td>삭제</td>
-		</tr>
-		<tr>
-			<td>글번호</td>
-			<td>글제목</td>
-			<td>글쓴이</td>
-			<td>글내용</td>
-			<td>작성 일시</td>
-			<td>조회수</td>
-			<td><button>삭제</button></td>
-		</tr>
+		<c:if test="${pageDTO.currentPage > pageDTO.startPage }">
+			<a
+				href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=${pageDTO.currentPage -1 }"
+				class="prevpage  pbtn">
+				<strong> 하나 뒤로 </strong>
+			</a>
+		</c:if>
 
-	</table>
+		<c:forEach var="i" begin="${pageDTO.startPage }"
+			end="${pageDTO.endPage }" step="1">
+			<c:if test="${i eq pageDTO.currentPage }">
+				<a
+					href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=${i}">
+					<span class="pagenum currentpage">${i }</span>
+				</a>
+
+			</c:if>
+			<c:if test="${i ne pageDTO.currentPage }">
+
+				<a
+					href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=${i}">
+					<span class="pagenum">${i }</span>
+				</a>
+			</c:if>
+		</c:forEach>
+
+
+		<c:if test="${pageDTO.currentPage < pageDTO.pageCount }">
+			<a
+				href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=${pageDTO.currentPage +1}"
+				class="nextpage  pbtn">
+				<strong> 하나 다음 </strong>
+			</a>
+		</c:if>
+
+		<a
+			href="${pageContext.request.contextPath}/manager/review_employment_mng?pageNum=${pageDTO.pageCount}"
+			class="lastpage  pbtn">
+			<strong>제일 뒤로</strong>
+		</a>
+	</div>
+	<!-- 				pagination -->
+			<table border="1">
+
+				<tr>
+					<td>글번호</td>
+					<td>글제목</td>
+					<td>글쓴이</td>
+					<td>글내용</td>
+					<td>작성 일시</td>
+					<td>조회수</td>
+					<td>삭제</td>
+				</tr>
+				<c:forEach var="RE" items="${listREBoard }">
+					<tr>
+						<td>${RE.re_num}</td>
+						<td>${RE.member_id }</td>
+						<td>${RE.re_subject }</td>
+						<td>${RE.re_content }</td>
+						<td>${RE.re_date }</td>
+						<td>${RE.re_readcount }</td>
+						<td><a href="${pageContext.request.contextPath }/manager/deleteRE?re_num=${RE.re_num }">삭제</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 

@@ -16,10 +16,18 @@
 		)
 		VALUES (
 		#{memberNum},
-		#{orCorporationName}, #{orName}, #{orOccupation}, #{orJob},
-		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl}, #{orDeadline}, #{orWorkday}, #{orCareear}
+		#{orCorporationName}, #{orName}, #{orOccupation},
+		#{orJob},
+		#{orLocation}, #{orSalary}, #{orEduhigh}, #{orUrl},
+		#{orDeadline}, #{orWorkday}, #{orCareear}
 		)
 	</insert>
+
+	<select id="countOR" resultType="java.lang.Integer">
+		select count(*)
+		from open_recruit
+
+	</select>
 
 	<update id="updateOR">
 		update open_recruit
@@ -36,7 +44,8 @@
 		or_url = #{orUrl},
 		or_deadline = #{orDeadline},
 		or_workday = #{orWorkday},
-		or_careear = #{orCareear}
+		or_careear =
+		#{orCareear}
 		where or_id = #{orId}
 
 	</update>
@@ -47,24 +56,45 @@
 		where
 		corporationmember_id = #{corpId}
 	</update>
-	
+
 	<update id="downgradeCorp">
 		update corporation
 		set mt_id = 300
 		where
 		corporationmember_id = #{corpId}
 	</update>
-	
+
 	<select id="contentCorp" resultType="map">
 		SELECT
-		mt_name, corporationmember_id,
-		corporationmember_email, corporationmember_phone, recruit_id, corporation_name,
-		corporation_registration, corporation_phone,
-		corporation_registrationPdf, corporation_intro, corporationmember_name,
+		mt_name,
+		corporationmember_id,
+		corporationmember_email, corporationmember_phone,
+		recruit_id, corporation_name,
+		corporation_registration,
+		corporation_phone,
+		corporation_registrationPdf, corporation_intro,
+		corporationmember_name,
 		corporation_address
-		FROM corporation c join member_type m
+		FROM corporation c join
+		member_type m
 		on c.mt_id = m.mt_id
-		where corporationmember_id = #{corpId};
+		where corporationmember_id =
+		#{corpId};
+	</select>
+
+	<select id="contentCorp2" resultType="map">
+		SELECT
+		corporationmember_email,
+		corporation_name,
+		corporation_phone,
+		corporation_intro,
+		corporation_address,
+		corporation_photo,
+		corporation_url
+		from corporation
+		where
+		corporation_name =
+		#{corpName}
 	</select>
 
 	<select id="countMember" resultType="java.lang.Integer">
@@ -83,7 +113,8 @@
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
 		o.or_location, o.or_salary,
-		e.eduhigh_name, o.or_url, o.or_deadline , o.or_workday
+		e.eduhigh_name, o.or_url, o.or_deadline ,
+		o.or_workday
 		from open_recruit o join occupation c
 		on o.or_occupation =
 		c.occupation_id
@@ -104,20 +135,24 @@
 		e.eduhigh_name,
 		a.careear_name,
 		r.recruit_salary
-		from recruit r join
+		from
+		recruit r join
 		corporation c
 		on
-		r.corporationMember_num = c.corporationMember_num
+		r.corporationMember_num =
+		c.corporationMember_num
 		join
 		occupation o
 		on
-		r.recruit_occupation = o.occupation_id
+		r.recruit_occupation =
+		o.occupation_id
 		join job j
 		on
 		r.recruit_job =
 		j.job_id
 		join edu_high e
-		on r.recruit_eduhigh =
+		on
+		r.recruit_eduhigh =
 		e.eduhigh_id
 		join careear a
 		on r.recruit_careear =
@@ -138,6 +173,7 @@
 		r.recruit_salary,
 		r.recruit_photo,
 		r.recruit_deatline,
+		r.recruit_content,
 		a.careear_name
 		from recruit r join
 		corporation c
@@ -154,9 +190,10 @@
 		join edu_high e
 		on r.recruit_eduhigh =
 		e.eduhigh_id
-		join careear a
+		join careear
+		a
 		on r.recruit_careear =
-		a.careear_name
+		a.careear_id
 
 		where
 		r.recruit_id = #{recruitId}
@@ -180,18 +217,25 @@
 		o.or_corporation_name, o.or_name,
 		c.occupation_name, j.job_name,
 		o.or_location, o.or_salary, a.careear_name,
-		e.eduhigh_name, o.or_url, o.or_deadline, o.or_workday
-		from open_recruit o left outer join occupation c
+		e.eduhigh_name, o.or_url,
+		o.or_deadline, o.or_workday
+		from open_recruit o left outer join
+		occupation c
 		on o.or_occupation =
 		c.occupation_id
 		join job j
-		on o.or_job = j.job_id
+		on o.or_job =
+		j.job_id
 		join edu_high e
 		on
 		o.or_eduhigh = e.eduhigh_id
 		join careear a
-		on a.careear_id = o.or_careear
-		
+		on
+		a.careear_id = o.or_careear
+
+		order by 1 desc
+		limit #{startRow},
+		#{pageSize}
 	</select>
 	<select id="listCopMember" resultType="map">
 		select m.mt_name,
@@ -222,39 +266,83 @@
 		order by member_num desc
 		limit #{startRow}, #{pageSize}
 	</select>
-	
+
 	<insert id="insertFAQ" parameterType="map">
-		insert into faq(faq_subject, faq_content)
+		insert into
+		faq(faq_subject, faq_content)
 		values(#{faqSubject}, #{faqContent})
 	</insert>
-	
+
 	<select id="listFAQ" resultType="map">
 		select *
 		from faq;
 	</select>
-	
+
 	<select id="contentFAQ" resultType="map">
 		select *
 		from faq
-		where faq_num = #{faqNum}
+		where faq_num
+		= #{faqNum}
 	</select>
 
 	<update id="updateFAQ">
 		update faq
-		set faq_subject = #{faqSubject} , faq_content = #{faqContent}
+		set faq_subject = #{faqSubject} ,
+		faq_content = #{faqContent}
 		where faq_num = #{faqNum}
-		
+
 	</update>
-	
+
 	<delete id="deleteFAQ">
 		delete from faq
 		where faq_num = #{faqNum}
-	
+
 	</delete>
-	
-	<delete id ="deleteMember">
+
+	<delete id="deleteMember">
 		delete from member
 		where member_id = #{memberId}
 	</delete>
+
+	<select id="listREBoard" resultType="map">
+		select re_num, member_id,
+		re_subject, re_content, re_date, re_readcount
+		from review_employment r
+		join member m
+		where r.member_num = m.member_num
+
+		order by 1 desc
+		limit
+		#{startRow}, #{pageSize}
+	</select>
+
+	<select id="listRIBoard" resultType="map">
+		select ri_num, member_id,
+		ri_subject, ri_content, ri_date, ri_readcount
+		from review_interview r
+		join member m
+		where r.member_num = m.member_num
+
+		order by 1 desc
+		limit
+		#{startRow}, #{pageSize}
+	</select>
+
+	<delete id="deleteRE">
+		delete from review_employment
+		where re_num = #{num}
+
+	</delete>
+
+	<delete id="deleteRI">
+		delete from review_interview
+		where ri_num = #{num}
+	</delete>
+	
+	<select id="contentMember" resultType="map">
+		select member_id, member_name, member_email, member_address
+		from member
+		where member_id = #{memberId}
+	</select>
 	
 </mapper>

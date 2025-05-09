@@ -10,5 +10,7 @@ import com.itwillbs.domain.SchoolDTO;
 public interface SchoolMapper {
 	
 	List<SchoolDTO> searchSchoolByKeyword(String keyword);
+
+	String getSchoolNameById(int schoolId);
 	
 }
