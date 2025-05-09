@@ -173,6 +173,7 @@
 		r.recruit_salary,
 		r.recruit_photo,
 		r.recruit_deatline,
+		r.recruit_content,
 		a.careear_name
 		from recruit r join
 		corporation c

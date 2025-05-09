@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>관리자 | 상시 채용 관리</title>
+<title>상시 채용 | ${recruitContent.recruit_name}</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="stylesheet"
