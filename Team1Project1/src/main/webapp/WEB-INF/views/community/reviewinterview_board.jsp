@@ -18,8 +18,8 @@
 <form action="#" class="rboard">
 	<fieldset>
 		<legend>검색</legend>
-		<input type="text" class="s" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
-			<a href="#" class="s">검색</a>
+		<input type="text" class="search" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
+			<a href="#" class="search">검색</a>
 			<c:if test="">
 					<a href="${pageContext.request.contextPath}/rvborad/riwite" class="">글쓰기</a>
 					</c:if>
