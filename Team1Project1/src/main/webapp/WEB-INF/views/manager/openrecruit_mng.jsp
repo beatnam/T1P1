@@ -17,13 +17,9 @@
 	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 	<jsp:include page="../inc/mng.jsp"></jsp:include>
 	<div class="box">
+	<h1>공개 채용 관리</h1>
 	<a href="${pageContext.request.contextPath }/manager/openrecruit_write">공개
 		채용 작성</a>
-	<h5>회사명을 클릭하면 해당 인사페이지로 이동합니다</h5>
-	<input type="text" placeholder="검색어를 입력하세요.">
-	<button>검색</button>
-
-
 
 	<!-- 	pagination -->
 	<div class="pagination">

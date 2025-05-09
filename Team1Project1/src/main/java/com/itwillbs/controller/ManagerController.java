@@ -1,8 +1,10 @@
 package com.itwillbs.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,9 @@ import com.itwillbs.service.ManagerService;
 @Controller
 @RequestMapping("/manager/*")
 public class ManagerController {
+
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 
 	@Inject
 	private JobService jobService;
@@ -461,8 +466,8 @@ public class ManagerController {
 	@GetMapping("/deleteRI")
 	public String deleteRI(@RequestParam String ri_num) {
 		int num = Integer.parseInt(ri_num);
-
 		managerService.deleteRI(num);
+
 		return "redirect:/manager/review_interview_mng";
 	}
 
