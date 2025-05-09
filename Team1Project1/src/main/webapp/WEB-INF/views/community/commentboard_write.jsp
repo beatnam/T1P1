@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>취업후기 게시판 | 글쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/community.css">
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>

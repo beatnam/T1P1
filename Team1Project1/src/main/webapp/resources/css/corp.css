@@ -1,77 +1,116 @@
 @charset "UTF-8";
 
 .parent_div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-    margin: 0 auto;
-    position: relative; /* 위치를 명확하게 고정 */
-    height: auto; /* 필요 이상으로 늘어나지 않게 조정 */
-    border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
+	margin: 0 auto;
+	position: relative;
+	height: auto;
+	border-radius: 5px;
+	padding: 20px;
+	background: #f9f9f9;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+	font-family: 'Arial', sans-serif;
 }
 
-.parent_div > div,
-.parent_div .main_content,
-.parent_div .apply_btn {
-    width: 100%;
-    box-sizing: border-box;
-    
+.parent_div>div, .parent_div .main_content, .parent_div .apply_btn {
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .parent_div .main_content h3 {
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    border-radius: 5px;
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	color: #333;
 }
 
-.parent_div table,
-.parent_div ul {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
+.parent_div table, .parent_div ul {
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 5px;
 }
 
-.parent_div table th, 
-.parent_div table td,
-.parent_div li {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-    list-style-type: none;
-    border-radius: 5px;
+.parent_div table th, .parent_div table td, .parent_div li {
+	border: 1px solid #ccc;
+	padding: 8px;
+	text-align: center;
+	list-style-type: none;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.main_content ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.main_content li {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.main_content a {
+	font-weight: bold;
+	color: #333;
+}
+
+.main_content input {
+	border: none;
+	background: transparent;
+	font-size: 14px;
+	font-weight: bold;
+	color: #555;
 }
 
 .parent_div .page_numbers {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 10px;
 }
 
 .parent_div .apply_btn {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.parent_div .apply_btn a {
+	display: inline-block;
+	padding: 10px 20px;
+	background: #007bff;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: 0.3s;
+}
+
+.parent_div .apply_btn a:hover {
+	background: #0056b3;
 }
 
 .parent_div .apply_btn input {
-    padding: 8px 12px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
+	padding: 8px 12px;
+	border: none;
+	background-color: #007BFF;
+	color: white;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .parent_div .apply_btn input:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 /* .box 패딩 문제 수정 */
 .box {
-    flex: 1;
+	flex: 1;
 }

@@ -7,9 +7,13 @@
 <meta charset="UTF-8">
 <title>커뮤니티 | 면접 후기 게시판</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/community.css">
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
+
+
+<div class="main-content">
 <h3>면접 후기 게시판</h3>
 <form action="#" class="rboard">
 	<fieldset>
@@ -80,6 +84,7 @@
 				</c:if>
 			</c:if>	
 			</div>
+		</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 </body>
 </html>
