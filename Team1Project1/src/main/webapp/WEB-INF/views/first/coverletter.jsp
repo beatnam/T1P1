@@ -12,9 +12,10 @@
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 
 <style>
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f9;
+  background-color: #f5f7fa;
+  font-family: 'Noto Sans KR', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -22,105 +23,105 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  grid-template-rows: auto auto;
-  gap: 24px;
-  padding: 30px;
-  max-width: 1200px;
-  margin: auto;
+  gap: 20px;
+  padding: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  align-items: stretch;      /* ✅ 중앙 박스 포함 전체 높이 정렬 */
+  margin-bottom: 60px;
 }
 
-h4 {
-  font-size: 20px;
-  margin-bottom: 16px;
-  color: #333;
-  border-left: 5px solid #4CAF50;
-  padding-left: 10px;
+#open_recruit, #recruit {
+  display: flex;
+  flex-direction: column;
+  height: 100%;              /* ✅ 높이 기준 공유 */
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .item-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 16px;
+  background-color: white;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.item-card:hover {
-  transform: translateY(-4px);
+  border-radius: 15px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  line-height: 1.6;
 }
 
 .item-card strong {
-  display: block;
   font-size: 16px;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.item-card .content {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.6;
+  color: #333;
 }
 
 #gpt_comment {
-  background-color: #e8f5e9;
-  border: 1px solid #c8e6c9;
-  color: #256029;
+  background-color: #eaf6ea;
   padding: 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.6;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: flex-start;    /* ✅ 위로 딱 붙이기 */
+  justify-content: center;
+  height: 100%;               /* ✅ 높이 동일하게 맞춤 */
 }
 
-textarea {
+.bottom-form-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  grid-column: 1 / 4;
+}
+
+.bottom-form-container form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-form-container textarea {
   width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  line-height: 1.5;
+  height: 250px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  resize: vertical;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  transition: border-color 0.2s ease;
+  resize: none;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
-textarea:focus {
-  border-color: #4CAF50;
-  outline: none;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+.bottom-button-group {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-input[type="submit"], button {
+.bottom-button-group button,
+.bottom-button-group input[type="submit"] {
   background-color: #4CAF50;
   color: white;
+  padding: 10px 16px;
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 10px;
+  font-size: 15px;
   cursor: pointer;
-  margin-top: 12px;
-  margin-right: 8px;
-  transition: background-color 0.2s ease;
-}
-
-input[type="submit"]:hover, button:hover {
-  background-color: #388e3c;
 }
 
 a {
-  display: inline-block;
+  display: block;
   margin-top: 20px;
-  color: #4CAF50;
   font-weight: bold;
+  color: #4CAF50;
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
 
 
 </style>
@@ -175,36 +176,33 @@ a:hover {
 		</div>
 		<a href="${pageContext.request.contextPath }/main/main">홈으로</a>
 
-		<div id="resume">
-			<form id="resumeForm"
-				action="${pageContext.request.contextPath}/first/coverletter"
-				method="get">
-
-				<label for="coverLetter">자기소개서:</label>
-				<br>
-				<textarea id="coverLetter" name="coverLetter" rows="10" cols="60"
-					required></textarea>
-
-
-				<input type="submit" value="gpt 보내기">
-			</form>
+		<div class="bottom-form-container">
+	<!-- 왼쪽: 자기소개서 -->
+	<form id="resumeForm"
+		action="${pageContext.request.contextPath}/first/coverletter"
+		method="get">
+		<label for="coverLetter">자기소개서:</label><br>
+		<textarea id="coverLetter" name="coverLetter" rows="10" required></textarea>
+		
+		<div class="bottom-button-group">
+			<input type="submit" value="gpt 보내기">
 		</div>
+	</form>
 
-		<div id="gpt_result">
-			<form action="#" method="post">
-				<label for="gptResult">GPT가 준 결과</label>
-				<br>
-				<textarea id="gptResult" name="gptResult" rows="10" cols="60"
-					required></textarea>
+	<!-- 오른쪽: GPT 결과 -->
+	<form action="#" method="post">
+		<label for="gptResult">GPT가 준 결과</label><br>
+		<textarea id="gptResult" name="gptResult" rows="10" required></textarea>
 
-
-				<input type="hidden" id="actionType" name="actionType" value="">
-				<button type="submit" onclick="setAction('apply')">저장 +
-					지원하기</button>
-				<button type="submit" onclick="setAction('home')">저장 + 홈으로</button>
-				<button type="submit" onclick="setAction('draft')">임시저장(저장만)</button>
-			</form>
+		<input type="hidden" id="actionType" name="actionType" value="">
+		<div class="bottom-button-group">
+			<button type="submit" onclick="setAction('apply')">저장 + 지원하기</button>
+			<button type="submit" onclick="setAction('home')">저장 + 홈으로</button>
+			<button type="submit" onclick="setAction('draft')">임시저장(저장만)</button>
 		</div>
+	</form>
+</div>
+
 
 
 

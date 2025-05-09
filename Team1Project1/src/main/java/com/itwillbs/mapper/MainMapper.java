@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.itwillbs.domain.RecruitDTO;
+
 @Mapper
 public interface MainMapper {
 	public List<Map<Object, Object>> listOR(Map<Object, Object> filter);
 
 	public List<Map<Object, Object>> listRecruit(Map<Object, Object> filter);
+
+	public List<RecruitDTO> selectRecentRecruitList(int limit);
 
 }

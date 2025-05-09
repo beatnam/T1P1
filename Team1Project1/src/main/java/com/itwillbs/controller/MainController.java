@@ -1,18 +1,33 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itwillbs.domain.RecruitDTO;
+import com.itwillbs.service.MainService;
 
 @Controller
 @RequestMapping("/main/*")
 public class MainController {
+	
+	@Inject
+	private MainService mainservice;
 
 	@GetMapping("/main")
-	public String part1() {
+	public String part1(Model model) {
 		System.out.println("MainController part1()");
+		
+		List<RecruitDTO> recruitList = mainservice.getRecentRecruitList(8);
+		model.addAttribute("recruitList", recruitList);
+
+		
 		return "/main/main";
 	}
 

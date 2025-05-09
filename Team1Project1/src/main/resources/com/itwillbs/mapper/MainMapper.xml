@@ -47,4 +47,30 @@
 		
 	</select>
 
+
+	<select id="selectRecentRecruitList" parameterType="int" resultType="com.itwillbs.domain.RecruitDTO">
+    SELECT 
+        r.recruit_id,
+        r.recruit_name,
+        r.recruit_location,
+        r.recruit_photo,
+        r.recruit_deatline,
+        DATEDIFF(r.recruit_deatline, NOW()) AS dday,
+        c.corporation_name,
+        p.occupation_name,
+        j.job_name,
+        ca.careear_name
+    FROM recruit r
+    JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
+    JOIN occupation p ON r.recruit_occupation = p.occupation_id
+    JOIN job j ON r.recruit_job = j.job_id
+    JOIN careear ca ON r.recruit_careear = ca.careear_id
+    ORDER BY r.recruit_deatline ASC
+    LIMIT #{limit}
+</select>
+
+
+	
+
+
 </mapper>
