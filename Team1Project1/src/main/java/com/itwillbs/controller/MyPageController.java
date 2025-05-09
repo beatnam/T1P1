@@ -137,15 +137,15 @@ public class MyPageController {
         model.addAttribute("MyPageDTO", myPageDTO2);
     	
         List<EducationDTO> educationList = educationService.getEducationList(member_num);
-        for(EducationDTO educationDTO : educationList) {
-        	try {
-        		int schoolId = educationDTO.getEducationSchool();
-        		String schoolName = schoolService.getSchoolNameById(schoolId);
-        		educationDTO.setSchoolName(schoolName);
-        	}catch(NumberFormatException e){
-        		educationDTO.setSchoolName("학교 정보 없음");
-        	}
-        }
+//        for(EducationDTO educationDTO : educationList) {
+//        	try {
+//        		int schoolId = educationDTO.getEducationSchool();
+//        		String schoolName = schoolService.getSchoolNameById(schoolId);
+//        		educationDTO.setSchoolName(schoolName);
+//        	}catch(NumberFormatException e){
+//        		educationDTO.setSchoolName("학교 정보 없음");
+//        	}
+//        }
         model.addAttribute("educationList", educationList);
             
         List<CareerDTO> careerList = careerService.getCareerList(member_num);
