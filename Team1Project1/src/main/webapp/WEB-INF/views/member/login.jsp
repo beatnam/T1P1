@@ -91,11 +91,12 @@ li {
 }
 
 input[type="text"], input[type="password"] {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1em;
+    box-sizing: border-box; /* 박스 사이즈를 포함하여 padding 조정 */
 }
 
 .checkbox-group {

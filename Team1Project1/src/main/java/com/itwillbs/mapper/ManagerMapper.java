@@ -68,4 +68,6 @@ public interface ManagerMapper {
 
 	public Map<Object, Object> contentCorp2(String corpName);
 
+	public Map<Object, Object> contentMember(String memberId);
+
 }

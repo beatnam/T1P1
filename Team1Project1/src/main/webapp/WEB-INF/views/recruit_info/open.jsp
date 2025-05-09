@@ -18,17 +18,17 @@
 	<jsp:include page="../inc/top.jsp"></jsp:include><div class="all">
 		<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
-		<c:if test="${sessionScope.type eq 100 }">
-			<a href="${pageContext.request.contextPath }/manager/openrecruit_mng">관리자
-				페이지</a>
-			<!-- 관리자 페이지로 이동-->
-		</c:if>
+
 		<div class="recruit-list">
+
 			<h4>공개 채용</h4>
 
-
-
-
+			<c:if test="${sessionScope.type eq 100 }">
+				<a
+					href="${pageContext.request.contextPath }/manager/openrecruit_mng"
+					class="manager">관리자 페이지</a>
+				<!-- 관리자 페이지로 이동-->
+			</c:if>
 			<div class="card-container">
 				<c:forEach var="openrecruit" items="${ORlist}">
 					<a href="${openrecruit.or_url}" target="_blank">

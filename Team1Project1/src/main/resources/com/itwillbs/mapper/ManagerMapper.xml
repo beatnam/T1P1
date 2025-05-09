@@ -337,6 +337,12 @@
 	<delete id="deleteRI">
 		delete from review_interview
 		where ri_num = #{num}
-
 	</delete>
+	
+	<select id="contentMember" resultType="map">
+		select member_id, member_name, member_email, member_address
+		from member
+		where member_id = #{memberId}
+	</select>
+	
 </mapper>

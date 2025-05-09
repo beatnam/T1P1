@@ -20,14 +20,14 @@
 	<div class="all">
 		<jsp:include page="../inc/recruit_info.jsp"></jsp:include>
 
-		<c:if test="${sessionScope.type eq 100 }">
-			<a href="${pageContext.request.contextPath }/manager/recruit_mng">관리자
-				페이지</a>
-		</c:if>
+
 
 		<div class="recruit-list">
 			<h4>상시 채용</h4>
-
+			<c:if test="${sessionScope.type eq 100 }">
+				<a href="${pageContext.request.contextPath }/manager/recruit_mng"
+					class="manager">관리자 페이지</a>
+			</c:if>
 			<div class="card-container">
 				<c:forEach var="recruit" items="${recruitList}">
 					<div class="job-card">
