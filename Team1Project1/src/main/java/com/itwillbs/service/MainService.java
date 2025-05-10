@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.itwillbs.domain.RecruitDTO;
 import com.itwillbs.mapper.MainMapper;
 
 @Service
@@ -22,6 +23,10 @@ public class MainService {
 	public List<Map<Object, Object>> listRecruit(Map<Object, Object> filter) {
 
 		return mainMapper.listRecruit(filter);
+	}
+
+	public List<RecruitDTO> getRecentRecruitList(int limit) {
+		return mainMapper.selectRecentRecruitList(limit);
 	}
 
 }

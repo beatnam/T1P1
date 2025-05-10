@@ -27,4 +27,12 @@ public class RecruitDTO {
 	private Date recruitDeatline;
 	private int recruitCareear;
 	
+	private int dday;
+	
+	private String corporationName;
+	private String occupationName;
+	private String jobName;
+	private String careearName;
+
+	
 }
