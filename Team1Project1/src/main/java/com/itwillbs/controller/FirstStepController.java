@@ -21,7 +21,7 @@ import com.itwillbs.service.MemberService;
 
 @Controller
 @RequestMapping("/first/*")
-public class FilteringController {
+public class FirstStepController {
 	@Inject
 	private MainService mainService;
 
@@ -44,7 +44,7 @@ public class FilteringController {
 		}
 	}
 
-	//세션값 없으면 얼럿 후 로그인으로 이동
+	// 세션값 없으면 얼럿 후 로그인으로 이동
 	@GetMapping("/plz_login")
 	public String plzLogin() {
 
@@ -56,13 +56,29 @@ public class FilteringController {
 
 		List<Map<Object, Object>> resultOR = mainService.listOR(filter);
 		List<Map<Object, Object>> resultRecruit = mainService.listRecruit(filter);
-		System.out.println(resultOR);
-		System.out.println(resultRecruit);
+//		System.out.println(resultOR);
+//		System.out.println(resultRecruit);
 		model.addAttribute("resultOR", resultOR);
 		model.addAttribute("resultRecruit", resultRecruit);
 
 		return "/first/coverletter";
 	}
 
+	@PostMapping("/submit_application")
+	public String submitApplication(@RequestParam String companyName) {
+		System.out.println(companyName);
+		return null;
+	}
+
+	@PostMapping("/save_and_page")
+	public String saveAndPage(@RequestParam("companyUrl") String companyUrl,
+			@RequestParam("gptResult") String gptResult) {
+		System.out.println("오긴오나?");
+		System.out.println(companyUrl);
+		System.out.println(gptResult);
+		return "redirect:" + companyUrl;
+	}
 	
+	
+
 }
