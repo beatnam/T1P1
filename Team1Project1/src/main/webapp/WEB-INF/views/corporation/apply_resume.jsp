@@ -78,7 +78,6 @@
 			</div>
 
 			<div class="apply_btn" id="apply_btn">
-				<a href="${pageContext.request.contextPath}/corpmain/applyemail">이메일 보내기</a>
 				<input type="button" id="a_btn" value="합격 처리" onclick="sendResult('Y')">
 				<input type="button" id="na_btn" value="불합격 처리" onclick="sendResult('N')">
 			</div>
