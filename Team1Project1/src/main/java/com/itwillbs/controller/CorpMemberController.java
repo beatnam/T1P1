@@ -210,11 +210,4 @@ public class CorpMemberController {
 	    return "redirect:/corpmain/applyresume"; // 리디렉션 처리
 	}
 	
-	@GetMapping("/applyemail")
-	public String applyEmail() {
-		System.out.println("corpmembercontroller applyEmail()");
-		
-		return "/corporation/email_apply";
-	}//applyResume()
-	
 }
