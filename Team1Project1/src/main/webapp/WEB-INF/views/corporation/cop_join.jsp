@@ -72,6 +72,7 @@
 						<input type="text" name="corporationName" class="w100p"
 							id="corpname_lbl" placeholder="회사 이름" required />
 					</div>
+					<div id="corpnameCheck"></div>
 				</li>
 
 				<li class="start">
@@ -152,68 +153,68 @@
 	</script>
 
 
-	<script type="text/javascript">
-		$(function() {
 
-		})
-	</script>
-	<script type="text/javascript">
-		$(function() {
+<script>
+$(function() {
+	// ID 유효성 및 중복 체크
+	$('#id_lbl').blur(function() {
+		let idCheck = /^[a-zA-Z0-9_\-]{5,20}$/;
+		let idVal = $('#id_lbl').val();
+		if (!idCheck.test(idVal)) {
+			$('#idCheck').text('잘못된 형식입니다.').css('color', 'red');
+			return;
+		}
+		$.ajax({
+			type: "GET",
+			url: '${pageContext.request.contextPath}/copmember/idCheck',
+			data: { 'id': idVal },
+			success: function(result) {
+				if (result === 'iddup') {
+					$('#idCheck').text('이미 사용중인 아이디입니다.').css('color', 'red');
+				} else {
+					$('#idCheck').text('사용 가능한 아이디입니다.').css('color', 'blue');
+				}
+			}
+		});
+	});
 
-			$('#id_lbl')
-					.blur(
-							function() {
-								// 	alert('포커스 해제');
-								// 				$.ajax({
-								// 					url:'서버주소',
-								// 					data:{들고갈 데이터},
-								// 					success:function(){
+	// 회사명 중복 체크
+	$('#corpname_lbl').blur(function() {
+		$.ajax({
+			type: "GET",
+			url: '${pageContext.request.contextPath}/copmember/copnameCheck',
+			data: { 'name': $('#corpname_lbl').val() },
+			success: function(result) {
+				if (result === 'namedup') {
+					$('#corpnameCheck').text('이미 등록된 회사입니다.').css('color', 'red');
+				} else {
+					$('#corpnameCheck').text('등록 가능한 회사입니다.').css('color', 'blue');
+				}
+			}
+		});
+	});
 
-								// 				}
+	// 비밀번호 일치 확인
+	$('#copJoinForm').on('submit', function(e) {
+		let pw1 = $('#pwd_lbl').val();
+		let pw2 = $('#pwd_lbl2').val();
+		if (pw1 !== pw2) {
+			alert("비밀번호가 일치하지 않습니다.");
+			e.preventDefault();
+		}
+	});
 
-								let idCheck = RegExp(/^[a-zA-z0-9_\-]{5,20}$/);
-								if (!idCheck.test($('#id_lbl').val())) {
-
-									let result1 = '잘못된 형식입니다.';
-									$('#idCheck').html(result1).css('color',
-											'red');
-									$('#id_lbl').focus();
-									return false;
-								}
-								$
-										.ajax({
-											type : "GET",
-											url : '${pageContext.request.contextPath}/copmember/idCheck',
-											data : {
-												'id' : $('#id_lbl').val()
-											},
-											success : function(result) {
-												//alert(result);
-
-												if (result == 'iddup') {
-													result = "이미 사용중인 아이디입니다.";
-													$('#idCheck')
-															.html(result)
-															.css('color', 'red');
-												} else {
-
-													result = "사용 가능한 아이디입니다."
-													$('#idCheck').html(result)
-															.css('color',
-																	'blue');
-												}
-											}//success
-										});//ajax
-							});//blur()
-
-			$('#submitBtn').click(function() {
-
-				$('#copJoinForm').submit();
-
-			});//onClick()
-		}); //ready
-	</script>
-
+	// 이메일 select 연동
+	$('select[title="이메일 제공업체 목록"]').change(function() {
+		let selected = $(this).val();
+		if (selected !== "") {
+			$('input[name="email2"]').val(selected);
+		} else {
+			$('input[name="email2"]').val('');
+		}
+	});
+});
+</script>
 
 </body>
 </html>

@@ -12,6 +12,11 @@
 		where corporationMember_id = #{corporationMemberId}
 	</select>
 	
+	<select id="corpInfo2" resultType="com.itwillbs.domain.CorporationDTO">
+		select * from corporation
+		where corporation_name = #{corporationName}
+	</select>
+	
 	<update id="updateMember">
 		update corporation
 		set 
