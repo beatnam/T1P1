@@ -8,7 +8,7 @@
 <mapper namespace="com.itwillbs.mapper.MainMapper">
 
 	<select id="listOR" resultType="map">
-		select or_corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary, or_workday 
+		select or_corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary, or_workday, or_url 
 		from open_recruit o join edu_high e
 		on o.or_eduhigh = e.eduhigh_id
 		join careear c
