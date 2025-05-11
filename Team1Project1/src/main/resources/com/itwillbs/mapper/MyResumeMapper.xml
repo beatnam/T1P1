@@ -128,4 +128,8 @@
   	where resume_id = #{resumeID}
   </delete>
   
+ 
+  
+  
+  
 </mapper>
