@@ -64,5 +64,26 @@ public class AjaxController {
 		return result;
 
 	}
+	
+	@GetMapping("/copmember/copnameCheck")
+	public String copNameCheck(@RequestParam String name) {
+		System.out.println("AjaxController idCheck()");
+
+		CorporationDTO corporationDTO = corpMemberService.corpInfo2(name);
+		String result = "";
+		if (corporationDTO != null) {
+			// 아이디 있음, 아이디 중복
+			result = "회사이름 중복";
+			result = "namedup";
+			return result;
+		} else {
+			// 아이디 없음, 해당 아이디 사용 가능
+			result = "회사이름 사용 가능";
+			result = "nameok";
+		}
+		// 결과값 리턴
+		return result;
+
+	}
 
 }
