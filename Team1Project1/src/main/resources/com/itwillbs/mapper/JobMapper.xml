@@ -110,6 +110,19 @@
 	        #{applicationId}
 	    </foreach>
 	</update>
+	<select id="agreeResume" resultType="map">
+		SELECT a.application_id, a.resume_pdf, a.cv_pdf, a.application_date, m.member_name, a.approved
+		FROM application a 
+		JOIN member m ON a.member_num = m.member_num
+		WHERE a.corporationMember_num = #{corporationMemberNum} and a.approved = 'Y'
+		order by a.application_id desc
+  		limit #{startRow}, #{pageSize}
+	</select>
+	<select id="countagreeResume" resultType="java.lang.Integer">
+  		select count(*) 
+  		from application
+  		where corporationMember_num = #{corporationMemberNum} and approved = 'Y'
+  	</select>
 
 	
 	

@@ -117,5 +117,22 @@ public class JobService {
         jobMapper.updateApplicationStatus(applicationIds, status); // MyBatis XML에서 처리
     }
 
+	public List<Map<String, Object>> agreeResume(PageDTO pageDTO) {
+		System.out.println("JobService resumeList()");
+		
+		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
+		int endRow = startRow + pageDTO.getPageSize() - 1;
+
+		pageDTO.setStartRow(startRow - 1);
+		pageDTO.setEndRow(endRow);
+		
+		return jobMapper.agreeResume(pageDTO);
+	}
+
+	public Integer countagreeResume(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return jobMapper.countagreeResume(pageDTO);
+	}
+
 
 }

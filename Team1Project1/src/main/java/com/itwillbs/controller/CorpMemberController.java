@@ -93,9 +93,9 @@ public class CorpMemberController {
 		pageDTO.setCurrentPage(currentPage);
 		pageDTO.setCorporationMemberNum(corpNum);
 		
-		List<Map<String, Object>> listResume = jobService.resumeList(pageDTO);
+		List<Map<String, Object>> listResume = jobService.agreeResume(pageDTO);
 
-		int count = jobService.countResume(pageDTO);
+		int count = jobService.countagreeResume(pageDTO);
 		int pageBlock = 10;
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock - 1;
