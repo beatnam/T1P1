@@ -94,6 +94,8 @@
 		FROM application a 
 		JOIN member m ON a.member_num = m.member_num
 		WHERE a.corporationMember_num = #{corporationMemberNum}
+		order by a.application_id desc
+  		limit #{startRow}, #{pageSize}
 	</select>
 	<select id="countResume" resultType="java.lang.Integer">
   		select count(*) 
