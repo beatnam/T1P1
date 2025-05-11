@@ -53,28 +53,28 @@
 			</table>
 			</form>
 			<div class="page_numbers">
-				<a href="${pageContext.request.contextPath}/corplist/list?pageNum=1" class="firstpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
+				<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=1" class="firstpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
 				
 				<c:if test="${pageDTO.currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/corplist/list?pageNum=${pageDTO.currentPage - 1}" class="prevpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+					<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=${pageDTO.currentPage - 1}" class="prevpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
 				</c:if>
 				
 				
 				<c:forEach var="i" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
 					<c:if test="${ i eq pageDTO.currentPage }">
-						<a href="${pageContext.request.contextPath}/corplist/list?pageNum=${i }"><span class="pagenum currentpage">${i }</span></a>
+						<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=${i }"><span class="pagenum currentpage">${i }</span></a>
 					</c:if>
 					<c:if test="${ i ne pageDTO.currentPage }">
-						<a href="${pageContext.request.contextPath}/corplist/list?pageNum=${i }"><span class="pagenum">${i }</span></a>
+						<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=${i }"><span class="pagenum">${i }</span></a>
 					</c:if>
 				</c:forEach>
 				
 				<c:if test="${pageDTO.currentPage < pageDTO.pageCount}">
-					<a href="${pageContext.request.contextPath}/corplist/list?pageNum=${pageDTO.currentPage + 1}" class="nextpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+					<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=${pageDTO.currentPage + 1}" class="nextpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
 				</c:if>
 				
 				
-				<a href="${pageContext.request.contextPath}/corplist/list?pageNum=${pageDTO.pageCount}" class="lastpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
+				<a href="${pageContext.request.contextPath}/corpmain/applyresume?pageNum=${pageDTO.pageCount}" class="lastpage  pbtn"><img src="${pageContext.request.contextPath}/resources/img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
 			</div>
 
 			<div class="apply_btn" id="apply_btn">
