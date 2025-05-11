@@ -28,7 +28,7 @@
 				<c:forEach var="item" items="${listResume}">
 				<tr>
 					<td>${item.application_id}</td>
-					<td><a href="${item.cv_pdf}">${item.member_name} 님의 자소서</a></td>
+					<td><a href="${pageContext.request.contextPath}/resources/upload/${item.cv_pdf}">${item.member_name} 님의 자소서</a></td>
 					<td>${item.application_date}</td>
 				</tr>
 				</c:forEach>

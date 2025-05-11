@@ -34,7 +34,7 @@
 			<c:forEach var="item" items="${listResume}">
 				<tr>
 					<td><input type="checkbox" name="application" value="${item.application_id}"> ${item.application_id}</td>
-					<td><a href="${item.resume_pdf}">${item.member_name}님의 이력서</a></td>
+					<td><a href="${pageContext.request.contextPath}/resources/upload/${item.resume_pdf}">${item.member_name}님의 이력서</a></td>
 					<td>${item.member_name}</td>
 					<td>${item.application_date}</td>
 					<td>
