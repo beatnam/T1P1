@@ -203,7 +203,6 @@ a {
 					<button type="submit" onclick="setAction('apply')">저장 +
 						지원하기</button>
 					<button type="submit" onclick="setAction('home')">저장 + 홈으로</button>
-					<button type="submit" onclick="setAction('draft')">임시저장(저장만)</button>
 				</div>
 
 				<div class="bottom-button-group" id="open-buttons"
@@ -290,10 +289,6 @@ a {
 			case 'home':
 				alert("저장 후 홈으로 이동합니다.");
 				form.action = contextPath + "/first/save_and_home";
-				break;
-			case 'draft':
-				alert("임시 저장되었습니다.");
-				form.action = contextPath + "/first/save_draft";
 				break;
 			case 'goToHomepage':
 				alert("저장 후 홈페이지로 이동합니다.");
