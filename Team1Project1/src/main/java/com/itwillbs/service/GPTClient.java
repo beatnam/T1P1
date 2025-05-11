@@ -93,7 +93,8 @@ public class GPTClient {
 		// 2) 요청 파라미터 생성 (JSON 형식)
 		Map<String, String> roleSystem = new HashMap<String, String>();
 		roleSystem.put("role", "system");
-		roleSystem.put("content", "해당하는 회사에 자소서를 쓰고있어. 띄어쓰기, 오타, 어색한 표현 고쳐주고 회사에 맞게 다듬어줘");
+		roleSystem.put("content", "해당하는 회사에 자소서를 쓰고있어. 띄어쓰기, 오타, 어색한 표현 고쳐주고 회사에 맞게 다듬어줘"
+				+ "그리고 선택한 회사의 최근 자소서 양식에 맞춰서 써줘");
 		Map<String, String> roleUser = new HashMap<String, String>();
 		roleUser.put("role", "user");
 		roleUser.put("content", prompt);
