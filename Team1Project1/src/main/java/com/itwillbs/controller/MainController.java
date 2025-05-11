@@ -1,6 +1,8 @@
 package com.itwillbs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.domain.RecruitDTO;
 import com.itwillbs.service.MainService;
@@ -20,13 +23,40 @@ public class MainController {
 	@Inject
 	private MainService mainservice;
 
+	@GetMapping("/search")
+	public String search(
+		    @RequestParam("query") String query,
+		    @RequestParam(defaultValue = "0") int page,
+		    Model model
+		) {
+		System.out.println("MainController search");
+
+		    int pageSize = 10;
+		    int startRow = page * pageSize;
+
+		    // 추후 페이징하려면 paramMap을 넘겨야 하므로 미리 준비
+		    Map<String, Object> paramMap = new HashMap<>();
+		    paramMap.put("keyword", "%" + query + "%");
+		    paramMap.put("startRow", startRow);
+		    paramMap.put("pageSize", pageSize);
+
+		    List<Map<String, Object>> result = mainservice.search(paramMap);
+		    model.addAttribute("result", result);
+		    model.addAttribute("query", query);
+
+		    return "main/search";
+}
+
+
+	
+	
+	
 	@GetMapping("/main")
 	public String part1(Model model) {
 		System.out.println("MainController part1()");
 		
 		List<RecruitDTO> recruitList = mainservice.getRecentRecruitList(8);
 		model.addAttribute("recruitList", recruitList);
-
 		
 		return "/main/main";
 	}

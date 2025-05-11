@@ -7,86 +7,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>출발</title>
+<title>출근</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/main.css">
 
-<style>
-.main-job-grid {
-  max-width: 1200px; 
-  margin: 0 auto;     
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 24px;
-  padding: 30px 0;    
-}
 
-.main-job-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 240px; 
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.main-job-card:hover {
-  transform: translateY(-3px);
-}
-
-.main-job-img-box {
-  position: relative;
-  height: 120px;
-  overflow: hidden;
-}
-
-.main-job-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.d-day {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  background: #111;
-  color: #fff;
-  font-size: 11px;
-  padding: 2px 5px;
-  border-radius: 4px;
-}
-
-.main-job-body {
-  padding: 10px;
-  font-size: 13px;
-}
-
-.main-job-body .company {
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.main-job-body .title {
-  font-weight: bold;
-  color: #222;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.main-job-body .tech,
-.main-job-body .meta {
-  font-size: 12px;
-  color: #666;
-}
-
-</style>
 </head>
 <body>
 	<jsp:include page="../inc/top.jsp"></jsp:include>

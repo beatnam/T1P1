@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://mybatis.org/mybatis-3/getting-started.html src/main/resources/mapper폴더/MemberMapper.xml파일 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.mapper.FirstStepMapper">
+
+	<insert id="saveCoverLetter"
+		parameterType="com.itwillbs.domain.CoverletterDTO">
+		INSERT INTO cover_letter (
+		member_num,
+		cv_content,
+		cv_date,
+		cv_file_name
+		) VALUES (
+		#{memberNum},
+		#{cvContent},
+		#{cvDate},
+		#{cvFileName}
+		)
+	</insert>
+
+	<insert id="saveAndApply"
+		parameterType="com.itwillbs.domain.CoverletterDTO">
+		INSERT INTO cover_letter (
+		member_num,
+		corporationmember_num,
+		cv_content,
+		cv_date,
+		cv_file_name
+		)
+		VALUES (
+		#{memberNum},
+		#{corporationMemberNum},
+		#{cvContent},
+		#{cvDate},
+		#{cvFileName}
+		)
+	</insert>
+
+	<insert id="apply"
+		parameterType="com.itwillbs.domain.ApplicationDTO">
+		INSERT INTO application (
+		member_num,
+		corporationmember_num,
+		cv_pdf,
+		application_date,
+		resume_pdf
+		)
+		VALUES (
+		#{memberNum},
+		#{corporationMemberNum},
+		#{cvPdf},
+		#{applicationDate},
+		#{resumePdf}
+		)
+	</insert>
+
+	<select id="searchCorp" resultType="java.lang.Integer">
+		select corporationMember_num
+		from corporation
+		where corporation_name = #{companyName}
+
+	</select>
+
+	<select id="searchResume" resultType="java.lang.String">
+		select
+		resume_photo
+		from
+		resume
+		where member_num =
+		#{memberNum}
+
+	</select>
+
+</mapper>
