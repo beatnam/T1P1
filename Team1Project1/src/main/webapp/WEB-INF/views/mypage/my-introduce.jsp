@@ -58,7 +58,7 @@
             <label for="introduceFile" class="file-btn">파일로 등록</label>
     		<input type="file" id="introduceFile" name="introduceFile" style="display: none;" onchange="document.getElementById('fileForm').submit()">
             
-            <a href="${pageContext.request.contextPath }/" class="new-btn">새 자소서 (첨삭)</a>	       
+            <a href="${pageContext.request.contextPath }/first/filtering" class="new-btn">새 자소서 (첨삭)</a>	       
         </div>
 <!--         </form> -->
 
