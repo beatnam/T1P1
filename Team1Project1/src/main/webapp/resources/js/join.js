@@ -1,9 +1,6 @@
 <!-- 다음 주소 API -->
 
 
-
-
-
   function execDaumPostcode() {
     new daum.Postcode({
       oncomplete: function(data) {

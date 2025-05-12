@@ -124,9 +124,28 @@
 					</div>
 				</li>
 
-				<li class="start"><span class="join_content checkbox_area">
-						필수동의 항목 및 개인정보 수집 및 이용 동의(선택), 광고성 정보 수신<br>(선택)에 모두 동의합니다.
-				</span></li>
+				<!-- 개인정보 동의 -->
+					<li class="start">
+					  <div class="join_content checkbox_area">
+					    <input type="checkbox" name="memberInfo" id="info" required />
+					    <label for="info">
+					      <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
+					    </label>
+					    <a href="${pageContext.request.contextPath}/customerService/customerService" target="_blank" class="link">내용 보기</a>
+					  </div>
+					</li>
+					
+					<li class="start">
+						<div class="join_content checkbox_area">
+							<label>
+								<input type="checkbox" name="memberInfoC" id="infoC"
+									value="true" />
+								<strong>[선택]</strong> 광고성 정보 수신에 동의합니다.
+							</label>
+						</div>
+					</li>
+
+				</ul>
 			</ul>
 
 			<p class="btn_line">
