@@ -21,7 +21,7 @@
       return;
     }
 
-    fetch(contextPath + "/member/verifySMS", {
+    fetch(contextPath + "/member/sendSMS", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ phoneNumber: phone })
@@ -135,11 +135,14 @@
 				juminValid = false;
 				toggleJoinButton();
 				return;
+			}else{
+					$('#jumincheck').html("");
+					juminValid = true;
 			}
 
 			$.ajax({
 				type: "GET",
-			 url: contextPath + "/member/jumincheck",
+			 url: contextPath + "/member/juminCheck",
 			data: { 'jumin': j1 + j2 },
 				success: function (result) {
 					if (result === 'juminup') {
@@ -151,7 +154,7 @@
 					}
 					toggleJoinButton();
 				}
-			});
+			});	
 		});
 
 		// -------------------- 이메일 --------------------
@@ -164,18 +167,23 @@
 			const e1 = $('#email_lbl').val();
 			const e2 = $('#email_lbl2').val();
 
+
+
 			if (!/^[a-zA-Z0-9_\.\-]+$/.test(e1) || !/^[a-zA-Z0-9_\.\-]+$/.test(e2)) {
 				$('#emailcheck').html("이메일을 올바르게 입력하세요").css('color', 'red');
 				emailValid = false;
 				toggleJoinButton();
 				return;
+			}else{
+					$('#emailcheck').html("");
+						emailValid = true;
 			}
 
 			$.ajax({
 				type: "GET",
-				url: contextPath + "/member/emailcheck",
+				url: contextPath + "/member/emailCheck",
 
-				data: { 'email': e1 + e2 },
+				data: { 'email': e1 + "@" + e2 }, 
 				success: function (result) {
 					if (result === 'emailup') {
 						$('#emailcheck').html("이메일이 중복되어 있습니다.").css('color', 'red');
@@ -207,7 +215,7 @@
 
 			$.ajax({
 				type: "GET",
-				url: contextPath + "/member/phonecheck",
+				url: contextPath + "/member/phoneCheck",
 				data: { 'phone': phone },
 				success: function (result) {
 					if (result === 'phoneup') {

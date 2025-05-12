@@ -114,6 +114,29 @@ public class MemberService {
 
 			return memberMapper.infoMember(id);
 		}
+
+
+		public MemberDTO infojumin(String jumin) {
+			// TODO Auto-generated method stub
+			System.out.println("MemberService infoJumin()");
+			return memberMapper.infojumin(jumin);
+		}
+
+
+		public MemberDTO infoemail(String email) {
+			// TODO Auto-generated method stub
+			System.out.println("MemberService infoEmial()");
+			
+			return memberMapper.infoemail(email);
+		}
+		
+
+		public MemberDTO infophone(String phone) {
+			// TODO Auto-generated method stub
+			System.out.println("MemberService infoPhone()");
+			
+			return memberMapper.infophone(phone);
+		}
 	
 
 }//클래스
