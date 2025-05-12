@@ -9,8 +9,7 @@ String kakaoUrl = "https://kauth.kakao.com/oauth/authorize" + "?client_id=69648c
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 

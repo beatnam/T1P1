@@ -26,7 +26,7 @@
 				</li>
 
 				<li class="start"><label for="id_lbl"
-					class="tit_lbl pilsoo_item"></label>
+						class="tit_lbl pilsoo_item"></label>
 					<div class="join_content" id="idCheck"></div></li>
 
 				<li class="start">
@@ -72,6 +72,7 @@
 						<input type="text" name="corporationName" class="w100p"
 							id="corpname_lbl" placeholder="회사 이름" required />
 					</div>
+					<div id="corpnameCheck"></div>
 				</li>
 
 				<li class="start">
@@ -124,9 +125,28 @@
 					</div>
 				</li>
 
-				<li class="start"><span class="join_content checkbox_area">
-						필수동의 항목 및 개인정보 수집 및 이용 동의(선택), 광고성 정보 수신<br>(선택)에 모두 동의합니다.
-				</span></li>
+				<!-- 개인정보 동의 -->
+					<li class="start">
+					  <div class="join_content checkbox_area">
+					    <input type="checkbox" name="memberInfo" id="info" required />
+					    <label for="info">
+					      <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
+					    </label>
+					    <a href="${pageContext.request.contextPath}/customerService/customerService" target="_blank" class="link">내용 보기</a>
+					  </div>
+					</li>
+					
+					<li class="start">
+						<div class="join_content checkbox_area">
+							<label>
+								<input type="checkbox" name="memberInfoC" id="infoC"
+									value="true" />
+								<strong>[선택]</strong> 광고성 정보 수신에 동의합니다.
+							</label>
+						</div>
+					</li>
+
+				</ul>
 			</ul>
 
 			<p class="btn_line">
@@ -137,83 +157,14 @@
 
 		</form>
 	</div>
+
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-		function execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							document.getElementById("postcode_lbl").value = data.zonecode;
-							document.getElementById("address_lbl").value = data.address;
-						}
-					}).open();
-		}
+		const contextPath = "${pageContext.request.contextPath}";
 	</script>
 
-
-	<script type="text/javascript">
-		$(function() {
-
-		})
-	</script>
-	<script type="text/javascript">
-		$(function() {
-
-			$('#id_lbl')
-					.blur(
-							function() {
-								// 	alert('포커스 해제');
-								// 				$.ajax({
-								// 					url:'서버주소',
-								// 					data:{들고갈 데이터},
-								// 					success:function(){
-
-								// 				}
-
-								let idCheck = RegExp(/^[a-zA-z0-9_\-]{5,20}$/);
-								if (!idCheck.test($('#id_lbl').val())) {
-
-									let result1 = '잘못된 형식입니다.';
-									$('#idCheck').html(result1).css('color',
-											'red');
-									$('#id_lbl').focus();
-									return false;
-								}
-								$
-										.ajax({
-											type : "GET",
-											url : '${pageContext.request.contextPath}/copmember/idCheck',
-											data : {
-												'id' : $('#id_lbl').val()
-											},
-											success : function(result) {
-												//alert(result);
-
-												if (result == 'iddup') {
-													result = "이미 사용중인 아이디입니다.";
-													$('#idCheck')
-															.html(result)
-															.css('color', 'red');
-												} else {
-
-													result = "사용 가능한 아이디입니다."
-													$('#idCheck').html(result)
-															.css('color',
-																	'blue');
-												}
-											}//success
-										});//ajax
-							});//blur()
-
-			$('#submitBtn').click(function() {
-
-				$('#copJoinForm').submit();
-
-			});//onClick()
-		}); //ready
-	</script>
-
-
+	<script
+		src="${pageContext.request.contextPath}/resources/js/cop_join.js"></script>
 </body>
 </html>

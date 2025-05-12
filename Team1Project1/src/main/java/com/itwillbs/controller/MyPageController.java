@@ -92,6 +92,18 @@ public class MyPageController {
         return "mypage/my-resume"; 
     }//myResumePage
     
+    @GetMapping("/mypage/my-ing")
+    public String mypageIng(HttpSession session, Model model) {
+    		System.out.println("mypage my-ing");
+    	    Integer member_num = (Integer) session.getAttribute("member_num");
+    	    
+    	    
+    	    List<Map<Object, Object>> resumeList = myPageService.getapplication(member_num);
+    	    model.addAttribute("resumeList", resumeList);
+    	    
+        return "mypage/my-ing"; 
+    }//myResumePage
+    
     @GetMapping("/mypage/my-profile")
     public String myProfilePage(HttpSession session, Model model) {
         

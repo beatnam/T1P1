@@ -96,7 +96,7 @@ public class JobService {
 	}
 
 	public List<Map<String, Object>> resumeList(PageDTO pageDTO) {
-		System.out.println("JobService countBoard()");
+		System.out.println("JobService resumeList()");
 		
 		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
 		int endRow = startRow + pageDTO.getPageSize() - 1;
@@ -109,12 +109,30 @@ public class JobService {
 
 	public Integer countResume(PageDTO pageDTO) {
 		System.out.println("JobService countResume()");
+		
 		return jobMapper.countResume(pageDTO);
 	}
 
 	public void updateApplicationStatus(List<String> applicationIds, String status) {
         jobMapper.updateApplicationStatus(applicationIds, status); // MyBatis XML에서 처리
     }
+
+	public List<Map<String, Object>> agreeResume(PageDTO pageDTO) {
+		System.out.println("JobService resumeList()");
+		
+		int startRow = (pageDTO.getCurrentPage() - 1) * pageDTO.getPageSize() + 1;
+		int endRow = startRow + pageDTO.getPageSize() - 1;
+
+		pageDTO.setStartRow(startRow - 1);
+		pageDTO.setEndRow(endRow);
+		
+		return jobMapper.agreeResume(pageDTO);
+	}
+
+	public Integer countagreeResume(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return jobMapper.countagreeResume(pageDTO);
+	}
 
 
 }

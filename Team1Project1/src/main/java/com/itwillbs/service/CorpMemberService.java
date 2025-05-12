@@ -24,5 +24,10 @@ public class CorpMemberService {
 		
 		corpMemberMapper.updateMember(corporationDTO);
 	}
+
+	public CorporationDTO corpInfo2(String corporationName) {
+		// TODO Auto-generated method stub
+		return corpMemberMapper.corpInfo2(corporationName);
+	}
 	
 }

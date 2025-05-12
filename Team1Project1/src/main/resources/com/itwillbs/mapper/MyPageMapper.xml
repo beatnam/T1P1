@@ -65,4 +65,26 @@
 		from member 
 		where member_num = #{memberNum}  
   </delete>
+  
+  
+   
+   
+   <select id="getapplication" resultType="map">
+        select m.member_name, a.approved, r.recruit_name, c.corporation_name
+		from application a join corporation c
+		on a.corporationMember_num = c.corporationMember_num
+		join recruit r
+		on r.corporationMember_num = a.corporationMember_num
+		join member m
+		on a.member_num = m.member_num
+		where a.member_num= #{memberNum} and approved is not null;   		
+   </select>
+   
+   
+   
+   
+  
+  
+  
+  
 </mapper>

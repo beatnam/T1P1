@@ -6,6 +6,7 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/join.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -113,13 +114,15 @@
 
 					<!-- 개인정보 동의 -->
 					<li class="start">
-						<div class="join_content checkbox_area">
-							<label>
-								<input type="checkbox" name="memberInfo" id="info" required />
-								<strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
-							</label>
-						</div>
+					  <div class="join_content checkbox_area">
+					    <input type="checkbox" name="memberInfo" id="info" required />
+					    <label for="info">
+					      <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
+					    </label>
+					    <a href="${pageContext.request.contextPath}/customerService/customerService" target="_blank" class="link">내용 보기</a>
+					  </div>
 					</li>
+					
 					<li class="start">
 						<div class="join_content checkbox_area">
 							<label>
