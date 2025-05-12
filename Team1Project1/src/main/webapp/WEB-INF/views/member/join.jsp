@@ -57,7 +57,7 @@
 							<span>@</span>
 							<input type="text" name="memberEmail2" id="email_lbl2"
 								class="w160" placeholder="이메일주소" required />
-							<div id="emailcheck"></div>
+							
 							<div class="select_common">
 								<select
 									onchange="document.getElementsByName('memberEmail2')[0].value=this.value">
@@ -69,7 +69,10 @@
 							</div>
 						</div>
 					</li>
-
+					<li class= "start">
+						<div id="emailcheck"></div>
+					</li>
+					
 					<!-- 이름 -->
 					<li class="start">
 						<div class="join_content">

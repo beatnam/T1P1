@@ -22,9 +22,15 @@ public interface MemberMapper {
 	public Integer memberNum(String memberId);
 	public void joineducationId(int num);
 
-	public MemberDTO getMemberByEmail(String email);
+	public MemberDTO getMemberByEmail(String memberEmail);
 
-	public MemberDTO infoMember(String id);
+	public MemberDTO infoMember(String memberId);
+
+	public MemberDTO infojumin(String memberJumin);
+
+	public MemberDTO infoemail(String memberEmail);
+
+	public MemberDTO infophone(String memberPhone);
 
 
 	
