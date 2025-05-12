@@ -26,7 +26,7 @@
 				</li>
 
 				<li class="start"><label for="id_lbl"
-					class="tit_lbl pilsoo_item"></label>
+						class="tit_lbl pilsoo_item"></label>
 					<div class="join_content" id="idCheck"></div></li>
 
 				<li class="start">
@@ -72,6 +72,7 @@
 						<input type="text" name="corporationName" class="w100p"
 							id="corpname_lbl" placeholder="회사 이름" required />
 					</div>
+					<div id="corpnameCheck"></div>
 				</li>
 
 				<li class="start">
@@ -156,83 +157,14 @@
 
 		</form>
 	</div>
+
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-		function execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							document.getElementById("postcode_lbl").value = data.zonecode;
-							document.getElementById("address_lbl").value = data.address;
-						}
-					}).open();
-		}
+		const contextPath = "${pageContext.request.contextPath}";
 	</script>
 
-
-	<script type="text/javascript">
-		$(function() {
-
-		})
-	</script>
-	<script type="text/javascript">
-		$(function() {
-
-			$('#id_lbl')
-					.blur(
-							function() {
-								// 	alert('포커스 해제');
-								// 				$.ajax({
-								// 					url:'서버주소',
-								// 					data:{들고갈 데이터},
-								// 					success:function(){
-
-								// 				}
-
-								let idCheck = RegExp(/^[a-zA-z0-9_\-]{5,20}$/);
-								if (!idCheck.test($('#id_lbl').val())) {
-
-									let result1 = '잘못된 형식입니다.';
-									$('#idCheck').html(result1).css('color',
-											'red');
-									$('#id_lbl').focus();
-									return false;
-								}
-								$
-										.ajax({
-											type : "GET",
-											url : '${pageContext.request.contextPath}/copmember/idCheck',
-											data : {
-												'id' : $('#id_lbl').val()
-											},
-											success : function(result) {
-												//alert(result);
-
-												if (result == 'iddup') {
-													result = "이미 사용중인 아이디입니다.";
-													$('#idCheck')
-															.html(result)
-															.css('color', 'red');
-												} else {
-
-													result = "사용 가능한 아이디입니다."
-													$('#idCheck').html(result)
-															.css('color',
-																	'blue');
-												}
-											}//success
-										});//ajax
-							});//blur()
-
-			$('#submitBtn').click(function() {
-
-				$('#copJoinForm').submit();
-
-			});//onClick()
-		}); //ready
-	</script>
-
-
+	<script
+		src="${pageContext.request.contextPath}/resources/js/cop_join.js"></script>
 </body>
 </html>

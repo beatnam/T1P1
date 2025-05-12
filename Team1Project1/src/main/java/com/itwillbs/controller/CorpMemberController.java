@@ -93,9 +93,9 @@ public class CorpMemberController {
 		pageDTO.setCurrentPage(currentPage);
 		pageDTO.setCorporationMemberNum(corpNum);
 		
-		List<Map<String, Object>> listResume = jobService.resumeList(pageDTO);
+		List<Map<String, Object>> listResume = jobService.agreeResume(pageDTO);
 
-		int count = jobService.countResume(pageDTO);
+		int count = jobService.countagreeResume(pageDTO);
 		int pageBlock = 10;
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock - 1;
@@ -104,7 +104,7 @@ public class CorpMemberController {
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
-
+		
 		pageDTO.setCount(count);
 		pageDTO.setPageBlock(pageBlock);
 		pageDTO.setStartPage(startPage);
@@ -179,6 +179,7 @@ public class CorpMemberController {
 		List<Map<String, Object>> listResume = jobService.resumeList(pageDTO);
 
 		int count = jobService.countResume(pageDTO);
+		System.out.println("count" + count);
 		int pageBlock = 10;
 		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock - 1;
@@ -193,7 +194,10 @@ public class CorpMemberController {
 		pageDTO.setStartPage(startPage);
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
-
+		
+		System.out.println("pageDTO : " + pageDTO);
+		System.out.println("listResume: " + listResume);
+		
 		model.addAttribute("listResume", listResume);
 		model.addAttribute("pageDTO", pageDTO);
 		
@@ -209,12 +213,5 @@ public class CorpMemberController {
 
 	    return "redirect:/corpmain/applyresume"; // 리디렉션 처리
 	}
-	
-	@GetMapping("/applyemail")
-	public String applyEmail() {
-		System.out.println("corpmembercontroller applyEmail()");
-		
-		return "/corporation/email_apply";
-	}//applyResume()
 	
 }

@@ -31,6 +31,8 @@ public interface JobMapper {
 	public List<Map<String, Object>> resumeList(PageDTO pageDTO);
 	public Integer countResume(PageDTO pageDTO);
 	public void updateApplicationStatus(@Param("applicationIds") List<String> applicationIds, @Param("status") String status);
+	public List<Map<String, Object>> agreeResume(PageDTO pageDTO);
+	public Integer countagreeResume(PageDTO pageDTO);
 	
 
 }
