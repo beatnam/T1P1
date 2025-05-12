@@ -93,13 +93,6 @@ $(function() {
             return false;
         }
 
-        let nameCheck = /^[가-힣]{2,6}$/;
-        if (!nameCheck.test($('#name_lbl').val())) {
-            alert("이름을 올바르게 입력해주세요");
-            $('#name_lbl').focus();
-            return false;
-        }
-
         if ($('#address_lbl').val().trim() === "") {
             alert("주소를 입력해주세요");
             $('#address_lbl').focus();

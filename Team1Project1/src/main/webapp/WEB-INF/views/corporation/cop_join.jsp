@@ -128,7 +128,7 @@
 				<!-- 개인정보 동의 -->
 					<li class="start">
 					  <div class="join_content checkbox_area">
-					    <input type="checkbox" name="memberInfo" id="info" required />
+					    <input type="checkbox" name="corpInfo" id="info" required />
 					    <label for="info">
 					      <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
 					    </label>
@@ -139,7 +139,7 @@
 					<li class="start">
 						<div class="join_content checkbox_area">
 							<label>
-								<input type="checkbox" name="memberInfoC" id="infoC"
+								<input type="checkbox" name="corpInfoC" id="infoC"
 									value="true" />
 								<strong>[선택]</strong> 광고성 정보 수신에 동의합니다.
 							</label>
