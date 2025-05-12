@@ -19,7 +19,6 @@ public class AjaxController {
 
 	@Inject
 	private ManagerService managerService;
-	
 
 	@Inject
 	private CorpMemberService corpMemberService;
