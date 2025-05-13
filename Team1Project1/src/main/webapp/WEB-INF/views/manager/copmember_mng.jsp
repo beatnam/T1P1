@@ -9,7 +9,8 @@
 <meta charset="UTF-8">
 <title>관리자 | 기업 회원 관리</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common.css"><link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/member_mng.css">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
@@ -42,39 +43,12 @@
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 	<script>
-	$(function() {
-
-		$('#memberTypeFilter').change(function() {
-      const mtId = $(this).val();
-      const contextPath = '${pageContext.request.contextPath}';
-      $.ajax({
-        url: '${pageContext.request.contextPath }/manager/filter',
-        method: 'GET',
-        data: { mtId : mtId },
-        dataType: 'json',
-        success: function(result) {
-        	  const tbody = $('#memberTableBody');
-        	  tbody.empty();
-        	  console.log(result);
-
-        	  result.forEach(item => {
-        	    var row = 
-        	      '<tr>' +
-        	        '<td>' + item.mt_name + '</td>' +
-        	        '<td>' +
-        	          '<a href="' + contextPath + '/manager/content_corp?corpId=' + item.corporationmember_id + '">' + item.corporationmember_id + '</a>' +
-        	        '</td>' +
-        	        '<td>' + item.corporation_name + '</td>' +
-        	        
-        	      '</tr>';
-        	    tbody.append(row);
-        	  });
-        	}
-      });
-    });
-		$('#memberTypeFilter').trigger('change');
-  });
-</script>
+		const contextPath = '${pageContext.request.contextPath}';
+	</script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/copmember.js">
+		
+	</script>
 </body>
 
 </html>
