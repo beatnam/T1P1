@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,6 +58,10 @@ public class ResumeController {
 	@Inject
 	private CareerService careerService;
 
+	@Resource(name = "resumePath")
+	private String resumePath;
+	
+	
 	@GetMapping("/my-resume")
 	public String resumeView(HttpSession session, Model model, HttpServletRequest request) {
 		Integer member_num = (Integer)session.getAttribute("member_num");
@@ -79,8 +84,7 @@ public class ResumeController {
 	    List<MyResumeDTO> resumeList = myResumeService.getResumeList(member_num);
 	    model.addAttribute("resumeList", resumeList);
 	    
-	    String uploadPath = "C:/upload/resume";
-	    File folder = new File(uploadPath);
+	    File folder = new File(resumePath);
 	    File[] files = folder.listFiles((dir, name) -> name.startsWith("resume_" + member_num + "_") && name.endsWith(".pdf"));
 	    
 	    List<String> fileNames = new ArrayList<>();
@@ -134,8 +138,8 @@ public class ResumeController {
     	String intro = request.getParameter("additionalIntro");
     	
     	try {
-    		String uploadPath = "C:/upload/resume";
-    		File folder = new File(uploadPath);
+    	
+    		File folder = new File(resumePath);
     		if(!folder.exists()) folder.mkdirs();
     		
     		String mamberName = memberDTO.getMemberName();
@@ -148,7 +152,7 @@ public class ResumeController {
     		//파일명 중복 없게 만들기
     		do {
     			fileName = baseName + "_" + index + ".pdf";
-    			saveFile = new File(uploadPath, fileName);
+    			saveFile = new File(resumePath, fileName);
     			index++;
     		}while (saveFile.exists());
     		
@@ -168,7 +172,7 @@ public class ResumeController {
             doc.add(Chunk.NEWLINE);
             
             if(resumePhoto != null && !resumePhoto.isEmpty()) {
-            	String photoPath = uploadPath + "/" + resumePhoto.getOriginalFilename();
+            	String photoPath = resumePath + "/" + resumePhoto.getOriginalFilename();
             	File photoFile = new File(photoPath);
             	resumePhoto.transferTo(photoFile);
             	
@@ -328,8 +332,8 @@ public class ResumeController {
     	myResumeService.deleteCertification(resumeID);
     	myResumeService.deleteLanguage(resumeID);
     	
-    	String uploadPath = "C:/upload/resume";
-    	File file = new File(uploadPath, resumePhoto);
+    
+    	File file = new File(resumePath, resumePhoto);
     	if(file.exists()) {
     		file.delete();
     	}

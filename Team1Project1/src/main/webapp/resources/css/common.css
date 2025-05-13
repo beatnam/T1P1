@@ -17,11 +17,11 @@ header {
 	padding: 20px 40px;
 }
 
-.logo {
-	font-size: 32px;
-	font-weight: bold;
-	color: black;
-}
+#logo{
+    width: 70%;
+    height: 50%;
+    color: black;
+  }
 
 .search-bar {
 	display: flex;
