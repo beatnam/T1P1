@@ -32,10 +32,12 @@
 
     <div class="box">
 
-        <c:forEach var="apply" items="${applyList}">
+        <c:forEach var="resumeList" items="${resumeList}">
     		<div class="inbox">
-        		<div>${apply.title}</div>
-        		<div>${apply.status}</div>
+        		<div>${resumeList.member_name}</div>
+        		<div>${resumeList.corporation_name}</div>
+        		<div>${resumeList.recruit_name}</div>
+        		<div>${resumeList.approved}</div>
     		</div>
 		</c:forEach>
 

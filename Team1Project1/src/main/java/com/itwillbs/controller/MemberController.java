@@ -39,6 +39,8 @@ public class MemberController {
 
 		return "member/join";
 	}
+	
+	
 
 	@PostMapping("/joinPro")
 	public String joinPro(MemberDTO memberDTO, HttpServletRequest request) {

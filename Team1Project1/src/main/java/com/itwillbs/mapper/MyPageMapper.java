@@ -1,5 +1,8 @@
 package com.itwillbs.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.domain.CareerDTO;
@@ -28,6 +31,10 @@ public interface MyPageMapper {
 	public void updateMyIntroduce(MyPageDTO myPageDTO);
 
 	public void deleteMember(int memberNum);
+
+
+
+	public List<Map<Object, Object>> getapplication(Integer member_num);
 
 	
 }
