@@ -1,17 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-  <title>점핏 이용약관</title>
+  <title>출근 이용약관</title>
   
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/customerService.css">
 </head>
 <body>
-  <h1>점핏 이용약관 (개인정보처리방침 Ver 6.04)</h1>
+  <h1>출근 이용약관 (개인정보처리방침 Ver 6.04)</h1>
 
   <div class="section">
     <div class="text-block">
-      주식회사 사람인은 「개인정보보호법」, 「위치정보의 보호 및 이용 등에 관한 법률」을 준수하며, 정보주체 권익 보호에 최선을 다하고 있습니다.
-      본 방침은 점핏 서비스에 적용됩니다.
+      주식회사 출근은 「개인정보보호법」, 「위치정보의 보호 및 이용 등에 관한 법률」을 준수하며, 정보주체 권익 보호에 최선을 다하고 있습니다.
+      본 방침은 출근 서비스에 적용됩니다.
     </div>
   </div>
 

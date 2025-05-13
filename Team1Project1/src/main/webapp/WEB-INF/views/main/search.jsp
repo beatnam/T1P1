@@ -28,7 +28,7 @@
 	<c:forEach var="result" items="${result}">
 		<div class="job-card">
 			<div class="job-image">
-				<img src="${result.recruit_photo}" alt="회사 이미지">
+				<img src="${pageContext.request.contextPath}/resources/upload/${result.recruit_photo}" alt="회사 이미지">
 			</div> 
 			<div class="job-info">
 				<h3 class="job-title">
