@@ -1,0 +1,1 @@
+document.getElementById("recruitDeatline").valueAsDate = new Date();
