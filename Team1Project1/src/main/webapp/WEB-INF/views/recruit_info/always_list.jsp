@@ -33,7 +33,9 @@
 					<div class="job-card">
 						<div class="job-image">
 							<!-- 예시 이미지, 추후 회사 이미지가 있다면 동적으로 바꾸세요 -->
-							<img src="${recruit.recruit_photo }" alt="회사 이미지">
+							<img
+								src="${pageContext.request.contextPath }/resources/upload/${recruit.recruit_photo }"
+								alt="회사 이미지">
 						</div>
 						<div class="job-info">
 							<h3 class="job-title">

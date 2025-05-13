@@ -17,4 +17,6 @@ public interface MainMapper {
 
 	public List<Map<String, Object>> searchKeyword(Map<String, Object> paramMap);
 
+	public Map<Object, Object> result(String recruitId);
+
 }
