@@ -148,12 +148,9 @@
 		j.job_id
 		JOIN careear ca ON r.recruit_careear = ca.careear_id
 		ORDER BY
-		r.recruit_deatline ASC
+		r.recruit_id DESC, r.recruit_deatline asc
 		LIMIT #{limit}
 	</select>
-
-
-
 
 
 </mapper>
