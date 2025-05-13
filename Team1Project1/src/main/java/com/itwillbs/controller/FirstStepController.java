@@ -73,9 +73,9 @@ public class FirstStepController {
 	public String applyDirect(@RequestParam String recruitId, Model model) {
 		System.out.println(recruitId);
 		Map<Object, Object> result = mainService.result(recruitId);
-		
+
 		model.addAttribute("recruit", result);
-		
+
 		return "/first/direct_application";
 	}
 
@@ -135,12 +135,26 @@ public class FirstStepController {
 		appDTO.setApplicationDate(LocalDateTime.now());
 
 		String resume = searchResume(memberNum);
-		appDTO.setResumePdf(resume);
+		System.out.println(resume);
+		if (resume == null) {
+			return "redirect:/first/plz_resume";
+			
+		} else {
+			appDTO.setResumePdf(resume);
 
-		firstStepService.apply(appDTO);
+			firstStepService.apply(appDTO);
 
-		return "redirect:/main/main";
+			return "redirect:/main/main";
+		}
 	}
+	
+	// 세션값 없으면 얼럿 후 로그인으로 이동
+	@GetMapping("/plz_resume")
+	public String plzResume() {
+
+		return "/first/plz_resume";
+	}
+	
 
 	private String searchResume(int memberNum) {
 		String resume = firstStepService.searchResume(memberNum);
