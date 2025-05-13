@@ -72,10 +72,10 @@
             <div><input type="text" name="memberPhone" value="${MyPageDTO.memberPhone}" readonly></div>
         </div>
 
-        <div class="inbox6">
-            <div class="sns">SNS 연동</div>
-            <div class="kakao">카카오 아이디 표시</div>
-        </div>
+<!--         <div class="inbox6"> -->
+<!--             <div class="sns">SNS 연동</div> -->
+<!--             <div class="kakao">카카오 아이디 표시</div> -->
+<!--         </div> -->
 
         <div class="inbox7">
             <div class="email">이메일 인증 강화</div>
