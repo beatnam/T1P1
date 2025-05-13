@@ -35,10 +35,10 @@
                 <div>${resume.resumePhoto}</div>
                 
                 <div style="margin-top: 10px;">
-            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" target="_blank">
+            		<a href="${pageContext.request.contextPath}/resources/resume/${resume.resumePhoto}" target="_blank">
                 	<button>📄 보기</button>
             		</a>
-            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" download>
+            		<a href="${pageContext.request.contextPath}/resources/resume/${resume.resumePhoto}" download>
                 	<button>📥 다운로드</button>
             		</a>
             		
