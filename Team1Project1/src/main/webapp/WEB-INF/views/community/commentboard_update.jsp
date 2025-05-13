@@ -36,7 +36,7 @@
 	</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
 <script>
-	const contextPath = "${pageContext.request.contextPath}";
+
 </script>
 <script src="${pageContext.request.contextPath}/resources/js/reviw_update.js"></script>
 </body>
