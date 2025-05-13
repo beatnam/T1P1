@@ -35,12 +35,9 @@
 	</div>
 	</div>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-<script type="text/javascript">
-let submitBtn = document.querySelector("#btn_up");
-let appForm = document.querySelector("#appForm");
-submitBtn.onclick = function () {
-	appForm.submit();
-}
+<script>
+	const contextPath = "${pageContext.request.contextPath}";
 </script>
+<script src="${pageContext.request.contextPath}/resources/js/reviw_update.js"></script>
 </body>
 </html>

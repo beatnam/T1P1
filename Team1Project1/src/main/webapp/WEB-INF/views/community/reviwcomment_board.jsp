@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="../inc/top.jsp"></jsp:include>
 <div class="all">
-	<jsp:include page="../inc/community.jsp"></jsp:include>
+<jsp:include page="../inc/community.jsp"></jsp:include>
 <div class="box">
 <div class="main-content">
 <h3>취업 후기 게시판</h3>
@@ -81,13 +81,9 @@
 		</div>
 		</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
-<script type="text/javascript">
-let search = document.querySelector(".search");
-let minisrch_form = document.querySelector(".rboard");
-
-search.onclick = function () {
-	minisrch_form.submit();
-}
+<script>
+	const contextPath = "${pageContext.request.contextPath}";
 </script>
+<script src="${pageContext.request.contextPath}/resources/js/reviw_board.js"></script>
 </body>
 </html>
