@@ -126,7 +126,7 @@ public class ResumeController {
     		HttpServletResponse response,Map<String, Object> map, @RequestParam(value = "resumePhoto", required = false) MultipartFile resumePhoto) {
     	
     	System.out.println("이력서 제출 컨트롤러 진입");
-    	System.out.println(map);
+//    	System.out.println(map);
     	Integer member_num = (Integer)session.getAttribute("member_num");
     	if(member_num == null) {
     		return "redirect:/main/login";
@@ -148,6 +148,8 @@ public class ResumeController {
     		String fileName;
     		File saveFile;
     		
+    		
+    		//파일명 중복 없게 만들기
     		do {
     			fileName = baseName + "_" + index + ".pdf";
     			saveFile = new File(resumePath, fileName);
@@ -155,10 +157,13 @@ public class ResumeController {
     		}while (saveFile.exists());
     		
     		
+    		
+    		//PDF 생성
     		Document doc = new Document();
             PdfWriter.getInstance(doc, new FileOutputStream(saveFile));
             
             doc.open();
+            
             BaseFont bfKorean = BaseFont.createFont("c:/windows/fonts/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontKorean = new Font(bfKorean, 12);
             Font fontTitle = new Font(bfKorean, 14, Font.BOLD);
@@ -178,6 +183,7 @@ public class ResumeController {
             	doc.add(Chunk.NEWLINE);
             }
             
+            //기본정보
             doc.add(new Paragraph("■ 기본정보", fontKorean));    		
             doc.add(new Paragraph("이름: " + memberDTO.getMemberName(), fontKorean));
             doc.add(new Paragraph("주민등록번호: " + memberDTO.getMemberJumin(), fontKorean));
@@ -187,6 +193,7 @@ public class ResumeController {
             doc.add(new Paragraph("주소: " + memberDTO.getMemberAddress(), fontKorean));
             doc.add(Chunk.NEWLINE);
             
+            //학력
             if (!educationList.isEmpty()) {
                 EducationDTO edu = educationList.get(0);
                 doc.add(new Paragraph("■ 최종학력", fontKorean));
@@ -210,17 +217,18 @@ public class ResumeController {
         		}
         	}
             
-            
+            //저장
             MyResumeDTO myResumeDTO = new MyResumeDTO();
             myResumeDTO.setMemberNum(member_num);
             myResumeDTO.setResumePhoto(fileName);
             
             List<CertificationDTO> certList = myResumeService.getCertificationList(member_num);
             
-            
+            //자격증 
             String certificationName[] = request.getParameterValues("certificationName");
             String certificationIssuer[] = request.getParameterValues("certificationIssuer");
             String certificationAcquiredDate[] = request.getParameterValues("certificationAcquiredDate");
+           
             myResumeService.insertResume(myResumeDTO);
             int resumeId = myResumeDTO.getResumeID();
             
