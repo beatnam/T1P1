@@ -27,7 +27,7 @@
 				<c:if test="${item.approved eq 'Y'}">
 					<tr>
 						<td>${item.application_id}</td>
-						<td><a href="${pageContext.request.contextPath}/resources/upload/${item.resume_pdf}">${item.member_name}님의 이력서</a></td>
+						<td><a href="${pageContext.request.contextPath}/resources/resume/${item.resume_pdf}">${item.member_name}님의 이력서</a></td>
 					</tr>
 				</c:if>
 				</c:forEach>

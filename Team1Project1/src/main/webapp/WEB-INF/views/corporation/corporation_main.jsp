@@ -26,7 +26,7 @@
  				<li><a>사업자 번호</a><input type="text" id="registration" name="registration" value="${corporationDTO.corporationRegistration}" readonly></li>
  				<li><a>소재지</a><input type="text" id="corpAddress" name="corpAddress" value="${corporationDTO.corporationAddress}" readonly></li>
  				<li><a>전화번호</a><input type="tel" id="corpPhone" name="corpPhone" value="${corporationDTO.corporationPhone}" readonly></li>
- 				<li><a href="">홈페이지</a><input type="url" id="corpUrl" name="corpUrl" value="${corporationDTO.corporationUrl}" readonly></li>
+ 				<li><a href="${corporationDTO.corporationUrl}">홈페이지</a><input type="url" id="corpUrl" name="corpUrl" value="${corporationDTO.corporationUrl}" readonly></li>
  				<li><a>회사소개</a><input type="text" id="corpIntro" name="corpIntro" value="${corporationDTO.corporationIntro}" readonly></li>
  				<li><a>인사담당자</a><input type="text" id="corpMemName" name="corpMemName" value="${corporationDTO.corporationMemberName}" readonly></li>
  				<li><a>인사담당자 전화번호</a><input type="tel" id="corpMemPhone" name="corpMemPhone" value="${corporationDTO.corporationMemberPhone}" readonly></li>

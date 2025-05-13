@@ -39,9 +39,9 @@
 				</div>
 
         		
-        		<c:if test="${not empty introduce.cvContent }">
-        			<button onclick="location.href='${pageContext.request.contextPath }'">수정</button>
-        		</c:if>
+<%--         		<c:if test="${not empty introduce.cvContent }"> --%>
+<%--         			<button onclick="location.href='${pageContext.request.contextPath }'">수정</button> --%>
+<%--         		</c:if> --%>
         		
         		<form action="${pageContext.request.contextPath }/mypage/deleteIntroduce" method="post" style="display:inline;">
         			<input type="hidden" name="cvId" value="${introduce.cvId}">
