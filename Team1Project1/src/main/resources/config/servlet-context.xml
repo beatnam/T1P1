@@ -49,7 +49,12 @@
 
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="D:\\T1P1\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+			value="D:\\Team1Project1\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+	</beans:bean>
+	
+	<beans:bean id="resumePath" class="java.lang.String">
+		<beans:constructor-arg
+			value="D:\\T1P1\\T1P1\\Team1Project1\\src\\main\\webapp\\resources\\resume"></beans:constructor-arg>
 	</beans:bean>
 
 	<beans:bean id="coverLetterPath" class="java.lang.String">

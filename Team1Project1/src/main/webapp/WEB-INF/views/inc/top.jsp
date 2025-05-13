@@ -9,7 +9,7 @@
 	<div class="top-bar">
 		<div class="logo">
 			<a href="${pageContext.request.contextPath }/main/main">
-				출근<span>.</span>
+				<img id ="logo" src="${pageContext.request.contextPath }/resources/img/logo.png" alt="로고">
 			</a>
 		</div>
 		<form class="search-bar" id="searchForm" method="get" action="${pageContext.request.contextPath}/main/search">
