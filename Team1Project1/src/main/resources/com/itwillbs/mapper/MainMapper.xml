@@ -8,7 +8,9 @@
 <mapper namespace="com.itwillbs.mapper.MainMapper">
 
 	<select id="listOR" resultType="map">
-		select or_corporation_name, p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary, or_workday, or_url 
+		select or_corporation_name,
+		p.occupation_name, j.job_name, eduhigh_name, careear_name, or_salary,
+		or_workday, or_url
 		from open_recruit o join edu_high e
 		on o.or_eduhigh = e.eduhigh_id
 		join
@@ -38,23 +40,57 @@
 		e.eduhigh_name,
 		a.careear_name,
 		r.recruit_salary
-		FROM recruit r
-		JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
-		JOIN occupation o ON r.recruit_occupation = o.occupation_id
+		FROM
+		recruit r
+		JOIN corporation c ON r.corporationMember_num =
+		c.corporationMember_num
+		JOIN occupation o ON r.recruit_occupation =
+		o.occupation_id
 		JOIN job j ON r.recruit_job = j.job_id
-		JOIN edu_high e ON r.recruit_eduhigh = e.eduhigh_id
-		JOIN careear a ON r.recruit_careear = a.careear_id
+		JOIN edu_high e
+		ON r.recruit_eduhigh = e.eduhigh_id
+		JOIN careear a ON r.recruit_careear
+		= a.careear_id
 		WHERE r.recruit_name LIKE #{keyword}
-		OR c.corporation_name LIKE #{keyword}
+		OR
+		c.corporation_name LIKE #{keyword}
 		OR o.occupation_name LIKE #{keyword}
 		OR j.job_name LIKE #{keyword}
 		OR r.recruit_location LIKE #{keyword}
-		OR e.eduhigh_name LIKE #{keyword}
+		OR
+		e.eduhigh_name LIKE #{keyword}
 		OR a.careear_name LIKE #{keyword}
-		OR CAST(r.recruit_salary AS CHAR) LIKE #{keyword}
+		OR
+		CAST(r.recruit_salary AS CHAR) LIKE #{keyword}
 	</select>
 
 
+	<select id="result" resultType="map">
+		select c.corporation_name,
+		p.occupation_name, j.job_name, eduhigh_name,
+		careear_name,
+		recruit_salary, recruit_workday
+		from recruit r join
+		corporation c
+		on
+		r.corporationMember_num = c.corporationMember_num
+		join
+		edu_high e
+		on
+		r.recruit_eduhigh = e.eduhigh_id
+		join careear a
+		on
+		r.recruit_careear =
+		a.careear_id
+		join occupation p
+		on
+		r.recruit_occupation = p.occupation_id
+		join job j
+		on r.recruit_job =
+		j.job_id
+		where r.recruit_id = #{recruitId}
+
+	</select>
 
 
 	<select id="listRecruit" resultType="map">
@@ -75,13 +111,16 @@
 		join job j
 		on r.recruit_job = j.job_id
 
-		where recruit_occupation = #{Occupation}
+		where recruit_occupation =
+		#{Occupation}
 		and recruit_eduhigh &lt;=
 		#{Eduhigh}
-		and recruit_careear &lt;= #{Careear}
+		and recruit_careear
+		&lt;= #{Careear}
 		and recruit_salary &gt;=
 		#{Salary}
-		and recruit_workday &lt;= #{WorkingDay}
+		and recruit_workday
+		&lt;= #{WorkingDay}
 
 	</select>
 
@@ -94,17 +133,22 @@
 		r.recruit_location,
 		r.recruit_photo,
 		r.recruit_deatline,
-		DATEDIFF(r.recruit_deatline, NOW()) AS dday,
+		DATEDIFF(r.recruit_deatline, NOW())
+		AS dday,
 		c.corporation_name,
 		p.occupation_name,
 		j.job_name,
 		ca.careear_name
 		FROM recruit r
-		JOIN corporation c ON r.corporationMember_num = c.corporationMember_num
-		JOIN occupation p ON r.recruit_occupation = p.occupation_id
-		JOIN job j ON r.recruit_job = j.job_id
+		JOIN corporation c ON
+		r.corporationMember_num = c.corporationMember_num
+		JOIN occupation p ON
+		r.recruit_occupation = p.occupation_id
+		JOIN job j ON r.recruit_job =
+		j.job_id
 		JOIN careear ca ON r.recruit_careear = ca.careear_id
-		ORDER BY r.recruit_deatline ASC
+		ORDER BY
+		r.recruit_deatline ASC
 		LIMIT #{limit}
 	</select>
 
