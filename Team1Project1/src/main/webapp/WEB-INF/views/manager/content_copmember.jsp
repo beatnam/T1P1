@@ -31,7 +31,7 @@
 				<li>소재지 : ${corporation.corporation_address }</li>
 				<li>사업자 번호 : ${corporation.corporation_registration }</li>
 				<li>사업자 등록증 사본 : <img
-					src="${corporation.corporation_registrationPdf }"></li>
+					src="${pageContext.request.contextPath }/resources/upload/${corporation.corporation_registrationPdf }"></li>
 			</ul>
 		</div>
 	</div>
