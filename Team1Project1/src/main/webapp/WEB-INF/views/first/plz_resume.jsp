@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 요청</title>
+<title>이력서 없음</title>
 </head>
 <body>
 	<script type="text/javascript">
-		alert('로그인 하셔야 사용 가능하십니다.');
-		location.href = "${pageContext.request.contextPath}/main/login";
+		alert('이력서가 없습니다. 이력서 작성 페이지로 넘어갑니다');
+		location.href = '${pageContext.request.contextPath}/mypage/my-resume';
 	</script>
 </body>
 </html>

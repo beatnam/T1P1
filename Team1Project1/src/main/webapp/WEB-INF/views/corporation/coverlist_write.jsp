@@ -118,32 +118,9 @@
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
 	<!-- 	마감일자란에 기본 날자(현재날짜)입력 -->
 	<script>
-		document.getElementById("recruitDeatline").valueAsDate = new Date();
+		const contextPath = "${pageContext.request.contextPath}";
 	</script>
-
-	<script>
-		function loadJobs(occupationId) {
-			const jobSelect = document.getElementById('job-select');
-			jobSelect.innerHTML = '<option value="">먼저 직무를 선택하세요</option>';
-			if (occupationId) {
-				$.ajax({
-					type : "GET",
-					url : '${pageContext.request.contextPath}/corplist/job',
-					data : {
-						'occupationId' : occupationId
-					},
-					dataType : 'json',
-					success : function(result) {
-						$('#job-select').html('');
-						$.each(result, function(index, item) {
-							$('#job-select').append(
-									'<option value="' + item.jobId + '">'
-											+ item.jobName + '</option>');
-						});
-					},
-				});//ajax()
-			}
-		}
-	</script>
+	<script src="${pageContext.request.contextPath}/resources/js/coverlist1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/coverlist.js"></script>
 </body>
 </html>

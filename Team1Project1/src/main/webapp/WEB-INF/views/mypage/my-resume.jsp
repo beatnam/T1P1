@@ -35,12 +35,13 @@
                 <div>${resume.resumePhoto}</div>
                 
                 <div style="margin-top: 10px;">
-            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" target="_blank">
+            		<a href="${pageContext.request.contextPath}/resources/resume/${resume.resumePhoto}" target="_blank">
                 	<button>📄 보기</button>
             		</a>
-            		<a href="${pageContext.request.contextPath}/upload/resume/${resume.resumePhoto}" download>
+            		<a href="${pageContext.request.contextPath}/resources/resume/${resume.resumePhoto}" download>
                 	<button>📥 다운로드</button>
             		</a>
+            		
             		<form action="${pageContext.request.contextPath}/resume/delete" method="post" style="display: inline;" 
                   		onsubmit="return confirm('정말 삭제하시겠습니까?');">
                 		<input type="hidden" name="resumeID" value="${resume.resumeID}">
@@ -57,10 +58,12 @@
                 귀하는 개인정보 제공에 동의하셨습니다.
             </div>
 
+			<c:if test="${empty resumeList }">
             <div class="new">
                 <button onclick="location.href='${pageContext.request.contextPath}/resume/my-resume-edit'">새 이력서</button>
-
             </div>
+            </c:if>
+            
         </div>
     </div>
 </div>

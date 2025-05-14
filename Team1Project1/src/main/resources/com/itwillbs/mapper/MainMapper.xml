@@ -39,7 +39,8 @@
 		r.recruit_location,
 		e.eduhigh_name,
 		a.careear_name,
-		r.recruit_salary
+		r.recruit_salary,
+		r.recruit_photo
 		FROM
 		recruit r
 		JOIN corporation c ON r.corporationMember_num =
