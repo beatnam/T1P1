@@ -40,7 +40,7 @@
     <c:forEach var="recruit" items="${recruitList}">
         <a class="main-job-card" href="${pageContext.request.contextPath}/recruit_info/always_content?recruitId=${recruit.recruitId}">
             <div class="main-job-img-box">
-                <img src="${recruit.recruitPhoto}" alt="회사 이미지">
+                <img src="${pageContext.request.contextPath}/resources/upload/${recruit.recruitPhoto}" alt="회사 이미지">
                 <div class="d-day">D-${recruit.dday}</div>
             </div>
             <div class="main-job-body">

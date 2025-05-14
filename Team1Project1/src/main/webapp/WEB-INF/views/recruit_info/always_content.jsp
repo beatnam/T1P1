@@ -24,6 +24,7 @@
 			<!-- 상단 제목과 이미지 -->
 			<div class="recruit-header">
 				<div class="recruit-title-box">
+					<p class="hidden">${recruitContent.recruit_id}</p>
 					<h2 class="recruit-title">${recruitContent.recruit_name}</h2>
 					<p class="corp-name">${recruitContent.corporation_name}</p>
 					<a
@@ -69,10 +70,15 @@
 				<h4>상세 내용</h4>
 				<p>${recruitContent.recruit_content}</p>
 			</div>
+
+			<a
+				href="${pageContext.request.contextPath }/first/application?recruitId=${recruitContent.recruit_id}"
+				id="apply">지원하기</a>
 		</div>
 
 	</div>
 	<jsp:include page="../inc/footer.jsp"></jsp:include>
+
 </body>
 
 </html>

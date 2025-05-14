@@ -34,5 +34,10 @@ public class MainService {
 	    return mainMapper.searchKeyword(paramMap);
 	}
 
+	public Map<Object, Object> result(String recruitId) {
+		// TODO Auto-generated method stub
+		return mainMapper.result(recruitId);
+	}
+
 
 }

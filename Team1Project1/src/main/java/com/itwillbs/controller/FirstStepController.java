@@ -68,6 +68,17 @@ public class FirstStepController {
 		return "/first/plz_login";
 	}
 
+	// 세션값 없으면 얼럿 후 로그인으로 이동
+	@GetMapping("/application")
+	public String applyDirect(@RequestParam String recruitId, Model model) {
+		System.out.println(recruitId);
+		Map<Object, Object> result = mainService.result(recruitId);
+		
+		model.addAttribute("recruit", result);
+		
+		return "/first/direct_application";
+	}
+
 	@PostMapping("/filteringPro")
 	public String FilterPro(@RequestParam Map<Object, Object> filter, Model model) {
 
@@ -116,18 +127,18 @@ public class FirstStepController {
 		cvDTO.setCvFileName(fileName);
 		// 4. 저장 후 메인으로 이동
 		firstStepService.saveAndApply(cvDTO);
-		
+
 		ApplicationDTO appDTO = new ApplicationDTO();
 		appDTO.setMemberNum(memberNum);
 		appDTO.setCorporationMemberNum(corpNum);
 		appDTO.setCvPdf(fileName);
 		appDTO.setApplicationDate(LocalDateTime.now());
-		
+
 		String resume = searchResume(memberNum);
 		appDTO.setResumePdf(resume);
-		
+
 		firstStepService.apply(appDTO);
-		
+
 		return "redirect:/main/main";
 	}
 
