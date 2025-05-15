@@ -142,9 +142,9 @@ public class ResumeController {
     		File folder = new File(resumePath);
     		if(!folder.exists()) folder.mkdirs();
     		
-    		String mamberName = memberDTO.getMemberName();
+    		int memberNum = memberDTO.getMemberNum();
     		int index = 1;
-    		String baseName = "resume_" + mamberName;  
+    		String baseName = "resume_" + memberNum;  
     		String fileName;
     		File saveFile;
     		
