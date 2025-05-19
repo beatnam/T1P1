@@ -142,9 +142,9 @@ public class ResumeController {
     		File folder = new File(resumePath);
     		if(!folder.exists()) folder.mkdirs();
     		
-    		String mamberName = memberDTO.getMemberName();
+    		int member_num2 = memberDTO.getMemberNum();
     		int index = 1;
-    		String baseName = "resume_" + mamberName;  
+    		String baseName = "resume_" + member_num2;  
     		String fileName;
     		File saveFile;
     		
@@ -156,7 +156,9 @@ public class ResumeController {
     			index++;
     		}while (saveFile.exists());
     		
-    		
+          MyResumeDTO myResumeDTO = new MyResumeDTO();
+          myResumeDTO.setMemberNum(member_num);
+          myResumeDTO.setResumePhoto(fileName);
     		
     		//PDF 생성
     		Document doc = new Document();
@@ -164,7 +166,7 @@ public class ResumeController {
             
             doc.open();
             
-            BaseFont bfKorean = BaseFont.createFont("c:/windows/fonts/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont bfKorean = BaseFont.createFont("/usr/local/share/fonts/malgun.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font fontKorean = new Font(bfKorean, 12);
             Font fontTitle = new Font(bfKorean, 14, Font.BOLD);
             
@@ -218,10 +220,10 @@ public class ResumeController {
         	}
             
             //저장
-            MyResumeDTO myResumeDTO = new MyResumeDTO();
-            myResumeDTO.setMemberNum(member_num);
-            myResumeDTO.setResumePhoto(fileName);
-            
+//            MyResumeDTO myResumeDTO = new MyResumeDTO();
+//            myResumeDTO.setMemberNum(member_num);
+//            myResumeDTO.setResumePhoto(fileName);
+//            
             List<CertificationDTO> certList = myResumeService.getCertificationList(member_num);
             
             //자격증 

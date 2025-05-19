@@ -211,7 +211,7 @@ public class FirstStepController {
 
 		PdfWriter.getInstance(document, new FileOutputStream(filePath)); // ← iText 5 방식
 		document.open();
-		String fontPath = "C:/Windows/Fonts/malgun.ttf"; // 또는 나눔고딕 등 TTF 폰트 경로
+		String fontPath = "/usr/local/share/fonts/malgun.ttf"; // 또는 나눔고딕 등 TTF 폰트 경로
 		BaseFont baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 		Font font = new Font(baseFont, 12);
 		for (String line : content.split("\n")) {

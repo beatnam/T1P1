@@ -72,13 +72,13 @@
 
 	<beans:bean id="resumePath" class="java.lang.String">
 		<beans:constructor-arg
-			value="/usr/local/tomcat/webapps/Team1Project1/resources/resume"></beans:constructor-arg>
+			value="/usr/local/resources/resume"></beans:constructor-arg>
 	</beans:bean>
 
 
 	<beans:bean id="coverLetterPath" class="java.lang.String">
 		<beans:constructor-arg
-			value="/usr/local/tomcat/webapps/Team1Project1/resources/cover_letter"></beans:constructor-arg>
+			value="/usr/local/resources/cover_letter/"></beans:constructor-arg>
 	</beans:bean>
 
 </beans:beans>
