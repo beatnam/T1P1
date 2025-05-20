@@ -44,7 +44,7 @@
 					<div>
 						${introduce.cvFileName}
 						<a
-							href="${pageContext.request.contextPath}/resources/cover_letter/${introduce.cvFileName}"
+							href="/cover_letter/${introduce.cvFileName}"
 							target="_blank">파일 보기</a>
 					</div>
 
